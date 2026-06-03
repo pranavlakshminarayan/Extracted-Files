@@ -1,0 +1,142 @@
+1/32
+NOT FOR NEW DESIGN
+February 2002
+This is information on a product still in production but not recommended for new designs. 
+M25P10
+1 Mbit, Low Voltage, Serial Flash Memory
+With 20 MHz SPI Bus Interface
+FEATURES SUMMARY
+This device is now designated as “Not for New De-
+sign”. Please use the M25P10-A in all future de-
+signs (as described in application note AN1511).
+■1 Mbit of Flash Memory
+■Page Program (up to 128 Bytes) in 3 ms 
+(typical)
+■Sector Erase (256 Kbit) in 1 s (typical)
+■Bulk Erase (1 Mbit) in 2 s (typical)
+■2.7 V to 3.6 V Single Supply Voltage
+■SPI Bus Compatible Serial Interface
+■20 MHz Clock Rate (maximum)
+■Deep Power-down Mode 1 µA (typical)
+■Electronic Signature
+■More than 100,000 Erase/Program Cycles per 
+Sector
+■More than 20 Year Data Retention
+Figure 1. Packages
+SO8 (MN)
+150 mil width
+8
+1
+M25P10
+2/32
+SUMMARY DESCRIPTION
+The M25P10 is a 1 Mbit (128K x 8) Serial Flash
+Memory, with advanced write protection mecha-
+nisms, accessed by a high speed SPI-compatible
+bus.
+The memory can be programmed 1 to 128 bytes at
+a time, using the Page Program instruction.
+The memory is organized as 4 sectors, each con-
+taining 256 pages. Each page is 128 bytes wide.
+Thus, the whole memory can be viewed as con-
+sisting of 1024 pages, or 131,072 bytes.
+The whole memory can be erased using the Bulk
+Erase instruction, or a sector at a time, using the
+Sector Erase instruction.
+Figure 2. Logic Diagram
+Figure 3. SO Connections
+Table 1. Signal Names
+AI03744
+S
+VCC
+M25P10
+HOLD
+VSS
+W
+Q
+C
+D
+1
+AI03745
+2
+3
+4
+8
+7
+6
+5
+DVSS
+C
+HOLDQ
+SV CC
+W
+M25P10
+C Serial Clock
+D Serial Data Input
+Q Serial Data Output
+S Chip Select
+W Write Protect
+HOLD Hold
+VCC Supply Voltage
+VSS Ground
+3/32
+M25P10
+SIGNAL DESCRIPTION
+Serial Data Output (Q). This output signal is
+used to transfer data serially out of the device.
+Data is shifted out on the falling edge of Serial
+Clock (C). 
+Serial Data Input (D). This input signal is used to
+transfer data serially into the device. It receives in-
+structions, addresses, and the data to be pro-
+grammed. Values are latched on the rising edge of
+Serial Clock (C).
+Serial Clock (C). This input signal provides the
+timing of the serial interface. Instructions, address-
+es, or data present at Serial Data Input (D) are
+latched on the rising edge of Serial Clock (C). Data
+on Serial Data Output (Q) changes after the falling
+edge of Serial Clock (C). 
+Chip Select (S
+). When this input signal is High,
+the device is deselected and Serial Data Output
+(Q) is at high impedance. Unless an internal Pro-
+gram, Erase or Write Status Register cycle is in
+progress, the device will be in the Standby mode
+(this is not the Deep Power-down mode). Driving
+Chip Select (S
+) Low enables the device, placing it
+in the active power mode.
+After Power-up, a falling edge on Chip Select (S )
+is required prior to the start of any instruction. 
+Hold (HOLD). The Hold (HOLD) signal is used to
+pause any serial communications with the device
+without deselecting the device.
+During the Hold condition, the Serial Data Output
+(Q) is high impedance, and Serial Data Input (D)
+and Serial Clock (C) are Don’t Care.
+To start the Hold condition, the device must be se-
+lected, with Chip Select (S
+) driven Low.
+Write Protect (W). The main purpose of this in-
+put signal is to freeze the size of the area of mem-
+ory that is protected against program or erase
+instructions (as specified by the values in the BP1
+and BP0 bits of the Status Register).
+M25P10
+4/32
+SPI MODES
+These devices can be driven by a microcontroller
+with its SPI peripheral running in either of the two
+following modes:
+– CPOL=0, CPHA=0
+– CPOL=1, CPHA=1
+For these two modes, input data is latched in on
+the rising edge of Serial Clock (C), and output data
+is available from the falling edge of Serial Clock
+(C).
+The difference between the two modes, as shown
+in Figure 5, is the clock polarity when the bus mas-
+ter is in Stand-by mode and not transferring data:
+– C remains at 0 for (CPOL=0, CPHA=0)
+– C remains at 1 for (CPOL=1

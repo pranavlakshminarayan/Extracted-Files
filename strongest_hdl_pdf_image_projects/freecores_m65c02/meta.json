@@ -1,0 +1,26 @@
+{
+  "project_id": "freecores_m65c02",
+  "name": "m65c02",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/m65c02",
+  "extraction_date": "2026-06-02T16:53:28",
+  "license": null,
+  "has_readme": true,
+  "readme_excerpt": "M65C02 Microprocessor Core\n=======================\n\nCopyright (C) 2012-2013, Michael A. Morris <morrisma@mchsi.com>.\nAll Rights Reserved.\n\nReleased under LGPL.\n\nNews\n----\n\nRecently completed tests have verified the M65C02 soft-\nprocessor to operate as designed at a frequency of 73.728 MHz in an XC3S50A-\n4VQG100I FPGA. See below for a more complete description of Release 2.7.2. \nwith which this milestone was achieved.\n\nGeneral Description\n-------------------\n\nThis project provides a microprogrammed synthesizable IP core compatible with \nthe WDC and Rockwell 65C02 microprocessors. \n\nIt is provided as a core. Several external components are required to form a \nfunctioning processor: (1) memory, (2) interrupt controller, and (3) I/O \ninterface buffers. The Verilog testbench provided demonstrates a simple \nconfiguration for a functioning processor implemented with the M65C02 core: \nM65C02_Core. The M65C02 core supports the full instruction set of the W65C02. \n\nThe core accepts an interrupt signal from an external interrupt controller. \nThe core provides the interrupt mask bit to the external interrupt controller, \nand expects the controller to handle the detection of the NMI edge, the \nprioritization of the interrupt sources, and to provide the interrupt and \nexception vectors. The core also provides an indication of whether the BRK \ninstruction is being executed. With this additional information, the external \ninterrupt controller is expected to provide the same vector for the BR",
+  "stats": {
+    "verilog_files": 20,
+    "vhdl_files": 0,
+    "other_hdl_files": 0,
+    "pdf_files": 1,
+    "markdown_files": 2,
+    "text_files": 12,
+    "image_files": 12,
+    "total_bytes": 18691611,
+    "languages_seen": [
+      "Verilog"
+    ]
+  },
+  "quality_tier": "A",
+  "quality_reason": "README + (PDF or images) + 3+ HDL files",
+  "references": []
+}

@@ -1,0 +1,60 @@
+JP4
+ADC
+DAC
+ADC
+Jumper 0 - 1.65V 0 - 3.3V Jumper
+JP11
+JP2
+Ch I JP3
+Jumper
+AC coupl
+2 - 3
+open
+1 - 2
+AC coupl
+0 - 1V 0 - 2V
+CAP1206
+JP5, JP8 1 - 22 - 3
+CAP1206
+JP6, JP7
+JP9
+JP1
+Ch Q
+JP10
+1 - 2 open
+1 - 2
+2 - 3
+open
+2 - 3 1 - 2
+31/07/2006 Shapiro A.
+CAP1206
+CAP1206
+DAC
+DC coupl
+Output coupling Mode: Output Range: 
+1 - 2
+1 - 2
+open
+DC coupl
+Jumper
+1 - 2
+1 - 2
+open
+CAP1206
+Input Coupling Mode:
+Input span ranges: 
+Low Perform. ADC
+Generic 
+LEDs
+Ext. trigger 
+inout
+32 x 2
+Header
+Bypass 
+Capacitors
+LP Data Converters
+LP Data Conversion Daughter Board
+Temperature 
+Sensors
+Low Performance DAC
+Daughter Board Connectors

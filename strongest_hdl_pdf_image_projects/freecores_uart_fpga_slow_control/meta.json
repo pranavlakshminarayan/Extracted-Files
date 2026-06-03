@@ -1,0 +1,26 @@
+{
+  "project_id": "freecores_uart_fpga_slow_control",
+  "name": "uart_fpga_slow_control",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/uart_fpga_slow_control",
+  "extraction_date": "2026-06-02T16:55:42",
+  "license": null,
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 0,
+    "vhdl_files": 26,
+    "other_hdl_files": 0,
+    "pdf_files": 3,
+    "markdown_files": 0,
+    "text_files": 10,
+    "image_files": 2,
+    "total_bytes": 5031503,
+    "languages_seen": [
+      "VHDL"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": []
+}

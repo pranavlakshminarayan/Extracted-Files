@@ -1,0 +1,179 @@
+1
+1
+2
+2
+3
+3
+4
+4
+D D
+C C
+B B
+A A
+18
+Berne University of Applied Science
+School of Engineering and
+Information Technology
+Quellgasse 21CH-2501 Biel19
+Ethernet Connector PCB
+zac1 1.0
+23.07.2008 14:05:54
+ethernet-connector.SchDoc
+Title:
+Size: Author:
+Date:
+File:
+Sheet ofTime:
+A4_L
+ Revision:
+3.3V
+Schematic of the Magjack SI-10021
+GND
+TD-
+TD+
+RD-
+RD+
+RD-
+RD+
+TD-
+TD+
+100nF
+C3_ethcon
+100nF
+C1_ethcon
+12
+34
+56
+JP2_ethcon
+SI-10021
+11
+88
+77
+66
+55
+44
+33
+22
+Magjack
+Shields
+JP1_ethcon
+1M_250V
+R1_ethcon
+4.7nF_1000V
+C2_ethcon
+P0C10ethcon01 P0C10ethcon02 
+P0C20ethcon01 P0C20ethcon02 
+P0C30ethcon01 P0C30ethcon02 
+P0JP10ethcon01 
+P0JP10ethcon02 
+P0JP10ethcon03 
+P0JP10ethcon04 
+P0JP10ethcon05 
+P0JP10ethcon06 
+P0JP10ethcon07 
+P0JP10ethcon08 
+P0JP10ethcon0s 
+P0JP20ethcon01 P0JP20ethcon02 
+P0JP20ethcon03 P0JP20ethcon04 
+P0JP20ethcon05 P0JP20ethcon06 
+P0R10ethcon01 P0R10ethcon02 
+P0C10ethcon02 
+P0C30ethcon02 
+P0JP10ethcon02 
+P0JP10ethcon05 
+P0JP20ethcon01 
+P0C20ethcon01 
+P0JP10ethcon0s 
+P0R10ethcon01 
+P0C10ethcon01 
+P0C20ethcon02 
+P0C30ethcon01 
+P0JP10ethcon08 
+P0JP20ethcon06 
+P0R10ethcon02 
+P0JP10ethcon07 
+P0JP10ethcon01 
+P0JP20ethcon04 
+N0RD+ 
+N0RD+ 
+P0JP10ethcon03 
+P0JP20ethcon05 
+N0RD0 
+N0RD0 
+P0JP10ethcon04 
+P0JP20ethcon02 
+N0TD+ 
+N0TD+ 
+P0JP10ethcon06 
+P0JP20ethcon03 
+N0TD0 
+N0TD0 
+P0C10ethcon02 
+P0C30ethcon02 
+P0JP10ethcon02 
+P0JP10ethcon05 
+P0JP20ethcon01 
+P0C20ethcon01 
+P0JP10ethcon0s 
+P0R10ethcon01 
+P0C10ethcon01 
+P0C20ethcon02 
+P0C30ethcon01 
+P0JP10ethcon08 
+P0JP20ethcon06 
+P0R10ethcon02 
+P0JP10ethcon07 
+N0RD+ 
+P0JP10ethcon01 
+P0JP20ethcon04 
+N0RD0 
+P0JP10ethcon03 
+P0JP20ethcon05 
+N0TD+ 
+P0JP10ethcon04 
+P0JP20ethcon02 
+N0TD0 
+P0JP10ethcon06 
+P0JP20ethcon03 
+1 
+C1 
+P0C101 P0C102 
+C2 P0C201 P0C202 
+C3 
+P0C301 P0C302 
+JP1 
+P0JP100 
+P0JP101 
+P0JP102 
+P0JP103 
+P0JP104 
+P0JP105 
+P0JP106 
+P0JP107 
+P0JP108 
+P0JP10s JP2 
+P0JP201 
+P0JP202 
+P0JP203 P0JP204 
+P0JP205 P0JP206 
+R1 P0R101 
+P0R102 
+P0C102 P0C302 
+P0JP102 
+P0JP105 
+P0JP201 
+P0C201 P0JP10s 
+P0R101 
+P0C101 
+P0C202 
+P0C301 
+P0JP108 
+P0JP206 
+P0R102 
+P0JP101 
+P0JP204 P0JP103 
+P0JP205 
+P0JP104 
+P0JP202 
+P0JP106 
+P0JP203 

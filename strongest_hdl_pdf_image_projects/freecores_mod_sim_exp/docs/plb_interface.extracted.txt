@@ -1,0 +1,14 @@
+Processor Local Bus (version 4.6)
+SPLB
+PLB v4.6
+Slave
+IPIC Slave
+   User Logic
+Control
+Register
+mod_sim_exp_core
+Core Memory
+Software 
+Reset
+Interrupt 
+Contoller

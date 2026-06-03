@@ -1,0 +1,26 @@
+{
+  "project_id": "freecores_hilbert_transformer",
+  "name": "hilbert_transformer",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/hilbert_transformer",
+  "extraction_date": "2026-06-02T16:53:12",
+  "license": "GPL-3.0",
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 0,
+    "vhdl_files": 13,
+    "other_hdl_files": 0,
+    "pdf_files": 32,
+    "markdown_files": 0,
+    "text_files": 1,
+    "image_files": 5,
+    "total_bytes": 38516764,
+    "languages_seen": [
+      "VHDL"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": []
+}

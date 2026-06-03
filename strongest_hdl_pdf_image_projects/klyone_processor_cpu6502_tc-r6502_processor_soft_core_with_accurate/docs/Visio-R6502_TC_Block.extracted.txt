@@ -1,0 +1,63 @@
+R6502_TC
+Core
+Program Counter 16Bit
+Address computation based on „+1", signed offsets and 
+setting new addresses by program control (jumps,  
+subroutines & interrupts).
+Reg_PC
+Stack Pointer 8Bit
+Address computation based on „-1", „+1" and setting new 
+addresses by program control.
+Fixed to page 1 (0x01FF down to 0x0100).
+Reg_SP
+Registerbank for A, X and Y
+Flipflops for main registers with internal pathes for 
+register-to-register transfers.
+RegBank_AXY
+Shared Logic
+Computing Flags C, Z & N while transfering data. 
+Finite State Machine 
+NMI
+Signal detection
+FSM_NMI
+Finite State Machine
+Execution Unit
+- instruction fetch
+- instruction decode
+- instruction execute
+- pipelining
+- controls program  
+  counter
+- controls stack pointer
+- controls register/
+  memory transfers
+- controls timing & wait 
+  states
+-i n t e g r a t e d  A L U
+FSM_Execution_Unit
+nm
+i
+control bus
+address & offset (16Bit)
+registered address (16Bit)
+unregistered address (16Bit)
+control bus
+address (8Bit)
+registered address (0x01 & 8Bit)
+control bus
+data (8Bit)
+Reg. A, X and Y data (24Bit)
+multiplexed Reg. data (8Bit)
+clk_clk_i
+rst_rst_n_i
+d_i (7:0)
+rdy_i
+irq_n_i
+nmi_n_i
+so_n_i
+a_o (15:0)
+d_o (7:0)
+rd_o
+wr_o
+wr_n_o
+sync_o

@@ -1,0 +1,101 @@
+HIBI v.2 - An Interconnection for the Network-on-Chip Era
+Erno Salminen, Vesa Lahtinen, Tero Kangas, Jouni Riihimäki,
+Kimmo Kuusilinna, and Timo D. Hämäläinen
+Tampere University of Technology, Institute of Digital and Computer Systems
+P .O. Box 553, FIN-33101, Tampere, Finland
+Tel: + 358-3-3115 4540, Fax: +358-3-3115 4575
+Corresponding author: Erno Salminen
+Abstract-This paper presents a ne twork-on-chip (NoC) architec-
+ture scheme targeted for complex system-on-chip designs. The
+proposed Heterogeneous IP Bl ock Interconnection v.2 (HIBI)
+aims at maximum efficiency and energy saving per transmitted bit
+combined to guaranteed quality-of -service (QoS) in transfers.
+Other features include support fo r arbitrary topologies with sev-
+eral clock domains, flexible scalablility in signalling and run time
+reconfiguration of interconnect ion parameters. HIBI has been
+implemented in VHDL and Syst emC and synthesized in 0.18 
+CMOS technology with area co mparable to other NoC intercon-
+nection wrappers. HIBI data transfers are shown to approach the
+maximum theoretical performance for protocol efficiency.
+Index Terms - High performance,  configurable, communication,
+digital, design, distributed control, Vlsi
+I.  INTRODUCTION
+Network-on-chip (NoC) can be regarded as the third
+wave of system-on-chip (SoC) designs after intellectual
+property (IP) block-based [1][2] and platform-based [3]
+methodologies. The third wave focuses on how to reuse not
+only IP blocks and platforms but also on-chip
+interconnections. This is a formidable challenge, since
+contemporary SoCs, such as MoVa [4] and Viper [5],  have
+very heterogeneous structure. In general, SoCs include
+several different types of processors, memories and dozens
+of IP blocks that have different interface signalling. In
+addition, there are several clock domains that are not
+necessarily synchronized and some of the blocks are from
+time to time shut down for power saving. The overall
+computation is not homogeneous as in traditional
+multiprocessors running scientific algorithms and,
+therefore, a symmetric interconnection topology may be
+insufficient.  Quality-of-service (QoS) for on-chip data
+transfers is a new demand that  originates from real-time
+requirements in applications.
+As a general principle, orthogonalization of concerns
+[3][6] facilitates partitioning the design into manageable
+subdesigns. For instance, se paration between computation
+and communication helps to select an appropriate
+interconnection in an application independent manner. This
+principle forms the basis for automated design space
+exploration [7].
+Standardization efforts in clude a layered approach
+based on IP interfaces, for example Virtual Component
+Interface (VCI) [8] and Open Core Protocol (OCP) [9]. A
+component called wrapper translates the IP block specific
+communication operations to corresponding on-chip
+network operations. Figure 1 illustrates the concept with a
+HIBI network. 
+ Interconnections, as a research topic, have well
+established and long traditions originating from board level
+multi-processor systems and networked multicomputers.
+Interestingly, many topologies that were originally
+intended for super computers [10][11][12] are now
+proposed as backbones for SoCs. However, their original
+form may lead to unexpected problems in SoC
+environment. A regular and symmetric topology, such as a
+mesh, fits well for dataflow type of processing with static
+scheduling and allocation of tasks. Other types of
+computation or unbalanced lo ads may lead to significant
+overall inefficiency.
+µm
+Acknowledgments
+This research work has been supported by the Graduate
+School in Telecommunication Sy stem-on-Chip Integration
+(TELESOC) and the Nokia Foundation. 
+Agent
+System 
+initiator
+IP
+MasterVCI / 
+OCP
+Master
+HIBI
+wrapper
+Agent
+System 
+target
+IP
+Slave
+Slave
+HIBI
+wrapper
+Agent
+System 
+initiator/target
+IP
+Master
+Master
+HIBI
+wrapper
+Slave
+Slave
+HIBI on-chip networkHIBI on-chip networkHIBI on -chip network
+Figure 1. Utilizing VCI/OCP 

@@ -1,0 +1,66 @@
+Technical Brief
+Implementing IEEE 1588v2 for use 
+in the mobile backhaul
+For most, the migration to an all-Ethernet or all-IP 
+network will be a gradual process as network operators 
+endeavour to maximise the lifespan of their existing 
+TDM assets. However, the pace is quickening with 
+the development of the IEEE 1588v2 standard. This 
+standard enables the backhaul network to migrate to 
+all-Ethernet, which provides much-required bandwitdth 
+at a far lower cost-per-bit. It is of significant interest 
+to network operators seeking to grow their revenue 
+by capitalising on bandwidth-hungry applications like 
+mobile broadband, music and video downloads. This 
+document provides a brief overview of IEEE 1588v2 
+and looks at how you can characterise devices that will 
+implement the standard.
+
+Contents
+Maintaining Sync using IEEE1588v2 3
+Propagation Delay Measurement Mechanisms  4
+Synchronisation 4
+Establishing the Master-Slave Hierarchy 4
+Synchronising Ordinary and Boundary Clocks 5
+Topologies 9
+Hierarchical Topology 9
+Linear Topology 9
+Multiply Connected Topology 10
+Transport of PTP Messages 10
+PTP over UDP over IPv4 over Ethernet 11
+PTP over UDP over IPv6 over Ethernet 11
+PTP over IEEE 802.3/Ethernet 12
+PTP Message Formats 12
+Testing and Introducing Impairments 19
+Two-way Timing Protocol, PDVs and Wander 20
+Introduction
+Although Ethernet has been the technology of choice for a range on LAN and WAN applications for decades, 
+using it in the mobile backhaul network presents a major challenge. Here, accurate synchronisation of base 
+stations to nanoseconds accuracy is critical to minimise service disruptions and eliminate dropped connections 
+as calls move between adjacent cells. Highly accurate synchronisation also ensures that the radio spectrum is 
+not spread into the adjacent channels. Plus, without stringent phase synchronisation, the multiple signals in 
+LTE’s multiple-input/multiple-output (MIMO) architecture can simply cancel one another out. And this is where 
+IEEE1588v2 comes in. 
+IEEE1588v2 (also known as Precision Time Protocol, PTP) is an industry-standard protocol that enables 
+the precise transfer of frequency and time to synchronise clocks over packet-based Ethernet networks. It 
+synchronises the local slave clock on each network device with a system Grandmaster clock and uses traffic 
+time-stamping, with sub-nanoseconds granularity, to deliver the very high accuracies of synchronisation 
+needed to ensure the stability of base station frequency and handovers. Timestamps between master and slave 
+devices are sent within specific PTP packets and in its basic form the protocol is administration-free.
+Of course, the precision and performance of the IEEE 1588v2 protocol is based on the precision of the 
+timestamp. The timestamps of incoming and outgoing packets clearly need to be recorded and assessed to 
+ensure synchronisation of master and slave devices. Differences in time and frequency between clocks and 
+subsequent equipment corrections need to be evaluated, while clocks must be measured to ensure they are 
+within their specified limits. Further, delays and drifts in sync and their effect on the transfer of timing through 
+the network need to be considered too. 
+Here, we examine the various methods you can use to characterise and measure the precision of timestamp 
+synchronisation, as well as the accuracy of clocks, network devices and topology, before deploying equipment 
+in an operational network.
+2
+Maintaining Sync using IEEE1588v2
+In a packet transport system, clocks communicate with each other over the communication network using PTP .  
+All clocks, whether master or slave, lead back to – and ultimately derive their time from – the ‘Grandmaster’ 
+clock. There are 5 types of PTP clock devices:
+Table 1 – PTP Device Types
+Master and slave network devices are kept synchronized by the transmission of timestamps sent within the PTP 
+messages. There are two types of message in the PTP protocol: Event Messages and General

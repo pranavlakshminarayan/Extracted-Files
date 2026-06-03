@@ -1,0 +1,87 @@
+SD Card Controller IP
+Speciﬁcation
+Marek Czerski
+Tuesday 10th September, 2013
+1
+List of Figures
+1 SoC with SD Card IP core . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2 Wishbone SD Card Controller IP Core interface . . . . . . . . . . . . . . . . . . . . 8
+3 Interrupt generation scheme . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2
+List of Tables
+1 Description of signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2 List of registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+3 Argument register . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+4 Command register . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+5 Response register 0-3 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+6 Control register . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+7 Timeout register . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+8 Clock divider register . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+9 Software reset register . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+10 Software reset register . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+11 Capabilities information register . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+12 Command events status register . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+13 Command transaction events enable register . . . . . . . . . . . . . . . . . . . . . . 15
+14 Data transaction events status register . . . . . . . . . . . . . . . . . . . . . . . . . 15
+15 Data transaction events enable register . . . . . . . . . . . . . . . . . . . . . . . . . 15
+16 Block size register . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+17 Block count register . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+18 DMA destination / source register . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+3
+1 Introduction
+This document descripes the multimedia card (MMC) / secure digital (SD) card controller ip core
+- Wishbone SD Card Controller IP Core .
+1.1 Purpose of the IP core
+The Wishbone SD Card Controller IP Core is an MMC/SD communication controller designed to
+be used in a System-on-Chip (Fig. 1). The IP core provides a simple interface for any MCU which
+utilizes the Wishbone bus. Communications between the MMC/SD card controller and MMC/SD
+card are performed according to the MMC/SD protocol.
+Figure 1: SoC with SD Card IP core
+1.2 Features
+The MMC/SD card controller provides following features:
+• 1- or 4-bit MMC/SD mode (does not support SPI mode),
+• 32-bit Wishbone interface,
+• DMA engine for data transfers,
+• Interrupt generation on completion of data and command transactions,
+• Conﬁgurable data transfer block size,
+• Support for any command code (including multiple data block tranfser),
+• Support for R1, R1b, R2(136-bit), R3, R6 and R7 responses.
+4
+2 Usage
+This chapter describes usage of the IP core.
+2.1 Directory structure
+Wishbone SD Card Controller IP Core comes with following directory structure:
+.
+bench
+verilog
+doc
+references
+src
+rtl
+verilog
+sim
+rtl sim
+bin
+log
+run
+sw
+example
+syn
+quartus
+bin
+run
+src
+bench/verilog - Verilog testbench sources,
+doc - documentation ﬁles,
+doc/src - documentation LATEXsources,
+rtl/verilog - IP core Verilog sources,
+sim/rtl sim/bin - simulation makeﬁle and modelsim scripts,
+sim/rtl sim/log - log ﬁles created during simulation,
+sim/rtl sim/run - simulation execution directory,
+sw/example - baremetal example application for or1k,
+syn/quartus/bin - synthesis makeﬁle and scripts for Quartus example project,
+syn/quartus/run - synthesis execution directory,
+syn/quartus/src - example project sources.
+2.2 Simulation
+To start the simulation just change to the sim/rtl_sim/run directory and type make:
+#> cd sim

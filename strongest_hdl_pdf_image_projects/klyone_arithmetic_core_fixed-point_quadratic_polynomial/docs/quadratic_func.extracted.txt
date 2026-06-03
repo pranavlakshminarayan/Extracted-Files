@@ -1,0 +1,94 @@
+QUADRATIC_FUNC
+Pipelined quadratic function
+Rev. 1.0
+Key Design Features
+● Computes the relation y = ax2 + bx + c
+● Signed 8-bit fixed-point input
+● Signed 8-bit fixed-point coefficients
+● Signed 24-bit fixed-point output
+● Configurable number of fraction bits
+● Dynamic coefficients updated every clock-cycle
+● No internal loss of precision (no rounding or truncation of 
+intermediate results applied)
+● Fully pipelined architecture
+● Result has a 3 clock-cycle latency
+Applications
+● Curve fitting
+● Estimating functions such as SIN/COS/ATAN
+● Alternative to LUT-based function estimation
+Pin-out Description
+Pin name I/O Description Active state
+clk in Sample clock rising edge
+en in Clock-enable high
+coeff_a [7:0] in Signed Coefficient a
+[8 fw] format
+data
+coeff_b [7:0] in Signed Coefficient b
+[8 fw] format
+data
+coeff_c [7:0] in Signed Coefficient c
+[8 fw] format
+data
+x_in [7:0] in Signed function input
+[8 fw ] format
+data
+y_out [23:0] out Function output
+[24 fw*3] format
+data
+Generic Parameters
+Generic name Description Type Valid range
+fw Coefficient and x term 
+Fraction width
+Integer [0, 8]
+Block Diagram
+General Description
+QUADRATIC_FUNC  is  a  fully  pipelined  quadratic  polynomial  that  
+computes the relation: y = ax 2 + bx + c.  On each rising-edge of the clock  
+(when  en is high), the coefficients and input x term are sampled at the  
+function inputs.  The result has a latency of 3 clock cycles.  All inputs to  
+the  function  are  8-bit  signed  fractions,  with  the  generic  parameter  fw 
+specifying the number of fraction bits.
+For example, setting the parameter fw = 6 would mean that the x input  
+(and coefficients) would have the format [8 6] with 1 sign bit, 1 integer bit  
+and 6 fraction bits.  The position of the binary point in the function output  
+is also determined by the number of fraction bits.  In this example with fw  
+= 6, the output would be in [24 18] format with 1 sign bit, 5 integer bits  
+and  18  fraction  bits.   If  integer  arithmetic  is  required  throughout,  the  
+generic parameter fw should be set to 0.
+Note  that  internally,  the  function  does  not  perform  any  truncation  or  
+rounding of the intermediate results.  This means that there is no loss of  
+precision in output result.
+Source File Description
+All source files are provided as text files coded in VHDL.  The following  
+table gives a brief description of each file.
+Source file Description
+quadratic_func.vhd Top-level block
+quadratic_func_bench.vhd Top-level test bench
+Functional Testing
+An  example  VHDL  testbench  is provided  for  use  in  a  suitable  VHDL 
+simulator.  The compilation order of the source code is as follows:
+1. quadratic_func.vhd
+2. quadratic_func_bench.vhd
+The  VHDL  testbench  instantiates  the  QUADRATIC_FUNC  component 
+and the user may modify the generic parameter fw as required.
+Simon Doherty – Senior Design Consultant – www.zipcores.com Page 1 of 2
+Figure 1: Function y = ax2 + bx + c
+QUADRATIC_FUNC
+Pipelined quadratic function
+Rev. 1.0
+In the example provided, the coefficients are held static throughout the  
+simulation.  The simulation must be run for at least 100 us during which  
+time the x input is driven with the sequential values -128 to 127.  Output  
+samples  are  captured  in the text file  quadratic_func_out.txt.   Figure  2 
+shows an example output plot of the function:
+y = 0.86x2 - 0.22x + 0.3
+In this particular example, the fraction width was set to 6 bits meaning the  
+8-bit input stimulus was in the approximate range -2 to 2.
+Synthesis
+The only file required for synthesis is the file quadratic_func.vhd.
+The VHDL core is designed to be technology independent.  However, as  
+a benchmark, synthesis results have been provided for the Xilinx Virtex 5  
+and the Altera Stratix III series of FPGA devices.  The lowest and highest  
+speed grade devices have been chosen in both cases for comparison.  
+The design was synthesized with the generic parameter fw  = 6. Resource 
+usage is specified af

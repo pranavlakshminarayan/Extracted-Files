@@ -1,0 +1,75 @@
+DM9kA controller
+Written by: Jussi Nieminen
+22.10.2009
+Tampere University of Technology
+Contents
+1 INTRODUCTION 1
+1.1 Interface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1.2 Using the DM9000A . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2 MODULES 3
+2.1 Comm module . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+2.2 Init module . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.3 Interrupt handler module . . . . . . . . . . . . . . . . . . . . . . 5
+2.4 Read module . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+2.5 Send module . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+3 RESTRICTIONS AND WEIRD STUFF 8
+3.1 Intended use . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+3.2 Performance . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+3.3 Initializing device . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+3.4 Using the RX buﬀer . . . . . . . . . . . . . . . . . . . . . . . . . 8
+1 INTRODUCTION 1
+1 INTRODUCTION
+DM9000A is an ethernet controller chip from Davicom. It is used e.g. in Altera’s
+DE2 FPGA board. DM9kA controller is a VHDL based hardware block, that
+is used to control the DM9000A. The source code has a little over 2000 lines
+and the current version takes a little over 900 logic cells in a Cyclone II with
+Quartus 9.0. Due to the required operating frequency of the DM9000A, this
+controller block also runs with 25 MHz clock signal.
+1.1 Interface
+The DM9000A is using a general processor interface with either 8-bit or 16-bit
+data bus. The DM9kA controller is made purely for the 16-bit version, the 8-bit
+version is not supported. Interface with the DM9000A chip and the upper level
+(e.g. IP layer) is shown in table 1.
+Signal Width Description
+eth clk out 1 25 MHz clock signal to the DM9000A device.
+eth reset out 1 Reset signal.
+eth chip sel out 1 Chip select, active low.
+eth cmd out 1 Command signal, low for register address, high for data.
+eth write out 1 Write signal, active low.
+eth read out 1 Read signal, active low.
+eth data inout 16 Bidirectional data bus using tri-state buﬀers.
+eth interrupt in 1 Interrupt signal from the DM9000A chip.
+new tx in 1 Goes high when upper level has a new transfer to send.
+tx len in 11 Length of the frame to be transferred.
+tx frame type in 16 Ethernet frame type.
+target MAC in 48 MAC address where to send.
+tx data in 16 Data to be transferred.
+tx data valid in 1 High when there is valid data waiting for reading.
+tx re out 1 Read enable signal to the upper level application.
+new rx out 1 Indicates that there is a new frame to be received.
+rx len out 11 Length of the received frame.
+rx frame type out 16 Ethernet frame type.
+rx erroneous out 1 High if frame is invalid (e.g. CRC checksum mismatch).
+rx data out 16 Received data.
+rx data valid out 1 High when received data is valid for reading.
+rx re in 1 Read signal from the upper level.
+ready out 1 High when ethernet link is up and ready.
+fatal error out 1 Indicates serious malfunction in the DM9000A.
+T able 1: DM9kA controller interface.
+1 INTRODUCTION 2
+IMPORTANT NOTICE:
+The 16-bit data busses consist of two bytes instead of a single 16-bit data word.
+Endianess of the data bus diﬀers from an ethernet frame, so if you for example
+want to have a sequence 0xABCD in the ethernet frame, you need to write it
+as 0xCDAB to the data bus.
+1.2 Using the DM9000A
+The DM9000A is conﬁgured by ﬁrst writing in a register address and then writ-
+ing data to that register. The command signal (eth cmd out) decides whether
+the value being written is an address or actual data. Transfer data is written in
+by selecting the register address of transfer data buﬀer and then writing to it.
+Data is received by ﬁrst writing the register address of the received data buﬀer
+and then reading from it.
+2 MODULES 3
+2 MODULES
+DM9kA controller is formed of ﬁve diﬀerent modules as shown in ﬁgure 1. Comm
+(meaning communication) module talks with the DM9000A chip and relays 

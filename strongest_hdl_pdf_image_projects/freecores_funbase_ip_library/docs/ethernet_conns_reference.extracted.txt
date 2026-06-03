@@ -1,0 +1,86 @@
+Tampere University of Technology
+F aculty of Computing and Electrical Engineering
+Department of Computer Systems
+FPGAPC Ethernet Communication IPs
+Reference Manual
+Author:
+Antti Alhonen
+Updated:
+November 8, 2011
+Department of Computer Systems
+F aculty of Computing and Electrical Engineering
+FPGAPC Ethernet Communication IPs
+Reference Manual
+Contents
+1 REVISION HISTOR Y 1
+2 DOCUMENT OVER VIEW 2
+2.1 SCOPE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.2 AUDIENCE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.3 RELATED DOCUMENTATION . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+3 INTRODUCTION 3
+3.1 CONTACT INFORMATION . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+3.2 INTRODUCTION . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+3.3 BRIEF DESCRIPTION . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+3.4 Designs provided . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+3.5 Clock and reset . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+3.6 DM9000A . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+3.7 LAN91C111 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+3.8 IP-XACT les provided . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+4 Usage 6
+4.1 Sending a packet (TX) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+4.2 Receiving a packet (RX) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+5 Application development tips 8
+5.1 MANAGING PACKET LOSS IN HIGH-DATA RATE APPLICATIONS . . . . . . . . 8
+6 KNOWN ISSUES 9
+1
+
+Department of Computer Systems
+F aculty of Computing and Electrical Engineering
+FPGAPC Ethernet Communication IPs
+Reference Manual
+1 REVISION HISTORY
+Table 1
+Revision Author Date Description
+1.0 Antti Alhonen 28.10.2011 First published version
+1
+
+Department of Computer Systems
+F aculty of Computing and Electrical Engineering
+FPGAPC Ethernet Communication IPs
+Reference Manual
+2 DOCUMENT OVER VIEW
+2.1 SCOPE
+This documentation describes the usage of DCS/TUT made IPs to allow simple communication be-
+tween a computer and various FPGA development boards. We give an overview to all parts needed
+for bi-directional communication over UDP/IP protocol at 100 Mbit/s with one computer.
+The main scope is on the simplicity of usage; therefore, some features such as reliable operation in
+a network consisting of numerous devices and computers are not guaranteed to work.
+2.2 AUDIENCE
+• SoC developers
+• Kactus 2 design tool users
+• Users of development boards that include an FPGA and Davicom DM9000A (or possibly SMSC
+LAN91C111) Ethernet MAC/PHY
+2.3 RELATED DOCUMENTATION
+Table 2
+Document Description
+UDP/IP with VHDL Implementation specication of the UD-
+P/IP packetizer used in Trace Monitor
+DM9kA controller Implementation specication of the
+DM9000A ethernet MAC/PHY interface
+2
+
+Department of Computer Systems
+F aculty of Computing and Electrical Engineering
+FPGAPC Ethernet Communication IPs
+Reference Manual
+3 INTRODUCTION
+3.1 CONTACT INFORMATION
+If you face any problems using the IPs oered, please do not hesitate to ask for help or to give
+suggestions. You can contact Antti Alhonen ( antti.alhonen@tut. ).
+3.2 INTRODUCTION
+It is very usual to use FPGA's for non-self-contained systems that need to communicate with comput-
+ers to transfer large amounts of data. Standard UART is very simple for transferring small commands
+and debug information, but not fast enough to transfer, for example, video or audio data.
+Multiple solutions exist, such as USB, PCI, PCI Express, Firewire and Ethernet connection. Eth-
+ernet connection has some benets such as simplicity and existing communication routines in all
+major operating systems without a need to write device driver

@@ -1,0 +1,115 @@
+Lewis Copyright © 2003 SynthWorks Design Inc.  All Rights Reserved.  MAPLD 2003
+VHDL Math Tricks of
+the Trade
+by
+Jim Lewis
+Director of Training, SynthWorks Design Inc
+Jim@SynthWorks.com
+http://www.SynthWorks.com
+SynthWorks
+Lewis Copyright © 2003 SynthWorks Design Inc.  All Rights Reserved.  MAPLD 2003  P2
+VHDL Math Tricks of the Trade
+VHDL is a strongly typed language.  Success in VHDL
+depends on understanding the types and overloaded
+operators provided by the standard and numeric
+packages.
+The paper gives a short tutorial on:
+• VHDL Types & Packages
+• Strong Typing Rules
+• Converting between Std_logic_vector, unsigned &
+signed
+• Ambiguous Expressions
+• Arithmetic Coding Considerations
+•M a t h  T r i c k s
+SynthWorks
+Lewis Copyright © 2003 SynthWorks Design Inc.  All Rights Reserved.  MAPLD 2003  P3
+TYPE Value Origin
+std_ulogic 'U', 'X', '0', '1', 'Z', 'W', 'L', 'H', '-' std_logic_1164
+std_ulogic_vector array of std_ulogic std_logic_1164
+std_logic resolved std_ulogic std_logic_1164
+std_logic_vector array of std_logic std_logic_1164
+TYPE Value Origin
+std_ulogic 'U', 'X', '0', '1', 'Z', 'W', 'L', 'H', '-' std_logic_1164
+std_ulogic_vector array of std_ulogic std_logic_1164
+std_logic resolved std_ulogic std_logic_1164
+std_logic_vector array of std_logic std_logic_1164
+unsigned array of std_logic numeric_std,
+std_logic_arith
+signed array of std_logic numeric_std,
+std_logic_arith
+boolean true, false standard
+character 191 / 256 characters standard
+string array of character standard
+integer -(231 -1) to (231 - 1) standard
+real -1.0E38  to 1.0E38 standard
+time 1 fs to 1 hr standard
+Common VHDL Types
+SynthWorks
+Lewis Copyright © 2003 SynthWorks Design Inc.  All Rights Reserved.  MAPLD 2003  P4
+Packages for Numeric Operations
+● numeric_std -- IEEE standard
+● Defines types signed, unsigned
+● Defines arithmetic, comparison, and logic operators for these types
+● std_logic_arith -- Synopsys, a defacto industry standard
+● Defines types signed, unsigned
+● Defines arithmetic, and comparison operators for these types
+● std_logic_unsigned -- Synopsys,  a defacto industry standard
+● Defines arithmetic and comparison operators for std_logic_vector
+Recommendation:
+Use numeric_std for new designs
+Ok to use std_logic_unsigned with numeric_std*
+Recommendation:
+Use numeric_std for new designs
+Ok to use std_logic_unsigned with numeric_std*
+*  Currently, IEEE 1076.3 plans to have a numeric package that permits
+unsigned math with std_logic_vector
+SynthWorks
+Lewis Copyright © 2003 SynthWorks Design Inc.  All Rights Reserved.  MAPLD 2003  P5
+Packages for Numeric Operations
+Recommendation, if you use Synopsys Packages:
+Use std_logic_arith for numeric operations
+Use std_logic_unsigned only for counters and testbenches
+Don't use the package std_logic_signed.
+Recommendation, if you use Synopsys Packages:
+Use std_logic_arith for numeric operations
+Use std_logic_unsigned only for counters and testbenches
+Don't use the package std_logic_signed.
+library ieee ;
+  use ieee.std_logic_1164.all ;
+  use ieee.numeric_std.all ;
+library ieee ;
+  use ieee.std_logic_1164.all ;
+  use ieee.numeric_std.all ;
+● Using IEEE Numeric_Std
+library ieee ;
+  use ieee.std_logic_1164.all ;
+  use ieee.std_logic_arith.all ; 
+  use ieee.std_logic_unsigned.all ;
+library ieee ;
+  use ieee.std_logic_1164.all ;
+  use ieee.std_logic_arith.all ; 
+  use ieee.std_logic_unsigned.all ;
+● Using Synopsys Std_Logic_Arith
+numeric_std
+std_logic_arith
+Use numeric_std or
+std_logic_arith, but
+never both
+Use numeric_std or
+std_logic_arith, but
+never both
+Recommendation:
+Use numeric_std for new designs
+Recommendation:
+Use numeric_std for new designs
+SynthWorks
+Lewis Copyright © 2003 SynthWorks Design Inc.  All Rights Reserved.  MAPLD 2003  P6
+Unsigned and Signed Types
+TYPE Value Notes
+unsigned 0 to 2 N - 1
+signed - 2 (N-1)  to 2(N-1) - 1 2's Complement number
+TYPE Value Notes
+unsigned 0 to 2 N - 1
+signed - 2 (N-1)  to 2(N-1) - 1 2's Complement number
+● Usage similar to std_logic_vector:
+signal A_unsigned    : u

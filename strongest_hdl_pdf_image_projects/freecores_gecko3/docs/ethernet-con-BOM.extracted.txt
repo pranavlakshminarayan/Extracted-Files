@@ -1,0 +1,18 @@
+Bill of Materials Bill of Materials For Project [ethernet-con.PrjPCB]
+Source Data From: ethernet-con.PrjPCB 
+Project: ethernet-con.PrjPCB 
+1.65 Euro 
+Variant: None 1.03 $
+Creation Date: 14.02.2007 16:46:50 
+Print Date: 39639 39639.46142 
+Footprint Value LibRef Designator Description Quantity Manufacturer Part Number Distributor Distributor Numbe r Packaging unit lead time RoHS Prize Currency In CHF CHF for Qty 
+0402 100nF Cap C1, C2 Capacitor 2 Murata GRM155R71C104KA88D Farnell 8819742 10 yes 0.07 CHF 0.07 0.14 
+c-r5 4.7nF_250V C C3 1 Murata DEBF33A472ZC1B Farnell 9527249 1 yes 0.52 CHF 0.52 0 .52 
+SI-10021 SI-10021 SI-10021 JP1 MagJack from Bel Stewart , single port RJ45 with magnetics, without LED's 1 St ewart SI-10021 Farnell 1137981 1 yes 12.65 CHF 12.65 12.65 
+M22-2540305 M22-2540305 M22-2540305 JP2 1 HARWIN M22F2040305 Farnell 672210 1 yes 2.30 CHF 2.30 2.30 
+CC3216-1206 1M_250V Res2 R1 Resistor 1 Multicomp MC 0.125W 1206 1% 1M Farnell 9335781 50 X-yes 0.06 CHF 0.06 0.06 
+Total Number of parts 6 Total in CHF 15.67 
+Approved Notes  
+Exchange 
+rate to CHF 
+Altium Limited Confidential 10.07.2008 Page 1 

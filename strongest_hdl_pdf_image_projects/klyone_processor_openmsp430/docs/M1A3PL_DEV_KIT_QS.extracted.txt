@@ -1,0 +1,61 @@
+© 2009 Actel Corporation. All rights reserved. v2.1
+ARM® Cortex™-M1–Enabled  ProASIC3L 
+Development Kit Quickstart Card
+Kit Contents – M1A3PL-DEV-KIT
+Quantity Description 
+1 M1A3PL Development Board with M1A3PL1000-FGG484; includes built-in 
+FlashPro3-compatible programming circuit
+1 +5.0 V external power supply with international adapters 
+2 USB A to mini-B USB cables
+1 Actel Libero® Integrated Design Environment (IDE) DVD (check web for newer 
+version before installing)
+1 This Quickstart card 
+1 Mbyte
+SRAM
+16 Mbyte
+Flash
+M1A3PL wth
+Cortex-M1 Processor
+USB/Serial
+Connector 
+USB Connector
+(FlashPro3 
+Programmer) 
+LEDs
+Switches
+LVDS Connector
+Flash*Freeze
+Button
+
+50200168-0/4.09
+ARM® Cortex™-M1–Enabled  ProASIC3L  Development Kit Quickstart Card
+Jumpers and Switch Settings
+Before powering up the M1 ProASIC3L Development Board for the first time, make sure the 
+switches and jumpers are in the following factory-set positions: 
+• SW2: All switches (0-9) are in the ON position.
+• JP1, JP2, JP3 (2-3), JP4, JP6, JP7, JP9 (2-3), JP10, JP11, JP12, JP13 (2-3), JP14, JP15, 
+JP16 (2-3), JP17(2-3), JP18 (2-3), JP19 (2-3), JP20 (1-2), JP21 (2-3), JP22 (1-4), JP23, JP24 are 
+installed. 
+• All others are not installed. 
+For a full description of all jumpers, refer to the user’s guide on the ARM Cortex-M1–Enabled 
+ProASIC3L Development Kit web page. 
+Running the Pre-Programmed Design 
+Press SW1 to reset. The LED on the board will perform a traffic light sequence. To follow this more 
+clearly, go to the web page and install and run the traffic light.exe file. 
+Software and Licensing
+Check the Actel website (www.actel.com) for a newer software version before installing from the 
+DVD. In order to design with a Cortex-M1–enabled device, you should install both the Libero IDE 
+and SoftConsole tools. SoftConsole is used for programming and debug of embedded processor 
+designs. 
+Software releases: www.actel.com/download/software/libero
+Documentation Resources
+For further kit information, including user's guide, tutorial, and full design examples, refer to the 
+user’s guide on the ARM Cortex-M1–Enabled ProASIC3L Development Kit web page. 
+www.actel.com/products/hardware/devkits_boards/m1proasic3l.aspx
+Technical Support and Contacts
+Technical support is available online at www.actel.com/support, by email at tech@actel.com, or by 
+phone:
+Phone (NA): 800.262.1060
+Phone (Int'l): +1 650.318.4460
+Actel Sales offices, including Representatives and Distributors, are located worldwide. To find your 
+local representative go to www.actel.com/company/contact.

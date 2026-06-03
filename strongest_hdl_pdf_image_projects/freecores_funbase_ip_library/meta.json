@@ -1,0 +1,27 @@
+{
+  "project_id": "freecores_funbase_ip_library",
+  "name": "funbase_ip_library",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/funbase_ip_library",
+  "extraction_date": "2026-06-02T16:53:00",
+  "license": null,
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 337,
+    "vhdl_files": 339,
+    "other_hdl_files": 0,
+    "pdf_files": 10,
+    "markdown_files": 0,
+    "text_files": 22,
+    "image_files": 29,
+    "total_bytes": 152521712,
+    "languages_seen": [
+      "VHDL",
+      "Verilog"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": []
+}

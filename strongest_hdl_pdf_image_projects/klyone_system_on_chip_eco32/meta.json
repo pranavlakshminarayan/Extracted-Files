@@ -1,0 +1,31 @@
+{
+  "project_id": "klyone_system_on_chip_eco32",
+  "name": "system_on_chip_eco32",
+  "source": "klyone",
+  "source_url": "https://github.com/klyone/opencores-ip/tree/system_on_chip_eco32",
+  "extraction_date": "2026-06-02T16:21:47",
+  "license": "Unknown",
+  "has_readme": true,
+  "readme_excerpt": "\nWelcome to ECO32!\n\nThe ECO32 project was inspired by Jan Gray's three-part article\n\"Building a RISC System in an FPGA\" which appeared in the March\nthrough May 2000 issues of \"Circuit Cellar - The Magazine for\nComputer Applications\". We are building a similar system with\na lot of enhancements.\n\nECO32 is a simple, fast 32-bit processor that runs C code, currently\nwithout floating point operations. We want to execute some flavour\nof UNIX on it, so it has got two operating modes (kernel/user) and\na memory management unit (paging with TLB support). The processor\nwas first simulated at the instruction set level, then at the HDL\nlevel, and has finally been implemented in an FPGA.\n\nWe now have an ANSI-C compiler (LCC) and an assembler/linker\ntoolchain available, as well as an unpolished port of the\nUNIX 7th Edition kernel.\n\nIf you have any questions (or are eager to contribute to this\nproject), don't hesitate to contact the ECO32 team by email to\n\n        Hellwig.Geisse@mni.thm.de\n\nor visit the project's homepage at\n\n        http://homepages.thm.de/~hg53/eco32\n\nEnjoy!\nHellwig Geisse\n\n",
+  "stats": {
+    "verilog_files": 42,
+    "vhdl_files": 1,
+    "other_hdl_files": 0,
+    "pdf_files": 8,
+    "markdown_files": 7,
+    "text_files": 15,
+    "image_files": 1,
+    "total_bytes": 14309357,
+    "languages_seen": [
+      "Verilog",
+      "VHDL"
+    ]
+  },
+  "quality_tier": "A",
+  "quality_reason": "README + (PDF or images) + 3+ HDL files",
+  "references": [
+    "http://homepages.thm.de/~hg53/eco32",
+    "http://www.gnu.org/licenses/gpl.html",
+    "https://github.com/fabriziotappero/ip-cores.git"
+  ]
+}

@@ -1,0 +1,103 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Configuring the Xilinx  
+Spartan-6 LX9 MicroBoard 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Version 13.2.1
+Spartan-6 LX9 MicroBoard Configuration Guide 
+ Page 2 of 35  
+ 
+Revision History 
+Version Description Date 
+1.1 Initial release for ISE 13.1 and 12.x 3/7/11 
+1.2 Eliminated redundant step in Appendix A 3/22/11 
+1.3 Added steps to open Windows Device Manager.  Added link 
+for MCS creation instructions, Tested fully against 
+Windows7,64-bit. 
+4/18/11 
+13.2.1 Updated for IDS 13.2 9/1/11 
+ 
+ 
+Table of Contents 
+Revision History .............................................................................................................................. 2 
+Table of Contents ........................................................................................................................... 2 
+Table of Figures .............................................................................................................................. 3 
+Requirements ................................................................................................................................. 4 
+Software ...................................................................................................................................... 4 
+Hardware .................................................................................................................................... 4 
+Recommended Reading ............................................................................................................. 4 
+Overview......................................................................................................................................... 5 
+Configuration and Programming via the on-board USB-JTAG Circuitry ......................................... 6 
+Procedure 1: Configuration and Programming using iMPACT with the on-board USB-JTAG 
+Circuitry ....................................................................................................................................... 7 
+Procedure 2: Programming via on-board USB-JTAG Circuitry and Digilent‟s Serial Flash Utility
+ .................................................................................................................................................. 15 
+Configuration and Programming using Xilinx iMPACT with an External Programming Cable ...... 17 
+Procedure 3: iMPACT using an External Programming Cable .................................................. 17 
+Conclusion .................................................................................................................................... 25 
+Appendix A: Creating a SPI x4 Bitstream and MCS file ................................................................ 26 
+Appendix B:  Increasing USB-JTAG Circuitry Performance.......................................................... 33 
+Adding a Hi-Speed USB hub to increase USB scheduling rates equals faster downloads ....... 33 
+Digilent JTAG HS1 Programming Cable ................................................................................... 33 
+Getting Help and Support ............................................................................................................. 35 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Spartan-6 LX9 MicroBoard Configuration Guide 
+ Page 3 of 35  
+ 
+Table of Figures 
+Figure 1 - Spartan-6 LX9 MicroBoard Configuration Interfaces ...................................................... 5 
+Figure 2 - Connect USB-JTAG programming interface to host PC ................................................. 7 
+Figure 3 - Windows Device Manager .............................................................................................. 8 
+Figure 4 - New iMPACT Project Wizard ......................................................................................... 9 
+Figure 5 - Configure Devices ........................................................................................................ 10

@@ -1,0 +1,51 @@
+ 
+Actel UJTAG 
+(Test Access Port)
+ 
+Author: Nathan Yawn
+nathan.yawn@opencores.org
+Rev. 1.0
+Feb. 10, 2010
+Open Cores                Actel UJTAG               2/12/2010
+Copyright (C) 2010 Nathan Yawn
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU  
+Free  Documentation  License,  Version  1.2  or  any later  version published  by the  Free  Software  
+Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of  
+the  license  should be  included  with  this  document.   If  not,  the  license  may  be  obtained  from  
+www.gnu.org, or by writing to the Free Software Foundation.
+This document is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;  
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR  
+PURPOSE.
+Rev 1.0                 Page 2 of 10
+Open Cores                Actel UJTAG               2/12/2010
+History
+Rev. Date Author Description
+1.0 10/02/2010 Nathan Yawn First Draft
+Rev 1.0                 Page 3 of 10
+Open Cores                Actel UJTAG               2/12/2010
+Contents
+1. INTRODUCTION............................................................................................................................5
+2. OPERATION....................................................................................................................................6
+2.1  ACTEL UJTAG MACRO..................................................................................................................................................6
+2.2  INSTRUCTIONS................................................................................................................................................................. 6
+3. IO PORTS.........................................................................................................................................7
+3.1  JTAG PORTS ................................................................................................................................................................7
+3.2  DEBUG PORTS.................................................................................................................................................................8
+4. REGISTERS..................................................................................................................................... 9
+4.1  REGISTER LIST................................................................................................................................................................9
+4.2  IR (INSTRUCTION REGISTER)............................................................................................................................................ 9
+5. INTEGRATED SYSTEM..............................................................................................................10
+Rev 1.0                 Page 4 of 10
+Open Cores                Actel UJTAG               2/12/2010
+1
+Introduction
+The actel_ujtag core is used for development purposes (hardware and software debugging).   It  
+uses the Actel “UJTAG” macro to allow debugging of an OpenRisc-based System-on-Chip (SoC) using  
+the same JTAG interface IO pins used to upload the bitstream to the FPGA.  This core can only be  
+used in Actel FPGAs which support the UJTAG macro.  Before continuing with this document, it is  
+recommended that you familiarize yourself with the IEEE 1149.1 specification (JTAG and Boundary  
+Scan), and also that you read the Actel documentation on the UJTAG macro.
+The actel_ujtag core is designed to replace the “jtag” Test Access Port (TAP) core in an Actel-
+based system.  It is designed to provide an interface between the FPGA's JTAG pins and the SoC debug  
+core.  In particular, the actel_ujtag core is designed to interface with the Advanced Debug Interface  
+(adv_dbg_if core).  Other debug cores may require modification in order to work with this TAP.  Note  

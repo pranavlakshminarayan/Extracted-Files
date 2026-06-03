@@ -1,0 +1,4 @@
+All pixels in the rectangle have 
+to be traversed.
+p0
+p1

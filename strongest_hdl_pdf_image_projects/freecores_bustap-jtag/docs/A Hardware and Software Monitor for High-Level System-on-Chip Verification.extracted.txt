@@ -1,0 +1,84 @@
+A Hardware and Software Monitor for High-Level System-on-Chip Veriﬁcation
+Mohammed El Shobaki and Lennart Lindh
+M¨alardalen Real-Time Research Centre
+Department of Computer Engineering
+M¨alardalen University, V¨asteras, SWEDEN
+mei@mdh.se, llh@mdh.se
+Abstract
+Veriﬁcation of today’s Systems-on-Chip (SoC) occur at
+low abstraction-levels, typically at register-transfer level
+(RTL). As the complexity of SoC designs grows, it is increas-
+ingly important to move veriﬁcation to higher abstraction-
+levels. Hardware/software co-simulation is a step in this
+direction, but is not sufﬁcient due to inaccurate processor
+models, and slow hardware simulation speeds. System-
+level monitoring, commonly used for event-based soft-
+ware debugging, provides information about task schedul-
+ing events, inter-task communication and synchronisation,
+semaphores/resources, I/O interrupts, etc.
+We present MAMon
+1, a monitoring system that can
+both monitor the logic-level and the system-level in
+single/multiprocessor SoCs. A small hardware probe-unit
+is integrated in the SoC design and connects via a parallel-
+port link to a host-based monitoring tool environment. The
+probe-unit collects all events in the target system in run-
+time, and timestamps them with a resolution of 1
+/AM s. The
+events are then stored in a database on the host for fur-
+ther processing. The paper will describe MAMon and how
+it works for software and hardware monitoring. The paper
+also describe how system-level monitoring can be achieved
+non-instrusively by using a hardware-based Real-Time Ker-
+nel.
+1 Introduction
+Already today many System-on-Chip (SoC) applica-
+tions are hard to verify and optimise. The complexity is
+increasing and to verify a whole system using computer
+model simulations is time consuming, and some times
+impossible due to inaccurate models. It is also difﬁcult to
+model the real-world (i.e. the environment) around the SoC.
+1Multipurpose/Multiprocessor Application Monitor
+Often a bug in a system is traced from a high-level view
+of the system, commonly referred to as the system-level,
+downto the register-transfer level (RTL) (or even lower
+levels if things are really bad). In this paper we refer to
+the system-level as to denote both the process/task-level
+information in software, and the behavioural-level inform-
+ation in hardware. As ﬁgure 1 illustrates, the number of
+events occuring in a system are fewer at the system-level,
+which motivates a top-down debugging strategy.
+Target
+System
+System-Level
+RTL
+Gate-Level
+Few events/s
+Many events/s
+Figure 1. Events in a target system
+Observability into SoC designs is today mostly sup-
+ported for RTL veriﬁcation. As SoC designs tend to
+increase in size and complexity, the veriﬁcation process
+need also to take place at the system-level. Support for
+system-level veriﬁcation already exist for the software
+part of a SoC, where a common technique is the use of
+software monitors. These monitors are typically found in
+RTOS (Real-Time Operating System) development tool
+environments ([10, 1]), and provides the developer with
+process-level information such as task-scheduling events
+(start/stop, block/resume, taskswitch, etc.), inter-process
+communication events (e.g. send and receive messages),
+synchronisation and resource utilization (CPUs, sema-
+phores, I/O), external interrupts, etc. For this information to
+be extracted it is often required to instrument the software
+with special monitor instructions or processes, which later
+can be removed after the validation phase. The drawbacks
+of instrumentation is that it utilizes target resources such
+as memory space and execution time from the CPUs.
+Also, when the instrumentation is removed, the system
+may change behaviour due to timing differences. This
+problem, commonly referred to as the probe effect ([6, 9])
+causes many timing- and synchronisation-related errors in
+concurrent/distributed systems and real-time systems [12].
+In this paper we present MAMon, a hardware-based
+monitoring system t

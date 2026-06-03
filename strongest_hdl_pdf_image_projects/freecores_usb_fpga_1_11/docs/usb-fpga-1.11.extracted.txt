@@ -1,0 +1,13 @@
+Circuit diagram of ZTEX USB-FPGA-Module 1.11
+Contents:
+Sheet 1 FX2 I/O, EEPROM
+Sheet 2 XC6S Banks 1 and 2, microSD
+Sheet 3 XC6S Bank 0
+Sheet 4 DDR-SDRAM, XC6S Bank 3
+Sheet 5 Power interfaces, JTAG
+http://www.ztex.de
+Sheet 1 of 5
+Sheet 2 of 5
+Sheet 3 of 5
+Sheet 4 of 5
+Sheet 5 of 5

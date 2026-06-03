@@ -1,0 +1,33 @@
+TD=20T
+Digit 2
+TD=5T
+TD=TIME DELAY
+T= TEMP us/K
+General 
+Purpose
+PBs and LEDs
+General 25 MHz Clock
+Refer to page 6 of the MAX6950 
+datasheet for connection table
+Digit 1Digit 0
+Power Regs 
+Temp. Sensor
+FPGA Temp.
+Sensor
+Digit 3
+Miscellaneous Circuits
+RVI Prototype Board
+Manual Clock
+FPGA 
+Configuration Circuit
+Be sure to DISABLE 
+Parallel Port Configuring
+before plugging 
+a JTAG cable !!!! Temperature Sensors Clocks
+Extension 
+Connector B
+4 Digit
+7-segment 
+LED Display
+Extension 
+Connector A

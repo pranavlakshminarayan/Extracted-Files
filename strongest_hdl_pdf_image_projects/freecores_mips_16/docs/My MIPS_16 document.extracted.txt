@@ -1,0 +1,158 @@
+My MIPS_16 DOCUMENT 
+Author: Fan ZhenYa, fzywork@163.com 
+1. Overview 
+Technical brief: 
+1. 16-bit data width 
+2. classic 5-stage static pipeline, 1 branch delay slot, theoretical CPI is 1.0 
+3. pipeline is able to detect and prevent RAW hazards, no forwarding logic 
+4. 8 general purpose register (reg 0 is special, according to mips architecture) 
+5. up to now supports 13 instructions, see ./doc/instruction_set.txt for details 
+6. Maximum clk Frequency: 82.688MHz on Xilinx 3s1000fg320-5 device (XST). 
+2. Architecture 
+数据存储器
+ALU
+MUX2
+       S3   dest   S1  S2
+MUX2
+MUX8 MUX8
+译
+码
+器
+      A B C D
+S1
+S2
+S3
+S4
+OP   Dest   Src1   Src2   Imm
+PC
++
+指令存储器
+MUX2
+2
+  
+Reset
+cond?
+地址
+写数据
+S3   dest   S1
+S3   dest   S1
+源和目标有相等
+且非0
+输入
+使能
+输入
+使能
+S4
+Clock
+写使能
+0
+插入
+空泡
+0
+S6
+S5
+输入
+使能
+IF_stage
+ID_stage
+EX_stage
+MEM_stage
+WB_stage
+Register file
+Hazard detection unit
+My MIPS_16 architecture
+S6
+S5
+ 
+3. Implementation 
+IF_stage: 
+ PC, and a asynchronized instruction memory (a ROM for simulation). Instruction memory 
+further can be an I-cache or an external instruction memory interface. 
+ 
+ID_stage: 
+ Central control logic and Register read 
+ Truth table of Central Control Logic: 
+ 
+ 
+EX_stage: 
+ ALU 
+ 
+MEM_stage: 
+ A ram for now, further can be a D-cache or an external memory interface. 
+ 
+
+WB_stage: 
+ Write back stage 
+ 
+Register File: 
+ a 8-entry 16-bit register file, with 1 synchronized write port and 2 synchronized read port. 
+For Register 0, read data from it will always be 0, and write operations will also be discarded. 
+ 
+Hazard Detection Unit: 
+Data Hazard detection. if there is a RAW hazard, it will stall the pipeline. 
+Method: It compare the source register of the instruction in ID_stage  and it's previous 3 
+instructions' destination register. If  the source register is equal to any of the three destination 
+regs and not equals to zero, the Hazard Detection Unit will assert pipeline_stall signal. That signal 
+will freeze the IF & ID stage,  and insert bubbles into EX stage. When the hazard instruction was 
+flushed out of the pipeline, pipeline_stall signal will be canceled. 
+ 
+Testbenches: 
+Every module in this project has its  complete testbench and corresponding modelsim 
+simulation scripts, located in ./bench/<modelname>. 
+ 
+4. Software tools 
+FPGA Synthesis & Implement tool: 
+ Xilinx ISE, work directory: ./backend/Xilinx 
+ Synthesis report: 
+  
+Device utilization summary: 
+--------------------------- 
+Selected Device : 3s1000fg320-5  
+ Number of Slices:                     456  out of   7680     5%   
+ Number of Slice Flip Flops:           290  out of  15360     1%   
+ Number of 4 input LUTs:               883  out of  15360     5%   
+    Number used as logic:              627  
+    Number used as RAMs:               256  
+ Number of IOs:                         10  
+ Number of bonded IOBs:                 10  out of    221     4%   
+ Number of GCLKs:                        1  out of      8    12%   
+ 
+Timing Summary: 
+--------------- 
+Speed Grade: -5 
+ 
+   Minimum period: 12.094ns (Maximum Frequency: 82.688MHz) 
+   Minimum input arrival time before clock: 6.115ns 
+   Maximum output required time after clock: 6.678ns 
+   Maximum combinational path delay: No path found 
+RTL Simulation tool:  
+Modelsim SE 10.0a, work directory: ./sim 
+Assembler: 
+ A assembler implemented by JAVA, Java version: 1.6.0_30. In directory: ./sw 
+Useage: 
+java mips_16_assembler [Options] 
+Options: 
+<source_code_path> <dest_path>: 
+ Assemble source code to dest. For exaple .\bin\test1.asm .\bin\test1.prog 
+<source_code_path>: 
+ Assemble source code to dest file a.prog 
+-h(or --help): 
+ Show this help 
+  
+5. Sample programs 
+Test1:  
+Purpose: test basic instrctions, and RAW hazard protection 
+Source code: (\bench\mips_16_core_top\test1.asm) 
+L1: ADDI  R1,R0,8 
+ ADDI  R2,R1,8 
+ ADDI  R3,R2,8 
+ ADD   R4,R2,R3 
+ ST   R4,R1,2 
+ LD   R5,R1,2 
+ SUB   R6,R4,R5 
+ BZ   R6,L1 
+ ADDI  R7,R7,1 
+ Modelsim simulation result: 
+ # *************************** 
+# mips_16 core test 
+# *

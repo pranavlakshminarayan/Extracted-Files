@@ -1,0 +1,14 @@
+Ethernet controllerARP blocksApplication UDP block
+Naturally, if the 
+MAC address is 
+already in the ARP 
+table, no queries 
+need to be sent.
+ARP reply4: 
+MAC address5: 
+ARP query3: 
+New tx + tx information1: 
+Data8: 
+MAC address query2: 
+Headers7: 
+New tx + tx information6: 

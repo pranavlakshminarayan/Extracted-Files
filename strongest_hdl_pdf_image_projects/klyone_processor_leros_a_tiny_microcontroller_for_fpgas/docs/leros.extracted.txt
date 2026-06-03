@@ -1,0 +1,74 @@
+Leros: A Tiny Microcontroller for FPGAs
+Martin Schoeberl
+Department of Informatics and Mathematical Modeling
+Technical University of Denmark
+masca@imm.dtu.dk
+Abstract—Leros is a tiny microcontroller that is optimized for
+current low-cost FPGAs. Leros is designed with a balanced logic
+to on-chip memory relation. The design goal is a microcontroller
+that can be clocked in about half of the speed a pipelined on-chip
+memory and consuming less than 300 logic cells.
+The architecture, which follows from the design goals, is a
+pipelined 16-bit accumulator processor . An implementation of
+Leros needs at least one on-chip memory block and a few hundred
+logic cells.
+The application areas of Leros are twofold: First, it can be used
+as an intelligent peripheral device for auxiliary functions in an
+FPGA based system-on-chip design. Second, the very small size
+of Leros makes it an attractive softcore for many-core research
+with low-cost FPGAs.
+I. I NTRODUCTION
+In this paper we present Leros, a microcontroller that is
+optimized for low-cost FPGAs. Leros is a minimalistic 16-
+bit processor intended for utility functions in an FPGA based
+System-on-Chip (SoC) design. The design goals of Leros are
+a good balance between the number of logic cells and on-
+chip memories, reasonable performance, and a high maximum
+clock frequency. The last point is important for usage as utility
+processor in an SoC to not be the frequency bottleneck of the
+whole design.
+These design goals are achievable by a pipelined accumula-
+tor architecture with additional directly addressable registers
+in an on-chip memory for local variables. The on-chip data
+memory is shared for those registers and general data. With
+an additional on-chip memory for the instructions only two
+memory blocks are needed and the pipeline can execute one
+instruction per clock cycle. For short programs the instruction
+memory can even be built out of logic cells (LC).
+Leros is named after the greek island Leros, 1 where it has
+been designed during an enjoyable vacation. Leros is available
+under open-source and if you use Leros in your application or
+research, consider a visit to the nice island Leros and sending
+a postcard from there to the author.
+The paper is organized as follows. Section II presents related
+work. Background on the design decisions for Leros is pre-
+sented in Section III. The concrete implementation is described
+in Section IV, followed by an evaluation and comparison
+with other FPGA microcontrollers in Section V. The paper
+is concluded with Section VI.
+1http://www.leros.gr/
+II. R ELATED WORK
+Many small processor cores for FPGAs are available and
+University courses on computer architecture often contain
+assignments to implement a simple pipeline in an FPGA. In the
+following section we restrict the description to a few successful
+cores and point out the differences of our Leros design.
+PicoBlaze is an 8-bit microcontroller for Xilinx FPGAs [12].
+The processor is highly optimized for low resource usage. This
+optimization results in restrictions such as maximal program
+size of 1024 instructions and 64 byte data memory. The beneﬁt
+of this puristic design is a processor that can be implemented
+with one on-chip memory and 96 logic slices in a Spartan-3
+FPGA. PicoBlaze provides 16 8-bit registers and executes one
+instruction in two clock cycles. The interface to I/O devices
+is minimalistic in the positive sense: it is simple and very
+efﬁcient to connect simple I/O devices to the processor.
+The Leros approach is similar to the concept of PicoBlaze
+to provide a small processor for utility functions. Compared to
+PicoBlaze, Leros has fewer restrictions on program and data
+size as it is a full blown 16-bit processor. Leros is optimized
+to balance the resource usage between on-chip memory and
+logic cells. Therefore, the LC count of Leros is slightly higher
+than the one of PicoBlaze. PicoBlaze is coded at a very low-
+level abstraction by using Xilinx primitive components such
+as LUT4 or MUXCY . Th

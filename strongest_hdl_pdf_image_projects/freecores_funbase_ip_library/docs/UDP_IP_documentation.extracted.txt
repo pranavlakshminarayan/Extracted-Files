@@ -1,0 +1,85 @@
+UDP/IP with VHDL
+Written by: Jussi Nieminen
+22.10.2009
+Tampere University of Technology
+Contents
+1 INTRODUCTION 1
+1.1 Intended use and restrictions . . . . . . . . . . . . . . . . . . . . 1
+1.2 ARP block . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+2 USAGE 2
+2.1 Application side . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.1.1 Interface . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.1.2 About the length and data busses . . . . . . . . . . . . . 3
+2.1.3 How to get bits running . . . . . . . . . . . . . . . . . . . 4
+2.2 Ethernet side . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+2.2.1 Interface and timing . . . . . . . . . . . . . . . . . . . . . 5
+3 IMPLEMENT A TION DET AILS 7
+3.1 Structure of the UDP/IP block . . . . . . . . . . . . . . . . . . . 7
+3.2 State machines of the UDP block . . . . . . . . . . . . . . . . . . 8
+3.3 Sending and receiving . . . . . . . . . . . . . . . . . . . . . . . . 8
+References 11
+1 INTRODUCTION 1
+1 INTRODUCTION
+UDP/IP block is a network interface that is capable of sending and receiving
+UDP (User Datagram Protocol) packets over ethernet. The block also includes
+ARP (Address Resolution Protocol) funtionality. All the source codes are writ-
+ten in VHDL (Very high speed integrated circuit Hardware Description Lan-
+guage) and licensed under LGPL (Lesser General Public License).
+1.1 Intended use and restrictions
+This block is originally designed for a Network-on-Chip monitor application to
+get high data bandwidth from Altera’s DE2 board to a single PC. (At least
+higher than with UART.) Future applications in mind possibility to receive
+UDP packets sent from a PC was also included. This means that the block
+is desinged for predetermined communication between two agents using UDP
+packets only. IP level broadcasting or network masking are not supported.
+Correct functionality when connecting this block to a network full of agents and
+protocols is not guaranteed. In addition the size of the used ARP table (two
+entries) is not suitable for use in larger networks and there’s no timeouts in
+cases like ARP request being never answered.
+So to wrap things up, without modiﬁcation this block can be used in special
+communication within two agents or in small special networks using proper
+UDP packets only. Other types of packets are always simply discarded. If you
+need something more advanced, this block is a good starting point for further
+development.
+1.2 ARP block
+As mentioned, the UDP/IP block also includes ARP functionality. The internet
+is a wonderful place, and with little searching ready-made ARP blocks by Ashley
+Partis and Jorgen Peddersen [1] came up. The ﬁles were modiﬁed to meet our
+needs (and match our coding style), but the basic functionality is the same.
+2 USAGE 2
+2 USAGE
+2.1 Application side
+This section describes how the UDP/IP block is connected to and used with an
+application.
+2.1.1 Interface
+Figure 1 shows the interface with an application. Thicker arrows are wider
+busses while thinner ones stand for single bit signals. Most of the signals are
+hopefully self-explanatory. The rx erroneous signal means that the ethernet
+controller has detected a possibly data corrupting situation (e.g. collision), but
+the frame was nevertheless received. So it’s relayed to the application, which
+can decide what to do with it.
+  
+UDP/IP Application
+new_tx
+destination_address (32 bits)
+destination_port (16 bits)
+source_port (16 bits)
+tx_data (16 bits)
+tx_data_valid
+tx_read_enable
+new_rx
+rx_length (11 bits; length in bytes)
+source_address (32 bits)
+source_port (16 bits)
+destination_port (16 bits)
+rx_data (16 bits)
+rx_data_valid
+rx_erroneous
+rx_read_enable
+tx_length (11 bits; length in bytes)
+Figure 1: Interface between an application and the UDP/IP block.
+2 USAGE 3
+2.1.2 About the length and data busses
+As shown in the interface, the length bus is 11 bits wide. This corresponds
+with the maximum possible ethernet frame size (1518 bytes). IP packets could
+be much

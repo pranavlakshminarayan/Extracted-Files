@@ -1,0 +1,82 @@
+PRESENT CIPHER
+documentation
+Krzysztof Gajewski
+and opencores.org
+www.opencores.org gajos@opencores.org
+Present cipher (v. 0.1) - 2014/03/22
+PRESENT CIPHER 2/ 11PRESENT CIPHER 2/ 11PRESENT CIPHER 2/ 11
+Change History
+Rev. Chapter Date Description Reviewer
+0.1 all 2014/02/01 First draft K. Gajewski
+Present cipher (v. 0.1) - 2014/03/22 All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+PRESENT CIPHER 3/ 11PRESENT CIPHER 3/ 11PRESENT CIPHER 3/ 11
+Contents
+1 Introduction 4
+2 Interface 5
+3 State machine workﬂow 6
+4 FPGA implementations 7
+5 Simulation 8
+6 Troubleshooting 9
+7 License and Liability 10
+All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+Present cipher (v. 0.1) - 2014/03/22
+PRESENT CIPHER 4/ 11PRESENT CIPHER 4/ 11PRESENT CIPHER 4/ 11
+1 Introduction
+Present is ``ultra-lightweight´´ block cipher developed by A. Bogdanov et al. and proposed in
+2007 [1]. It uses 64 bit data block and 80 bit or 128 bit key. This cipher consists of 32 rounds,
+during which:
+• round key is added to plaintext
+• plaintext goues through sBoxes (substitution boxes)
+• plaintext after sBoxes goes through pLayer (permutation layer)
+• round key is updated
+After that, ciphertext feeds out the output. Brieﬂy algorithm was shown in Fig. 1 In this project
+Figure 1: Brieﬂy block scheme of the PRESENT block cipher
+Present block cipher works with 80 bit key. Target was Xilinx ® Spartan 3E XC3S500E [2] on
+Spartan 3E Starter Board [3] made by Digilent®.
+Present cipher (v. 0.1) - 2014/03/22 All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+PRESENT CIPHER 5/ 11PRESENT CIPHER 5/ 11PRESENT CIPHER 5/ 11
+2 Interface
+Top level component of present was shown in Fig. 2. All inputs and outputs are synchronous
+except reset signal and sampled at rising edge of the clock. Type for all signals is STD_LOGIC or
+STD_LOGIC_VECTOR .
+Figure 2: Top level component of Present component
+Signal name Width In/Out Description
+key 80 in secret key used for input data encoding.
+plaintext 64 in input data which have to be encoded.
+clk 1 in clock signal for the component
+reset 1 in Asynchronous reset signal.
+start 1 in signal which starts encoding process.
+ciphertext 64 out encoded text output.
+ready 1 out signal informing about end of encoding process.
+"0" - wait until end of data encoding.
+"1" - data at the ciphertext output are valid, you can
+read them.
+Table 1: Input/Output signals of Present component
+All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+Present cipher (v. 0.1) - 2014/03/22
+PRESENT CIPHER 6/ 11PRESENT CIPHER 6/ 11PRESENT CIPHER 6/ 11
+3 State machine workﬂow
+Overall internal structure of Present component is similar to the structure shown in [1]. Suitable
+control logic was added in state machine added to the core. It was shown in Fig. 3.
+Figure 3: State machine of the Present component
+State machine consist of three states NOP , SM_START and READY . Some control signal of used
+multiplexers, registers and counter was omitted. NOP is default state after resetting the core. This
+state is active as long as START = ’0’.
+When START = ’1’ encoding process starts. Proper key and plaintext must fed the input before
+start encoding. SM_START state is active as long as START = ’1’. Change of this signal to ’0’
+automatically stops encoding process.
+After 32 clock cycles (counter reach '11111' value), when encoding process is ended, state
+machine automatically change its state to READY . This informs user by setting READY output to
+’1’. Then ciphertext output contains proper data, which can be readed by user. This state are
+active as long as START = ’1’. Change this signal to ’0’, change state machine to NOP state. Core
+is ready for next data encoding.
+Present cipher (v. 0.1) - 2014/03/22 All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+PRESENT CIPHER 7/ 11PRESENT CIPHER 7/ 11PRESENT CIPHER 7/ 11
+4 FPGA implementations
+The component has only been veriﬁed on a Xilinx ® Spartan 3E XC3S500E FPGA in FG320
+package and sy

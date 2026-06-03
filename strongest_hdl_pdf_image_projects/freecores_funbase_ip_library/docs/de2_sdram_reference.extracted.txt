@@ -1,0 +1,85 @@
+Tampere University of Technology
+F aculty of Computing and Electrical Engineering
+Department of Computer Systems
+SDRAM Controller IP for DE2 board
+Reference Manual
+Author:
+Antti Alhonen
+Updated:
+November 9, 2011
+Department of Computer Systems
+F aculty of Computing and Electrical Engineering
+SDRAM Controller IP for DE2 board
+Reference Manual
+Contents
+1 REVISION HISTOR Y 1
+2 DOCUMENT OVER VIEW 2
+2.1 SCOPE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.2 AUDIENCE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+3 INTRODUCTION 3
+3.1 CONTACT INFORMATION . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+3.2 INTRODUCTION . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+3.3 BRIEF DESCRIPTION . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+3.4 Designs provided . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+3.5 Clock and reset . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+3.6 IP-XACT les provided . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+4 Usage 5
+4.1 Writing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+4.2 Reading . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+5 KNOWN ISSUES 7
+1
+
+Department of Computer Systems
+F aculty of Computing and Electrical Engineering
+SDRAM Controller IP for DE2 board
+Reference Manual
+1 REVISION HISTORY
+Table 1
+Revision Author Date Description
+1.0 Antti Alhonen 09.11.2011 First published version
+1
+
+Department of Computer Systems
+F aculty of Computing and Electrical Engineering
+SDRAM Controller IP for DE2 board
+Reference Manual
+2 DOCUMENT OVER VIEW
+2.1 SCOPE
+This documentation describes the usage of DCS/TUT made IP to allow simple usage of SDRAM chip
+from the user-created HW application.
+This particular version is designed and tested with the SDRAM chip featured on Altera DE2
+board. With minor modications regarding timing and data width, other types of SDRAM can be
+used, too.
+Users wanting to control an SDRAM directly from an soft-core processor are encouraged to use
+the controllers provided by the processor vendor.
+2.2 AUDIENCE
+• SoC developers
+• Users of development boards that include an FPGA and A2V64S40CTP or compatible SDRAM.
+2
+
+Department of Computer Systems
+F aculty of Computing and Electrical Engineering
+SDRAM Controller IP for DE2 board
+Reference Manual
+3 INTRODUCTION
+3.1 CONTACT INFORMATION
+If you face any problems using the IP oered, please do not hesitate to ask for help or to give
+suggestions. You can contact Antti Alhonen ( antti.alhonen@tut. ).
+3.2 INTRODUCTION
+Using an SDRAM requires much more attention than using an SRAM chip, due to a need of refresh
+operations. Also, the timing requirements of any memory can be more complex than simple HW
+application developers would like to program in their application code. Therefore, a separate controller
+IP is needed.
+3.3 BRIEF DESCRIPTION
+This controller gives a simple command bus, direct addressing to memory via an address bus, and
+data bus with emptyread enable handshake signaling for writing to the memory, and fullwrite
+enable handshake signaling for reading from the memory. FIFOs can be used to simplify the task of
+usage.
+The IP supports block reads and writes; your application simply gives the amount to write or read
+via a data amount bus when issuing the write or read command.
+3.4 Designs provided
+de2_sdram.vhd implements the whole IP; some of the ports connect to the SDRAM chip via the IO
+pins on FPGA, some to your application.
+de2_sdram_tester.vhd works as a simple testbench and as a usage example. It can work as a
+self-contained unit showing the status using LEDs, or you can use a logic analyzer tool such as Altera
+SignalTap to further verify the operation. Please note that only four 16-bit locations on the m

@@ -1,0 +1,74 @@
+AES 128/192/256 (ECB)
+AVALON ®-MM S LAVE
+Thomas Ruschival
+and opencores.org
+www.opencores.org ruschi@opencores.org
+avs_aes_doc (v. 0.8) - 2011/05/15
+AES 128/192/256 (ECB) A VALON ®-MM S LAVE 2/ 15
+AES 128/192/256 (ECB) A VALON ®-MM S LAVE 2/ 15
+AES 128/192/256 (ECB) A VALON ®-MM S LAVE 2/ 15
+Contents
+1 Introduction 3
+2 Interface 3
+2.1 Conﬁguration Generics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+2.2 Signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+3 Memory Map 4
+3.1 Control Register . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+4 Protocol Sequence 6
+4.1 Interrupt Behavior . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+5 The Inner Core 7
+6 Throughput Calculation 10
+7 FPGA implementations 11
+8 Simulation 12
+8.1 Testbench . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+8.2 Simulation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+9 Software Driver 12
+9.1 Conﬁguration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+10 License and Liability 13
+Acronyms 14
+avs_aes_doc (v. 0.8) - 2011/05/15 All rights reserved - ©2011 Thomas Ruschival
+and opencores.org
+AES 128/192/256 (ECB) A VALON ®-MM S LAVE 3/ 15
+AES 128/192/256 (ECB) A VALON ®-MM S LAVE 3/ 15
+AES 128/192/256 (ECB) A VALON ®-MM S LAVE 3/ 15
+1 Introduction
+The Advanced Encryption Standard (AES) is a symmetric block cipher operating on ﬁxed block
+sizes of 128 Bit and is speciﬁed for key sizes of 128, 192 and 256 Bit designed by Joan Daemen
+and Vincent Rijmen. The algorithm was standardized by National Institute of Standards and
+Technology (NIST). For more information on the algorithm see [1].
+This component implements an AES encryption decryption data path in Electronic Code Book
+(ECB) mode with either 128,192 or 256 Bit keys. The key length is determined by generics at
+compile time. Also the decryption data path can be disabled by generics if it is not needed for
+the application.
+The component provides an Avalon ® Memory Mapped (Avalon-MM) slave interface to connect
+to an Altera ® Avalon® switch fabric. The Avalon ® interface is implemented in a way that it can
+also be used to connect to a Whishbone master if the signals are correctly mapped, see [2]. For
+further information about the Whishbone bus refer to [3].
+2 Interface
+The AES core is accessed by the interface described in this section. An Avalon ® interface was
+chosen for its simplicity and compatibility with wishbone. Furthermore Avalon® deﬁnes interrupt
+request signals for slaves which would be separate signals in a Wishbone implementation.The
+component can be used both in polling mode or can provide an interrupt for signalling.
+Unfortunately Avalon® is an Altera® proprietary technology. The actual AES core however is a
+self contained entity and can be embedded into other System on Chip (SoC) bus interfaces as
+well or used independently.
+2.1 Conﬁguration Generics
+The AES core can be conﬁgured by generics shown in table 1, consequently they are provided
+by the Avalon® interface.
+Generic name type Description
+KEYLENGTH NATURAL Size of initial user key. Must be 128, 192 or 256 1 .
+DECRYPTION BOOLEAN Enables the instantiation of the decrypt data path if
+true.
+Table 1: Component generics
+Note: KEYLENGTH of 192 fail synthesis with Xilinx ISE ® because of division by 6 in key schedule
+that cannot be mapped to shift operations (keyexpansion.vhd ).
+1All other values raise a compilation failure
+All rights reserved - ©2011 Thomas Ruschival
+and opencores.org
+avs_aes_doc (v. 0.8) - 2011/05/15
+AES 128/192/256 (ECB) A VALON ®-MM S LAVE 4/ 15
+AES 128/192/256 (ECB) A VALON ®-MM S LAVE 4/ 15
+AES 128/192/256 (ECB) A VALON ®-MM S LAVE 4/ 15
+2.2 Signals
+The Avalon®MM Slave interface is described in [4], the component implements the signals shown
+in table 2.2. All signals are synchronous, sampled at the rising e

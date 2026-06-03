@@ -1,0 +1,94 @@
+GCpad IP Core
+Integration Manual
+Author: Arnim Läuger
+arniml@opencores.org
+Rev. 1.1
+October 14, 2004
+
+ OpenCores 14-Oct-2004
+This page has been intentionally left blank.
+www.opencores.org Rev 1.1 ii
+ OpenCores 14-Oct-2004
+Revision History
+Rev. Date Author Description
+1.0 13-Oct-2004 Arnim Läuger First release.
+1.1 14-Oct-2004 Arnim Läuger Corrections, connector pinout.
+www.opencores.org Rev 1.1 iii 
+ OpenCores 14-Oct-2004
+Contents
+INTRODUCTION  1
+ARCHITECTURE  2
+OPERATION  3
+COMMAND AND RESPONSE SEQUENCE  3
+COMMAND TRANSMISSION  3
+RESPONSE RECEPTION  3
+RECEIVE STATUS  4
+BASIC CORE FLAVOR  4
+PARAMETRIZATION  5
+CLOCKS  6
+IO PORTS  7
+PROTOCOL  9
+ELECTRICAL LAYER  9
+BIT TRANSMISSION LAYER  9
+DATA LINK LAYER  10
+PROTOCOL LAYER  10
+REFERENCES  12
+www.opencores.org Rev 1.1 iv 
+ OpenCores 14-Oct-2004
+1
+Introduction
+The  GCpad core interfaces to the  gamepad used with the Nintendo  Gamecube video
+gaming  system.  The  core  communicates  with  the  gamepad  using  its  proprietary
+communication protocol and offers the retrieved information for further processing.
+To suit the needs of the integrating system, two different flavors of the core are available:
+• For simple applications the basic flavor manages all communication issues with the
+gamepad and provides the current status of the buttons and analog axes at its interface.
+The integrating system does not need to interfere with gamepad communication and
+can statically read the button and axes status information.
+• The full flavor allows full control of the gamepad communication by the integrating
+system. This flavor offers a command and response interface which is driven by the
+system to send arbitrary commands to the gamepad. The response of the gamepad is
+available for further processing.
+This document indents to aid the integration of both flavors of the core.
+The  GCpad  core  is  part  of  the  gamepads controller  core  collection.  The  complete
+collection is maintained and released on the OpenCores web server. You can access the
+gamepads project at
+http://www.opencores.org/projects.cgi/web/gamepads/overview
+Updates of the GCpad core can be obtained via the project pages.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+DAMAGE.
+www.opencores.org Rev 1.1 1 of 12
+ OpenCores 14-Oct-2004
+2
+Architecture
+The following  Figure 1 gives an overview of the core's architecture.
+The central element is the control until CTRL. It manages both the Transmitter and
+Receiver unit and controls one atomic command/response sequence. The CTRL unit is
+triggered  by  the  request  line  and  instructs  the  Transmitter to  issue  the  applied
+command. When the command has been transmitted, the  Receiver starts to monitor
+actively the I/O line for any incoming response string from the gamepad.
+The received data is presented as a 64 bit value at the core's interface. In addition, the
+receive status is output, indicating whether the command/response sequence has finished
+and signals a timeout while reading the response.
+The transmit settings comprise the command value and the length of the command. The
+receive settings specify the expected number of bytes to be received from the gamepad.
+www.opencores.org Rev 1.1 2 of 12
+Figure 1: Architecture of the GCpad core
+Transmit
+Settings
+Receive
+Settings
+Request
+Gamepad
+I/O
+Receive
+Stat

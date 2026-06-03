@@ -1,0 +1,43 @@
+Hexadecimal Object File Format
+Specification
+Revision A
+January 6, 1988
+
+Hexadecimal Object File FormatSpecification ii
+This specification is provided "as is" with no warranties whatsoever, including any warranty of merchantability, noninfringement, fitness for any
+particular purpose, or any warranty otherwise arising out of any proposal, specification or sample. Intel disclaims all liability, including liability for
+infringement of any proprietary rights, relating to use of information in this specification. No license, express or implied, by estoppel or otherwise,
+to any intellectual property rights is granted herein.
+Information in this document is provided in connection with Intel products. Except as provided in Intel's Terms and Conditions of Sale for such
+products, Intel assumes no liability whatsoever, and Intel disclaims any express or implied warranty, relating to sale and/or use of Intel products
+including liability or warranties relating to fitness for a particular purpose, merchantability, or infringement of any patent, copyright or other
+intellectual property right. Intel products are not intended for use in medical, life saving, or life sustaining applications.
+Intel may make changes to specifications and product descriptions at any time, without notice.
+Third-party brands and names are the property of their respective owners
+
+ 1998 Intel Corporation
+Hexadecimal Object File FormatSpecification 3
+Table of Contents
+INTRODUCTION.............................................................................................................................................................. 4
+GENERAL RECORD FORMAT...................................................................................................................................... 5
+EXTENDED LINEAR ADDRESS RECORD  (32-BIT FORMAT ONLY)..................................................................... 6
+EXTENDED SEGMENT ADDRESS RECORD  (16- OR 32-BIT FORMATS).............................................................. 7
+DATA RECORD (8-, 16-, OR 32-BIT FORMATS).......................................................................................................... 7
+START LINEAR ADDRESS RECORD  (32-BIT FORMAT ONLY) ............................................................................. 9
+START SEGMENT ADDRESS RECORD  (16- OR 32-BIT FORMATS) .................................................................... 10
+END OF FILE RECORD  (8-, 16-, OR 32-BIT FORMATS) ......................................................................................... 11
+Hexadecimal Object File FormatSpecification 4
+Introduction
+This document describes the hexadecimal object file format for the Intel 8-bit, 16-bit, and 32-bit microprocessors.
+The hexadecimal format is suitable as input to PROM programmers or hardware emulators.
+Hexadecimal object file format is a way of representing an absolute binary object file in ASCII.  Because the file is
+in ASCII instead of binary, it is possible to store the file in non-binary medium such as paper-tape, punch cards,
+etc.; and the file can also be displayed on CRT terminals, line printers, etc.  The 8-bit hexadecimal object file
+format allows for the placement of code and data within the 16-bit linear address space of the Intel 8-bit processors.
+The 16-bit hexadecimal format allows for the 20-bit segmented address space of the Intel 16-bit processors.  And
+the 32-bit format allows for the 32-bit linear address space of the Intel 32-bit processors.
+The hexadecimal representation of binary is coded in ASCII alphanumeric characters.  For example, the 8-bit
+binary value 0011-1111 is 3F in hexadecimal.  To code this in ASCII, one 8-bit byte containing the ASCII code for
+the character '3' (0011-0011 or 033H) and one 8-bit byte containing the ASCII code for the character 'F' (0100-
+0110 or 046H are required.  For each byte value, the high-order hexadecimal digit is always the first digit of the
+pair of hexadecimal digits.  This represen

@@ -1,0 +1,73 @@
+Java Dust: How Small Can Embedded Java Be?
+James Caska
+Muvium
+jamescaska@Muvium.com
+Martin Schoeberl
+Department of Informatics and Mathematical
+Modeling
+T echnical University of Denmark
+masca@imm.dtu.dk
+ABSTRACT
+Java is slowly being accepted as a language and platform for em-
+bedded devices. However, the memory requirements of the Java
+library and runtime are still troublesome. A Java system is con-
+sidered small when it requires less than 1 MB, and within the em-
+bedded domain small microcontollers with a few KB on-chip Flash
+memory and even less on-chip RAM are very common. For such
+small devices Java is a clearly challenging. In this paper we present
+the combination of the Java compiler Muvium for microcontrollers
+with the tiny soft-core Leros for an FPGA.
+To the best of our knowledge, the presented embedded Java sys-
+tem is the smallest Java system available. The Leros processor con-
+sumes less than 5% of the logic cells of the smallest FPGA from
+Altera and the Muvium compiler produces a JVM, including the
+Java application, that can execute in a few KB ROM and less than
+1 KB RAM. The Leros processor is available in open-source and
+the Leros port of Muvium is freely available.
+Categories and Subject Descriptors
+C.3 [ Special-Purpose and Application-Based Systems ]: Real-
+time and embedded systems; D.3.4 [ Programming Languages]:
+Processors— Compilers
+1. INTRODUCTION
+There is a clear trend in embedded computing that divides com-
+puting devices into two basic categories, Linux enabled and sub-
+Linux systems. The range and cost point of Linux enabled devices
+is growing very quickly and for those devices Java J2SE running
+on Linux is a compelling option. For sub-Linux systems, appli-
+cation speciﬁc microcontroller systems, there are fewer choices
+for running Java and the requirements of real world applications
+change quite substantially. To compete effectively in this segment
+a Java compiler for embedded microcontrollers must handle ex-
+tremely limited resources, work without an operating system, inter-
+face directly with the real-world, and compete effectively with the
+C language. Performance and code-density are perhaps the most
+critical factors for an embedded processor. Due to its interpretive
+Permission to make digital or hard copies of all or part of this work for
+personal or classroom use is granted without fee provided that copies are
+not made or distributed for proﬁt or commercial advantage and that copies
+bear this notice and the full citation on the ﬁrst page. To copy otherwise, to
+republish, to post on servers or to redistribute to lists, requires prior speciﬁc
+permission and/or a fee.
+JTRES 2011 September 26-28, 2011, York, UK
+Copyright 2011 ACM 978-1-4503-0731-4I/11/09 ...$10.00.
+nature the performance of Java has always been questioned. Main-
+stream JVMs employ just-in-time technologies to address this. For
+embedded systems, just-in-time compiling is hardly possible due to
+the memory consumption of the compiler. However, since the ap-
+plications we target are dedicated static applications, ahead-of-time
+compilation is the approach to reduce resource consumption.
+This ahead-of-time compilation approach is used by Muvium to
+target Java to highly resource constrained embedded devices. To
+enable Java for small microcontrollers we impose several restric-
+tions to Java: only a small subset of the Java library (JDK) is avail-
+able and in the default conﬁguration of Muvium, Java integers are
+represented as 16-bit words.
+In this paper we present a minimal embedded Java system con-
+sisting of the tiny microcontroller Leros [7] and the ahead-of-time
+compiler Muvium [2], which is optimized for processors with min-
+imal memory resources. To the best of our knowledge, this is the
+smallest Java system available today — a ﬁrst step toward bringing
+Java into very small systems and building up Java Dust.
+2. RELATED WORK
+The Squawk VM [8] is a platform for wireless sensors, targeting
+the embedded processor ARM9. Squawk is mostly wr

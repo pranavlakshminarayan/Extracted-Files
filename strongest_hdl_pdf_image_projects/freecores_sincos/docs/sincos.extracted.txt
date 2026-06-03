@@ -1,0 +1,90 @@
+IP Core Specification
+Sine / Cosine Table
+Author: Gerhard Hoffmann
+OpenCores@hoffmann-hochfrequenz.de
+Rev. [0.1]
+January 18, 2011
+ OpenCores Specifications Template 1/18/2011
+This page has been intentionally left blank.
+www.opencores.org Rev 0.1 Preliminary ii
+Revision History
+Rev. Date Author Description 
+0.1 2011/jan/18 Gerhard 
+Hoffmann
+Initial version
+Contents
+INTRODUCTION............................................................................................................. 1
+ARCHITECTURE.............................................................................................................2
+IOPORTS AND GENERICS............................................................................................3
+PERFORMANCE / CHARACTERIZATION................................................................4
+TODO..................................................................................................................................5
+1.
+Introduction
+This block is a sine / cosine table that can be synthesized. It is pure VHDL, no other tools  
+or silicon vendor macros are required. The pipeline delay can be selected from purely  
+combinatorial to 10 stages at compile time via a generic, so it is easy to meet a required  
+clock frequency with the minimum possible latency.
+The width of the phase input and the sin/cos outputs is automatically determined by the  
+connected bus.
+Currently, there are 2 versions of the sine entity. The simple version “sintab” only  
+provides sine values. The somewhat bigger version “sincostab” provides both sine and  
+cosine values without requiring a bigger ROM. The additional effort consists only of  
+some multiplexers and another conditional inversion stage.
+2.
+Architecture
+The phase theta of a sine wave can take on values from 0 to a little less than 2 Pi.  
+Because of symmetry, only a quarter wave must be stored. This entity consists of 3  
+building blocks:
+1. address range reduction by mirroring
+2. The ROM access itself
+3. conditional output sign inversion.
+There may be pipeline stages at the input, the output, between 1 and 2 and between 2 and  
+3. The total number of pipe delays may be given as a generic; a table in the entity  
+ensures a sensible distribution.
+The sine table is computed at compile time and stored in ROM(s).
+3.
+IO Ports And Generics
+Port Type Width/ 
+Range
+Directi
+on
+Description
+clk std_logic 1 Input clock input that controls all activities.
+Rising edge is active but is ignored for a 
+pipeline delay of 0 clocks.
+ce std_logic 1 Input Must be high to qualify a clock edge as 
+active.
+Defaults to '1' and is completely ignored for 
+a pipeline delay of 0 clocks.
+rst std_logic 1 Input Synchronous reset. Defaults to '0'. 
+Overrides CE. Forces the internal memories 
+to zeros. This is not of much use because a 
+zero output is not necessarily more correct 
+than anything else, especially if both sin 
+and cos are zero at the same time. It helps 
+people who are offended by red traces in a 
+Modelsim wave display.  After a few 
+clocks, the output reflects the input history 
+only. If the pipeline delay is 0, rst is 
+ignored.
+theta unsigned variable Input The phase that is to be converted to sine 
+and cosine. The length is taken from the 
+connected signal. The range is from 0000 = 
+0 to  1111 = 2 pi
+sin,
+cos
+signed variable Output Computed sine and cosine outputs. Length 
+is taken from connected signals. Cos is only 
+available from entity sincostab.
+n_stages integer 0...10 generic Amount of delay in clock cycles.
+For 0 clocks delay, the pipeline is 
+transparent. 
+Clk, ce and rst are don't cares in this case.
+Table 1: List of IO ports
+4.
+Performance / 
+Characterization
+This block was compiled into an otherwise empty Xilinx XC6SLX45T-3FGG448 FPGA.  
+Without tuning, a table with 16 bit phase and 18 bit for sin and cos was estimated by the  
+ISE tools to run at 230 MHz. Just increasing the theta bus to 18 Bit dropped the speed to  
+140 MHz and quadrupled the ROM requirements. The 18 → 1

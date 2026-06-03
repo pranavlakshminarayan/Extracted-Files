@@ -1,0 +1,110 @@
+Tampere University of Technology
+F aculty of Computing and Electrical Engineering
+Department of Computer Systems
+PKT_CODEC_MK2
+Reference Manual
+Author:
+Lasse Lehtonen
+Updated:
+November 10, 2011
+Department of Computer Systems
+F aculty of Computing and Electrical Engineering
+PKT_CODEC_MK2
+Reference Manual
+Contents
+1 REVISION HISTOR Y 1
+2 DOCUMENT OVER VIEW 2
+2.1 SCOPE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.2 AUDIENCE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.3 RELATED DOCUMENTATION . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.4 DOCUMENT CONVENTIONS . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+3 INTRODUCTION 3
+3.1 BRIEF DESCRIPTION . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+4 HARDW ARE DESIGN 4
+4.1 PKT_CODEC_MK2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+4.1.1 GENERICS . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+4.1.2 CLOCKING AND RESET . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+4.1.3 DATA INTERF ACE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+1
+
+Department of Computer Systems
+F aculty of Computing and Electrical Engineering
+PKT_CODEC_MK2
+Reference Manual
+1 REVISION HISTORY
+Table 1
+Revision Author Date Description
+1.00 Lasse Lehtonen 09.11.2011 Initial documentation
+1
+
+Department of Computer Systems
+F aculty of Computing and Electrical Engineering
+PKT_CODEC_MK2
+Reference Manual
+2 DOCUMENT OVER VIEW
+2.1 SCOPE
+This documentation describes how to interface with NoCs using pkt_codec_mk2 interface.
+2.2 AUDIENCE
+For hardware integrators wanting to use this component.
+2.3 RELATED DOCUMENTATION
+Table 2
+Document Description
+2.4 DOCUMENT CONVENTIONS
+• Ports: teletype in text
+• Generics: teletype in text
+2
+
+Department of Computer Systems
+F aculty of Computing and Electrical Engineering
+PKT_CODEC_MK2
+Reference Manual
+3 INTRODUCTION
+3.1 BRIEF DESCRIPTION
+PKT_CODEC_MK2 if a network interface component placed between the IP and the network.
+It handles the clock domain crossing and the generation of the network depended packet headers.
+Supported addressing modes include memory mapped, target id and raw where ip is responsible for
+using correct network address.
+3
+
+Department of Computer Systems
+F aculty of Computing and Electrical Engineering
+PKT_CODEC_MK2
+Reference Manual
+4 HARDW ARE DESIGN
+4.1 PKT_CODEC_MK2
+4.1.1 GENERICS
+Table 3
+Name Description
+my_id_g Id number for addressing the agent
+cmd_width_g Width of the command bus
+data_width_g Width of the data bus
+agents_g Total number of agents in the network
+cols_g Columns in mesh like networks
+rows_g Rows in mesh like networks
+agent_ports_g How many agents are connected to a router
+addr_it_en_g Transfer the original address with the packet
+address_mode_g Select addressing mode to use
+clock_mode_g Select asynchronous clock
+rip_addr_g Remove the network address from the packet
+noc_type_g Select the network model to use
+4.1.2 CLOCKING AND RESET
+Table 4
+Port Width Direction Description
+clk_net 1 in Clock for the network, active on rising edge
+clk_ip 1 in Clock for the IP, active on rising edge
+rst_n 1 in Reset, asynchronous, active low
+When clock_mode_g is 0 both clock inputs should be connected to the same clock source and
+when 1 they can be connected to asynchronous clocks.
+4.1.3 DA T A INTERF ACE
+Table 5
+Port Width Direction Description
+cmd_in 2 in Incoming command
+data_in g in Incoming data
+stall_out 1 out Stall the incoming data
+cmd_out 2 out Outgoing command
+data_out g out Outgoing data
+stall_in 1 in Stall sending data
+Zero on command line means that the line does not contain anything. One means that on the data
+bus there's a address for the next data. Two means there's data to be sent to the previous address.
+Value three is undened. Flow control is simple: at the clock cycle when stall signal is read being
+high the correspon

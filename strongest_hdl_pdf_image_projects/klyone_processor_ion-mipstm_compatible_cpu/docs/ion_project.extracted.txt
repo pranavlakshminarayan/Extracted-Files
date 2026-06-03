@@ -1,0 +1,60 @@
+ION – MIPS Compatible Core
+José A. Ruiz
+December 2011
+Contents
+Contents 1
+List of Figures 2
+List of Tables 3
+1 Introduction 5
+1.1 Features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+2 Usage 7
+2.1 Main Modules . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+2.2 Bootstrap Code . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+3 SoC Module 11
+3.1 SoC Generics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+3.2 SoC Ports . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+3.3 SoC Memory Map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+3.4 SoC UART . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+4 CPU Description 19
+4.1 Bus Architecture . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+4.2 Pipeline . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+4.3 Interlocking and Data Hazards . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+4.4 Exceptions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+4.5 Multiplier . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+1
+5 Cache/Memory Controller Module 33
+5.1 Cache Initialization and Control . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+5.2 Cache Tags and Cache Address Mirroring . . . . . . . . . . . . . . . . . . . . . . . . 34
+5.3 Memory Controller . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+5.4 Cache Reﬁll and Writethrough Chronograms . . . . . . . . . . . . . . . . . . . . . . 37
+5.5 Known Problems . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+6 Logic Simulation 41
+6.1 Running the Simulation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42
+6.2 Simulation File Logging . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+6.3 Log File Format . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 44
+6.4 Console Output Logging . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+6.5 Use of Modelsim Features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 47
+7 Tools 49
+7.1 MIPS Software Simulator . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 49
+7.2 Conﬁguration Package Builder Script build_pkg.py . . . . . . . . . . . . . . . . . . 50
+7.3 Conversion Script bin2hdl.py . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50
+8 Code samples 53
+8.1 Support Code . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 54
+9 Hardware Demo 59
+9.1 Pre-generated demo . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 59
+9.2 Porting to other dev boards . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 61
+9.3 ’Adventure’ demo . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 62
+10 Design Notes 63
+10.1 Project Goals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 63
+10.2 Development status . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 64
+10.3 Performance . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 65
+10.4 Next steps . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 66
+Bibliography 67
+List of Figures
+3.1 SoC module interface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+4.1 CPU module interface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+2
+List of T ables 3
+List of Tables
+3.1 SoC module generics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+3.2 SoC module

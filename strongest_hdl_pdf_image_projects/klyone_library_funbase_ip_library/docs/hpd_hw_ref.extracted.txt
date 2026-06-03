@@ -1,0 +1,99 @@
+Tampere University of Technology
+F aculty of Computing and Electrical Engineering
+Department of Computer Systems
+HIBI_PE_DMA
+HW Reference Manual
+Author:
+Lasse Lehtonen
+Updated:
+March 2, 2012
+Department of Computer Systems
+F aculty of Computing and Electrical Engineering
+HIBI_PE_DMA
+Reference Manual
+Contents
+1 REVISION HISTOR Y 1
+2 DOCUMENT OVER VIEW 2
+2.1 SCOPE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.2 AUDIENCE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.3 RELATED DOCUMENTATION . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+2.4 DOCUMENT CONVENTIONS . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+3 INTRODUCTION 3
+3.1 BRIEF DESCRIPTION . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+3.2 EXAMPLE SYSTEM . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+4 HARDW ARE DESIGN 4
+4.1 HIBI_PE_DMA . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+4.1.1 GENERICS . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+4.1.2 CLOCKING AND RESET . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+4.1.3 CONFIGURATION INTERF ACE . . . . . . . . . . . . . . . . . . . . . . . . . 4
+4.1.4 MEMORY WRITE INTERF ACE . . . . . . . . . . . . . . . . . . . . . . . . . 4
+4.1.5 MEMORY READ INTERF ACE . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+4.1.6 HIBI RECEIVE INTERF ACE . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+4.1.7 HIBI TRANSMIT INTERF ACE . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+4.1.8 INTERRUPT INTERF ACE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+4.1.9 INTERF ACE STRUCTURE . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+4.1.10 INTEGRATION . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+4.1.11 REGISTERS . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1
+
+Department of Computer Systems
+F aculty of Computing and Electrical Engineering
+HIBI_PE_DMA
+Reference Manual
+1 REVISION HISTORY
+Table 1
+Revision Author Date Description
+1.03 Lasse Lehtonen 26.01.2012 Ported old document to Latex
+1.04 Lasse Lehtonen 27.01.2012 Added streaming channels
+1.05 Lasse Lehtonen 02.03.2012 Removed SW part and changed register order
+1
+
+Department of Computer Systems
+F aculty of Computing and Electrical Engineering
+HIBI_PE_DMA
+Reference Manual
+2 DOCUMENT OVER VIEW
+2.1 SCOPE
+This documentation describes how to use HIBI PE DMA component.
+2.2 AUDIENCE
+For hardware integrators and software developers using this component.
+2.3 RELATED DOCUMENTATION
+Table 2
+Document Description
+building_test_system.pptx Descibes an example using in SOPC with NIOS II processors
+hpd_sw_ref.pdf Software reference manual
+HIBI_PE_DMA.pptx Introduction to HIBI PE DMA
+2.4 DOCUMENT CONVENTIONS
+• Ports: teletype in text
+• Generics: teletype in text
+2
+
+Department of Computer Systems
+F aculty of Computing and Electrical Engineering
+HIBI_PE_DMA
+Reference Manual
+3 INTRODUCTION
+3.1 BRIEF DESCRIPTION
+HIBI_PE_DMA (HPD) component allows separate processor systems with A valon-MM compatible
+interface to communicate with each other via Hibi hierarchical bus. Communication is DMA based
+and uses either packet or stream channels for network transactions. HIBI_PE_DMA supports both
+polling and interrupts.
+3.2 EXAMPLE SYSTEM
+Example system showing three SOPC blocks with Nios processors communicating via Hibi. Each
+HIBI_PE_DMA component is associated with dual-port RAMs where they store received data and
+read the data to be sent.
+Figure 1: Example system with three Nios processors
+3
+
+Department of Computer Systems
+F aculty of Computing and Electrical Engineering
+HIBI_PE_DMA
+Reference Manual
+4 HARDW ARE DESIGN
+4.1 HIBI_PE_DMA
+4.1.1 GENERICS
+Table 3
+Name Description
+data_width_g Width of the data buses
+addr_width_g Width of the Hibi address
+words_width_g Number of bits needed to represe

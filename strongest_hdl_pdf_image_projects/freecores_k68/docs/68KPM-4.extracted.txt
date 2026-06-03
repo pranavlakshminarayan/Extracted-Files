@@ -1,0 +1,51 @@
+ 
+ MOTOROLA INC., 1992
+MOTOROLA
+M68000 FAMILY
+Programmer’s Reference Manual
+(Includes CPU32 Instructions)
+MOTOROLA M68000 FAMILY PROGRAMMER’S REFERENCE MANUAL iii
+TABLE OF CONTENTS
+Paragraph
+Number Title Page
+Number
+Section 1
+Introduction
+1.1 Integer Unit User Programming Model. . . . . . . . . . . . . . . . . . . . . . . . . .  1-2
+1.1.1 Data Registers (D7 – D0)  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-2
+1.1.2 Address Registers (A7 – A0) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-2
+1.1.3 Program Counter . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-3
+1.1.4 Condition Code Register . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-3
+1.2 Floating-Point Unit User Programming Model . . . . . . . . . . . . . . . . . . . .  1-4
+1.2.1 Floating-Point Data Registers (FP7 – FP0) . . . . . . . . . . . . . . . . . . . . .  1-4
+1.2.2 Floating-Point Control Register (FPCR)  . . . . . . . . . . . . . . . . . . . . . . .  1-5
+1.2.2.1  Exception Enable Byte. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-5
+1.2.2.2  Mode Control Byte.  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-5
+1.2.3 Floating-Point Status Register (FPSR) . . . . . . . . . . . . . . . . . . . . . . . .  1-5
+1.2.3.1  Floating-Point Condition Code Byte. . . . . . . . . . . . . . . . . . . . . . . . .  1-5
+1.2.3.2  Quotient Byte.  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-6
+1.2.3.3  Exception Status Byte.. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-6
+1.2.3.4  Accrued Exception Byte. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-7
+1.2.4 Floating-Point Instruction Address Register (FPIAR)  . . . . . . . . . . . . .  1-8
+1.3 Supervisor Programming Model. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-8
+1.3.1 Address Register 7 (A7)  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-10
+1.3.2 Status Register  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-10
+1.3.3 Vector Base Register (VBR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-11
+1.3.4 Alternate Function Code Registers (SFC and DFC) . . . . . . . . . . . . .  1-11
+1.3.5 Acu Status Register (MC68EC030 only) . . . . . . . . . . . . . . . . . . . . . .  1-11
+1.3.6 Transparent Translation/access Control Registers . . . . . . . . . . . . . .  1-12
+1.3.6.1  Transparent Translation/access Control Register Fields for the 
+M68030. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-12
+1.3.6.2  Transparent Translation/access Control Register Fields for the 
+M68040. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-13
+1.4 Integer Data Formats . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-14
+1.5 Floating-Point Data Formats  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-15
+1.5.1 Packed Decimal Real Format . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-15
+1.5.2 Binary Floating-Point Formats . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-16
+1.6 Floating-Point Data Types . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-17
+1.6.1 Normalized Numbers. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-18
+1.6.2 Denormalized Numbers. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-18
+1.6.3 Zeros . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-19
+1.6.4 Infinities . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-19
+1.6.5 Not-A-Numbers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  1-19
+1.6.6 Data Format and Type Summary  . 

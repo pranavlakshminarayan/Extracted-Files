@@ -1,0 +1,50 @@
+M65C02‐Notes.xls Op  Code Map ‐ W65C02 9/3/2013
+01234567
+0 BRK #imm BPL rel JSR abs BMI rel RTI BVC rel RTS BVS rel
+1 ORA (zp,X) ORA (zp),Y AND (zp,X) AND (zp),Y EOR (zp,X) EOR (zp),Y ADC (zp,X) ADC (zp),Y
+2 ORA (zp) AND (zp) EOR (zp) ADC (zp)
+3
+4 TSB zp TRB zp BIT zp BIT zp,X STZ zp STZ zp,X
+5 ORA zp ORA zp,X AND zp AND zp,X EOR zp EOR zp,X ADC zp ADC zp,X
+6 ASL zp ASL zp,X ROL zp ROL zp,X LSR zp LSR zp,X ROR zp ROR zp,X
+7
+8 PHP CLC PLP SEC PHA CLI PLA SEI
+9 ORA #imm ORA abs,Y AND #imm AND abs,Y EOR #imm EOR abs,Y ADC #imm ADC abs,Y
+A ASL A INC A ROL A DEC A LSR A PHY ROR A PLY
+B
+C TSB abs TRB abs BIT abs BIT abs,X JMP abs JMP (abs) JMP (abs,X)
+D ORA abs ORA abs,X AND abs AND abs,X EOR abs EOR abs,X ADC abs ADC abs,X
+E ASL abs ASL abs,X ROL abs ROL abs,X LSR abs LSR abs,X ROR abs ROR abs,X
+F
+M65C02‐Notes.xls Op  Code Map ‐ W65C02 1/2
+M65C02‐Notes.xls Op  Code Map ‐ W65C02 9/3/2013
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+A
+B
+C
+D
+E
+F
+89ABCDEF
+BRA rel BCC rel LDY #imm BCS rel CPY #imm BNE rel CPX #imm BEQ rel
+STA (zp,X) STA (zp),Y LDA (zp,X) LDA (zp),Y CMP (zp,X) CMP (zp),Y SBC (zp,X) SBC (zp),Y
+STA (zp) LDX #imm LDA (zp) CMP (zp) SBC (zp)
+STY zp STY zp,X LDY zp LDY zp,X CPY zp CPX zp
+STA zp STA zp,X LDA zp LDA zp,X CMP zp CMP zp,X SBC zp SBC zp,X
+STX zp STX zp,Y LDX zp LDX zp,Y DEC zp DEC zp,X INC zp INC zp,X
+DEY TYA TAY CLV INY CLD INX SED
+BIT #imm STA abs,Y LDA #imm LDA abs,Y CMP #imm CMP abs,Y SBC #imm SBC abs,Y
+TXA TXS TAX TSX DEX PHX NOP PLX
+STY abs STZ abs LDY abs LDY abs,X CPY abs CPX abs
+STA abs STA abs,X LDA abs LDA abs,X CMP abs CMP abs,X SBC abs SBC abs,X
+STX abs STZ abs,X LDX abs LDX abs,Y DEC abs DEC abs,X INC abs INC abs,X
+M65C02‐Notes.xls Op  Code Map ‐ W65C02 2/2

@@ -1,0 +1,27 @@
+Bill of Materials GECKO3basic 
+Source Data From: GECKO3Basic.PRJPCB 
+Project: GECKO3Basic.PRJPCB 
+1.65 Euro 
+Variant: None 1.03 $
+Creation Date: 09.06.2008 18:26:10 
+Print Date: 09.07.2008 16:00:23 
+Footprint Value LibRef Designator Description Quantity Manufacturer Part Number Distributor Distributor Numbe r Packaging unit lead time RoHS Price Currency In CHF CHF for Qty 
+Breadboard Optional Breadboard 80x60 mm 1 KH-102 KH-102 Distrelec 920 250 1 yes 14.74 CHF 14.74 14.74 
+M2x6 SCREW Optional M2x6 SCREW 2 P31285400201 Engel BN357 yes CHF 
+M2 HEX NUT Optional M2 HEX NUT 2 P55628820101 Engel BN109 yes CHF 
+amp_FH_.8mm 
+_120pin_plug 
+fh-120p-5mm AMP-FH-120- 
+Plug 
+JP1 AMP Free Height System, 0.8mm, 120 Pin, 
+Plug 
+1 AMP 5177984-5 Farnell 1098 339 1 yes 7.95 CHF 7.95 7.95 
+NPPC202KFMS Socket 2x20,smt 2203-34011 JP2 1 Sullins NPPC202KFMS-RC DIGIKEY S5729-ND 1 2 Weeks yes 5.9 4 $ 6.12 6.12 
+Total Number of parts 7 Total in CHF 28.81 
+Approved Notes  
+Assembly Variants: 
+ - GECKO3basic with array of solder points 
+ - GECKO3basic with solderless breadboard, you have to order the optional parts for this variant! 
+Exchange 
+rate to CHF 
+Page 1 of 1 

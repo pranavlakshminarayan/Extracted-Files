@@ -1,0 +1,106 @@
+Ternary Adder IP Cores
+Martin Kumm, Jens Willkomm
+April 4, 2013
+1 Introduction
+This IP core provides resource eﬃcient ternary adders, i. e., adders with three inputs
+performing s = x+y+z, for the Altera and Xilinx platforms. Resource eﬃcient means
+that they need exactly the same resources on modern FPGAs as two-input adders,
+but are slightly slower. The Xilinx core ( ternary_adder_xilinx.vhd) is a low-level
+implementation, following an US patent from Xilinx [SP06]. It directly uses the Xilinx
+primitives (CARRY4, LUT6_2 and FDCE). It is suitable for all FPGAs providing 6-input
+LUTs. Today, these are the Virtex 5-7, Spartan 6, Kintex 7 and Artix 7 families.
+The Altera core ( ternary_adder_altera.vhd) is a high-level implementation using
+the ’+’ operator. However, the ternary subtract operations ( x − y + z, x + y − z and
+x−y−z) are not supported by a high-level description; so this is realized by extending
+the word size of the ternary adders and setting the lower bits to appropriate constant
+values. They can be mapped very resource eﬃcient for all Altera FPGAs providing
+adaptive logic modules (ALMs), today, these are the Arria I,II,V and Stratix II-V
+FPGAs.
+2 Interface
+The generics as well as the port are identical for the Altera and Xilinx implementation
+and are described in Table 1 and Table 2, respectively.
+3 Implementation
+Both implementations uses a carry save adder (CSA) tree with three inputs and a ﬁnal
+ripple carry adder as vector merging adder (VMA). One stage of full adders (FAs) is
+used to realize a 3:2 compressor, i. e., the three input bit vectors are compressed to
+two bit vectors which are obtained by the sum and carry outputs. A second stage of
+FAs merges these two bit vectors to a single result.
+For Altera, the 3:2 compressor can be directly mapped to the ALM LUT, realizing
+the sum s′
+i = xi ⊕ yi ⊕ zi and carry c′
+i = xiyi + xizi + yizi. The full adders of the ALM
+are used for the VMA. To include both stages in a single ALM stage, each ALM has
+to be conﬁgured to the shared arithmetic mode [BLSY09] in which the output of one
+LUT is connected to the FA input of the next higher bit. The resulting ternary adder
+structure is shown in Figure 1(a).
+1
+Table 1: Description of the generics
+Generic Type Default Description
+input_word_size integer 10 Input word size of the inputs x,y and
+z. The output word size is
+automatically set to
+input_word_size+2
+subtract_y boolean false Input y is negated, realizing
+s = x − y ± z
+subtract_z boolean false Input z is negated, realizing
+s = x ± y − z
+use_output_ff boolean true If true, the adder uses ﬂip ﬂops at the
+output (without extra slice or ALM
+resources)
+Table 2: Description of the port
+Generic Direction Type Word Size Description
+clk_i in sl 1 Clock input (used when
+use_output_ff=true)
+rst_i in sl 1 Reset input (used when
+use_output_ff=true)
+x_i in slv input_word_size Input x
+y_i in slv input_word_size Input y
+z_i in slv input_word_size Input z
+sum_o out slv input_word_size + 2 Sum output s
+For Xilinx, the FA for the 3:2 compressor is also realized in the FPGA LUT [SP06].
+In addition to that, one additional XOR gate has to be realized in the same LUT
+to complete the fast carry chain resources to a ripple carry adder for the VMA. The
+carry output of the ﬁrst FA (realized in the LUT) must be routed to the next higher
+FA input using the FPGA routing fabric. The resulting slice conﬁguration is shown
+in Figure 1(b).
+4 Resource Consumption
+For Altera, each ALM can compute two output bits. As the output word size is two
+bits more than the input word size, there are
+NALM,++ =
+⌈input word size + 2
+2
+⌉
+(1)
+2
+FA
+FAFAFA
+FAFA
+ ALM
+LUT
+FA
+FA
+(a)
+0
+1
+Slice
+LUT
+FA
+0
+1
+FA
+0
+1
+FA
+Carry
+Logic
+0
+1
+FA
+(b)
+Figure 1: Realization of ternary adders on (a) Altera Stratix II-V ALMs (b) Xilinx
+Virtex 5-7 Slices
+ALMs needed for a pure addition ( s = x + y + z). If one input is subtracted (setting
+one of subtract_y or subtract_y to true), the word length has to be extended by
+one bit leading to:
+NALM,+− =
+⌈in

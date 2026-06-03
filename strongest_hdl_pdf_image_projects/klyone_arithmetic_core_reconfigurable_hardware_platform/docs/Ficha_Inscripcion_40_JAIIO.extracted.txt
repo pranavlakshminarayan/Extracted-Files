@@ -1,0 +1,101 @@
+SADIO -  Sociedad Argentina de Informática  
+Uruguay 252 2º "D" (C1015ABF) - Ciudad de Buenos Aires 
+Tel: (54-11) 4371-5755  Tel/Fax: (54-11) 4372-3950  
+E-mail: jaiio@sadio.org.ar  http://www.sadio.org.ar http://www.40jaiio.org.ar  
+ 
+PARA USO INTERNO Inscrip. Nº:  
+Nº Recibo  
+¿Pagó?  
+¿Es Autor?  
+¿Presentó 
+Certificado?  
+ 
+ 
+ 
+ 
+ 
+ 
+FORMULARIO DE INSCRIPCIÓN 
+(completar con letra de imprenta y clara) 
+  
+Apellido                  Nombre                
+Profesión                     Carrera (si es estudiante)            
+Institución / Empresa             Cargo        
+Domicilio             Localidad              
+Código Postal     Provincia         País            
+Teléfono              Fax         
+E-mail             ¿Es Autor de paper? Si   No  f¿De qué Simposio?    
+ 
+FORMA DE PAGO: 
+(   ) Contado  
+ 
+(   ) Transferencia a nombre de SADIO:  BBVA - Bco. Francés - Sucursal  330 Tribunales - Cta. Cte. Pesos: 330-502/7 
+      (Solo para residentes en Argentina) CBU: 01703304 20000000050276   /   CUIT: 30-64931218-0 
+ 
+(   ) Tarjeta de Crédito:     (   ) VISA          (   ) MASTERCARD 
+ 
+Número: __ __ __ __ - __ __ __ __ - __ __ __ __ - __ __ __ __  Fecha de Vto.: __ __/__ __ Firma del Titular: ___________________ 
+ 
+ 
+Categoría:    (   ) No Socio     (   ) Socio    (   ) Docente    (   ) Estudiante No Socio       (   ) Estudiante Socio      (   ) Paquete Estudiantil
+ 
+ 
+Monto a abonar: ________________ 
+ 
+ 
+CERTIFICADO 
+ 
+CERTIFICADO  PARA  AUTORES 
+ Si usted es autor de un trabajo su certificado será de “Expositor” 
+de ese Simposio. 
+Por favor indique de la lista en que Simposio ha presentado su 
+trabajo. 
+ 
+(   ) 40 JAIIO – Todos los simposios de las JAIIO 
+(   ) ASAI 2011 – Simposio Argentino de Inteligencia Artificial 
+(   ) ASSE 2011 – Simposio Argentino de Ingeniería de Software  
+(   ) AST 2011 – Simposio Argentino de Tecnología 
+(   ) CAI 2011 – Congreso Argentino de Agroinformática 
+(   ) CAIS 2011 – Congreso Argentino de Informática y Salud 
+(   ) HPC 2011 – High Performance Computing 
+(   ) JII 2011 – Jornadas de Informática Industrial 
+CERTIFICADO  PARA  ASISTENTES 
+ Si usted solamente asiste a las 40 JAIIO su certificado será 
+de “Asistente” a todos los Simposios de las JAIIO o 
+“Asistente” a UN UNICO Simposio que usted indique. 
+Por favor indique cual es su preferencia: 
+ 
+(   ) JSL 2011 – Jornadas de Software Libre 
+(   ) JUI 2011 – Jornadas de Vinculación Universidad - Industria 
+(   ) SID 2011 – Simposio Argentino de Informática y Derecho 
+(   ) SIE 2011 – Simposio de Informática en el Estado 
+(   ) SIO 2011 – Simposio Argentino de Investigación Operativa 
+(   ) SSI 2011 – Simposio sobre la Sociedad de la Información 
+(   ) WSegI 2011 – Workshop de Seguridad Informática 
+(   ) EST 2011 – Exposición y Concurso de Trabajos Estudiantiles 
+ 
+ 
+ARANCELES CATEGORIAS 
+ No 
+Socio  Socio ** Docente  Estudiante * Estudiante 
+Socio** 
+Inscripción Autores 
+(hasta el 27/06/11) $ 360 $ 180 $ 220 ----- ----- 
+Inscripción Temprana 
+(hasta el 20/07/11) $ 360 $ 180 $ 220 $ 100 $ 50 
+Inscripción Tardía 
+(desde el 21/07/11) $ 480 $ 240 $ 290 $ 130 $ 65 
+ 
+Todos los aranceles están expresados en AR$ (pesos argentinos). 
+(*) Los estudiantes de grado necesitan presentar la constancia de alumno regular. Este beneficio es para 
+estudiantes de grado de primera carrera. Consulte por paquetes estudiantiles. 
+Los descuentos para Socios y Docentes no podrán superponerse, deberá optarse por uno de ellos.  
+Los docentes deberán acreditar dicha condición. 
+(**) Socio SADIO, IFIP, IEEE Argentina, AADECA, EPIO, SBC, SChCC o integrante de una institución 
+miembro de CLEI.  Para inscribirse en la categoría Socio, se deberán tener las cuotas al día. 
+Los autores deberán haber pagado su inscripción al momento de entregar la versión camera ready 
+de los trabajos para que los mismos sean publicados (antes del 27/06/2011). 
+40 JAIIO 
+40 Jornadas Argentinas de Informática  
+29 de Agosto al 02 de Septiembre de 2011 
+UTN – Fac. Reg. Córdoba – Córdob

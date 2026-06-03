@@ -1,0 +1,26 @@
+{
+  "project_id": "freecores_mjpeg-decoder",
+  "name": "mjpeg-decoder",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/mjpeg-decoder",
+  "extraction_date": "2026-06-02T16:53:50",
+  "license": null,
+  "has_readme": true,
+  "readme_excerpt": "-----------\n Synthesis\n-----------\nThe code located in the 'mjpeg' folder can be syntesized with Xilinx EDK 8.2. \n(from the console: \"make -f System.make init_bram\")\n\n-------------------\n Container formats\n-------------------\nCommon avi containers containing just an mjpeg-video-stream will work. However to play the movie in a repeating loop, the Characters \"ENDE ENDE ENDE ENDE ENDE\" need to be appended to the end of the file (this is an fast and ugly hack due to lack of time). \n\n-------\n Tools\n-------\nThere are some scripts inside the 'tools' folder:\n'usbdownload' for downloading a bitfile without the gui of impact.\n'xmddownload' for automatic downloading of a movie/image to RAM\n'encode_mjpeg.sh' for creating compatiple movie-files\n\n----------\n Licence\n----------\nAll code and dokumentation located in the 'pcores/myipif/hdl/vhdl' and 'doc' folder respectively is released under the GPL Version 2 (a copy should be present in the doc-folder), with the following exceptions:\n- jpeg_checkff_fifo.vhd\n- jpeg_dequant_multiplier.vhd\n- jpeg_ht_nr_of_symbols.vhd\n- jpeg_ht_tables\n- jpeg_huffman_input_sr\n- jpeg_idct_core_12\n- jpeg_input_fifo\n- jpeg_qt_sr\n- jpeg_qt_tables\n- jpeg_upsampling_buffer\n- vga_memory\nwhich are all under Xilinx-License as provided inside the files.\n",
+  "stats": {
+    "verilog_files": 0,
+    "vhdl_files": 36,
+    "other_hdl_files": 0,
+    "pdf_files": 1,
+    "markdown_files": 0,
+    "text_files": 24,
+    "image_files": 1,
+    "total_bytes": 27249201,
+    "languages_seen": [
+      "VHDL"
+    ]
+  },
+  "quality_tier": "A",
+  "quality_reason": "README + (PDF or images) + 3+ HDL files",
+  "references": []
+}

@@ -1,0 +1,56 @@
+A MIPS R3000 microprocessor on an FPGA 13 February 2002 1
+A MIPS R3000 microprocessor on an
+FPGA
+Charles Brej
+1  Introduction
+The aim of the project was to implement a complete processor that is still widely used
+today. Of the many potential processors that were considered the one that was chosen
+was a MIPS R3000 microprocessor due to its simple instruction encodings. The R3000
+microprocessor is not just a processor as it also includes cache, memory management
+and a coprocessor interface. (It is also capable of handling exact exceptions)
+1.1  History of RISC
+When the ﬁrst processors and Instruction Set Architectures (ISAs) were created pro-
+gramming was very difﬁcult and so complex instructions that looked more like high
+level languages were added to each ISA family. To allow old software to run on newer
+computers the instruction sets were expanded and became more and more complex. To
+add to the complexity issue memory prices were very high and to ﬁt a program into a
+very small space it was necessary to create instructions with varying lengths. Also
+memory was a lot faster than the processor and so keeping all variables in memory was
+quite logical. In a completely different direction to the CISC movement of increasingly
+complex instruction sets the RISC adopted a totally different approach. By keeping all
+instructions the same size decoding becomes simple. Having a large register bank
+decreases memory accesses which are increasingly slow compared to the CPU speed
+on modern computers. Implementing only simple and common operations the proces-
+sor speed can be increased and chip area can be decreased. Having a much simpler base
+architecture allows the CPU to implement other speed increasing methods much more
+simply for example pipelining.
+1.2  Load Store Architecture
+MIPS microprocessor instructions only allow registers or small immediates to be oper-
+ands of operations. CISC on the other hand often has instructions which use memory
+stored data as operands. This makes the execution harder. For example the 8086
+instruction ‘CMP AX, ES:[SI+02]’ ﬁrstly requires 2 to be added to SI and the result to
+be added to ES shifted by 4 this creating an effective address to load a 16 bit word (pos-
+sibly non-word aligned so multiple loads are required) from memory then compare it to
+AX and write the ﬂags created by the comparison to the ﬂags register for use by the
+next conditional jump instruction. This scheme is difﬁcult to implement and the
+instruction goes several times through the ALU. MIPS microprocessor instructions
+only go through the ALU once and never after a memory access. If an operand from
+memory is required it is loaded into the register bank ﬁrst and only then used in subse-
+quent operations. This allows the creation of a very simple architecture which is easy to
+A MIPS R3000 microprocessor on an FPGA 13 February 2002 2
+pipeline. A typical MIPS microprocessor uses a ﬁve stage execution pipeline as shown
+in Figure 1 on page 2.
+In a ﬁve stage pipeline there are two memory ports: one for instruction fetch and one
+for data accesses. To deal with this either two separate memories can be used or swap
+memory access between the two ports. This is called Harvord architecture.
+1.3  History of pipelining
+Pipelining is a method of getting more than one instruction to execute simultaneously.
+By dividing the path that the instruction has to go through in the CPU into segments
+and placing latches at the beginning of each segment instructions will take several
+clocks to execute instead of one. But as MIPS microprocessor instructions only visit
+each segment once they only occupy one segment allowing other instructions to come
+straight after them and occupy other segments.
+There are problems that arise with pipelining. Firstly if an ALU instruction writes to a
+register that is required in the next instruction the data in the register bank is not yet
+updated when the second instruction requests it as the data is now at the end of the
+ALU stage. T

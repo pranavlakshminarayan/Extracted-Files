@@ -1,0 +1,74 @@
+GECKO4 COM
+Technical Reference Manual
+Revision 1.0.1
+Dr. Theo Kluter
+GECKO is an active project at HuCE-microLab where various te am members have
+made their contributions. Currently the following researc hers are involved:
+Andreas Habegger, Benjamin Habegger, Fabian Nenniger, Dr. Theo Kluter,
+Prof. Dr. Josef Goette, Prof. Dr. Marcel Jacomet.
+
+Contents
+1 Implemented Commands 1
+1.1 Protected User Data . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1.2 Global Reset . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+1.3 User Reset . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+1.4 Bitﬁle Storage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+1.5 GECKO4 MAIN information . . . . . . . . . . . . . . . . . . . . . . 5
+1.6 User FPGA conﬁguration . . . . . . . . . . . . . . . . . . . . . . . . 6
+1.7 Mechanical Switch . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1.8 User FPGA communication . . . . . . . . . . . . . . . . . . . . . . . 7
+1.9 VGA controller . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1.10 The Status Byte Register . . . . . . . . . . . . . . . . . . . . . . . . 8
+References . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2 Bus Interface 11
+2.1 Bus Signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+2.2 Memory Map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+2.3 Bus Protocol . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+2.4 Interrupts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+3 Input and Output 19
+3.1 VGA controller . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+3.2 Buttons, Switch and LEDs . . . . . . . . . . . . . . . . . . . . . . . 20
+3.3 RS232 pass-through . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+3.4 User clocks . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+4 User FPGA communication 23
+4.1 FIFO communication . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+4.2 IEEE488.x mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+4.3 Transparent mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+Appendices 27
+A Bus transactions 29
+A.1 Write transactions . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+A.2 Write transaction aborts . . . . . . . . . . . . . . . . . . . . . . . . . 3 0
+A.3 Read transactions . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+A.4 Read transactions abort . . . . . . . . . . . . . . . . . . . . . . . . . 33
+B GECKO4 COM IO 35
+B.1 VGA screen and message windows . . . . . . . . . . . . . . . . . . . 35
+B.2 Buttons, switch and LEDs . . . . . . . . . . . . . . . . . . . . . . . 36
+B.3 VGA connection and RS232 . . . . . . . . . . . . . . . . . . . . . . 37
+1
+Implemented Commands
+The GECKO4 COM implements 36 SCPI commands as shown in Table 1.1.
+The commands starting with a * are compliant with the IEEE488.1 [3] and
+IEEE488.2 [4] standards and will not be described in this cha pter. The ex-
+ception to the above is the description of the *PUD, *PUD? and *RST
+commands.
+*CLS *ESE *ESE? *ESR?
+*IDN? *IST? *OPC *OPC?
+*PUD *PUD? *RST *SRE
+*SRE? *STB? *TST? *WAI
+BITFLASH BITFLASH? BOARD? CONFIG
+ERASE FIFO FIFO? FPGA
+FPGA? HEXSWITCH HEXSWITCH? IDENTIFY
+TRANS USERRESET VGA:BGCOL VGA:CLEAR
+VGA:CURSOR VGA:CURSOR? VGA:FGCOL VGA:PUTSTR
+Table 1.1: SCPI commands implemented in the GECKO4 COM
+1.1 Protected User Data
+The IEEE488.1 [3] and IEEE488.2 [4] standards describe the *PUD and
+*PUD? as optional commands. These two commands provide a Protecte d
+User Data (PUD) area of at least 63 bytes. The GECKO4 COM implements
+a PUD of 2048 bytes and violates the standard in the protectio n require-
+ment.
+Reading the PUD area:
+When executing the *PUD? command the GECKO4 COM puts the con-
+tents of the complete PUD memory (2048 bytes) in the output qu eue. The
+PUD memory can only be read completely; there exist no possib ility to
+read only a part of it.

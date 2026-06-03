@@ -1,0 +1,54 @@
+Spartan-6 FPGA 
+SelectIO Resources
+User Guide
+UG381 (v1.4) December 16, 2010
+Spartan-6 FPGA SelectIO Resources www.xilinx.com UG381 (v1.4) December 16, 2010
+Xilinx is disclosing this user guide, manual, release note, and/or specification (the "Documentation") to you solely for use in the development 
+of designs to operate with Xilinx hardware devices. Y ou may not reproduce, distribute, republish, download, display, post, or transmit the 
+Documentation in any form or by any means including, but not limited to, electronic, mechanical, photocopying, recording, or otherwise, 
+without the prior written consent of Xilinx. Xilinx expressly disclaims any liability arising out of your use of the Documentation. Xilinx reserves 
+the right, at its sole discretion, to change the Documentation without notice at any time. Xilinx assumes no obligation to correct any errors 
+contained in the Documentation, or to advise you of any corrections or updates. Xilinx expressly disclaims any liability in connection with 
+technical support or assistance that may be provided to you in connection with the Information.
+THE DOCUMENTATION IS DISCLOSED TO YOU “AS-IS” WITH NO WARRANTY OF ANY KIND. XILINX MAKES NO OTHER 
+WARRANTIES, WHETHER EXPRESS, IMPLIED, OR STATUTORY , REGARDING THE DOCUMENTATION, INCLUDING ANY 
+WARRANTIES OF MERCHANTABILITY , FITNESS FOR A PARTICULAR PURPOSE, OR NONINFRINGEMENT OF THIRD-PARTY 
+RIGHTS. IN NO EVENT WILL XILINX BE LIABLE FOR ANY CONSEQUENTIAL, INDIRECT, EXEMPLARY , SPECIAL, OR INCIDENTAL 
+DAMAGES, INCLUDING ANY LOSS OF DATA OR LOST PROFITS, ARISING FROM YOUR USE OF THE DOCUMENTATION.
+© 2009–2010 Xilinx, Inc. XILINX, the Xilinx logo, Virtex, Spartan, ISE, and other designated brands included herein are trademarks of Xilinx 
+in the United States and other countries. All other trademarks are the property of their respective owners.
+Revision History
+The following table shows the revision history for this document.
+ 
+Date Version Revision
+06/24/09 1.0 Initial Xilinx release.
+01/05/10 1.1 Updated On-Chip Termination Benefits. Added PCI66_3 to Table 1-5. Revised 
+Figure 1-6. Clarifying text edits on pages 16, 17, and 18. Added 
+IBUFDS_DIFF_OUT 
+and IBUFGDS_DIFF_OUT to the Spartan-6 FPGA SelectIO Primitives section 
+including updating Figure 1-13. Clarified bank availability of LVDS_25, LVDS_33, 
+Mini-LVDS, RSDS, TMDS, and PPDS on page 28 and 29. Clarified the title of Figure 1-19 
+and added Figure 1-20. Added 2.5V VCCO to Figure 1-19 and TMDS_33. Updated 
+Figure 1-20. Revised Figure 1-22. Moved the section HSTL/SSTL VREF Reference 
+Voltage. Removed the section Voltage Clamps Using Internal Diodes Enabled By Using PCI 
+I/O Standards.
+Changed SYNC and SRTYPE description in Table 2-2. Corrected Figure 2-5 by switching 
+C0 and C1 inputs. Added a clarifying note to Output DDR Overview (ODDR2). Updated 
+the discussion around Figure 2-20. Updated discussion in I/O Delay Calibration and 
+Reset.
+Changed description of DATA_RATE. Updated discussion in Cascade Operation. 
+Updated Phase Detector Overview. Updated MASTER ISERDES2 in Figure 3-4, page 85. 
+Clarifying sample timing on page 88. Changed descriptions of attributes in Table 3-6. 
+Updated discussion in Cascade Operation. Redrew Figure 3-12, page 96.
+02/02/10 1.2 Removed the invalid M2 mode from I/O Pins During Power-On and Configuration in 
+Chapter 1. Removed Figures 1-19 though 1-28. Updated Table 1-5 with bank restrictions 
+discussion.
+Updated Figure 2-1. Added Clock Resources Available to the I/O Interface Logic 
+including Figure 2-2 and Table 2-1.
+Revised SerDes ratios in the ISERDES2 Overview and OSERDES2 Overview 
+introductions. Updated Phase Detector Overview introduction. Revised Figure 3-4. 
+Added further clarification to OSERDES2 Operation. Added Table 3-7 and updated 
+Figure 3-10.
+UG381 (v1.4) December 16, 2010 www.xilinx.com Spartan-6 FPGA SelectIO Resources
+03/15/10 1.3 Revised Table 1-5, see DS162: Spartan-6 FPGA Data Sheet for recommended operating 
+conditions. Added Pi

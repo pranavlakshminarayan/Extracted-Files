@@ -1,0 +1,84 @@
+Appendix 13 February 2002 1
+Appendix
+A Instruction Set
+Each MIPS microprocessor instruction is 32 bits long. The instructions come in 3
+structures. The ﬁrst is R-type instructions (or sometimes known as “Special”):
+A.1 R-type
+The R-type instructions take 2 register inputs (RS and RT) and one output register
+(RD). An operation is applied to the input values and the result is placed in the destina-
+tion register. The operations that are available for this instruction type are:
+ADD Simple arithmetic Addition RD = RS - RT
+ADDU As ADD but does not cause an interrupt when on an Overﬂow.
+SUB Simple arithmetic Subtract RD = RS - RT
+SUBU As SUB but does not cause an interrupt when on an Overﬂow.
+AND Bitwise And RD = RS & RT
+OR Bitwise Or RD = RS | RT
+XOR Bitwise Xor RD = RS ^ RT
+NOR Bitwise Nor RD =~RS |~RT
+SLT Set RD to 1 if RS is less than RT else set RD to 0
+If (RS<RT) RD=1 else RD=0
+SLTU !!!!!!!!!!! Shaft didn’t implement fool!!! (did I?)
+JR Move RS to the program counter
+MUL Multiply HI:LO = RS * RT
+MULU Multiply UnsignedHI:LO = RS * RT
+DIV Divide LO = RS / RT Remainder HI
+DIVU Divide Unsigned LO = RS / RT Remainder HI
+SYSCALL Cause an exception
+BREAK Cause an exception (The kernel knows which one was called)
+Appendix 13 February 2002 2
+The R-type instruction is also capable of doing shifts. The Shift operation takes an
+input Register to be sifted (RT) a destination register (RD) and either a 5 bit immediate
+value (SA) or another register (RS). Register RT is shifted by the number speciﬁed in
+either the SA value or the bottom 5 bits of register RS.
+The operations that are available for this instruction type are:
+SLL Shift logical left ﬁlling in 0’s
+SRL Shift logical right ﬁlling in 0’s
+SRA Shift arithmetic right ﬁlling in RT
+31
+The encoded instruction looks like so:
+33222222222211111111110000000000
+10987654321098765432109876543210  Bit number
+000000|RS ||RT ||RD ||SA ||OPP |  Field
+  6     5    5    5    5    6     Field Size
+A.2 I-type
+The I-type instructions take 1 input register (RS) a 16 bit immediate value (IMM) and a
+destination register (RT). The IMM is sign extended on all arithmetic operations. An
+operation is applied to the input values and the result is placed in the destination regis-
+ter. The operations that are available for this instruction type are:
+ADDI Simple arithmetic Add RT = RS + IMM
+ADDIU As ADD but does not cause an interrupt when on an Overﬂow.
+ANDI Bitwise And RT = RS & IMM
+ORI Bitwise Or RT = RS | IMM
+XORI Bitwise Xor RT = RS ^ IMM
+LUI Load to the top of the register RT = IMM<<16
+SLTI Set RT to 1 if RS is less than IMM else set RT to 0
+If (RS<IMM) RD=1 else RD=0
+SLTIU !!!!!!!!!!! Shaft didn’t implement! fool!!! (Or did I?) LOOK UP!
+The I-type instructions are also used to do branches. The branch instructions take a
+16bit immediate (IMM) and two registers (RS and RT). RS and RT are tested and if
+they match the condition then the branch may proceed. To execute the branch the cur-
+rent Immediate after being shifted by two and sign extended is added to the current PC.
+This allows branches of up to 32K in either direction. The operations that are available
+for this instruction type are:
+BGEZ Branch if Greater or Equal to Zero Br if RS >= 0
+Appendix 13 February 2002 3
+BLTZ Branch if Less Than Zero Br if RS <  0
+BGTZ Branch if Greater Than Zero Br if RS >  0
+BLEZ Branch if Less or Equal to Zero Br if RS <= 0
+BEQ Branch if EQual Br if RS == RT
+BNE Branch if Not Equal Br if RS != RT
+The memory access instructions are also encoded in I-type instructions. The immediate
+is sign extended and added to RS to create an effective address.
+LW Load Word RT = [RS+IMM]
+32
+LH Load Half RT = [RS+IMM] 16
+LHU Load Half Unsigned RT = 0 16||[RS+IMM]16
+LB Load Byte RT = [RS+IMM] 8
+LHU Load Half Unsigned RT = 0 24||[RS+IMM]8
+LWL Load Word Left See below
+LWR Load Word Right See below
+SW Store Word [RS+IMM] 32 = RT
+SH Store Half [RS+IMM] 16 = RT
+LB Store Byte [RS+IMM] 8 = RT
+LWL Store Word Left See below
+LWR Store Word Right See below

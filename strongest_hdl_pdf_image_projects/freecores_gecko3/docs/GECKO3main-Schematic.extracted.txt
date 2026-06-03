@@ -1,0 +1,339 @@
+1
+1
+2
+2
+3
+3
+4
+4
+5
+5
+6
+6
+7
+7
+8
+8
+D D
+C C
+B B
+A A
+1
+Berne University of Applied Science
+School of Engineering and
+Information Technology
+Quellgasse 21CH-2501 Biel19
+GECKO3main: System overview
+zac1 1.0
+23.07.2008 13:50:40
+top.SchDoc
+Title:
+Size: Author:
+Date:
+File:
+Sheet ofTime:
+A3_L
+ Revision:
+Power supplies
+power.SCHDOC
+PWR_DOWN/INT
+ETH_RESET
+Flash_D1_[0..15]
+Power Good
+Low Battery
+Flash_D0_[0..15]
+Flash_BYTE
+Flash_WE
+Flash_RP
+Flash_OE
+Flash_CE0
+SDA_ext
+SCL_ext
+PWM[0..7]
+GPIO1_[0..51]
+Encoder[0..7]
+GPIO2_[0..115]
+Flash_A[0..23]
+MOSI
+SCLK
+MISO
+SPI_CS_F
+Dram_D1_[0..15]
+Dram_A1_[0..13]
+Dram_LDM1
+Dram_UDM1
+Dram_CS1
+Dram_WE1
+Dram_CAS1
+Dram_RAS1
+Dram_CKE1
+Dram_CK1
+Dram_CK1
+Dram_BA1_1
+Dram_BA1_0
+Dram_LDQS1
+Dram_UDQS1
+LED[0..7]
+Button[0..2]
+Switch[0..3]
+TX_CLK
+RXD_[0..3]
+RX_CLK
+RX_DV
+RX_ER
+CRS
+COL
+TX_EN
+TXD_[0..3]
+MDC
+MDIO
+D[0..15]
+DONE
+INIT_B/WRX
+PROG_B
+RDWR_B/WRU
+BUSY/RDYX
+CS_B/RDYU
+CCLK
+Dram_D0_[0..15]
+Dram_A0_[0..13]
+Dram_LDM0
+Dram_UDM0
+Dram_CS0
+Dram_WE0
+Dram_CAS0
+Dram_RAS0
+Dram_CKE0
+Dram_CK0
+Dram_CK0
+Dram_BA0_1
+Dram_BA0_0
+Dram_LDQS0
+Dram_UDQS0
+EXTCLK0
+EXTCLK1
+TCK
+TDI
+TMS
+TDO
+Serial out
+Serial in
+Reset
+IFCLK
+Dram_CK1_fb
+Dram_CK0_fb
+LineSensorOut2
+LineSensorOut1
+LineSensorIn2
+LineSensorClk
+LineSensorIn1
+Xilinx Spartan3 FPGA
+fpga.SCHDOC
+MOSI
+SPI_CS_F
+SCLK
+MISO
+SPI Flash
+spi-flash.SchDoc
+PWR_DOWN/INT
+ETH_RESET
+TX_CLK
+RXD_[0..3]
+RX_CLK
+RX_DV
+RX_ER
+CRS
+COL
+TX_EN
+TXD_[0..3]
+MDC
+MDIO
+Ethernet Interface
+ethernet.SCHDOC
+Dram_D1_[0..15]
+Dram_A1_[0..13]
+Dram_A0_[0..13]
+Dram_D0_[0..15]
+TCK
+TDI
+TMS
+TDO
+Serial out
+Serial in
+JTAG and RS232
+jtag.SchDoc
+SDA
+SCL
+Vbus_sw
+I2C Components
+i2c.SchDoc
+Vbus
+PWM[0..7]
+GPIO1_[0..51]
+Encoder[0..7]
+Power Good
+Low Battery
+SDA_ext
+Reset
+SCL_ext
+EXTCLK0
+EXTCLK1
+LineSensorOut2
+LineSensorOut1
+LineSensorIn2
+LineSensorClk
+LineSensorIn1
+IO-BUS 1
+io-bus.SchDoc
+GPIO2_[0..115]
+IO-BUS 2
+io-bus2.SchDoc
+LED[0..7]
+Button[0..2]
+Switch[0..3]
+Reset
+Switches
+switches.SchDoc
+D[0..15]
+Vbus
+DONE
+INIT_B/WRX
+PROG_B
+RDWR_B/WRU
+BUSY/RDYX
+RESET
+CS_B/RDYU
+CCLK
+MISO
+SPI_CS_F
+MOSI
+SCLK
+SDA
+SCL
+Vbus_sw
+IFCLK
+USB 2.0 Interface
+usb.SCHDOC
+Flash_A[0..23]
+Flash_BYTE
+Flash_WE
+Flash_RP
+Flash_OE
+Flash_CE0
+Flash_D0_[0..15]
+Flash_D1_[0..15]
+NOR Flash
+flash.SchDoc
+Dram_D0_[0..15]
+Dram_A0_[0..13]
+Dram_LDM0
+Dram_UDM0
+Dram_CS0
+Dram_WE0
+Dram_CAS0
+Dram_RAS0
+Dram_CKE0
+Dram_CK0
+Dram_CK0
+Dram_BA0_1
+Dram_BA0_0
+Dram_LDQS0
+Dram_UDQS0
+Dram_CK0_fb
+DDR SDRAM 1
+dram1.SCHDOC
+Dram_D1_[0..15]
+Dram_A1_[0..13]
+Dram_LDM1
+Dram_UDM1
+Dram_CS1
+Dram_WE1
+Dram_CAS1
+Dram_RAS1
+Dram_CKE1
+Dram_CK1
+Dram_CK1
+Dram_BA1_1
+Dram_BA1_0
+Dram_LDQS1
+Dram_UDQS1
+Dram_CK1_fb
+DDR SDRAM 2
+dram2.SCHDOC
+http://labs.ti.bfh.ch/gecko/wiki/gecko/license
+For more information:
+N0DRAM0A000 N0DRAM0A001 N0DRAM0A002 N0DRAM0A003 N0DRAM0A004 N0DRAM0A005 N0DRAM0A006 N0DRAM0A007 N0DRAM0A008 N0DRAM0A009 N0DRAM0A0010 N0DRAM0A0011 N0DRAM0A0012 N0DRAM0A0013 
+N0DRAM0A100 N0DRAM0A101 N0DRAM0A102 N0DRAM0A103 N0DRAM0A104 N0DRAM0A105 N0DRAM0A106 N0DRAM0A107 N0DRAM0A108 N0DRAM0A109 N0DRAM0A1010 N0DRAM0A1011 N0DRAM0A1012 N0DRAM0A1013 
+N0DRAM0D000 N0DRAM0D001 N0DRAM0D002 N0DRAM0D003 N0DRAM0D004 N0DRAM0D005 N0DRAM0D006 N0DRAM0D007 N0DRAM0D008 N0DRAM0D009 N0DRAM0D0010 N0DRAM0D0011 N0DRAM0D0012 N0DRAM0D0013 N0DRAM0D0014 N0DRAM0D0015 
+N0DRAM0D100 N0DRAM0D101 N0DRAM0D102 N0DRAM0D103 N0DRAM0D104 N0DRAM0D105 N0DRAM0D106 N0DRAM0D107 N0DRAM0D108 N0DRAM0D109 N0DRAM0D1010 N0DRAM0D1011 N0DRAM0D1012 N0DRAM0D1013 N0DRAM0D1014 N0DRAM0D1015 
+1
+1
+2
+2
+3
+3
+4
+4
+5
+5
+6
+6
+7
+7
+8
+8
+D D
+C C
+B B
+A A
+2
+Berne University of Applied Science
+School of Engineering and
+Information Technology
+Quellgasse 21CH-2501 Biel19
+FPGA Parts
+zac1 1.0
+23.07.2008 13:50:40
+fpga.SCHDOC
+Title:
+Size: Author:
+Date:
+File:
+Sheet ofTime:
+A3_L
+ Revision:
+PWR_DOWN/INT
+ETH_RESETFlash_D1_[0..15]
+Power Good
+Low Battery
+Flash_D0_[0..15]
+Flash_BYTE
+Flash_WE
+Flash_RP
+Flash_OE
+Flash_CE0
+SDA_ext
+SCL_ext
+PWM[0..7]
+GPIO1_[0..51]
+Encoder[0..7]
+Flash_A[0..23]
+MOSI
+SCLK
+MISO
+SPI_CS_F
+LED[0..7]
+Button[0..2]
+Switch[0..3]
+TX_CLK
+RXD_[0..3]
+RX_CLK
+RX_DV
+RX_ER
+CRS
+COL
+TX_EN
+TXD_[0..3]
+MDC
+MDIO
+Seri

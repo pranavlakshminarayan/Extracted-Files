@@ -1,0 +1,52 @@
+ 
+Altera Virtual JTAG 
+(Test Access Port)
+ 
+Author: Nathan Yawn
+nathan.yawn@opencores.org
+Rev. 1.0
+July 18, 2008
+Open Cores                Altera Virtual JTAG       6/14/2009
+Copyright (C) 2008-2009 Nathan Yawn
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU  
+Free  Documentation  License,  Version  1.2  or  any later  version published  by the  Free  Software  
+Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of  
+the  license  should be  included  with  this  document.   If  not,  the  license  may  be  obtained  from  
+www.gnu.org, or by writing to the Free Software Foundation.
+This document is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;  
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR  
+PURPOSE.
+Rev 1.0                 Page 2 of 10
+Open Cores                Altera Virtual JTAG       6/14/2009
+History
+Rev. Date Author Description
+1.0 18/07/2008 Nathan Yawn First Draft
+Rev 1.0                 Page 3 of 10
+Open Cores                Altera Virtual JTAG       6/14/2009
+Contents
+1. INTRODUCTION............................................................................................................................5
+2. OPERATION....................................................................................................................................6
+2.1. ALTERA SLD_VIRTUAL_JTAG MEGAFUNCTION......................................................................................................................6
+2.2. INSTRUCTIONS................................................................................................................................................................. 6
+2.3. COMMUNICATING WITH THE SLD_VIRTUAL_JTAG...................................................................................................................7
+3. IO PORTS.........................................................................................................................................8
+3.1. DEBUG PORTS.................................................................................................................................................................8
+4. REGISTERS..................................................................................................................................... 9
+4.1. REGISTER LIST................................................................................................................................................................9
+4.2. VIRTUAL IR (INSTRUCTION REGISTER)...............................................................................................................................9
+5. INTEGRATED SYSTEM..............................................................................................................10
+Rev 1.0                 Page 4 of 10
+Open Cores                Altera Virtual JTAG       6/14/2009
+1
+Introduction
+The  Altera  Virtual  JTAG  core  is  used  for  development  purposes  (hardware  and  software  
+debugging).   It uses the Altera sld_virtual_jtag megafunction to allow debugging of an OpenRisc-based  
+System-on-Chip (SoC) using the same JTAG interface IO pins used to upload the bitstream to the  
+FPGA.  This core can only be used in Altera FPGAs which support the sld_virtual_jtag megafunction.  
+Before continuing with this document, it is recommended that you familiarize yourself with the IEEE  
+1149.1  specification  (JTAG  and  Boundary  Scan),  and  also  that  you  read  the  Altera  document  
+“sld_virtual_jtag Megafunction User Guide.”
+The altera_virtual_jtag core is designed to replace the “jtag” Test Access Port (TAP) core in an  
+Altera-based system.  It is designed to provide an interface between the FPGA's JTAG pins and the SoC  
+debug core.  In particular, the altera_virtual_jtag core is designed to interface with the Advanced Debug  
+Interface (adv_dbg_if co

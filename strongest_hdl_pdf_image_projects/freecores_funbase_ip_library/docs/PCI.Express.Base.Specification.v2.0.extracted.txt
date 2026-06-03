@@ -1,0 +1,87 @@
+  
+ 
+ 
+ 
+ 
+ 
+ 
+PCI Express
+® 2.0 
+Base Specification 
+Revision 0.9 
+ 
+September 11, 2006  
+ 
+ 
+ 
+ 2 
+Revision Revision History DATE 
+0.5 
+PCI-SIG 0.5 draft.  Incorporated the following ECNs/ECRs: 
+• Trusted Configuration Space for PCI Express, 23 March 2005, updated 1 July 2005 
+• Link Speed Management, updated 25 August 2005 
+• PCI Express Capability Structure Expansion, 21 March 2005, updated 19 August 2005 
+• Link Bandwidth Notification Mechanism, 20 April 2005, updated 26 August 2005 
+Also added Errata for the PCI Express Base Specification, Revision 1.1, released 1 August 2005 
+9/16/05 
+0.7 
+PCI-SIG 0.7 draft.  Incorporated the following ECNs/ECRs: 
+• PCI Express Capability Structure Expansion, 21 March 2005, updated 3 November 
+2005 
+• Link Bandwidth Notification Mechanism, 20 April 2005, updated 2 November 2005 
+• Completion Timeout Control Capability, 27 April 2005, updated 3 November 2005 
+• Function Level Reset (FLR), 12 July 2005 
+• PCI Express Access Control Services (ACS), 27 September 2005 
+Also added Errata for the PCI Express Base Specification, Revision 1.1, released 31 October 
+2005 
+11/14/05 
+0.7a Corrected cut and paste errors in 0.7 draft dated 11/14/05 4/10/06 
+0.9 Incorporated the following ECNs/ECRs: 
+Link Bandwidth Notification Mechanism, 20 April 2005, updated 13 April 2006  
+Power Limit Re-definition, 2 May 2006 
+PCI Express Access Control Services (ACS), 27 September 2005, updated 1 June 2006 
+Added Errata for the PCI Express Base Specification, Revision 1.1, Second release, 8 May 2006, 
+updated 15 June 2006 
+Incorporated the following ECRs: 
+Function Level Reset (FLR), 12 July 2005, Updated 16 June 2006 
+Function Level Reset (FLR), 12 July 2005, Updated 23 June 2006 
+Additional edits to Link registers, etc. 
+Incorporated the Link Bandwidth Notification ECR, 20 April 2005, updated 28 June 2006  
+Updates from EWG. 
+Added Errata for the PCI Express Base Specification, Revision 1.1, Third release, 25 August 2006 
+Terminology updates from PWG. 
+9/11/06 
+ 
+PCI-SIG disclaims all warranties and liability for the use of this document and the information contained herein and assumes no 
+responsibility for any errors that may appear in this document, nor does PCI-SIG make a commitment to update the information 
+contained herein.   
+Contact the PCI-SIG office to obtain the latest revision of this specification.   
+Questions regarding the PCI Express Base Specification or membership in PCI-SIG may be forwarded to:  
+Membership Services 
+www.pcisig.com 
+E-mail:  administration@pcisig.com 
+Phone:  503-619-0569 
+Fax:  503-644-6708 
+ 
+Technical Support 
+techsupp@pcisig.com 
+ 
+DISCLAIMER 
+This PCI Express Base Specification is provided “as is” with no warranties whatsoever, including any warranty of 
+merchantability, noninfringement, fitness for any particular purpose, or any warranty otherwise arising out of any proposal, 
+specification, or sample.  PCI-SIG disclaims all liability for infringement of proprietary rights, relating to use of information in this 
+specification.  No license, express or implied, by estoppel or otherwise, to any intellectual property rights is granted herein. 
+ 
+ 
+PCI Express, PCIe, and PCI-SIG are registered trademarks of PCI-SIG. 
+All other product names are trademarks, registered trademarks, or servicemarks of their respective owners. 
+Copyright © 2002-2006 PCI-SIG 
+PCI EXPRESS 2.0 BASE SPECIFICATION, REV. 0.9 
+ 3 
+ 
+Contents 
+OBJECTIVE OF THE SPECIFICATION.................................................................................... 21 
+DOCUMENT ORGANIZATION ................................................................................................ 21 
+DOCUMENTATION CONVENTIONS...................................................................................... 22 
+TERMS AND ACRONYMS........................................................................................................ 23 
+REFERENCE DOCUMENTS.................................................................

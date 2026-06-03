@@ -1,0 +1,26 @@
+{
+  "project_id": "freecores_bustap-jtag",
+  "name": "bustap-jtag",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/bustap-jtag",
+  "extraction_date": "2026-06-02T16:52:21",
+  "license": null,
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 19,
+    "vhdl_files": 0,
+    "other_hdl_files": 0,
+    "pdf_files": 3,
+    "markdown_files": 0,
+    "text_files": 2,
+    "image_files": 1,
+    "total_bytes": 2097676,
+    "languages_seen": [
+      "Verilog"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": []
+}

@@ -1,0 +1,65 @@
+SDRAM CONTROLLER 
+Specification 
+ 
+ 
+Author: Dinesh Annayya 
+dinesha@opencores.org 
+ 
+ 
+Rev. 0.3 
+February 14, 2012 
+
+This page has been intentionally left blank
+Revision History 
+ 
+Rev. Date Author Description 
+0.0 01/17/2012 Dinesh Annayya First draft release 
+0.1 01/30/2012 Dinesh Annayya  Wish Bone Interface is added 
+ 8 Bit SDRAM Support is added 
+ Test bench is automated for Stand-alone 
+SDRAM controller and Integrated 
+SDRAM controller with wish bone 
+interfaces 
+0.2 02/07/2012 Dinesh Annayya  Frequently asked Section is added 
+ Block Diagram are upgraded 
+0.3 02/14/2012 Dinesh Annayya  FPGA Bench mark result are added 
+ 
+OpenCores SDRAM controller core 2/14/2012 
+www.opencores.org Rev 0.0 Preliminary 1 of 15 
+ 
+Contents 
+SDRAM CONTROLLER Specification ............................................................................. 0 
+1 Introduction ...................................................................................................................... 2 
+1.1 FEATURES .............................................................................................................. 3 
+2. IO ports ........................................................................................................................... 4 
+2.1 Core Parameters ........................................................................................................ 4 
+2.2 WISHBONE interface signals .............................................................................. 4 
+2.3 Application interface signals..................................................................................... 4 
+2.4 SDRAM External connections .................................................................................. 5 
+3 Configuration ................................................................................................................... 6 
+4 SDRAM Overview........................................................................................................... 6 
+5 Functional Description ..................................................................................................... 9 
+5. 1 Wish Bone Bus Handler: ................................................................................... 10 
+5.2 SDRAM Controller ............................................................................................. 10 
+5.3 SDRAM Interface ............................................................................................... 12 
+6. SDRAM Data Path ........................................................................................................ 16 
+7 Simulation ...................................................................................................................... 17 
+8 FPGA Bench Mark ........................................................................................................ 20 
+9 WAVEFORM ................................................................................................................ 21 
+Appendix A : Timing ........................................................................................................ 24 
+A.1 SDRAM Output signals parameter definition ........................................................ 24 
+A2. SDRAM Input signals parameter definition .......................................................... 24 
+Appendix A : Frequently Asked Q ................................................................................... 25 
+ 
+ 
+OpenCores SDRAM controller core 2/14/2012 
+www.opencores.org Rev 0.0 Preliminary 2 of 15 
+1 Introduction 
+ 
+Synchronous DRAM (SDRAM) has beco me a mainstream memory of choice in  
+embedded system memory design. For high -end applications using processors the 
+interface to the SDRAM is supported by the processor’s built -in peripheral module. 
+However, for other applications, the system designer must d esign a controller to provide 
+proper commands for SDRAM initialization, read/write accesses and memory refresh. 
+ 
+This 

@@ -1,0 +1,26 @@
+{
+  "project_id": "freecores_bw_tiff_compression",
+  "name": "bw_tiff_compression",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/bw_tiff_compression",
+  "extraction_date": "2026-06-02T16:52:21",
+  "license": null,
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 0,
+    "vhdl_files": 11,
+    "other_hdl_files": 0,
+    "pdf_files": 1,
+    "markdown_files": 0,
+    "text_files": 0,
+    "image_files": 17,
+    "total_bytes": 25704508,
+    "languages_seen": [
+      "VHDL"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": []
+}

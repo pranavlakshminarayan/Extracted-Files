@@ -1,0 +1,3 @@
+RVI Prototype Board
+SDRAM SODIMM Module
+SDRAM Memory Connector

@@ -1,0 +1,26 @@
+{
+  "project_id": "freecores_artec_dongle_ii_fpga",
+  "name": "artec_dongle_ii_fpga",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/artec_dongle_ii_fpga",
+  "extraction_date": "2026-06-02T16:52:14",
+  "license": null,
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 0,
+    "vhdl_files": 16,
+    "other_hdl_files": 0,
+    "pdf_files": 1,
+    "markdown_files": 0,
+    "text_files": 4,
+    "image_files": 2,
+    "total_bytes": 1354822,
+    "languages_seen": [
+      "VHDL"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": []
+}

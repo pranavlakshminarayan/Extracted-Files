@@ -1,0 +1,19 @@
+P_SEL DEST_OP X_OP Y_OP START
+876543210
+EXP/M
+9
+Control bits
+1610-15
+--
+20-31
+READY MEM_
+ERR
+17
+FIFO_
+FULL
+18
+FIFO_
+ERR
+19
+--
+Interrupt flags

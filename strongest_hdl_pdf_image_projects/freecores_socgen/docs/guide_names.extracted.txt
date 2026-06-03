@@ -1,0 +1,47 @@
+SOCGEN Project
+Naming Guidelines
+As designs continue to grow in size along with the size of the design team, it is mandatory that all code must 
+written to adhere to name space guidelines. The days when a designer could simply pull names out of thin air 
+are faster disappearing. Guidelines have  two functions. First they ensure that no two designers select the 
+same name for different objects and have a name collision. The second function is to ensure that the chosen 
+names are meaningful to all of the design team. It is quite common for designers to select names that only 
+make sense to themselves and no one else on the team. 
+Signal ,Port and Pad Names
+Signals define the nodes inside of  a component and each node must have a unique name. That signal name 
+becomes the port name when a node is ported up the hierarchy. The port names become the pad names at the 
+top level.  All of these exist in the same name space along with other items such as instance names. 
+Managing this name space is crucial.
+There are two distinct groups that use these names. The IC design team is one group and it will use all three. 
+The other group consists of  System designers,PCB designers, Board Test engineers etc.
+They only access the chip via the pad names and never see the internal ones.  These two groups have 
+incompatible objectives. The IC design team is dealing with millions of names and needs a naming scheme 
+that produces long descriptive names that won't collide and conveys information about the signals function. 
+The rest of the world is only dealing with a few hundred or thousand names. They also have their own 
+naming requirements. These typically are:
+• Short Names that fit on a schematic graphic symbol.  If you have 99 short names and 1 long one then 
+you have a long column and wasted white space on your schematic. 
+• Capital Letters.   They make a packed schematic readable. You don't want your board designers trying 
+to guess if it's a 1 or a l. 
+• ATE naming requirements.  Do you know what the IEEE 1149.1 pad naming rules are? If not then 
+you shouldn't be selecting pad names. 
+The guideline for selecting pad names is that the IC design team should not attempt to pick pad names based 
+on the internal signal names.  They should first meet all of the PCA customers requirements without regard to 
+what names are chosen for the internal signals.  Name collisions are avoided by ensuring that ALL pad 
+names start with a capital letter and that all internal names  start with a small one. 
+For internal signal and port names you must first find the four pieces of information that will uniquely 
+identify every signal in the design. These are:
+• Interface Name     You don't want 5 different ways to spell clock in a design.  Each  team must  agree 
+on  common signal names and everyone must follow the rules. These are called standard interfaces. 
+The team must create a document that lists all the standard interfaces  and their names. It is 
+ESSENTIAL that once a standard is chosen then all signals covered by that standards MUST follow 
+the naming rules and the no signals that are not covered by the standard are allowed to use its name.
+• Sub_member         If the standard interface has more than one signal  then you must also define the 
+names for each sub_member as part of the standard 
+• ad hoc                    If a signal is not defined by a standard interface then an ad hoc signal can be 
+created based on the designers insight. If a module has 2 or more signals with the same standard 
+interface then a ad hoc field is needed to distinguish between them. 
+• Driving Instance    This is the instance name that is driving the signal. Wired or tristate logic is not 
+allowed. There will  be one and only one driver per node. 
+You can create signal names by simply gathering this information and concatenating it into  a name but it is 
+perfectly acceptable to drop any field(s) if they are not needed to uniquely identify a node.
+For example a IC design

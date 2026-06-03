@@ -1,0 +1,37 @@
+{
+  "project_id": "klyone_processor_opencpu32",
+  "name": "processor_opencpu32",
+  "source": "klyone",
+  "source_url": "https://github.com/klyone/opencores-ip/tree/processor_opencpu32",
+  "extraction_date": "2026-06-02T16:12:27",
+  "license": null,
+  "has_readme": true,
+  "readme_excerpt": "OpenCPU32 Project\n\nDirectory structure\ndocs/gen: \tDoxygen generated documentation\nhdl:\t\tLocation of ISE project (VHDL)\nsimulator:\tCPU Simulator source code\ntools\t\tSome tools used on the project\n\nBibliography:\nhttp://vhdlguru.blogspot.com.br/\nhttp://opensource.zylin.com/zpu.htm\nhttp://www.amazon.com/Digital-Logic-Microprocessor-Design-VHDL/dp/0534465935/ref=sr_1_4?ie=UTF8&qid=1333221524&sr=8-4\nhttp://en.wikipedia.org/wiki/CPU_design\nhttp://en.wikipedia.org/wiki/Computer_architecture\n",
+  "stats": {
+    "verilog_files": 22,
+    "vhdl_files": 16,
+    "other_hdl_files": 0,
+    "pdf_files": 4,
+    "markdown_files": 0,
+    "text_files": 2,
+    "image_files": 3,
+    "total_bytes": 2455657,
+    "languages_seen": [
+      "Verilog",
+      "VHDL"
+    ]
+  },
+  "quality_tier": "A",
+  "quality_reason": "README + (PDF or images) + 3+ HDL files",
+  "references": [
+    "http://en.wikipedia.org/wiki/CPU_design",
+    "http://en.wikipedia.org/wiki/Computer_architecture",
+    "http://opensource.zylin.com/zpu.htm",
+    "http://vhdlguru.blogspot.com.br/",
+    "http://www.SynthWorks.com",
+    "http://www.amazon.com/Digital-Logic-Microprocessor-Design-VHDL/dp/0534465935/ref=sr_1_4?ie=UTF8&qid=1333221524&sr=8-4",
+    "http://www.ecs.umass.edu/ece/koren/arith/simulator",
+    "http://www.gnu.org/licenses/gpl.html",
+    "https://github.com/fabriziotappero/ip-cores.git"
+  ]
+}

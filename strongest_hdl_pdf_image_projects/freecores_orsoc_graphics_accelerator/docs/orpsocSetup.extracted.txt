@@ -1,0 +1,77 @@
+Getting started with ORPSoC on the ATLYS
+board
+Anton Fosselius, Per Lenander
+June 1, 2012
+1
+Contents
+1 Introduction 3
+2 Hardware 3
+3 Installing Software 3
+3.1 Xilinx ISE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+3.2 Subversion and Git . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+3.3 ORPSoC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+3.4 ork1sim . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+3.5 OpenRISC toolchain . . . . . . . . . . . . . . . . . . . . . . . . . 5
+3.6 SPI Flash . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+3.7 Board speciﬁc library for bare metal . . . . . . . . . . . . . . . . 6
+3.8 Toolchain Done! . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+4 Building and Flashing 6
+4.1 Bare metal ”hello world” . . . . . . . . . . . . . . . . . . . . . . . 7
+4.2 Running the ”hello world” on or1ksim . . . . . . . . . . . . . . . 7
+4.3 Running the ”hello world” on the FPGA . . . . . . . . . . . . . . 7
+4.4 Building the Linux kernel . . . . . . . . . . . . . . . . . . . . . . 8
+4.5 Running the Linux kernel in or1ksim . . . . . . . . . . . . . . . . 8
+4.6 Running the Linux kernel on the FPGA . . . . . . . . . . . . . . 8
+4.6.1 Bad way . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+4.6.2 Good way . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+5 Extra 10
+5.1 UART . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+5.2 Adding a RTL Module . . . . . . . . . . . . . . . . . . . . . . . . 10
+5.3 Bare metal light LEDs in assembly . . . . . . . . . . . . . . . . . 10
+5.4 DDR2 RAM . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+5.5 Memory Mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+6 References 12
+2
+1 Introduction
+This document will explain how to set up an development environment in
+Ubuntu Linux for ORPSoC on the Atlys development board. It will give detailed
+descriptions on where to get the correct software and how to use it.
+The document contains various examples on how to conﬁgure the hardware
+and software to work correctly with the ORPSoC build system, from simply get-
+ting a led to blink to compiling a custom Linux kernel to run on the OpenRISC
+processor.
+2 Hardware
+To be able to follow every step of this article you will need the following hard-
+ware:
+• One Computer with a recent edition of Ubuntu installed (11.10 or later)
+• One Atlys FPGA board
+• One Computer with Windows XP or later installed
+The Windows computer is only used to do SPI Flash with the application
+Adept from Digilent. The authors of this document have to their regret not
+found any reliable way to do this in Linux. The Xilinx iMPACT programming
+tool can be used to program the FPGA itself, but is very unreliable and slow
+when programming the SPI Flash.
+3 Installing Software
+To be able to boot Linux on ORPSoC with the Atlys board, you will have to
+install a wide range of tools. This will take some time and lot of disk space
+(close to 20GB).
+3.1 Xilinx ISE
+Note: The trial version of Xilinx ISE does not work because it do not allow
+you to generate bitstreams.
+The ﬁrst thing you want to do is to sign up at Xilinx homepage and download
+the ISE webpack edition. The ISE webpack ﬁle is about 6Gbyte big, it will take
+a while to download. When the ISE is installed it will take about 13-15Gbyte
+of disk space. Make sure you have enough disk space available!
+http://www.xilinx.com/products/design-tools/ise-design-suite/ise-webpack.html
+Now when the ISE is downloading its time to download a webpack license,
+this is also done on the Xilinx homepage. When the ISE download is ﬁnished
+run the installer as ”sudo” and follow the instructions.
+3
+3.2 Subversion and Git
+To follow this document you need to have both subversion and git installed on
+your computer.
+sudo apt-get install subversion git
+3.3 ORPSoC
+Checkout the ORPSoC directory from OpenCores:
+git clone git://git.openrisc.net/stefan/orpsocv2
+You have to buil

@@ -1,0 +1,80 @@
+PRESENT DECODER
+documentation
+Krzysztof Gajewski
+and opencores.org
+www.opencores.org gajos@opencores.org
+Present Decoder (v. 0.2) - 2014/09/17
+PRESENT DECODER 2/ 13PRESENT DECODER 2/ 13PRESENT DECODER 2/ 13
+Change History
+Rev. Chapter Date Description Reviewer
+0.1 all 2014/05/25 First draft K. Gajewski
+0.2 all 2014/09/16 Some small corrections with the
+text, typos, etc.
+K. Gajewski
+Present Decoder (v. 0.2) - 2014/09/17 All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+PRESENT DECODER 3/ 13PRESENT DECODER 3/ 13PRESENT DECODER 3/ 13
+Contents
+1 Introduction 4
+2 Interface 5
+3 Internal structure and state machine workﬂow 6
+4 FPGA implementations 9
+5 Simulation 10
+6 Troubleshooting 11
+7 License and Liability 12
+All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+Present Decoder (v. 0.2) - 2014/09/17
+PRESENT DECODER 4/ 13PRESENT DECODER 4/ 13PRESENT DECODER 4/ 13
+1 Introduction
+Present is "ultra-lightweight" block cipher developed by A. Bogdanov et al. and proposed in 2007
+[1]. It uses 64 bit data block and 80 bit or 128 bit key. This cipher consists of 32 rounds, during
+which:
+• round key is added to plaintext
+• plaintext goes through sBoxes (substitution boxes)
+• plaintext after sBoxes goes through pLayer (permutation layer)
+• round key is updated
+After that, ciphertext feeds out the output. Brieﬂy algorithm was shown in Fig. 1. In subprojects
+Figure 1: Brieﬂy block scheme of the PRESENT block cipher
+Pure and PureTesting Present encoder components was presented. In this subproject Present
+decoder was presented. Decoding key is ﬁrstly generated, basing on the key used for data
+coding. Next, input data are decoded (taking into account "inverse" direction to the presented in
+Fig. 1), and at last feeds the output. This core works with 80 bit key. Target was Xilinx® Spartan
+3E XC3S500E [2] on Spartan 3E Starter Board [3] made by Digilent®.
+Present Decoder (v. 0.2) - 2014/09/17 All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+PRESENT DECODER 5/ 13PRESENT DECODER 5/ 13PRESENT DECODER 5/ 13
+2 Interface
+Top level component of the Present decoder was shown in Fig. 2. All inputs and outputs are
+synchronous except reset signal and sampled at rising edge of the clock. Type for all signals is
+STD_LOGIC or STD_LOGIC_VECTOR .
+Figure 2: Top level component of the Present decoder
+Signal name Width In/Out Description
+ciphertext 64 in input data which have to be decoded.
+key 80 in secret key used for input data decoding (the same
+which was used for data encoding).
+clk 1 in clock signal for the component
+reset 1 in asynchronous reset signal.
+start 1 in signal which starts decoding process.
+plaintext 64 out decoded text output.
+ready 1 out signal informing about end of decoding process.
+"0" - wait until end of data decoding.
+"1" - data at the ciphertext output are valid, you can
+read them.
+Table 1: Input/Output signals of the Present Decoder component
+All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+Present Decoder (v. 0.2) - 2014/09/17
+PRESENT DECODER 6/ 13PRESENT DECODER 6/ 13PRESENT DECODER 6/ 13
+3 Internal structure and state machine workﬂow
+Figure 3: Internal datapath between main components in the Present decoder.
+Internal datapath between main components was shown in Fig. 3. They are responsible for:
+• PresentEncKeyGen - key generator for decoding process. Before decoding stage, key need
+to be prepared to the ’appropriate value’. This value is signalled by ready = '1' . It is
+almost the same core as in Present subproject, but truncated from text encoding part.
+• PresentDec - subcomponent responsible for ciphertext decoding. It is working in similar
+way as Present cipher, but is working in inverse way.
+• FullDecoderSM - State machine controlling overall decoding process.
+More information about cipher core and key generation process can be found in
+./Present/doc/present_pure.pdf ﬁle ("Present" subproject documentation).
+State machine of the PresentDec component was shown in Fig. 4. It cons

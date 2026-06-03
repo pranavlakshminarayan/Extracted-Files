@@ -1,0 +1,83 @@
+ 
+ 
+UNIVERSIDADE FEDERAL 
+DE ITAJUBÁ
+TUTORIAL 
+VHDL 
+Grupo de 
+Microeletrônica
+Tutorial VHDL - 1 
+ 
+ 
+ 
+ 
+TUTORIAL VHDL 
+ 
+ 
+I INTRODUÇÃO 
+ 
+Não é possível projetar sistemas digitais sem entender alguns blocos básicos, tais 
+como portas lógicas e flip-flops. A maioria dos circuitos digitais baseados em portas lógicas e 
+flip-flops é normalmente projetad a a partir de equações Bool eanas. Várias técnicas foram 
+desenvolvidas para otimizar este procedimento, incluindo a minimização de equações para um 
+uso mais racional de portas lógicas e flip-flops. 
+Pela técnica Booleana deve-se obter uma expressão para cada entrada dos flip-flops e 
+dos blocos lógicos. Isto torna esta técnica imp raticável para projetos maiores, que contenham 
+muitos componentes devido ao grande número de  equações. Teoricamen te qualquer sistema 
+pode ser representado por equações Booleanas, apes ar de proibitivo para grandes circuitos. A 
+Figura 1 ilustra a composição de um circuito pela técnica Booleana. 
+Os projetos desenvolvidos por esquemátic o ampliaram as capacidades da técnica 
+Booleana por permitir o uso de portas lógicas, flip-flops e sub-circuitos. Estes sub-circuitos 
+por sua vez podem ser compostos por portas lógicas e outros sub-circuitos, e assim 
+sucessivamente podendo formar vári os níveis hierárquicos. Muito s projetistas preferem esta 
+técnica, pois ela é visualmente mais atrativa e se tem uma visão mais clara do relacionamento 
+entre os vários blocos.  
+Nestas técnicas o sistema é normalmente especificado como uma interconexão de 
+elementos, e não na forma de comportamento do sistema. Infelizmente, o projetista recebe as 
+especificações de um si stema na forma de comportamento desejado, isto é, o que o sistema 
+deve fazer sob certas condições. Adiciona lmente, mesmo utiliza ndo-se esquemáticos, o 
+projeto começa a ficar proibitivo para circuitos com muitas portas lógicas. 
+A maior dificuldade nos métodos tradiciona is de projeto é a conversão manual da 
+descrição do projeto em um conjunto de equações Booleanas. Esta dificuldade é eliminada 
+com o uso de linguagens de descrição de hardware – HDL ( Hardware Description 
+Languages). Pode-se, por exemplo, a partir de uma tabela verdade, ou da descrição de uma 
+máquina de estado, implementar um circuito usando-se HDL. Dentre as várias HDLs, as mais 
+populares são VHDL, Verilog e Abel. 
+Tutorial VHDL - 2 
+ 
+ 
+ 
+ 
+ 
+Figura 1 - Composição de um Circuito pela Técnica Booleana. 
+ 
+A letra V da palavra VHDL significa Very High Speed Integrated Circuit  (Circuito 
+Integrado de Alta Velocidade) e as demais letras, HDL significam Hardware Description 
+Language. Esse nome complicado foi criado pelo departamento de defesa dos Estados 
+Unidos, que foi a primeira instituição a rec onhecer as suas vantagens. O VHDL foi criado 
+visando simulação, modelagem e document ação, mas acabou recebendo mais tarde a 
+possibilidade de síntese, com o objetivo de se automatizar o projeto de circuitos. 
+O VHDL ganhou popularidade fora do ambiente militar, graças ao IEEE ( Institute of 
+Electrical and Electroni cs Engineering) que estabeleceu padrões para tornar a linguagem 
+universal. Com as ferramentas atuais, pode-se especi ficar um circuito a partir de seu 
+comportamento ou de sua estrutura, em vários níveis.  
+ 
+II ESTRUTURA 
+ 
+Todo sistema necessita de uma interf ace com o mundo externo. Em VHDL esta 
+interface é a entity, e é fundamental para todo e qualquer sistema. 
+Tutorial VHDL - 3 
+ 
+ 
+ 
+ 
+Para se atingir a funciona lidade desejada, os dados de vem sofrer transformações 
+dentro do sistema. Esta parte interna do sistema responsável pelas transformações dos dados é 
+chamada de corpo ou architecture. Qualquer que seja o sist ema, independente de sua 
+complexidade, necessita de uma interface (entity) e de um corpo (architecture). 
+Algumas vezes, alguns sistemas necessita m de funcionalidades adicionais, que são 
+conhecidas como package. 
+ 
+II.1 Entity 
+ 
+A entity é a parte principal de qualquer projet o, pois desc

@@ -1,0 +1,31 @@
+{
+  "project_id": "freecores_mod_sim_exp",
+  "name": "mod_sim_exp",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/mod_sim_exp",
+  "extraction_date": "2026-06-02T16:53:52",
+  "license": null,
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 2,
+    "vhdl_files": 46,
+    "other_hdl_files": 0,
+    "pdf_files": 18,
+    "markdown_files": 0,
+    "text_files": 12,
+    "image_files": 3,
+    "total_bytes": 12336500,
+    "languages_seen": [
+      "VHDL",
+      "Verilog"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": [
+    "http://associatie.kuleuven.be/",
+    "http://www.dramco.be/",
+    "http://www.kahosl.be/"
+  ]
+}

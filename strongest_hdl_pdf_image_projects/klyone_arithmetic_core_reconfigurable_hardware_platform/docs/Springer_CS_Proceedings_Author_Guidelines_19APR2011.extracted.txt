@@ -1,0 +1,63 @@
+Author Guidelines for the Preparation of Contributions 
+to Springer Computer Science Proceedings  
+Alfred Hofmann1,*
+{alfred.hofmann,ralf.gerstner,anna.kramer
+, Ralf Gerstner1, Anna Kramer1, and Frank Holzwarth2  
+1 Springer-Verlag, Computer Science Editorial, Heidelberg, Germany 
+}@springer.com 
+2 Springer-Verlag, Technical Support, Heidelberg, Germany 
+frank.holzwarth@springer.com 
+Abstract. The abstract is a mandatory elemen t that should summarize the con-
+tents of the paper and should contain at least 70 and at most 150 words.  Ab-
+stract and keywords are freely available in SpringerLink. 
+Keywords: We would like to encourage you to list your keywords here. They 
+should be separated by commas. 
+1 Introduction 
+You will find here Springer’s guidelines for the preparation of proceedings papers to 
+be published in one of the following series, in printed and electronic form: 
+• Lecture Notes in Computer Science (LNCS), incl. its subseries Lectu re Notes in 
+Artificial Intelligence (LNAI) and Lecture Notes in Bioinformatics (LNBI), and 
+LNCS Transactions; 
+• Lecture Notes in Business Information Processing (LNBIP); 
+• Communications in Computer and Information Science (CCIS); 
+• Lecture Notes of the Institut e for Computer Sciences, Social  Informatics and Tele-
+communications Engineering (LNICST); 
+• IFIP Advances in Information and Communication Technology (IFIP A ICT), for-
+merly known as the IFIP Series; 
+• Proceedings in Information and Communications Technology (PICT). 
+Your contribution may be prepared in LaTeX or Microsoft Word. Technical Instru c-
+tions for working with Springer’s style files and templates are provided in sep arate 
+documents which can be found in the respective zip packages on our website. 
+                                                                 
+*  No academic titles or descriptions of academic positions should be included in the addresses. 
+Either this information should be omi tted altogether (preferably), or it should be i ncluded in 
+a footnote at the end of the first page. Information of this nature, given in the a ddresses, will 
+be deleted by our typesetters. 
+2 
+2 Preparation of Your Paper 
+2.1 Structuring Your Paper 
+Affiliations. The affiliated institutions are to be listed directly below the names of the 
+authors. Multiple affiliatons should be marked with superscript arabic nu mbers, and 
+they should each start on a new line as shown in this document. In addition to the name 
+of your affiliation, we would ask you to give the town and the country in which it is 
+situated. If you prefer to include the entire postal address, then please feel free to do so. 
+E-mail addresses should start on a new line and should be grouped per affiliation. 
+Headings. Headings should be capitalized (i.e., nouns, verbs, and all other words  
+except articles, prepositions, and co njunctions should be set with an initial capital) 
+and should, with the exception of the  title, be aligned to the left. Only the first two 
+levels of section headings should be numbered, as shown in Table 1. The r espective 
+font sizes are also given in Table 1.  Kindly refrain from using “0” when numbering 
+your section headings. 
+Table 1. Font sizes of headings. Table captions should always be positioned above the tables.  
+Heading level Example Font size and style 
+Title (centered) Lecture Notes 14 point, bold 
+1st-level heading 1 Introduction 12 point, bold 
+2nd-level heading 2.1 Printing Area 10 point, bold 
+3rd-level heading Run-in Heading in Bold. Text follows 10 point, bold 
+4th-level heading Lowest Level Heading. Text follows 10 point, italic 
+Words joined by a hyphen are subject to a special rule. If the first word can stand 
+alone, the second word should be capitalized. 
+Here are some examples of headings: “Criteria to Disprove Context- Freeness of 
+Collage Languages”, “On Correcting the Intrusion of Tracing Non- deterministic Pro-
+grams by Software ”, “A User -Friendly and Extendable Data Distribution System ”, 
+“

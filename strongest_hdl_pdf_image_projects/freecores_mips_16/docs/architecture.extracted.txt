@@ -1,0 +1,55 @@
+数据存储器
+ALU
+MUX2
+       S3   dest   S1  S2
+MUX2
+MUX8 MUX8
+译
+码
+器
+Control logic
+      A B C D
+S1
+S2
+S3
+S4
+OP   Dest   Src1   Src2   Imm
+PC
++
+指令存储器
+MUX2
+2
+  
+Reset
+cond?
+地址
+写数据
+S3   dest   S1
+S3   dest   S1
+源和目标有相等
+且非0
+输入
+使能
+输入
+使能
+S4
+Clock
+写使能
+0
+插入
+空泡
+0
+S6
+S5
+输入
+使能
+IF_stage
+ID_stage
+EX_stage
+MEM_stage
+WB_stage
+Register file
+Hazard detection unit
+My MIPS_16 architecture
+S6
+S5

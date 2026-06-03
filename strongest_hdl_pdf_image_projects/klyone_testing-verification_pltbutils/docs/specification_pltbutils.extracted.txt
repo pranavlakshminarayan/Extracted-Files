@@ -1,0 +1,128 @@
+ 
+ 
+ 
+PlTbUtils 
+Specification 
+ 
+ 
+ 
+Author: Per Larsson 
+pela.opencores@gmail.com 
+ 
+ 
+ 
+ 
+Rev. 0.6 
+Februrary 2, 2015 
+  
+
+ OpenCores PlTbUtils Specification 2/2/2015 
+ 
+ 
+www.opencores.org Rev 0.6 Preliminary ii  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+This page has been intentionally left blank. 
+ OpenCores PlTbUtils Specification 2/2/2015 
+ 
+ 
+www.opencores.org Rev 0.6 Preliminary iii  
+Revision History 
+Rev
+. 
+Date Author Description  
+0.1 9/2/2013 Per Larsson First draft 
+0.2 11/10/2013 Per Larsson Added sections Acknowledgements and Language. 
+Added reference section on waitsig(). 
+Updated reference section on print() and 
+pltbutils_clkgen. 
+0.3 1/5/2013 Per Larsson Added sections User Configuration, Configuring 
+Simulation Halt, Configuring Messages for 
+Integration Environments. 
+In reference section added starttest, endtest, 
+removed testname. 
+Updated figures and feature bullets. 
+0.4 1/9/2013 Per Larsson Updates for alpha0006: Text modified in 
+numerous places to reflect that PlTbUtils is now 
+using the variable pltbv and the signal pltbs for 
+control and status, instead of the previous shared 
+variable and global signals.  
+0.5 13/1/2014 Per Larsson Updates for alpha0007: added example testbench 
+where the testcase process is instansiated in the 
+testbench top (tb_example1). The old example 
+where the testcase process is located in a VHDL 
+component of its own, is now called example_tb2.  
+0.6 2/2/2015 Per Larsson Updates for beta0002: added description of 
+to_ascending(), to_descending(), hxstr(), functions 
+and procedures in txt_util.vhd. 
+    
+    
+    
+ 
+ OpenCores PlTbUtils Specification 2/2/2015 
+ 
+ 
+www.opencores.org Rev 0.6  Preliminary
+ 1 of 40 
+1  
+Introduction 
+Overview 
+PlTbUtils makes it easy to create automatic, self -checking simulation testbenches, and to 
+locate bugs during a simulation. It is a collection of functions, procedures and testbench 
+components that simplifies creation of stimuli and checking results of a device under test. 
+Features: 
+ Simulation status printed in transcript windows as well as in waveform window 
+(error count, checks count, number and name of current test, etc). 
+ Check procedures which output meaningful information when a check fails. 
+ Clear SUCCESS/FAIL message at end of simulation. 
+ Easy to locate point in time of bugs, by studying increments of the error counter 
+in the waveform window. 
+ User-defined information  messages in the waveformwindow about what is 
+currently going on. 
+ Transcript outputs prepared for parsing by scripts, e.g. in regression tests. 
+ Configurable status messages for use in continous integration environments, e.g. 
+TeamCity. 
+ Reduces amount of code in tests, which makes them faster to write and easier to 
+read. 
+It is intended that PlTbUtils will constantly expand by adding more and more functions, 
+procedures a nd testbench components. Comments, feedback and suggestions are 
+welcome to pela.opencores@gmail.com . 
+The project page on the web is http://opencores.org/project,pltbutils . 
+Subversion repository URL is http://opencores.org/ocsvn/pltbutils/pltbutils/trunk 
+Subversion export command is 
+ svn export http://opencores.org/ocsvn/pltbutils/pltbutils/trunk pltbutils  
+ OpenCores PlTbUtils Specification 2/2/2015 
+ 
+ 
+www.opencores.org Rev 0.6  Preliminary
+ 2 of 40 
+Acknowledgements 
+PlTbUtils contains the file txt_util.vhd by Stefan Doll and James F. Frenzel. 
+Language 
+PlTbUtils complies with VHDL-1993, so it works with most VHDL simulators. 
+However, it is possible to configure the way a simulation stops, by taking advantage of 
+the VHDL-2008 keywords stop and finish. If your simulator supports stop and/or 
+finish, see Configuring Simulation Halt on page 22.  
+ 
+ 
+  
+ OpenCores PlTbUtils Specification 2/2/2015 
+ 
+ 
+www.opencores.org Rev 0.6  Preliminary
+ 3 of 40 
+A quick look 
+ 
+During a simulation, t he waveform window shows current test number, test name, user -
+defined info, accumulated number och checks and errors. When the error 

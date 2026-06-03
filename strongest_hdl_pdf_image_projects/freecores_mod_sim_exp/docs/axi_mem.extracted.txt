@@ -1,0 +1,24 @@
+Control reg
+FIFO
+OP3
+4096 bits
+OP2
+4096 bits
+OP1
+2048 bits
+OP0
+4096 bits
+M
+4096 bits
+AXI4-Lite interface 
+memory mapping
+(byte adressing)
+Bus address
+XXXX0000h
+XXXX1000h
+XXXX2000h
+XXXX3000h
+XXXX4000h
+XXXX5000h
+XXXX6FFFh
+XXXX6000h

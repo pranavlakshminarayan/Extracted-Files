@@ -1,0 +1,70 @@
+FPGA Ethernet Platform for Communication, Debugging,
+Testing, and Rapid Prototyping
+Peter Andrew Thorpe Lieber
+A thesis submitted to the faculty of
+Brigham Young University
+in partial fulﬁllment of the requirements for the degree of
+Master of Science
+Brad L. Hutchings, Chair
+Brent E. Nelson
+Michael J. Wirthlin
+Department of Electrical and Computer Engineering
+Brigham Young University
+August 2011
+Copyright © 2011 Peter Andrew Thorpe Lieber
+All Rights Reserved
+
+ABSTRACT
+FPGA Ethernet Platform for Communication, Debugging,
+Testing, and Rapid Prototyping
+Peter Andrew Thorpe Lieber
+Department of Electrical and Computer Engineering
+Master of Science
+FPGA-CF is an open-source, portable, extensible communications framework that
+consists of a small hardware core (less than 600 slices) and and a host-software library/API
+(Java and C++). It enables a host PC to transmit data at 120 Mb/s to Xilinx-based
+FPGA boards via Ethernet using standard inter-networking protocols (UDP/IP). A custom
+lightweight connection-oriented protocol guarantees reliability. The hardware core is directly
+connected to the Xilinx internal conﬁguration port (ICAP) and supports all ICAP function-
+ality. The core also provides an extensible user-channel interface and provides up to 15,
+8-bit user-data channels that can be connected to user circuitry (conﬁgurable by the user).
+The host software API supports both Java and C++ and provides high-level functionality
+for making connections and transmitting data. The utility of the system is demonstrated by
+implementing an on-chip test/debug system using FPGA-CF.
+Keywords: FPGA, communication, ethernet, network, stack, debug, prototyping
+
+ACKNOWLEDGMENTS
+I would like to acknowledge those who have helped me complete this work. First,
+I thank University of California’s Information Sciences Institute East for their generous
+ﬁnancial support. I could not have completed this work without it. I would also like to
+thank the Electrical and Computer Engineering department at Brigham Young University
+for their equipment and facilities.
+I express my appreciation for the time my committee chair, Dr. Hutchings, spent
+with me reading, editing, and improving this work. I thank my other committee members,
+Dr. Nelson and Dr. Wirthlin for their time reviewing my manuscript. I also thank my fellow
+lab members in the Conﬁgurable Computing Lab for putting up with me.
+I especially thank my wife, who’s relentless encouragement and love made it possible
+for me to keep going and not loose sight of the goal. I thank my mother, who puts everything
+into perspective. I thank my family and friends for their words of encouragement. I thank
+God for blessing me with this opportunity to have a great education and learn from the
+best.
+
+Table of Contents
+List of Tables xi
+List of Figures xiv
+1 Introduction 1
+1.1 Background Information . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+1.2 Previous Work . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+1.3 Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+2 Implementation 17
+2.1 Network Protocol . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+2.2 Packet Processor . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+2.2.1 Feature Selection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+2.2.2 Hardware Units . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+2.2.3 Data Path . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+2.2.4 Microcoded Architecture . . . . . . . . . . . . . . . . . . . . . . . . . 26
+2.3 Channel Interface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+2.4 ICAP Interface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+2.5 Software API . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+3 Performance and Functional Analysis of FPGA-CF 37
+3.1 Footprint and Performance . . . . . . . . 

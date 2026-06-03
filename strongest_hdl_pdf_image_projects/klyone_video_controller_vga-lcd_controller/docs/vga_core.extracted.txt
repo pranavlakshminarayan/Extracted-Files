@@ -1,0 +1,131 @@
+ 
+VGA/LCD Core 
+Specifications 
+ 
+ 
+Author: Richard Herveille 
+rherveille@opencores.org 
+ 
+ 
+Rev. 0.5 
+July 15, 2001 
+
+This page left intentionally blank
+OpenCores VGA/LCD Core Datasheet 7/15/2001 
+www.opencores.org Rev 0.5 Preliminary 1 of 24 
+ 
+Revision History 
+ 
+Rev. Date Author Description 
+0.1 10/04/01 Richard 
+Herveille 
+First Draft 
+0.1a 20/04/01 Richard 
+Herveille 
+Changed proposal to specifications 
+Added Appendix A 
+Extended Register Specifications 
+0.2 21/05/01 Richard 
+Herveille 
+First official release 
+Added OpenCores logo 
+Changed Chapter 1, Introduction 
+Finished Chapter 2, IO ports 
+Finished Chapter 3, Registers 
+Extended Chapter 4, Operation 
+Changed Chapter 5, Architecture 
+Added Appendix B 
+0.3 28/05/01 Richard 
+Herveille 
+Fixed some inconsistencies. 
+0.4 03/06/01 Richard 
+Herveille 
+Changed all references to address related subjects 
+(core fix & documentation fix). 
+Added Appendix C 
+0.4a 04/06/01 Richard 
+Herveille 
+Fixed some minor typing errors in the document 
+(credits: Rudolph Usselmann) 
+0.5 15/07/01 Richard 
+Herveille 
+Added Color Lookup Table bank switching. 
+Added embedded CLUT section. 
+ 
+OpenCores VGA/LCD Core Datasheet 7/15/2001 
+www.opencores.org Rev 0.5 Preliminary 1 of 24 
+1 
+Introduction 
+ 
+The VGA/LCD core provides elementary VGA capabilities for embedded systems. It 
+supports both CRT and LCD displays, with user programmable resolutions and timings. 
+ 
+The core supports 24bit and 16bit color modes and 8bit gray-scale and 8bit pseudo-color 
+modes. The pseudo color mode uses external memory for color look-up tables. The 
+external CLUT can either be on-chip or off-chip memory, depending on the system 
+integrator’s demands. 
+ 
+The external video memory can be shared with the system memory (Video-On-Demand) 
+or can be a separate memory, dedicated to the core. 
+ 
+ 
+Features: 
+• CRT and LCD display support 
+• User programmable resolutions 
+• User programmable video timing 
+• 24bit and 16bit color modes 
+• 8bit gray-scale and 8bit pseudo-color modes 
+• Supports video memory bank switching 
+• TripleDisplay support 
+ 
+OpenCores VGA/LCD Core Datasheet 7/15/2001 
+www.opencores.org Rev 0.5 Preliminary 2 of 24 
+2 
+IO ports 
+ 
+2.1 WISHBONE Common Interface Connections 
+Port Width Direction Description 
+CLK_I 1 Input Master clock input 
+RST_I 1 Input Synchronous active high reset 
+NRESET 1 Input Asynchronous active low reset 
+INTA_O 1 Output Interrupt request signal 
+ 
+2.1.1 CLK_I 
+All internal WISHBONE logic is registered to the rising edge of the [CLK_I] clock input. 
+The frequency range over which the core can operate depends on the technology used and 
+the pixel clock needed; [CLK_I] may not be slower than the pixel clock [PCLK]. 
+ 
+2.1.2 RST_I 
+The active high synchronous reset input [RST_I] forces the core to restart. All internal 
+registers are preset and all state-machines are set to an initial state. 
+ 
+2.1.3 nRESET: 
+The active low asynchronous reset input [nRESET] forces the core to restart. All internal 
+registers are preset and all state-machines are set to an initial state. 
+ 
+nRESET is not a WISHBONE compatible signal. It is provided for FPGA 
+implementations. Since most FPGAs provide a dedicated reset path using [nRESET] 
+instead of [RST_I] can result in lower cell-usage and higher performance. Either use 
+[nRESET] or [RST_I]. 
+ 
+2.1.4 INTA_O 
+The interrupt request output is asserted when the core needs service from the host system. 
+ 
+ 
+2.2 WISHBONE Slave Interface Connections 
+Port Width Direction Description 
+ADR_I 3 Input Lower address bits 
+SDAT_I 32 Input Slave Data bus input 
+SDAT_O 32 Output Slave Data bus output 
+SEL_I 4 Input Byte select signals 
+WE_I 1 Input Write enable input 
+OpenCores VGA/LCD Core Datasheet 7/15/2001 
+www.opencores.org Rev 0.5 Preliminary 3 of 24 
+STB_I 1 Input Strobe signal/Core select input 
+CYC_I 1 Input Valid bus cycle input 
+ACK_O 1 Output Bus cycle acknowledge output 
+ERR_O 1 Output Bus cycle error output 
+ 
+ 
+2.2.1 ADR_I 
+The address array input [ADR_

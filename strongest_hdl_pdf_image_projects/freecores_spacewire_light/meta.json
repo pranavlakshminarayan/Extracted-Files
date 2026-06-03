@@ -1,0 +1,30 @@
+{
+  "project_id": "freecores_spacewire_light",
+  "name": "spacewire_light",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/spacewire_light",
+  "extraction_date": "2026-06-02T16:55:19",
+  "license": null,
+  "has_readme": true,
+  "readme_excerpt": "\nSpaceWire Light\n===============\n\nCopyright 2009-2013 Joris van Rantwijk\n\n\nOverview\n--------\n\nSpaceWire Light is a SpaceWire encoder-decoder.\nIt is synthesizable for FPGA targets (up to 200 Mbit on Spartan-3).\nApplication interfaces include a simple FIFO interface, as well as\nan AMBA bus interface for LEON3 system-on-chip designs.\n\nThe goal is to provide a complete, reliable, fast implementation\nof a SpaceWire encoder-decoder according to ECSS-E-ST-50-12C.\nThe core is \"light\" in the sense that it does not provide additional\nfeatures such as RMAP, routing etc.\n\nSpaceWire Light supports two application interfaces. One interface\nprovides FIFO-style access to RX/TX buffers in the core (spwstream).\nThis interface can be easily integrated into most digital designs.\n\nAlternatively, an AMBA bus interface (spwamba) may be used to integrate\nSpaceWire Light into a LEON3 embedded system. This interface supports\nDMA-based data transfers. The code for the AMBA interface depends on GRLIB,\na VHDL library from Aeroflex Gaisler. The source of GRLIB must be downloaded\nseparately from http://www.gaisler.com/.\n\nSee doc/Manual.pdf for more information.\n\n\nLicense\n-------\n\nCopyright 2009-2011 Joris van Rantwijk\n\nSpaceWire Light is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nSpaceWire Light is distributed in the hope that ",
+  "stats": {
+    "verilog_files": 0,
+    "vhdl_files": 23,
+    "other_hdl_files": 0,
+    "pdf_files": 1,
+    "markdown_files": 0,
+    "text_files": 3,
+    "image_files": 1,
+    "total_bytes": 2134901,
+    "languages_seen": [
+      "VHDL"
+    ]
+  },
+  "quality_tier": "A",
+  "quality_reason": "README + (PDF or images) + 3+ HDL files",
+  "references": [
+    "http://opencores.org/project,spacewire_light",
+    "http://www.gaisler.com/.",
+    "http://www.gnu.org/licenses/"
+  ]
+}

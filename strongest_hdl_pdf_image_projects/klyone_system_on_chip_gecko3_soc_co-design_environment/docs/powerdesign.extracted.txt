@@ -1,0 +1,55 @@
+Sheet1 
+Page 1
+25.07.2006 
+All Values in Ampere 
+Gecko3 
+Part external sources internal sources 
+Battery 3,3 V 2,5 V 1,2 V 
+Typ Max Typ Max Typ Max Typ Max 
+FPGA (max. Power without heat sink) 0.002 0.020 0.160 0 .220 0.550 2.500 
+2*RAM (Burst Mode) 0.180 0.450 
+EZ-USB 0.050 0.085 
+EEPROM 0.001 0.003 
+SPI Flash 0.010 0.024 
+Nordic RF-Modem 0.001 0.200 
+Ethernet PHY 0.100 0.150 
+LEDs (2*Ethernet, 8*FPGA, 2*EZ-USB) 0.040 0.060 
+1,2 V DC/DC Converter (efficiency: 85%) 0.210 0.954 
+2,5 V LDO 0.374 0.737 
+Total Gecko3 
+0.210 0.954 0.578 1.279 0.340 0.670 0.550 2.500 
+Powerdesign Microlab Robot 
+Sheet1 
+Page 2
+Part external sources internal sources 
+Battery 3,3 V Analog 3,3 V 5 V 
+Typ Max Typ Max Typ Max Typ Max 
+0.200 0.900 
+SD Card 0.050 0.100 
+Video DAC 0.015 0.025 0.070 0.080 
+0.030 0.050 
+2*USB Devices 0.200 0.300 
+3,3 V LDO (Analog 3,3 V) 0.077 0.088 
+5 V DC/DC Converter (efficiency: 85%) 0.318 0.477 
+0.395 
+0.565 0.295 1.075 0.070 0.080 0.200 0.300 
+Robot Chassis 
+Part external sources internal sources 
+5 V USB external Supply Battery 3,3 V 
+Typ Max Typ Max Typ Max Typ Max 
+2*Motor 0.100 0.600 
+2*Encoder 0.050 0.010 
+Motor Driver 
+IR Sensor 0.090 0.150 
+3,3 V DC/DC Converter (efficiency: 85%) 1.063 2.638 
+Battery Charge Current 0.300 0.500 0.300 0.500 
+Total Robot Chassis 
+0.300 0.500 0.300 0.500 1.163 3.238 0.140 0.160 
+Total System Power 
+Battery 3,3 V external Supply 
+Typ Max Typ Max Typ Max 
+1.768 4.757 1.013 2.514 2.068 5.257 
+Colibri 
+Colibri Module (max. at 312 MHz) 
+LEDs (2*Ethernet, 8*Colibri)) 
+Total Colibri 

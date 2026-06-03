@@ -1,0 +1,145 @@
+page 4.
+Vin
++
+-
+1
+2
+3
+Dimming Option
+(valid when the "C" jumper is removed)
+0% - 100%
++Vin
+approx. 1.5 ms*
+* should be selected to be
+compatible with LCD and
+display driver
+(1)
+Note 1 Input by-pass capacitor (25 uf - 100uf) may be required to
+reduce reflected ripple.
+Pulse-Width
+Modulated Controlled
+8M052322
+  Endicott Research Group, Inc.
+2601 Wayne St., Endicott NY 13760
+607-754-9187
+8m Class
+DC to AC Inverter
+Preliminary
+8M052322
+Specifications and
+Applications Information
+8m Package
+The ERG 8M052322 (8m Class) low profile dc to ac
+inverter is specifically designed to power the Sharp
+LQ057Q3DC02 LCD display module to a moderate
+brightness level from a +5 volt dc source.
+This low profile inverter features:
+ü Less Than 8 mm in Height
+ü LCD Module Specific
+ü Display Compatible Output Connector
+ü Firm Specifications
+ü Application Information
+ü Designed, Manufactured and Supported in the
+USA
+ü Custom Input and Output Voltages
+ü Flexible System Interface
+ü Notebook Display Head Compatible
+11/24/99
+Package Configuration
+c
+3.58 [90,9]
+2.35 [59,7]
+.55 [14,0]
+.55 [14,0] .12 [3,0]
+.79 [20,1]
+.116 [2,95]
+DIA.(2X)
+1 2 3 4
+Endicott Research Group, Inc.
+2601 Wayne St., Endicott NY 13760
+607-754-9187   Fax 607-754-9255
+http://www.ergpower.com
+4      1
+Con1-1  Vin(+)
+Con1-2  GND
+Con1-3  Control *
+Con1-4  NC
+Pin Descriptions
+Con2-1  ACout
+Con2-2  NC
+Con2-3  NC
+Con2-4  ACout
+ Output
+ Input
+Output Connector
+  JST
+SM02(8.0)B-BHS-1-TB
+Input Connector
+4 pins are 0.315" [8,00] Long,
+0.025" [0,63] Square and are
+on 0.100" [2,54] Centers.
+* Valid when the "C" Jumper
+   is removed
+8M052322 8M052322
+page 2. page 3.
+Typical Performance Curves
+Made in USAEndicott Research Group, Inc. Endicott Research Group, Inc.
+  This load is approximately equivalent to the referred display.    Specifications subject to change without notice.
+-15%
+-10%
+-5%
+0%
+5%
+Relative Frequency
+3.00 3.50 4.00 4.50 5.00 5.50 6.00 
+Input Voltage (Vdc)
+Relative Frequency vs.Input Voltage
+0%
+50%
+100%
+150%
+200%
+250%
+300%Relative Brightness
+3.00 3.50 4.00 4.50 5.00 5.50 6.00 
+Input Voltage (Vdc)
+Relative Brightness vs.Input Voltage
+0.0 
+1.0 
+2.0 
+3.0 
+4.0 
+5.0 
+6.0 Input Power (Watts)
+3.00 3.50 4.00 4.50 5.00 5.50 6.00 
+Input Voltage (Vdc)
+Input Power vs.Input Voltage
+0.00 
+0.20 
+0.40 
+0.60 
+0.80 
+1.00 Input Current (Adc)
+3.00 3.50 4.00 4.50 5.00 5.50 6.00 
+Input Voltage (Vdc)
+Input Current vs.Input Voltage
+sgnitaRmumixaMetulosbA
+gnitaRl obmySe ulaVs tinU
+egnaRegatloVtupnIV ni 5.5+ot3.0-c dV
+erutarepmeTgnitarepOT o 07+ot0 oC
+erutarepmeTegarotST gts 58+ot04- oC
+snoitidnoCgnitarepOdednemmoceR
+gnitaRl obmySe ulaVs tinU
+egatloVtupnIV ni 5.5ot5.2+c dV
+scitsiretcarahClacirtcelE
+52=aTdnacdstloV00.5=niVdetonesiwrehtosselnU oC
+citsiretcarahCl obmySn iMp yTx aMs tinU
+tnerruCtupnII ni -3 8.3 9.c dA
+ycneuqerFgnitarepOF o 035 30 4z HK
+egatloVtuptuOmuminiMV tuo )nim(0 741- - V smr
+ycneiciffE η -5 8- %
+tnerruCtuptuOI tuo -1 .5- s mram
+egatloVtuptuO
+prahSagnirewoPnehW(
+)yalpsid20CD3Q750QL
+V tuo -0 96- V smr

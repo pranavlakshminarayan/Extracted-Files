@@ -1,0 +1,76 @@
+xin
+qin
+cin
+reg
+xout
+qout
+cout
+regmy_cout my_cin
+regred_cout red_cin
+a_msb my
+y m
+width
+width width+1
+cell_result
+width
+cell_result_reg
+width
+y
+width
+m
+width
+left aligned
+m_inv
+width
+right aligned
+0             1
+a
+width-1
+cell_result_reg
+width width
+red_r
+r
+width
+r_sel
+a_0
+cout
+11
+10
+01
+00
+my0
+m0
+y0
+0
+a0
+qout
+y0
+xin
+xout
+First Cell Logic
+CLK
+DQdone start
+my_cout
+red_cout ‘1’
+start start_first_stage
+xin
+qin
+cin
+red_cin
+done
+r_sel
+a_0
+my_cin
+reg
++
+‘1’
+serves as clk enable for reg serves as clk enable for all regs
+Half adder
+cout
+r
+Last Cell Logic
+Systolic Stage
++
+register
++
+systolic array cells

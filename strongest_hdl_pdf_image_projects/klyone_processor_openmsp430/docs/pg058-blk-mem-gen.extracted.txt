@@ -1,0 +1,4 @@
+Xilinx Documentation Notice
+Please click here  to access the most recent version of the 
+LogiCORE ™ IP Block Memory Generator Product Guide.
+ 

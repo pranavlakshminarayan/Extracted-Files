@@ -1,0 +1,100 @@
+MSP430C11x1, MSP430F11x1A
+MIXED SIGNAL MICROCONTROLLER
+SLAS241I − SEPTEMBER 1999 − REVISED DECEMBER 2008
+1POST OFFICE BOX 655303 •  DALLAS, TEXAS 75265
+/C0068Low Supply Voltage Range 1.8 V to 3.6 V
+/C0068Ultralow Power Consumption
+−  Active Mode: 160 μA at 1 MHz, 2.2 V
+−  Standby Mode: 0.7 μA
+−  Off Mode (RAM Retention): 0.1 μA
+/C0068Wake-Up From Standby Mode in 
+Less Than 6 μs
+/C006816-Bit RISC Architecture, 125 ns 
+Instruction Cycle Time
+/C0068Basic Clock Module Configurations:
+−  Various Internal Resistors
+−  Single External Resistor
+−  32-kHz Crystal
+−  High-Frequency Crystal
+−  Resonator
+−  External Clock Source
+/C006816-Bit Timer_A With Three
+Capture/Compare Registers
+/C0068On-Chip Comparator for Analog Signal
+Compare Function or Slope
+Analog-to-Digital (A/D) Conversion
+/C0068Serial Onboard Programming,
+No External Programming Voltage Needed, 
+Programmable Code Protection by 
+Security Fuse
+/C0068Family Members Include
+MSP430C1101: 1KB ROM, 128B RAM
+MSP430C1111: 2KB ROM, 128B RAM
+MSP430C1121: 4KB ROM, 256B RAM
+MSP430F1101A:  1KB + 128B Flash Memory
+128B RAM
+MSP430F1111A:  2KB + 256B Flash Memory
+128B RAM
+MSP430F1121A:  4KB + 256B Flash Memory
+256B RAM
+/C0068Available in a 20-Pin Plastic Small-Outline
+Wide Body (SOWB) Package, 20-Pin Plastic
+Small-Outline Thin Package, 20-Pin TVSOP
+(F11x1A only), and 24-Pin QFN
+/C0068For Complete Module Descriptions, Refer
+to the MSP430x1xx Family User’s Guide,
+Literature Number SLAU049
+     
+description
+The T exas Instruments MSP430 family of ultralow-power microcontrollers consists of several devices featuring
+different sets of peripherals targeted for various applications. The architecture, combined with five low-power
+modes is optimized to achieve extended battery life in portable measurement applications. The device features
+a powerful 16-bit RISC CPU, 16-bit registers, and constant generators that contribute to maximum code
+efficiency. The digitally controlled oscillator (DCO) allows wake-up from low-power modes to active mode in less
+than 6 μs.
+The MSP430x11x1(A) series is an ultralow-power mixed signal microcontroller with a built-in 16-bit timer,
+versatile analog comparator and fourteen I/O pins.
+Typical applications include sensor systems that capture analog signals, convert them to digital values, and then
+process the data for display or for transmission to a host system. Stand alone radio frequency (RF) sensor front
+end is another area of application. The I/O port inputs provide single slope A/D conversion capability on resistive
+sensors.
+This integrated circuit can be damaged by ESD. Texas Instruments recommends that all integrated circuits be handled with
+appropriate precautions. Failure to observe proper handling and installation procedures can cause damage. ESD damage can range
+from subtle performance degradation to complete device failure. Precision integrated circuits may be more susceptible to damage
+because very small parametric changes could cause the device not to meet its published specifications. These devices have limited
+built-in ESD protection.
+Please be aware that an important notice concerning avail ability, standard warranty, and use in critical applications of
+Texas Instruments semiconductor products and disclaimers thereto appears at the end of this data sheet.
+Copyright ©  2008 Texas Instruments IncorporatedPRODUCTION DATA information is current as of publication date.
+Products conform to specifications per the terms of Texas Instruments
+standard warranty. Production processing does not necessarily include
+testing of all parameters.
+MSP430C11x1, MSP430F11x1A
+MIXED SIGNAL MICROCONTROLLER
+SLAS241I − SEPTEMBER 1999 − REVISED DECEMBER 2008
+2 POST OFFICE BOX 655303 •  DALLAS, TEXAS 75265
+AVAILABLE OPTIONS
+PACKAGED DEVICES
+TA
+PLASTIC
+20-PIN SOWB
+(DW)
+PLASTIC
+20-PIN TSSOP
+(PW)
+PLASTIC
+20-PIN TVSOP
+(DGV)
+PLASTIC
+24-PIN QFN
+(RGE)
+40°Ct o8 5°C
+MSP430C1101IDW
+MSP430C1111IDW
+MSP430C1121IDW
+MSP430C1101IPW
+MSP430C1111IPW
+MSP430C1121IPW
+MSP430F1101AIDGV
+MSP430F1111AIDGV
+M

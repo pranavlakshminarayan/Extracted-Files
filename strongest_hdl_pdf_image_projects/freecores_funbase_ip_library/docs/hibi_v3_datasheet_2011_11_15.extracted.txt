@@ -1,0 +1,78 @@
+FACULTY OF COMPUTING AND ELECTRICAL ENGINEERING
+DEPARTMENT OF COMPUTER SYSTEMS
+Heterogenerous IP Block
+Interconnection (HIBI)
+version 3
+Reference Manual
+Author:
+Erno Salminen,
+Timo Hämäläinen
+Updated:
+15th November 2011
+Department of Computer Systems
+Faculty of Computing and Electrical Engineering
+HIBI v.3
+Reference Manual
+Contents
+1 Introduction 5
+1.1 Main points . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+1.2 V ersions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2 HIBI topology 7
+2.1 Example of hierarchical topology . . . . . . . . . . . . . . . . . . . . 7
+2.2 Switching . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+3 Data transfer operations 8
+3.1 HIBI Basic Transaction Motivation . . . . . . . . . . . . . . . . . . . 10
+4 Addressing 11
+4.1 HIBI destination addresses and channels . . . . . . . . . . . . . . . . 12
+4.2 Implementing ﬂow control . . . . . . . . . . . . . . . . . . . . . . . 13
+4.3 Example: Overlapping and breaking transfers . . . . . . . . . . . . . 13
+5 Wrapper structure 14
+5.1 Bus-side signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+5.2 IP-side signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+5.3 V ariants of IP interface . . . . . . . . . . . . . . . . . . . . . . . . . 17
+5.4 Signal naming in VHDL . . . . . . . . . . . . . . . . . . . . . . . . 18
+5.5 Cycle-accurate timing . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+6 Arbitration 22
+6.1 Detailed timing example . . . . . . . . . . . . . . . . . . . . . . . . 23
+6.2 Performance implications . . . . . . . . . . . . . . . . . . . . . . . . 2 4
+7 Commands 25
+8 Buffering and signaling 25
+9 Conﬁguration 27
+9.1 Generic parameters in VHDL . . . . . . . . . . . . . . . . . . . . . . 27
+9.2 Clocking . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+9.3 Runtime reconﬁguration . . . . . . . . . . . . . . . . . . . . . . . . 29
+10 Performance and resource usage 31
+10.1 HIBI wrapper structure . . . . . . . . . . . . . . . . . . . . . . . . . 31
+10.2 Resource usage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+10.3 Simulated performance . . . . . . . . . . . . . . . . . . . . . . . . . 32
+1 TUT
+Department of Computer Systems
+Faculty of Computing and Electrical Engineering
+HIBI v.3
+Reference Manual
+11 Usage examples 33
+11.1 Transmission with dual-port memory buffer and DMA cont roller . . . 33
+11.2 Reception with dual-port memory buffer and DMA control ler . . . . . 33
+11.3 Example: use source speciﬁc addresses . . . . . . . . . . . . . . . . 36
+11.4 SW interface to DMA . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+12 Summary 37
+2 TUT
+List of Figures
+1 Conceptual structure of system-on-chip . . . . . . . . . . . . . . . . 5
+2 Example of a hierarchical HIBI network with multiple clock domains
+and bus segments . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+3 Example of read and write operations. . . . . . . . . . . . . . . . . . 9
+4 Basic transactions are write and read. . . . . . . . . . . . . . . . . . . 9
+5 Logical steps that IP does during transaction. . . . . . . . . . . . . . 10
+6 Relation between addresses and channels. . . . . . . . . . . . . . . . 12
+7 The transfers may get intereleaved due to arbitration. . . . . . . . . . 14
+8 Structure of HIBI v.2 wrapper and conﬁguration memory . . . . . . . 14
+9 Structure of HIBI v.2 wrapper and conﬁguration memory . . . . . . . 16
+10 The signals between IP and wrapper . . . . . . . . . . . . . . . . . . 17
+11 There are 4 variants of IP interface. There are two selecta ble fea-
+tures, namely separations of hi/lo-prior data and separate /multiplexed
+addressing. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+12 The naming convention of ports . . . . . . . . . . . . . . . . . . . . 19
+13 Examples of timing at IP interface. . . . . . . . . . . . . . . . . . . . 20
+14 Example FSM of an IP . . . . . . . . . . . . . . . . . . . . . . . . . 20
+15 Ex

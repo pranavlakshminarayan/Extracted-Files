@@ -1,0 +1,188 @@
+AMI and HDB1 Line Codes - VHDL Implementation.
+Ribamar Santarosa, ribamar@gmail.com
+Outubro/Novembro 2006.
+Abstract
+Line codings are methods for coding digital data for making them less susceptible to signal
+losses during transmission. This project implements the AMI — Alternate Mark Inverse — and
+HDB1 — High Density Bipolar of order 1 codings. This ﬁle documents their implementation.
+1 Speciﬁcation.
+AMI. This coding takes a binary sequency into a ternary sequency having the signals 0, +1, -1
+by the following way:
+• Inputs of 1 are coded as +1 or -1 alternately .
+• Inputs of 0 are coded always as 0.
+Example:
+Input
+1 0 1 0 1 1 0 0 0 1 0 1 1 0 0 1 0 1 0 0 0 1 1 1
+Output
++1 0 -1 0 +1 -1 0 0 0 +1 0 -1 +1 0 0 -1 0 +1 0 0 0 -1 +1 -1
+HDB1. This coding takes a binary sequency into a ternary sequency having the signals 0, +1, -1
+by the following way:
+• Inputs of 1 are coded as either +1 or -1.
+• Paired inputs of 0 are coded as either +1+1 or -1-1.
+• Isolated inputs of 0, ie, inputs of 0 not followed by 1 which weren’t paired to another 0 (thus
+forming +1+1 or -1-1) are coded as 0.
+• Outputs have always alternate signals. If the last output was -1 and the input is 00, the next
+output is coded as +1+1, if the last output was -1-1 and the input is 1, the next output is +1.
+Example:
+Input
+1 0 1 0 1 1 0 0 0 1 0 1 1 0 0 1 0 1 0 0 0 0 1 1
+Output
++1 0 -1 0 +1 -1 +1 +1 0 -1 0 +1 -1 +1 +1 -1 0 +1 -1 -1 +1 +1 -1 +1
+1
+2 AMI Encoder.
+Figure 1: State Map.
+Truth Table:
+q e S0 S1 q+
+0 0 0 0 0
+0 1 1 0 1
+1 0 0 0 1
+1 1 0 1 0
+Karnaugh Map isn’t necessary:
+S0 = e ·q′
+S1 = e ·q
+q+ = e ⊕ q
+3 AMI Decoder.
+Figure 2: State Map.
+Truth Table:
+e0 e1 S
+0 0 0
+0 1 1
+1 0 1
+1 1 X
+Karnaugh Map isn’t necessary:
+S = e0 + e1
+2
+4 HDB1 Encoder.
+Figure 3: State Map.
+Truth Table:
+E q 0 q1 q2 q+
+0 q+
+1 q+
+2 S0 S1
+0 0 0 0 0 0 1 1 0
+1 0 0 0 1 1 0 1 0
+0 0 0 1 0 1 0 0 1
+1 0 0 1 1 1 0 0 0
+0 0 1 0 0 1 1 0 1
+1 0 1 0 0 0 0 0 1
+0 0 1 1 1 0 0 1 0
+1 0 1 1 0 0 0 0 0
+0 1 0 0 0 0 1 1 0
+1 1 0 0 1 1 0 1 0
+X 1 0 1 X X X X X
+0 1 1 0 1 1 1 0 1
+1 1 1 0 0 0 0 0 1
+0 1 1 1 0 0 0 1 0
+1 1 1 1 0 0 0 0 1
+q+
+0 :
+Eq0
+00 01 11 10
+00 1 1
+q1q2 01 X X 1
+11 1
+10 1
+q+
+0 = E.q′
+1 + E′.q′
+0.q1.q2 + E′.q0.q1.q′
+2
+q+
+1 :
+Eq0
+00 01 11 10
+00 1 1
+q1q2 01 1 X X 1
+11
+10 1 1
+q+
+1 = E.q′
+1 + q′
+1.q2 + E′.q1.q′
+2
+q+
+2 :
+Eq0
+00 01 11 10
+00 1 1
+q1q2 01 X X
+11
+10 1 1
+3
+q+
+2 = E′.q′
+2
+S0:
+Eq0
+00 01 11 10
+00 1 1 1 1
+q1q2 01 X X
+11 1 1
+10
+S0 = q′
+1.q′
+2 + E′.q1.q2
+S1:
+Eq0
+00 01 11 10
+00
+q1q2 01 1 X X
+11
+10 1 1 1 1
+S1 = q1.q′
+2 + E′.q′
+1.q2
+5 HDB1 Decoder.
+Figure 4: State Map.
+Truth Table:
+e1 e0 q1 q0 q+
+0 q+
+1 S
+0 0 0 0 0 0 0
+0 0 0 1 0 0 1
+0 0 1 0 0 0 1
+0 0 1 1 X X X
+0 1 0 0 0 1 0
+0 1 0 1 0 0 0
+0 1 1 0 0 1 1
+0 1 1 1 X X X
+1 0 0 0 0 1 0
+1 0 0 1 1 0 1
+1 0 1 0 0 0 0
+1 0 1 1 X X X
+1 1 0 0 X X X
+1 1 0 1 X X X
+1 1 1 0 X X X
+1 1 1 1 X X X
+q0:
+q1q0
+00 01 11 10
+00 X
+e0e1 01 X
+11 X X X X
+10 1 X
+q+
+0 = q′
+0.e0
+q1:
+q1q0
+00 01 11 10
+00 X
+e0e1 01 1 X 1
+11 X X X X
+10 1 X
+q+
+1 = q′
+1.e1
+4
+S:
+q1q0
+00 01 11 10
+00 1 X 1
+e1e2 01 X 1
+11 X X X X
+10 1 X
+S = q0.e′
+0 + q1.e′
+1
+5

@@ -1,0 +1,108 @@
+ 
+ 
+ 
+Video Stream Scaler 
+Specifications 
+ 
+ 
+Author: David Kronstein 
+tesla500@hotmail.com 
+ 
+ 
+ 
+ 
+Rev. [1] 
+February 22, 2011 
+ OpenCores Video Stream Scaler Specifications 2/22/2011 
+ 
+ 
+www.opencores.org Rev 1 ii 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+This page has been intentionally left blank. 
+ OpenCores Video Stream Scaler Specifications 2/22/2011 
+ 
+ 
+www.opencores.org Rev 1 iii  
+Revision History 
+Rev
+. 
+Date Author Description  
+1 February 22 
+2011 
+David 
+Kronstein 
+Document created 
+    
+    
+    
+    
+    
+    
+ 
+ OpenCores Video Stream Scaler Specifications 2/22/2011 
+ 
+ 
+www.opencores.org Rev 1 iv  
+Contents 
+INTRODUCTION............................................................................................................. 1 
+ARCHITECTURE ............................................................................................................ 2 
+OPERATION .................................................................................................................... 4 
+INPUT AND OUTPUT STREAM DATA FORMAT ............................................................................................... 4 
+C CODE EQUIVALENT OF HARDWARE FUNCTION ......................................................................................... 4 
+EXAMPLE WAVEFORMS .............................................................................................................................. 6 
+CONTROL SIGNALS ..................................................................................................................................... 9 
+RESOUCE UTILIZATION ..............................................................................................................................10 
+SPEED ........................................................................................................................................................10 
+REGISTERS .................................................................................................................... 11 
+CLOCKS .......................................................................................................................... 12 
+IO PORTS........................................................................................................................ 13 
+APPENDIX A .................................................................................................................. 16 
+ 
+ OpenCores Video Stream Scaler Specifications 2/22/2011 
+ 
+ 
+www.opencores.org Rev 1 Page 1 
+1  
+Introduction 
+The Video Stream Scaler (streamScaler) performs resizing of video streams in a low 
+latency manner, resizing with either bilinear or nearest-neighbor modes. 
+ 
+The core offers runtime configuration of input and output resolution, scaling factors, and 
+resize type. Data width, color channels and maximum video resolution can be configured 
+at compile time. 
+ 
+ OpenCores Video Stream Scaler Specifications 2/22/2011 
+ 
+ 
+www.opencores.org Rev 1 Page 2 
+2  
+Architecture 
+The heart of the Video Stream Scaler is a Ram FIFO (RFIFO). This operates as a normal 
+FIFO, except instead of data, the input and output are port connections to RAM blocks. A 
+single write port and two read ports are provided, each read port reading *(address) and 
+*(address+1) simultaneously. With sequential video lines written into the RAMs, the four 
+output values are ready for bilinear interpolation. 
+ 
+The RAM fill logic determines which input data to push into the RFIFO and which to 
+discard based on the scaler configuration. All data used by the output section is written to 
+the FIFO, lines which are unused by the output section are discarded. 
+ 
+The Read Control drives the address and read enable for the RAM ports of the RFIFO, as 
+well as advancing the read port of the RFIFO as new output video lines are read out. 
+Blending values are generated that represent how much to interpolate between the four 
+pixels read out of the RFIFO. 
+ 
+The Blend Control takes the blending values an

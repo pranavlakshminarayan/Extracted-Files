@@ -1,0 +1,126 @@
+  
+ 
+ 
+SD Specifications 
+Part 1 
+Physical Layer 
+Simplified Specification 
+ 
+ Version 4.10 
+ 
+January 22, 2013 
+ 
+ 
+ 
+ 
+SD Group 
+Panasonic Corporation 
+SanDisk Corporation 
+Toshiba Corporation 
+ 
+ 
+Technical Committee 
+SD Card Association 
+ 
+  
+
+©Copyright 2001-2013 SD Group (Panasonic, SanDisk, Toshiba) and SD Card Association 
+  Physical Layer Simplified Specification Version 4.10 
+ 
+ 
+i 
+Revision History 
+ 
+Date Version Changes compared to previous issue 
+April 3, 2006 1.10 Physical Layer Simplified Specification Version 1.10 initial release. 
+(Supplementary Notes Ver1.00 is applied.) 
+September 25, 2006 2.00 Physical Layer Simplified Specification Version 2.00 
+May 18, 2010 3.01 Physical Layer Simplified Specification Version 3.01 
+January 22, 2013 4.10 Physical Layer Simplified Specification Version 4.10 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+To the extent this proposed specification, which is being submitted for review under the IP 
+Policy, implements, incorporates by reference or refers to any portion of versions 1.0 or 1.01 
+of the SD Specifications (including Parts 1 through 4), adoption of the proposed specification 
+shall require Members utilizing the adopted specifica tion to obtain the appropriate licenses 
+from the SD-3C, LLC, as required for the utilization of those portion(s) of versions 1.0 or 1.01 
+of the SD Specifications.   
+For example, implementation of the SD Specifications in a host device under versions 1.0 or  
+1.01 and under the adopted specification requires the execution of a SD Host Ancillary 
+License Agreement with the SD-3C, LLC; and implementation of the SD Specifications under 
+versions 1.0 or 1.01 and under the proposed specification in a SD Card containi ng any 
+memory storage capability (other than for storage of executable code for a controller or 
+microprocessor within the SD Card) requires the execution of a SD Memory Card License 
+Agreement with the SD-3C, LLC. 
+ 
+ 
+  
+©Copyright 2001-2013 SD Group (Panasonic, SanDisk, Toshiba) and SD Card Association 
+  Physical Layer Simplified Specification Version 4.10 
+ 
+ii 
+Release of SD Simplified Specification 
+The following conditions apply to the release of the SD simplified specification ( "Simplified 
+Specification") by the SD Card Association.  The Simplified Specification is a subset of the complete SD 
+Specification which is owned by the SD Card Association. 
+ 
+Conditions for publication 
+ 
+Publisher and Copyright Holder: 
+SD Card Association 
+2400 Camino Ramon, Suite 375 
+San Ramon, CA 94583 USA 
+Telephone: +1  (925) 275-6615, 
+Fax: +1 (925) 886-4870 
+E-mail: office@sdcard.org 
+ 
+Notes: 
+This Simplified Specification is provided on a non- confidential basis subject to the disclaimers below . 
+Any implementation of the Simplified Specification may require a license from the SD Card Association 
+or other third parties.   
+ 
+Disclaimers: 
+The information contained in the Simplified Specification is presented only as a standard specification 
+for SD Cards and SD Host /Ancillary products and is provided " AS-IS" without any representations or 
+warranties of any kind. No responsibility is assumed by the SD Card Association for any damages,  any 
+infringements of patents or other right of the SD Card Association or any third parties, which may result 
+from its use. No license is granted by implication, estoppel or otherwise under any patent or other rights 
+of the SD Card Association or any third party. Nothing herein shall be construed as an obligation by the 
+SD Card Association to disclose or distribute any technical information, know -how or other confidential 
+information to any third party.   
+ 
+  
+©Copyright 2001-2013 SD Group (Panasonic, SanDisk, Toshiba) and SD Card Association 
+  Physical Layer Simplified Specification Version 4.10 
+ 
+iii 
+Conventions Used in This Document 
+ 
+Naming Conventions 
+● Some terms are capitalized to distinguish their definition from their common English meaning.  Words 
+not capitalized hav

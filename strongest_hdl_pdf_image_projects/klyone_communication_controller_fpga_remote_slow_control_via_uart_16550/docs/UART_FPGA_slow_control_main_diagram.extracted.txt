@@ -1,0 +1,88 @@
+top
+uart_16550_wrapper
+gh_uart_16550
+gh_uart_
+Rx_8bit
+gh_uart_
+Tx_8bit
+uart_16550_wrapper
+UART
+Gh
+library
+gh_fifo_
+async16
+_sr
+gh_fifo_
+async16
+_rcsr_wf
+sys_clk_i
+sys_rst_i
+INPUT OUTPUT
+BYTE
+0 ADDR15-8
+1 ADDR7-0
+2 DATA31-24
+3 DATA23-16
+4 DATA15-8
+5 DATA7-0
+register_rx_handler
+RX Register handler
+Address
+Data
+8
+RD
+uart_txrdy_n
+16
+32
+uart_lbusuart_rxrdy_n
+8
+CS
+WR
+sRX
+sTX ADD
+D 88
+s_rx_stb_read_data_ics_rd
+wr_rd
+br_clk_monitor_o
+s_br_clk_uart
+OUTPUT INPUT
+BYTE
+0 ADDR15-8
+1 ADDR7-0
+2 DATA31-24
+3 DATA23-16
+4 DATA15-8
+5 DATA7-0
+register_tx_handler
+TX Register handler
+s_rx_rdy_o
+v_rx_add_o
+v_rx_data_o
+8
+3
+MUX
+Control 
+uart_din_i uart_dout_o
+MUX
+3
+8
+v_tx_add_ram_i
+v_tx_data_ram_i
+s_tx_proc_rqst_i
+s_tx_ram_data_rdy_i
+s_tx_stb_ram_data_acq_i
+s_tx_proc_rqst_i
+reghnd_output_rdy_o
+reghnd_wr_enable_i
+reghnd_txrdy_n_gh16550_i
+reghnd_data_acq_16550_i
+32
+16
+top
+register map
+space of WRITE
+user registers 
+register update
+space of READ
+user registers 
+USER LOGIC

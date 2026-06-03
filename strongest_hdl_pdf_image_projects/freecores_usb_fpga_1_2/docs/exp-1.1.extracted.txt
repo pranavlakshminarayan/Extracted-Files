@@ -1,0 +1,9 @@
+Circuit diagram of ZTEX Experimental Board 1.1
+Contents:
+Sheet 1 Voltage regulators
+Sheet 2 JTAG and power interfaces, serial driver
+Sheet 3 I/O interface
+http://www.ztex.de
+Sheet 1 of 3
+Sheet 2 of 3
+Sheet 3 of 3

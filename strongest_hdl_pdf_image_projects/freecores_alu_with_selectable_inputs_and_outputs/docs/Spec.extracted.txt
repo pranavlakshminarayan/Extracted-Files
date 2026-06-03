@@ -1,0 +1,57 @@
+ALU
+with selectable
+inputs and outputs
+1
+
+This pa ge w as i ntentionally l eft bl ank
+2
+
+DISCLAIMER
+This pr oject h as b een p rovided t o you on b ehalf o f:
+S.C. ASICArt S.R.L.
+www.asicart.com
+eli_f@asicart.com
+Author: D ragos Cons tantin D oncean
+Email: don cean@asicart.com
+Mobile: + 40­740­936997
+Downloaded f rom:  http://www.opencores.org/
+Copyright ( C) 2007 D ragos C onstantin D oncean
+www.asicart.com
+doncean@asicart.com
+This   source  file  may  be  used  and  distributed  without   restriction  provided  that  this
+copyright  statement  is  not  removed  from  the  file  and  that  any  derivative  work  contains  the
+original c opyright not ice a nd t he a ssociated di sclaimer.
+THIS  SOFTWARE  IS  PROVIDED  ``AS  IS''  AND  WITHOUT  ANY  EXPRESS  OR
+IMPLIED   WARRANTIES,   INCLUDING,   BUT   NOT   LIMITED   TO,   THE   IMPLIED
+WARRANTIES   OF   MERCHANTABILITY   AND   FITNESS   FOR   A   PARTICULAR
+PURPOSE.  IN  NO  EVENT  SHALL  THE  AUTHOR  OR  CONTRIBUTORS  BE  LIABLE
+FOR   ANY   DIRECT,   INDIRECT,   INCIDENTAL,   SPECIAL,   EXEMPLARY,   OR
+CONSEQUENTIAL   DAMAGES   (INCLUDING,   BUT   NOT   LIMITED   TO,
+PROCUREMENT  OF  SUBSTITUTE  GOODS  OR  SERVICES;  LOSS  OF  USE,  DATA,  OR
+PROFITS;   OR   BUSINESS   INTERRUPTION)   HOWEVER   CAUSED   AND   ON   ANY
+THEORY O F L IABILITY, W HETHER I N  C ONTRACT, S TRICT L IABILITY, O R T ORT  
+  (INCLUDING N EGLIGENCE O R O THERWISE) A RISING I N A NY W AY O UT O F T HE
+USE O F T HIS S OFTWARE, E VEN IF  A DVISED O F T HE P OSSIBILITY O F S UCH
+DAMAGE.
+3
+
+Table o f  Contents
+1. IN TRODUCTION...................................................................................................................6
+2. D ESIGN..................................................................................................................................7
+  Design a rchitecture................................................................................................................7
+Design a rchitecture de scription..............................................................................................8
+Functional d escription o f t he c ore......................................................................................8
+Features.........................................................................................................................8
+Functional d escription........................................................................................................8
+Clock.............................................................................................................................8
+Reset..............................................................................................................................8
+Input..............................................................................................................................8
+ALU...............................................................................................................................9
+ALU ope rations.............................................................................................................9
+Output..........................................................................................................................14
+3. V ERIFICATION...................................................................................................................15
+Verification e nvironment a rchitecture..................................................................................15
+Verification e nvironment d escription...................................................................................16
+DUT.................................................................................................................................16
+Monitors...........................................................................................................................16
+Injectors......................................................................

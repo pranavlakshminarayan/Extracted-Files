@@ -1,0 +1,96 @@
+Report-Ready Analysis of Extracted OpenCores and FreeCores Repository Data
+
+#Objective
+
+The purpose of this extraction was to identify open-source digital hardware projects that contain useful combinations of HDL implementation code, design documentation, PDFs, and visual assets such as block diagrams, architecture diagrams, waveforms, screenshots, and schematic-style images. These files are useful for building or curating a multi-modal hardware-design dataset where visual design representations can be paired with Verilog/VHDL source code and written specifications.
+
+#Sources Analysed
+
+Two GitHub sources were analysed:
+
+- `klyone/opencores-ip`: a mirror of OpenCores IP projects. This repository stores projects as Git branches rather than as normal subfolders, so each branch was fetched and analysed independently.
+- `freecores`: a GitHub organisation containing individual repositories for many OpenCores-derived projects.
+
+#Extraction Results
+
+The run indexed **1437 projects** in total. The extracted collection contains **26704 Verilog/SystemVerilog files**, **14089 VHDL files**, **1268 PDF files**, and **2993 image files**. The image files are especially important because they include the likely block diagrams, architectural figures, timing diagrams, waveform screenshots, and other visual material needed for multi-modal analysis.
+
+Breakdown by source:
+
+- freecores: 667 retained projects
+- klyone: 770 retained projects
+
+Breakdown by quality tier:
+
+- Tier A: 409 projects
+- Tier B: 450 projects
+- Tier C: 578 projects
+
+The most useful subset is the **rich project set**, defined as projects with at least one HDL file and at least one PDF or image. This produced **692 rich projects**. Within that, **143 strongest projects** contain HDL + PDF + image content together, making them the best candidates for further dataset curation.
+
+#What Was Actually Found
+
+The repositories contain a broad set of reusable hardware IP cores. The extracted projects include arithmetic cores, cryptographic accelerators, DSP components, communication controllers, memory controllers, processor cores, system-on-chip examples, testing/verification utilities, and video/display controllers. The highest-value examples are not just source-code dumps: many include documentation PDFs and visual design material that can be connected to HDL implementations.
+
+The most common useful content types found were:
+
+- HDL source code: Verilog, SystemVerilog, and VHDL implementations of IP cores.
+- Documentation: PDFs, text files, README files, and specification documents.
+- Visual files: diagrams, screenshots, architecture figures, waveforms, and image assets.
+- Support files: build scripts, testbench-related files, constraints, and project support material.
+
+#Strong Candidate Projects
+
+The following projects are strong candidates because they combine HDL with visual and/or PDF material:
+
+| Project | Source | Tier | HDL | PDFs | Images | GitHub URL |
+|---|---|---:|---:|---:|---:|---|
+| freecores_myforthprocessor | freecores | C | 304 | 2 | 713 | https://github.com/freecores/myforthprocessor |
+| freecores_aoocs | freecores | C | 39 | 1 | 75 | https://github.com/freecores/aoocs |
+| klyone_system_on_chip_aoocs-wishbone_amiga_ocs_soc | klyone | A | 39 | 1 | 73 | https://github.com/klyone/opencores-ip/tree/system_on_chip_aoocs-wishbone_amiga_ocs_soc |
+| freecores_openmsp430 | freecores | C | 420 | 23 | 68 | https://github.com/freecores/openmsp430 |
+| klyone_processor_openmsp430 | klyone | A | 442 | 15 | 67 | https://github.com/klyone/opencores-ip/tree/processor_openmsp430 |
+| freecores_uart_block | freecores | C | 18 | 3 | 51 | https://github.com/freecores/uart_block |
+| freecores_socgen | freecores | C | 120 | 5 | 47 | https://github.com/freecores/socgen |
+| klyone_communication_controller_uart_block | klyone | A | 18 | 1 | 46 | https://github.com/klyone/opencores-ip/tree/communication_controller_uart_block |
+| freecores_avs_aes | freecores | C | 20 | 2 | 44 | https://github.com/freecores/avs_aes |
+| klyone_arithmetic_core_8-bit_up | klyone | A | 37 | 1 | 39 | https://github.com/klyone/opencores-ip/tree/arithmetic_core_8-bit_up |
+| klyone_processor_a-z80_cpu | klyone | A | 155 | 2 | 36 | https://github.com/klyone/opencores-ip/tree/processor_a-z80_cpu |
+| klyone_crypto_core_avalon_aes_ecb-core_128_192_256_bit | klyone | A | 20 | 2 | 36 | https://github.com/klyone/opencores-ip/tree/crypto_core_avalon_aes_ecb-core_128_192_256_bit |
+| freecores_present | freecores | C | 97 | 4 | 32 | https://github.com/freecores/present |
+| freecores_gecko3 | freecores | C | 26 | 21 | 30 | https://github.com/freecores/gecko3 |
+| klyone_crypto_core_present-a_lightweight_block_cipher | klyone | A | 97 | 5 | 30 | https://github.com/klyone/opencores-ip/tree/crypto_core_present-a_lightweight_block_cipher |
+
+#Content Distribution by Project Type
+
+The largest groups discovered in the retained output were:
+
+- processor: 153 retained projects, including 75 rich projects
+- communication_controller: 143 retained projects, including 74 rich projects
+- arithmetic_core: 90 retained projects, including 41 rich projects
+- other: 82 retained projects, including 26 rich projects
+- crypto_core: 60 retained projects, including 26 rich projects
+- system_on: 52 retained projects, including 26 rich projects
+- dsp_core: 35 retained projects, including 21 rich projects
+- memory_core: 35 retained projects, including 9 rich projects
+- video_controller: 35 retained projects, including 24 rich projects
+- ecc_core: 21 retained projects, including 10 rich projects
+- wb: 20 retained projects, including 6 rich projects
+- testing-verification: 19 retained projects, including 5 rich projects
+
+#Interpretation
+
+The extraction confirms that the two repositories are suitable starting points for a hardware-design dataset, but the material is uneven. Some projects contain only HDL code, some contain only documentation, and some have incomplete or old repository structures. The most valuable records are the rich projects because they connect implementation code with explanatory documents or visual design references. The strongest HDL + PDF + image subset should be prioritised first for manual review, captioning, diagram classification, and dataset schema completion.
+
+A useful observation is that `klyone/opencores-ip` often gives cleaner quality tiers because its branch structure includes README-style metadata, while `freecores` provides many individual repositories but has less consistent documentation layout. Therefore, some `freecores` projects are marked Tier C even when they contain valuable PDFs or diagrams. They should not be discarded automatically.
+
+#Limitations
+
+- The extraction identifies image files but does not semantically verify whether each image is a true block diagram. Some images may be waveforms, screenshots, logos, or UI captures.
+- PDF text extraction depends on embedded text. Scanned PDFs or unusual encodings may have incomplete extracted text, although the original PDF files were still copied.
+- Some repositories could not be cloned on Windows due to invalid filenames or special characters in branch/file names.
+- The current analysis is file-structure based. A deeper content analysis step should classify diagrams, summarize PDFs, and map individual HDL modules to specific figures.
+
+#Recommended Use in the Report
+
+For the report, the recommended result to cite is: from 1,437 retained projects, 692 projects contain HDL with at least one supporting PDF or image, and 143 projects contain the full HDL + PDF + image combination. These 143 strongest projects form the best initial reference set for a multi-modal hardware-design database.

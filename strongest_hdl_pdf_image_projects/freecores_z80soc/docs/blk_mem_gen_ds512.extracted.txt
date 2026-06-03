@@ -1,0 +1,107 @@
+DS512 September 21, 2010 www.xilinx.com 1
+Product Specification
+© 2006–2010 Xilinx, Inc. XILINX, the Xilinx logo, Virtex, Spartan, ISE and other designated brands included herein are trademarks of Xilinx in the United States and 
+other countries. All other trademarks are the property of their respective owners.
+Introduction
+The Xilinx LogiCORE™ IP Block Memory Generator
+core is an advanced memory constructor that generates
+area and performance-optimized memories using
+embedded block RAM resources in Xilinx FPGAs.
+Available through the CORE Generator™ software,
+users can quickly create optimized memories to
+leverage the performance and features of block RAMs
+in Xilinx FPGAs.
+Features
+• Generates Single-port RAM, Simple Dual-port 
+RAM, True Dual-port RAM, Single-port ROM, and 
+Dual-port ROM 
+• Performance up to 450 MHz 
+• Supports data widths from 1 to 1152 bits and 
+memory depths from 2 to 9M words (limited only 
+by memory resources on selected part)
+• Configurable port aspect ratios for dual-port 
+configurations and read-to-write aspect ratios in 
+Virtex®-6, Virtex-5, and Virtex-4 FPGAs
+• Optimized algorithms for minimum block RAM 
+resource utilization or low power utilization
+• Configurable memory initialization
+• Individual write enable per byte in Virtex-6, 
+Virtex-5, Virtex-4, Spartan®-6, and 
+Spartan-3A/XA DSP with or without parity
+• Optimized VHDL and Verilog behavioral models 
+for fast simulation times; structural simulation 
+models for precise simulation of memory 
+behaviors
+• Selectable operating mode per port: WRITE_FIRST, 
+READ_FIRST, or NO_CHANGE
+• Supports the built-in Hamming Error Correction 
+Capability (ECC) available in Virtex-6 and Virtex-5 
+devices for data widths greater than 64 bits. Error 
+injection pins in Virtex-6 allow insertion of single 
+and double-bit errors
+• For data widths less than 64 bits, soft Hamming 
+Error Correction is also available for Virtex-6 and 
+Spartan-6 devices
+• Option to pipeline DOUT bus for improved 
+performance in specific configurations
+• Smaller primitive configurations in Spartan-6 
+devices with the introduction of new 9K primitives
+• Lower data widths for Virtex-6 devices in SDP 
+mode
+• Choice of reset priority for output registers 
+between priority of SR (Set Reset) or CE (Clock 
+Enable) in Spartan-6 and Virtex-6 families
+• Asynchronous reset in Spartan-6 devices
+LogiCORE IP Block
+Memory Generator v4.3
+DS512 September 21, 2010 Product Specification
+LogiCORE IP Facts
+Core Specifics
+Supported 
+Device Family(1)
+1. For the complete list of supported devices, see Table 1, page 2 and
+the release notes for this core.
+Virtex-6, Virtex-5, Virtex-4,
+Spartan-6, Spartan-3E/XA, Spartan-3/XA,
+Spartan-3A/3AN/3A DSP
+Block RAM Varied, based on core parameters
+DCM None
+BUFG None
+IOBs/ 
+Transceivers
+None
+PPC None
+IOB-FF/TBUFs None
+Provided with Core
+Documentation Product Specification
+Migration Guide(2)
+2. The Migration Guide provides instructions for converting designs
+that contain instances of either Legacy LogiCORE IP 6.x Single or
+Dual Port Block Memory, or older  versions of the Block Memory
+Generator to the latest version of the the Block Memory Generator.
+Design File 
+Formats NGC Netlist
+Design Tool Requirements
+Xilinx 
+Implementation 
+Tools
+ISE® v12.3
+Simulation
+Mentor Graphics ModelSim v6.5c
+VHDL Structural
+Verilog Structural
+VHDL Behavioral(3)
+Verilog Behavioral(3)
+3. Behavioral models do not precisely model collision behavior. See
+"Simulation Models," page 40 for details.
+Synthesis XST
+Support
+Provided by Xilinx, Inc.
+LogiCORE IP Block Memory Generator v4.3
+2 www.xilinx.com DS512 September 21, 2010
+Product Specification
+Overview
+The Block Memory Generator core uses embedded Block Memory primitives in Xilinx FPGAs to extend
+the functionality and capability of a single primit ive to memories of arbi trary widths and depths.
+Sophisticated algorithms within the Block Memory Generator core produce optimized solutions to pro-
+vide convenient access to memories for a wide range of confi

@@ -1,0 +1,27 @@
+{
+  "project_id": "freecores_sdhc-sc-core",
+  "name": "sdhc-sc-core",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/sdhc-sc-core",
+  "extraction_date": "2026-06-02T16:55:11",
+  "license": null,
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 29,
+    "vhdl_files": 59,
+    "other_hdl_files": 0,
+    "pdf_files": 1,
+    "markdown_files": 0,
+    "text_files": 0,
+    "image_files": 2,
+    "total_bytes": 3967163,
+    "languages_seen": [
+      "VHDL",
+      "Verilog"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": []
+}

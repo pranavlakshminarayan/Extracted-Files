@@ -1,0 +1,71 @@
+PRESENT CIPHER ("P URE TESTING ") -
+WITH COMMUNICATION CHANNEL WITH PC
+documentation
+Krzysztof Gajewski
+and opencores.org
+www.opencores.org gajos@opencores.org
+Present Cipher ("Pure Testing") - with communication channel with PC (v. 0.2) - 2014/09/17
+PRESENT CIPHER ("P URE TESTING ")... 2/ 13PRESENT CIPHER ("P URE TESTING ")... 2/ 13PRESENT CIPHER ("P URE TESTING ")... 2/ 13
+Change History
+Rev. Chapter Date Description Reviewer
+0.1 all 2014/05/01 First draft K. Gajewski
+0.2 all 2014/09/16 Some small corrections with the
+text, typos, etc.
+K. Gajewski
+Present Cipher ("Pure Testing") - with communication channel with PC (v. 0.2) - 2014/09/17 All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+PRESENT CIPHER ("P URE TESTING ")... 3/ 13PRESENT CIPHER ("P URE TESTING ")... 3/ 13PRESENT CIPHER ("P URE TESTING ")... 3/ 13
+Contents
+1 Introduction 4
+2 Interface 5
+3 Internal structure and state machine workﬂow 6
+4 FPGA implementations 9
+5 Simulation and software 10
+5.1 Simulation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+5.2 Software . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+6 Troubleshooting 11
+7 License and Liability 12
+All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+Present Cipher ("Pure Testing") - with communication channel with PC (v. 0.2) - 2014/09/17
+PRESENT CIPHER ("P URE TESTING ")... 4/ 13PRESENT CIPHER ("P URE TESTING ")... 4/ 13PRESENT CIPHER ("P URE TESTING ")... 4/ 13
+1 Introduction
+Present is "ultra-lightweight" block cipher developed by A. Bogdanov et al. and proposed in 2007
+[1]. It uses 64 bit data block and 80 bit or 128 bit key. This cipher consists of 32 rounds, during
+which:
+• round key is added to plaintext
+• plaintext goues through sBoxes (substitution boxes)
+• plaintext after sBoxes goes through pLayer (permutation layer)
+• round key is updated
+After that, ciphertext feeds out the output. Brieﬂy algorithm was shown in Fig. 1. More informa-
+Figure 1: Brieﬂy block scheme of the PRESENT block cipher
+tions about FPGA Present core can be found in "Pure" subfolder. In this project Present block
+cipher works with 80 bit key. It was attached by shifting registers to RS-232 core developed by
+Digilent® to enable communication with PC. Target was Xilinx ® Spartan 3E XC3S500E [2] on
+Spartan 3E Starter Board [3] made by Digilent®.
+Present Cipher ("Pure Testing") - with communication channel with PC (v. 0.2) - 2014/09/17 All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+PRESENT CIPHER ("P URE TESTING ")... 5/ 13PRESENT CIPHER ("P URE TESTING ")... 5/ 13PRESENT CIPHER ("P URE TESTING ")... 5/ 13
+2 Interface
+Top level component of the Present Pure Testing was shown in Fig. 2. The number of inputs
+and outputs was limited due to RS-232 component in communication interface. All inputs and
+outputs are synchronous except reset signal and sampled at rising edge of clock. All signals
+are STD_LOGIC .
+Figure 2: Top level component of the Present Pure Testing
+Signal name Width In/Out Description
+clk 1 in clock signal for the component.
+DATA_RXD 1 in input data signal.
+reset 1 in asynchronous reset signal.
+DATA_TXD 1 out output data signal.
+Table 1: Input/Output signals of the Present component
+All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+Present Cipher ("Pure Testing") - with communication channel with PC (v. 0.2) - 2014/09/17
+PRESENT CIPHER ("P URE TESTING ")... 6/ 13PRESENT CIPHER ("P URE TESTING ")... 6/ 13PRESENT CIPHER ("P URE TESTING ")... 6/ 13
+3 Internal structure and state machine workﬂow
+Internal datapath between components was shown in ﬁg. 3. All control signals, clk and reset
+was omitted for clearance. In these schamatic keyReg , textReg and outReg are shift registers
+enabling conversion of the serial input/output data into parallel data. They are respectively:
+• keyReg - shift register for the key,
+• textReg - shift register for the text to be encoded,
+• outReg - shift regis

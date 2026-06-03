@@ -1,0 +1,28 @@
+{
+  "project_id": "freecores_orsoc_graphics_accelerator",
+  "name": "orsoc_graphics_accelerator",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/orsoc_graphics_accelerator",
+  "extraction_date": "2026-06-02T16:54:43",
+  "license": "LGPL-3.0",
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 40,
+    "vhdl_files": 0,
+    "other_hdl_files": 0,
+    "pdf_files": 8,
+    "markdown_files": 0,
+    "text_files": 4,
+    "image_files": 28,
+    "total_bytes": 6935979,
+    "languages_seen": [
+      "Verilog"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": [
+    "http://www.xilinx.com/products/design-tools/ise-design-suite/ise-webpack.html"
+  ]
+}

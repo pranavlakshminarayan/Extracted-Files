@@ -1,0 +1,136 @@
+Natalius 8 bit RISC Processor 
+Fabio Andrés Guzmán Figueroa 
+fabioandres.guzman@opencores.org 
+fabio.guzmanf@upb.edu.co 
+ 
+1. Description: 
+Natalius is a compact, capable and fully embedded 8 bit RISC processor core described 100% in 
+Verilog. It occupies about 268 Slices, 124 FF, 503 LUTs (4 input) in Xilinx Spartan3E1600 (around 1.67% 
+slices).  Natalius offers an assembler that  can run on any  python console. The instruction memory is 
+implemented using two Xilinx BlockRAM Memories, it stores 2048 instructions, each instruction has a 
+width of 16 bits (2048x16). Each instruction takes 3 clock cycles to be executed. 
+Features: 
+1. 8 Bit ALU 
+2. 8x8 Register File 
+3. 2048x16 Instruction Memory 
+4. 32x8 Ram Memory 
+5. 16x11 Stack Memory 
+6. Three CLK / Instruction 
+7. Carry and Zero flags 
+8. 8 bit Address Port (until 256 Peripherals) 
+2. Instruction Set: 
+Natalius contains the typical instruction set on a processor. These are: Memory access, arithmetic, 
+logical and flow control, as described in Table 1. Detailed instruction set shown in Table 3.  
+Instruction Description Type 
+ 
+Instruction Description Type 
+ldi load immediate memory access 
+ 
+ret return subrutine flow control 
+ldm load from memory memory access 
+ 
+adi add with imm arithmetic 
+stm store to memory memory access 
+ 
+csz csr if zero flow control 
+cmp compare arithmetic 
+ 
+cnz csr if no zero flow control 
+add addition arithmetic 
+ 
+csc csr if carry flow control 
+sub subtraction arithmetic 
+ 
+cnc csr if no carry flow control 
+and logic and logical 
+ 
+sl0 shift left zero fill logical 
+oor logic or logical 
+ 
+sl1 shift left one fill logical 
+xor logic xor logical 
+ 
+sr0 shift right zero fill logical 
+jmp jump flow control 
+ 
+sr1 shiftright one fill logical 
+jpz jump if zero flow control 
+ 
+rrl rotary register left logical 
+jnz jump if no zero flow control 
+ 
+rrr rotay register right logical 
+jpc jump if carry flow control 
+ 
+not logic not logical 
+jnc jump if no carry flow control 
+ 
+nop no operation nop 
+csr call subrutine flow control 
+    Table 1. Natalius Instruction Set 
+3.  Natalius Interface Signals: 
+The top-level interface signals to the Natalius Processor appear in Figure 1. and are described in    
+Table 2. 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 1.  Natalius interface connections 
+ 
+Signal  Direction Description 
+clk input 
+clock input: All Natalius registers are 
+clocked from the rising clock edge 
+rst input 
+reset input: To reset the Natalius 
+processor, this rst is asynchronous input 
+and it set program counter register to zero 
+address 
+data_in[7:0] input 
+Input data port: The data is captured on 
+the rising edge of CLK (used in ldm 
+instruction) 
+data_out[7:0] output 
+Output data port: Output data appears on 
+this port for three CLK cycles during a stm 
+instruction, capture this data when write_e 
+is high (uded in stm instruction) 
+port_addr[7:0] output 
+Port address: This addresses the peripheral 
+port to the input or output by instruction 
+ldm or stm 
+ 
+Table 2. Interface signals descriptions 
+ 
+4. Organization of source codes: 
+The hierarchy of the files are shown in Figure 2. 
+ 
+ 
+data_in [7:0] 
+CLK 
+RST 
+ Natalius Processor 
+data_out [7:0] 
+port_addr [7:0] 
+write_e 
+read_e 
+ 
+Opcode Instr Description   Use 
+2 ldi load immediate   ldi rd,imm         (rd=imm) 
+3 ldm 
+load from 
+memory   ldm rd,port_addr   (rd=data_in <= mem[port_addr]) 
+4 stm store to memory   stm rd,port_addr   (rd=data_out => mem[port_addr]) 
+5 cmp compare   cmp rd,rs      (affects carry and zero) 
+6 add addition   add rd,rs      (rd=rd+rs) 
+7 sub subtraction   sub rd,rs      (rd=rd-rs) 
+8 and logic and   and rd,rs      (rd=rd and rs) 
+9 oor logic or   oor rd,rs      (rd=rd or rs) 
+10 xor logic xor   xor rd,rs      (rd=rd xor rs) 
+11 jmp jump   jmp inst_addr  (pc=inst_addr) 
+12 jpz jump if zero   jpz inst_addr  (pc=inst_addr if zero) 
+13 jnz jump if no zero   jnz inst_addr  (pc=inst_addr if no zero) 
+14 jpc jump if carry   jpc inst_addr  (pc=inst_addr if carry) 
+15 jnc jump if no carry   jnc inst

@@ -1,0 +1,125 @@
+ 1
+              
+ 
+ 
+                               Tutorial for „ChipScope Pro“ 
+ 
+         
+  
+ 
+ The Xilinx Tool „ChipScope Pro“ facilitates the implementation of a 
+ Logic Analyser Core on the Spartan III board.  
+ 
+ 
+1.1 Creation of a Logic Analyser Core  
+  A „Core“ file ~.cdc can be created with    Æ Project Æ New Source. 
+  The following menu appears: 
+                                       
+  
+               Picture 1:  New Source 
+   Choose „ChipScope Definition and Connection“, give a file name and activate the 
+   „Add to Project“ option. Click „ Next“ to go on to the next menu: 
+           
+                      
+  
+           Picture 2: Assign to the top entity.                                               Picture 3: Summary 
+           Choose the name of  the top entity and click “Finish“. 
+   
+   
+ 2 
+  
+  This way the „Core“ file ila_spartan3.cdc is included in the project. 
+     
+  
+     Picture 1: Included file ila_spartan3.cdc  
+  
+1.2 Usage of the system clock as LA clock  
+In order for the system clock to be available to the „ChipScope“ Logic Analyser, the entity must be listed under 
+ports in the VHDL source code:   
+SYSCLK : in bit; 
+            N_SYSCLK : out bit; 
+ In the architecture, for instance: 
+   N_SYSCLK <= not (SYSCLK); 
+In the ~.ucf file: 
+NET SYSCLK LOC = P127; 
+   NET N_SYSCLK LOC = P46; 
+If a higher frequency is desired as circuit timing, a frequency increase up to approx. 400 MHz can be reached 
+by using the DCM-module. For details see Appendix A. 
+1.3 Adaptation with „Core Inserter“ 
+ 
+ By double-clicking on the symbol of the ~.cdc file 
+ , the „Core Inserter“  
+is invoked and 4 menus appear: 
+First  menu:  The netlist paths for input and output and the output directory 
+       are specified. The device family is set to „SPARTAN 3“. 
+The options: Use SRL 16s ( SeriellShift LUT 16 bit) and RPMs (relationally placed macros) 
+should be activated. 
+  
+  
+   Picture 2: Menu 1 
+ 
+Second  menu: Disable JTAG Clock BUFG Insertion can remain inactive . 
+              
+  
+   Picture 3: Menu 2 
+Third  menu: The trigger parameters are listed according to data length and allocation. 
+ 3
+ Trigger counters, trigger sequencer and storage qualification 
+ are not needed for simple applications. 
+     
+  
+   Picture 4: Menu 3 
+ Fourth  menu: Data registration parameters such as memory depth and data width of the 
+   trigger data and clock edge are specified here. 
+   
+  
+   Picture 5: Menu 4 
+ Fifth  menu: Under „Modify Connections“, the signals in the list must be assigned. 
+   
+  
+   Picture 6: Menu 5 
+The desired signal is marked in the left side table, and the channel number on the right side; 
+click on „Make Connections“. 
+   
+ 
+   Picture7: Menu 5.1  Modify Connections: Clock Signals 
+ 
+   By clicking on „Net Name“, the list of signal names is sorted alphabetically;  
+   a larger set of signals can be  marked in the „Trigger Data Signals“ list.   
+    
+ 4 
+  
+  
+  Picture 8: Menu 5.2  Modify Connections: Trigger Data Signals 
+  Click OK to return to menu 5, and from there with   
+  
+  to ISE main menu, by saving the settings with the same file name . 
+                                                 
+  
+           Picture 9: saving „Core“ project  
+ 
+ Next, the implementation is started and the Spartan 3 board is programmed. 
+ During this action, you must watch to make sure that the progress bar runs steadily to the end. 
+ Otherwise, close „ChipScope “ and „Impact“ (without saving) and start „Impact“ again.
+ 
+ 
+1.4 Start of„ChipScope“  
+After installing „ChipScope“, ISE shows a new line in the Process window: 
+ 
+   Picture 10:  Header of „ChipScope“ 
+ 
+  Double-click to start„ChipScope“. 
+  The main window of „ChipScope Pro“ opens: 
+  
+  
+  Picture 11: „ChipScope“ main window 
+ 
+  First, the JTAG connection must be made:  JTAG Chain Æ Xilinx parallel Cable : 
+ 5
+  
+  
+  Picture 12: Æ JTAG Chain Æ Xilinx Parallel Cable 
+  In the next menu, choose Æ Xilinx Parallel IV  and click OK: 
+  
+  
+  Picture 

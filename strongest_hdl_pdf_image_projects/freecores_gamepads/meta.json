@@ -1,0 +1,28 @@
+{
+  "project_id": "freecores_gamepads",
+  "name": "gamepads",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/gamepads",
+  "extraction_date": "2026-06-02T16:53:01",
+  "license": "GPL-2.0",
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 0,
+    "vhdl_files": 28,
+    "other_hdl_files": 0,
+    "pdf_files": 1,
+    "markdown_files": 0,
+    "text_files": 0,
+    "image_files": 2,
+    "total_bytes": 412111,
+    "languages_seen": [
+      "VHDL"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": [
+    "http://www.opencores.org/projects.cgi/web/gamepads/overview"
+  ]
+}

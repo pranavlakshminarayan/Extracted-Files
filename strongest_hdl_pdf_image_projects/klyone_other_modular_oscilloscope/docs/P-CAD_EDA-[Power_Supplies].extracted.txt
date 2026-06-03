@@ -1,0 +1,39 @@
+- 6.0 V
++ 4.0 V
++ 6.0 V
+TAB is Input
++ 4.0 V
+External Power
+Source
++4.0V (3-6 A)
++6.0V
+-6.0V
++3.3 V 5A (3.15A Estim. Current)
+Digital Power Supply
+for FPGA I/Os and all 
+digital ICs
+RVI Prototype Board
++5.0 V 3A (0.9A Estim. Current)
+Analog Power Supply
+for Data Coversion
+Daughter Board and
+USB Host Module
+-5.0 V 1A (0.4A Estim. Current)
+Analog Power Supply
+for Data Coversion
+Daughter Board
++ 3.3 V 1.25A (0.16A Estim. Current)
+Analog Power Supply
+for Data Coversion
+Daughter Board
++1.5 V 1.5A 
+(1A Estim. Current)
+Digital Power Supply 
+for FPGA core
+Bypass Capacitors
+TAB is Ground
+TAB is Ground
+TAB is Ground
+TAB is Ground
+Power Supplies & 
+Bypass Capacitors

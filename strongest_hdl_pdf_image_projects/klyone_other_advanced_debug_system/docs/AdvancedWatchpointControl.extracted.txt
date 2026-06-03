@@ -1,0 +1,44 @@
+Advanced Watchpoint Control
+Nathan Yawn
+nyawn@opencores.org
+November 8, 2010
+Copyright (C) 2010 Nathan Yawn
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free 
+Documentation License, Version 1.2 or any later version published by the Free Software Foundation; 
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license 
+should be included with this document.  If not, the license may be obtained from www.gnu.org, or by 
+writing to the Free Software Foundation.
+This document is distributed in the hope that it will be useful, but WITHOUT ANY 
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS 
+FOR A PARTICULAR PURPOSE.
+History
+Rev Date Author Comments
+1.0 20/8/2010 Nathan Yawn Initial version
+1.1 08/11/10 NY Added info on GDB interaction
+Contents
+1.Overview.................................................................................................................................................5
+2.User Interface..........................................................................................................................................5
+2.1.Overview......................................................................................................................................... 5
+2.2.Server Connection Group................................................................................................................7
+2.3.Watchpoints Group..........................................................................................................................7
+2.4.Counters Group............................................................................................................................... 8
+2.5.Control Group..................................................................................................................................9
+3.Usage.....................................................................................................................................................10
+3.1.Startup .......................................................................................................................................... 10
+3.2.Simple Example............................................................................................................................ 10
+3.3.Chaining Example......................................................................................................................... 11
+3.4.Counters Example......................................................................................................................... 12
+4.Future Work...........................................................................................................................................13
+Appendix A:  Code Structure................................................................................................................... 14
+To write all registers:...................................................................................................................... 14
+To read all registers:........................................................................................................................15
+1. Overview
+AdvancedWatchpointControl (AWC) is a Java program designed to allow a user to configure 
+and monitor the hardware watchpoint functionality of the OpenRISC 1000 processor.  The program 
+provides a graphical interface which allows a user to individually control each hardware watchpoint 
+function.  At present, there is a 1-to-1 mapping of UI elements to hardware functions – a user must 
+manually set up the breakpoint hardware, there is no simple way to, for example, “break when x is set 
+to 42”.
+AdvancedWatchpointControl is designed to be used with the Advanced Debug System. 
+Specifically, AWC is written to interface to the adv_jtag_bridge program's HWP server.  This allows 
+AWC to be used in parallel with the standard GDB debug

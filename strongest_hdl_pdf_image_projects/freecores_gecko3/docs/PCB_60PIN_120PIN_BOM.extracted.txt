@@ -1,0 +1,25 @@
+Bill of Materials GECKO3robot 60-120 Pin Converter 
+Source Data From: PCB_60PIN_120PIN.PRJPCB 
+Project: PCB_60PIN_120PIN.PRJPCB 
+1.6 Euro 
+Variant: None 1.05 $
+Creation Date: 09.06.2008 12:12:44 
+Print Date: 09.07.2008 17:07:30 
+Footprint Value LibRef Designator Description Quantity Manufacturer Part Number Distributor Distributor Number Packaging unit lead time RoHS Price Currency In CHF CHF for Qty 
+amp_FH_.8m 
+m_60pin_plug 
+fh-60p-5mm AMP-FH-60-Plug JP1 AMP Free Height System, 0.8mm, 60 Pin, Plug 1 AMP 5177984-2 Farnell 1098 336 1 yes 3.7 CHF 3.7 3 .70 
+amp_FH_.8m 
+m_120pin_r_ 
+H9_H13 
+fh-120r-5mm AMP-FH-120- 
+RECEPTABLE- 
+H9-H13 
+JP2 AMP Free Height System, 0.8mm, 120 Pin, 9 or 13mm 
+Height, Receptable 
+1 AMP 5177983-5 Farnell 1098 349 1 yes 7.76 CHF 7.76 7.76 
+Total Number of parts 2 Total in CHF 11.46 
+Approved Notes  
+Exchange 
+rate to CHF 
+Page 1 of 1 

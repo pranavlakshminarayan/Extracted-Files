@@ -1,0 +1,32 @@
+{
+  "project_id": "freecores_minsoc",
+  "name": "minsoc",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/minsoc",
+  "extraction_date": "2026-06-02T16:53:45",
+  "license": null,
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 55,
+    "vhdl_files": 0,
+    "other_hdl_files": 0,
+    "pdf_files": 3,
+    "markdown_files": 0,
+    "text_files": 6,
+    "image_files": 1,
+    "total_bytes": 6380736,
+    "languages_seen": [
+      "Verilog"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": [
+    "http://opencores.org/ocsvn/adv_debug_sys/adv_debug_sys/trunk",
+    "http://opencores.org/ocsvn/minsoc/minsoc/trunk",
+    "http://opencores.org/ocsvn/openrisc/openrisc/trunk/or1200",
+    "http://opencores.org/ocsvn/uart16550/uart16550/trunk",
+    "http://www.opencores.org/"
+  ]
+}

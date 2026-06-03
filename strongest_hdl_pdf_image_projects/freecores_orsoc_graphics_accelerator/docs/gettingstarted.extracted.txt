@@ -1,0 +1,68 @@
+ORGFX - getting started
+Per Lenander, Anton Fosselius
+June 4, 2012
+1 Introduction
+This document is intended to make it easier to get started with the ORSoC graphics accelerator component. It
+contains some useful links and instructions on how to get the example code working.
+1
+Figure 1: Directory structure of the ORSoC graphics accelerator.
+2 Project structure
+The project source is structured as seen in ﬁgure 1.
+3 Hardware
+The rtl folder contains all the code needed to instantiate the ORGFX IP Core.
+The component has 3 main wishbone interfaces:
+• A wishbone slave interface for reading and writing registers. Every registry write will be added to a
+circular FIFO instruction queue.
+• A wishbone master interface for reading from memory (requires at least a read-only memory).
+• A wishbone master interface for writing to memory (requires at least a write-only memory).
+All functionality of the component is accessed by writing instructions to the registers. Only writes to the
+control register can potentially start drawing operations.
+Refer to the speciﬁcation document for a full explanation of all registers, their default values and how they
+are used.
+The component can be modiﬁed to extend the size of the instruction queue by changing the ﬁfo depth
+parameter. It is not advised to change the other parameters, as their function is not fully tested.
+4 Software
+4.1 Drivers
+ORGFX comes with a layered software driver in the sw/drivers folder.
+The basic driver consists of:
+orgfx . h
+orgfx . c
+o r g f x r e g s . h
+It is possible to set the base bus address of the graphics accelerator in the regs ﬁle. The orgfx.c ﬁle is the
+only part of the driver that can interact with the hardware.
+The extended driver (convenience functions and better surface management) consists of:
+2
+o r g f x p l u s . h
+o r g f x p l u s . c
+The extended driver is required for most of the advanced API. Memory is managed statically in the driver,
+so the driver must be modiﬁed if support for a larger number of surfaces is desired.
+There are four sets of advanced API that all build on the functionality of the basic and the extended driver:
+orgfx 3d . h
+orgfx 3d . c
+o r g f x t i l e s e t . h
+o r g f x t i l e s e t . c
+o r g f xb i t m a pf o n t . h
+o r g f xb i t m a pf o n t . c
+o r g f x v e c t o rf o n t . h
+o r g f x v e c t o rf o n t . c
+These supply convenience functions for doing more complex operations in a small number of function calls
+(such as drawing a 3D mesh). Most of these should be used with the output of the utilities described below.
+4.2 Examples
+In addition to the drivers, the sw folder contains examples and utils. The examples contain a few sample
+implementations with some basic functionality. The examples can be built by using the supplied Makeﬁle. By
+default it builds the examples for hardware (requires or32-elf- toolchain to build for OpenRISC. The Makeﬁle
+assumes that the or32-elf tool bin2binsizeword is in the path).
+4.3 Utilities
+There are four useful utilities supplied with ORGFX: the spritemaker, meshmaker, bitfontmaker and vector
+font maker programs. Build all the utilities with the Makeﬁle in the utils directory.
+All the utilities take some form of input ﬁle and generates a header ﬁle containing all the information needed
+for the drivers. These ﬁles also contains a function for initialization speciﬁc to the resource contained. Calling
+this function creates the necessary structure that the drivers can use.
+The spritemaker program takes an imageﬁlename.png and creates an output ﬁleﬁlename.png.h (the program
+also support various other ﬁle formats 1).
+. / spritemaker filename . < jpg /png/bmp > [ bpp=16]
+The meshmaker program takes a Wavefront .obj ﬁle ﬁlename.obj and generates the ﬁle ﬁlename.obj.h.
+. / meshmaker filename . obj [ bpp=16]
+The bitfontmaker program takes an image containing a 256 character bitmap font where each letter is
+glyphsize pixels large. Th program takes an image ﬁlename.png and generates ﬁlename font.h (supports the
+sam

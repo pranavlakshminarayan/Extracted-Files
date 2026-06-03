@@ -1,0 +1,60 @@
+ APPLICATION NOTE 
+R01AN0757EU0100  Rev.1.00  Page 1 of 17 
+Oct 25, 2011  
+RX600 Series  
+How to Setup and Run CoreMark on a MCU  
+Introduction  
+This document details the steps needed to obtain, configure, and run the EEMBC CoreMark Benchmark.  The RDK 
+RX62N was the platform chosen for the examples throughout this document and results for this setup are shown.  The 
+Renesas High-performance Embedded Workshop (HEW) IDE is used along with the KPIT GNU RX Toolchain.   
+For more information on the EEMBC CoreMark Benchmark please follow the link below:  
+http://www.coremark.org/ 
+Target Device  
+The RX62N is used as an example in this document but the same methods can be used to properly configure C oreMark 
+for any MCU. 
+Contents  
+1. Overview ........................................................................................................................................... 2 
+2. Obtaining the CoreMark Benchmark ................................................................................................. 2 
+3. Downloading & Installing the KPIT GNU Tools ................................................................................. 3 
+4. Creating a CoreMark HEW Project ................................................................................................... 4 
+5. Adding CoreMark Source .................................................................................................................. 5 
+6. Adding Board Support Files .............................................................................................................. 6 
+7. Configuring CoreMark ....................................................................................................................... 7 
+8. Optimizing CoreMark....................................................................................................................... 11 
+9. Run the CoreMark Benchmark ........................................................................................................ 13 
+10. Results for RX62N ........................................................................................................................... 15 
+11. Summary ......................................................................................................................................... 16 
+ 
+R01AN0757EU0100 
+Rev.1.00 
+Oct 25, 2011 
+RX600 Series How to Setup and Run CoreMark on a MCU 
+R01AN0757EU0100  Rev.1.00  Page 2 of 17 
+Oct 25, 2011  
+1. Overview 
+When looking for a MCU to fit a certain application users need to know if a MCU has enough processing power to meet 
+their needs.  There are a number of benchmarking options available with the most widely known probably being the 
+Dhrystone.  There are inherit problems with the Dhrystone though that are discussed in the ‘Background’ section of the 
+‘Coremark-requirements.doc’ document that comes packaged with the CoreMark Software .  To address these problems 
+and provide a “simple, open source benchmark” EEMBC created the CoreMark.   
+2. Obtaining the CoreMark Benchmark 
+The CoreMark Software is free to download from the CoreMark website.  Start by going 
+to 
+http://www.coremark.org/download. 
+ 
+Figure 1 : Register & Download CoreMark 
+ In order to download the software users first have to register with EEMBC.  This can be done by following the 
+instructions underneath the ‘REGISTER’ section on the previously referenced webpage.  After the registratio n process 
+is finished follow the instructions under the ‘DOWNLOAD’ section to get to the ‘Download CoreMark Software’ 
+webpage.  From this webpage download the CoreMark Software shown below in Figure 2.  The CoreMark 
+documentation is included with this download. 
+ 
+Figure 2 : Download CoreMark Software & Documentation 
+ 
+ 
+
+RX600 Series How to Setup and Run CoreMark on a MCU 
+R01AN0757EU0100  Rev.1.00  Page 3 of 17 
+Oct 25, 2011  
+3. Downloading & Installing the KPIT GNU Tools 
+This section assumes that the Renesas High-performance Em

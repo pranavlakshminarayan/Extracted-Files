@@ -1,0 +1,29 @@
+{
+  "project_id": "klyone_processor_yellow_star",
+  "name": "processor_yellow_star",
+  "source": "klyone",
+  "source_url": "https://github.com/klyone/opencores-ip/tree/processor_yellow_star",
+  "extraction_date": "2026-06-02T16:17:08",
+  "license": null,
+  "has_readme": true,
+  "readme_excerpt": "\n## VHDL/Verilog IP Cores Repository\n\nThis branch contains the following VHDL/Verilog IP Code:\n\n    Project name: yellow_star\n    Project category: processor\n    Project branch: processor_yellow_star\n\nThis whole github repository is huge and, since IP cores are stored in separate\nbranches, it is a good idea to just download the branch that you are interested\nin. This branch can be downloaded with the git command.\n\n    git clone -b processor_yellow_star --single-branch https://github.com/fabriziotappero/ip-cores.git\n\nA cool searchable index of the whole repo is available from www.freerangefactory.org.\n\n\n### License\n\nThis code of each IP core was taken \"as is\" from the website opencores.org.\nThe copyright owner of each IP code is the author of the code itself. For\nmore information refer to the index.html or go to the website opencores.org\n\nThis code is free software; you can redistribute it and/or modify it under the\nterms of the http://www.gnu.org/licenses/gpl.html (GNU General Public License)\nas published by the Free Software Foundation; either version 2 of the License,\nor (at your option) any later version.\n\nThis code is distributed in the hope that it will be useful, but\nWITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or\nFITNESS FOR A\tPARTICULAR PURPOSE. See the GNU General Public License for\nmore details.\n",
+  "stats": {
+    "verilog_files": 39,
+    "vhdl_files": 0,
+    "other_hdl_files": 0,
+    "pdf_files": 2,
+    "markdown_files": 0,
+    "text_files": 5,
+    "image_files": 1,
+    "total_bytes": 3494100,
+    "languages_seen": [
+      "Verilog"
+    ]
+  },
+  "quality_tier": "A",
+  "quality_reason": "README + (PDF or images) + 3+ HDL files",
+  "references": [
+    "http://www.gnu.org/licenses/gpl.html",
+    "https://github.com/fabriziotappero/ip-cores.git"
+  ]
+}

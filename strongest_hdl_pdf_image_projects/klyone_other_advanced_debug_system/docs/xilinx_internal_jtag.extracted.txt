@@ -1,0 +1,54 @@
+ 
+Xilinx Internal JTAG 
+(Test Access Port)
+ 
+Author: Nathan Yawn
+nathan.yawn@opencores.org
+Rev. 1.0
+May 16, 2009
+Open Cores                Xilinx Iternal JTAG       6/14/2009
+Copyright (C) 2008-2009 Nathan Yawn
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU  
+Free  Documentation  License,  Version  1.2  or  any later  version published  by the  Free  Software  
+Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of  
+the  license  should be  included  with  this  document.   If  not,  the  license  may  be  obtained  from  
+www.gnu.org, or by writing to the Free Software Foundation.
+This document is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;  
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR  
+PURPOSE.
+Rev 1.1                 Page 2 of 10
+Open Cores                Xilinx Iternal JTAG       6/14/2009
+History
+Rev. Date Author Description
+1.0 18/07/2008 Nathan Yawn First Draft
+1.1 16/05/2009 NY Edit for initial release
+Rev 1.1                 Page 3 of 10
+Open Cores                Xilinx Iternal JTAG       6/14/2009
+Contents
+1 INTRODUCTION.............................................................................................................................5
+2 OPERATION.....................................................................................................................................6
+2.1 XILINX BSCAN_* MACRO BLOCKS.................................................................................................................................6
+2.2 INSTRUCTIONS.................................................................................................................................................................. 7
+2.3 NON-STANDARD BEHAVIOR................................................................................................................................................7
+3 IO PORTS..........................................................................................................................................8
+3.1 DEBUG PORTS..................................................................................................................................................................8
+4 REGISTERS...................................................................................................................................... 9
+5 INTEGRATED SYSTEM...............................................................................................................10
+Rev 1.1                 Page 4 of 10
+Open Cores                Xilinx Iternal JTAG       6/14/2009
+1
+Introduction
+The  Xilinx  Internal  JTAG  core is  used for development  purposes  (hardware  and  software  
+debugging).   It uses a Xilinx BSCAN_SPARTAN or BSCAN_VIRTEX IP library function macro to  
+allow debugging of an OpenRisc-based System-on-Chip (SoC) using the same JTAG interface IO pins  
+used to upload the bitstream to the FPGA.  This core can only be used in Xilinx FPGAs which support  
+a BSCAN_* macro.  Before continuing with this document, it is recommended that you familiarize  
+yourself with the IEEE 1149.1 specification (JTAG and Boundary Scan), and also that you read the  
+section of the Xilinx Unified Libraries manual which deals with the BSCAN_* macros.
+The xilinx_internal_jtag core is designed to replace the “jtag” TAP core in a Xilinx-based system.  
+It is designed to provide an interface between the FPGA's JTAG pins and the SoC debug core.  In  
+particular, the xilinx_internal_jtag core is designed to interface with the Advanced Debug Interface  
+(adv_dbg_if core).  Other debug cores may require modification in order to work with this one.  Note  
+that this core provides only a single device enable output (for the debug core); adding other JTAG scan  
+chains may be done by hand, if multiple USER instructions are supported by the BSCAN_* block in  
+you

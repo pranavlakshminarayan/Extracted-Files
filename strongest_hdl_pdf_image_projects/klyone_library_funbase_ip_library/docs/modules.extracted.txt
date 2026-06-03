@@ -1,0 +1,46 @@
+  
+Interrupt
+handlerInit
+DM9000A
+tx_data_in,
+tx_data_valid_in,
+tx_re_out
+rx_data_out,
+rx_data_valid_out,
+rx_re_in
+comm_req
+comm_grant
+Comm
+ReadSend
+comm_req
+comm_grant
+config_data_bus
+config_data_bus
+config_data_bus
+config_data_bus
+eth_interrupt_in
+rx_waiting
+tx_ready
+sleep_time
+init_ready
+config_data_bus:
+- config_data
+- reg_addr
+- read_not_write
+- data_from_comm
+- data_from_comm_valid
+- comm_busy
+comm_grant
+comm_req
+new_tx_in,
+tx_len_in,
+tx_MAC_addr_in,
+tx_frame_type_in
+new_rx_out,
+rx_len_out,
+rx_frame_type_out,
+rx_erroneous_out,
+fatal_error_out
+eth_*
+1
+23

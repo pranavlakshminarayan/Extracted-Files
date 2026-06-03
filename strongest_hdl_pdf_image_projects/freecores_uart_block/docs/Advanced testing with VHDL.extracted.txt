@@ -1,0 +1,141 @@
+Jim Duckworth, WPI Advanced Testing using VHDL 1
+Advanced Testing using VHDL 
+Module 9 
+Jim Duckworth, WPI Advanced Testing using VHDL 2
+Overview 
+• SRAM Model 
+• Attributes 
+• Loop Statements 
+• Test Bench examples using 
+– TEXTIO 
+– Conversion functions 
+– Reading file containing test vectors 
+– Writing test results to file 
+Jim Duckworth, WPI Advanced Testing using VHDL 3
+Adding the SRAM model 
+• New testbench 
+SRAM 
+Model 
+Battleship/RISC 
+Picoblaze 
+Display 
+Jim Duckworth, WPI Advanced Testing using VHDL 4
+SRAM - Simplified Read Operation 
+
+Jim Duckworth, WPI Advanced Testing using VHDL 5
+SRAM Model - Verilog 
+Jim Duckworth, WPI Verilog for Testing Module 5
+
+Jim Duckworth, WPI Advanced Testing using VHDL 6
+SRAM Model - VHDL 
+
+Jim Duckworth, WPI Advanced Testing using VHDL 7
+SRAM Model Read and Write 
+
+Jim Duckworth, WPI Advanced Testing using VHDL 8
+VHDL Attributes 
+• Signals can have attributes associated with them 
+• Example predefined signal attributes are 
+– function 
+– value 
+– type 
+– range 
+• Also possible to have user-defined attributes 
+Jim Duckworth, WPI Advanced Testing using VHDL 9
+Function Attributes 
+• Predefined functions 
+• Returns information about the behavior of signals 
+– s’EVENT 
+• returns true if an event occurred 
+• change in value 
+– s’ACTIVE 
+• returns true if signal s is active 
+• new value assigned to signal s (may be same value)
+– s’LAST_EVENT 
+• returns elapsed time since last event 
+– s’LAST_ACTIVE 
+– s’LAST_VALUE 
+• returns value of s before the last event 
+Jim Duckworth, WPI Advanced Testing using VHDL 10 
+Function Attribute example 
+• Check for setup time violation on d input changing 
+CONSTANT setup_time : TIME := 12 ns; -- TIME is predefined 
+PROCESS(clk)
+BEGIN 
+IF clk’EVENT AND clk = ‘1’ THEN 
+ASSERT(d’LAST_EVENT >= setup_time)
+REPORT “setup violation”
+SEVERITY error; 
+END IF; 
+• Assert statement checks that the input d has not had an 
+event during the setup time. 
+• If time returned is less than setup time - assertion will fail 
+Jim Duckworth, WPI Advanced Testing using VHDL 11 
+‘now’ function 
+• NOW 
+– predefined function that returns simulation time 
+– IF d’EVENT THEN 
+lasteventonD := NOW; 
+IF clk’EVENT AND clk = ‘1’ THEN 
+ASSERT(now – lasteventonD) >= setup_time 
+REPORT “setup violation”
+SEVERITY error 
+Jim Duckworth, WPI Advanced Testing using VHDL 12 
+RANGE attributes 
+• Only for constrained array types 
+• Returns range of specified type 
+• Two range attributes 
+– a’RANGE 
+– a’REVERSE RANGE 
+TYPE address_bus IS ARRAY (63 DOWNT0 0) OF std_logic; 
+SIGNAL cpu_address : address_bus; -- declare array 
+FOR j IN cpu_address’RANGE LOOP -- 63 DOWNTO 0 
+FOR j IN cpu_address’REVERSE_RANGE LOOP -- 0 TO 63 
+Jim Duckworth, WPI Advanced Testing using VHDL 13 
+VALUE and ARRAY Attributes 
+• These return the bounds of a type 
+• Four predefined attributes 
+– a’LEFT 
+• returns left bound of type 
+– a’RIGHT 
+• returns right bound of type 
+– a’HIGH 
+• returns upper bound of type 
+– a’LOW 
+• returns lower bound of type 
+• Also 
+– a’LENGTH 
+• returns total length of the array 
+Jim Duckworth, WPI Advanced Testing using VHDL 14 
+Value and Array Attribute examples 
+TYPE address_bus IS ARRAY (63 DOWNT0 0) OF std_logic; 
+SIGNAL cpu_address : address_bus; -- declare array 
+BEGIN 
+PROCESS 
+VARIABLE i, j, k, l, m : INTEGER; 
+BEGIN 
+i := cpu_address’LEFT; -- 63 
+j := cpu_address’RIGHT; -- 0
+k := cpu_address’HIGH; -- 63 
+l := cpu_address’LOW; -- 0
+m := cpu_address’LENGTH; -- 64 
+END PROCESS; 
+Jim Duckworth, WPI Advanced Testing using VHDL 15 
+Enumerated type example 
+TYPE days IS (mon, tues, wed, thurs, fri, sat, sun); 
+SUBTYPE weekend IS days RANGE sat TO sun; 
+SIGNAL day1, day2, day3, day4, day5 : days; 
+SIGNAL count : INTGER; 
+BEGIN 
+PROCESS 
+BEGIN 
+day1 <= days’LEFT; -- mon 
+day2 <= days’RIGHT; -- sun 
+day3 <= days’HIGH; -- sun 
+day4 <= weekend’LOW; -- sat 
+count <= days’POS(tues); -- 1
+day5 <= days’VAL(3)); -- thurs 
+END PROCESS; 
+Jim Duckworth, WPI Advanced Testing using VHDL 16 
+LOOP Statements 
+• Used to i

@@ -1,0 +1,42 @@
+101 Innovation Drive
+San Jose, CA 95134
+(408) 544-7000
+http://www.altera.com
+Document Version 1.0
+Document Date October 2006
+Cyclone II FPGA Starter Development Board
+Reference Manual
+Copyright © 2006 Altera Corporation. All rights reserved. Altera, The Programmable Solutions Company, the stylized Altera logo, specific device des-
+ignations, and all other words and logos that  are identified as tr ademarks and/or service marks ar e, unless noted otherwise, th e trademarks and
+service marks of Altera Corporation in the U.S. and other countries. All other product or service names are the property of their respective holders. Al-
+tera products are protected under numerous  U.S. and foreign patents and pending app lications, maskwork rights, and copyrights. Altera warrants
+performance of its semiconductor products to current specifications  in accordance with Altera's standard warranty, but reserves  the right to make
+changes to any products and services at any time without notice. Altera assumes no responsibility or liability arising out of the ap-
+plication or use of any info rmation, product, or service desc ribed herein except as expressly agreed to in writing by Altera
+Corporation. Altera customers are advised to obtain the latest version of device specifications before relying on any published in-
+formation and before placing orders for products or services.
+Part Number MNL-CDK01004-1.0
+ii  Altera Corporation
+
+Altera Corporation  iii
+Preliminary
+Contents
+About This Manual .................................................................................. v
+Chapter 1. Introduction
+Overview ................................................................................................................................................. 1–1
+Hardware Features ........................................................................................................................... 1–2
+Software Features ............................................................................................................................. 1–2
+Block Diagram ........................................................................................................................................ 1–2
+Configuring the Cyclone II FPGA ....................................................................................................... 1–3
+JTAG Programming ......................................................................................................................... 1–3
+AS Programming .............................................................................................................................. 1–4
+Configuration Procedure ................................................................................................................. 1–4
+Configuring the FPGA in JTAG Mode ..................................................................................... 1–4
+Configuring the EPCS4 Device in AS Mode ................ ........................................................... 1–5
+Component Summary ........................................................................................................................... 1–6
+Component Features ............................................................................................................................. 1–7
+Cyclone II EP2C20 FPGA ................................................................................................................ 1–7
+Serial Configuration Device and USB Blaster Circuit ................................................................. 1–8
+SRAM ................................................................................................................................................. 1–8
+SDRAM .............................................................................................................................................. 1–8
+Flash Memory ..........................................................................................

@@ -1,0 +1,83 @@
+www.zylin.com
+Zylin CPU
+Øyvind Harboe, General Manager, Zylin AS
+Soft CPU Demo
+www.zylin.com
+Demo
+Xilinx XC3S400
+Runs TCP/IP stack & web server under eCos
+Wishbone interfaces
+16 bit DDR SDRAM
+
+www.zylin.com
+Zylin eCosBoard
+eCosBoard 1.1 w/ZPU
+ARM7
+Interface
+Ethernet
+Core
+FPGA
+Registers
+DDR
+Bridge
+CPU
+SDRAM
+Ethernet
+Ethernet
+Core
+Access
+Correct
+32-bit
+Atomic
+Access
+WishBone
+MUX
+WishBone
+MUX
+DDR
+Ctrl
+WishBone
+MUX
+ZPU
+ZPU
+wb
+Bridge
+ZPU
+Core
+zpu_system
+www.zylin.com
+Dhrystone 2.1
+Feeble 16 bit DRAM memory subsystem
+ZPU  1.8 DMIPS using 16 bit DRAM only
+AT91FR40162R ARM7 - 3 DMIPS using SRAM + DRAM
+www.zylin.com
+Games
+No operating system. libgloss + newlib.
+Standard C applications
+Eliza  simple text based
+Sumeria - uses -lm math library
+www.zylin.com
+eCos TCP/IP
+TCP/IP stack
+eCos web server, e.g. configuration pages, status, logs
+www.zylin.com
+ISS  GDB & CDT
+
+www.zylin.com
+ISS  GDB & CDT
+
+www.zylin.com
+Toolchain codesize
+
+www.zylin.com
+Toolchain codesize  custom startup
+Use more FPGA resources, reduce fixed overhead
+
+www.zylin.com
+Demo summary
+DMIPS
+Games  standard C with math library, etc.
+eCos - TCP/IP stack and drivers
+ISS  Instruction set simulator and debugger 
+www.zylin.com
+Questions?

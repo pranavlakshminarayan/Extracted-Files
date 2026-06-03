@@ -1,0 +1,55 @@
+Building a Minimal OpenRISC System
+Matthew Hicks
+University of Illinois at Urbana-Champaign
+To use the OR1200 OpenRISC processor we need to combine it with several other peripherals, using their wishbone
+interfaces, creating a system-on-chip (SoC). A basic SoC contains the OR1200 processor with JTAG-based debug
+interface, an internal memory, and a UART. This allows for small programs to be loaded into memory using the Xilinx
+USB programming cable which uses one of the FPGA’s user JTAG access ports. The processor runs the program from
+memory, outputting console text to the UART port. This system is sufﬁcient enough to learn how to build a system,
+compile software for that system, attach a debugger, and run a ”Hello World” program.
+1 Prerequisites
+• Xilinx XUP-V5 development board (a.k.a. ML509)
+• Linux
+• Xilinx ISE 12 with bin directory added to the PATH
+• RS-232 to USB adapter
+• cutecom
+2 Building the hardware
+1. Download the svn repositories for each core in the SoC into a common folder
+(a) svn co http://opencores.org/ocsvn/adv_debug_sys/adv_debug_sys/trunk adv debug sys
+(b) svn co http://opencores.org/ocsvn/openrisc/openrisc/trunk/or1200 or1200
+(c) svn co http://opencores.org/ocsvn/uart16550/uart16550/trunk uart16550
+(d) svn co http://opencores.org/ocsvn/minsoc/minsoc/trunk minsoc
+2. Conﬁgure the cores
+(a) The Verilog options ﬁle for the Xilinx JTAG user interface of adv debug sys needs to be updated with
+the correct model FPGA. The ﬁle is located in . . . advdebug sys/Hardware/xilinx internal jtag/rtl/verilog.
+Uncomment the VIRTEX5 line and ensure all other lines are commented-out.
+(b) The Verilog deﬁnes ﬁle for the debug interface (adv debug sys) needs to be updated with the correct
+parameters. The ﬁle is located in . . . adv debug sys/Hardware/adv dbg if/rtl/verilog. Comment-out the
+deﬁnition of DBG JSP SUPPORTED and ADBG JSP SUPPORT MULTI.
+(c) The Verilog deﬁnes ﬁle for the top-level design needs to be conﬁgured so that the minimal SoC is
+implemented correctly. The ﬁle is located in . . . minsoc/rtl/verilog. Uncomment and comment lines as
+required to build a SoC with only debug, UART, and internal memory peripherals, for a Xilinx Virtex 5
+FPGA, running at 100 MHZ (input clock is 100 MHz), with negative reset. It is key that ETHERNET and
+STARTUP are left undeﬁned.
+3. Prepare the Makeﬁle
+(a) Copy the Makeﬁle to the directory where all the svn repos of the cores were checked-out into
+(b) Copy the Makeﬁle support ﬁles (.prj and .xst) folder buildSupport to the directory where all svn repos were
+checked-out into
+(c) Update the ROOT directory in Makeﬁle to the path of the core repo containing directory
+4. Verify the existence or create a constraints (.ucf) ﬁle for your development board in . . . minsoc/backend
+5. Copy the blackBoxes folder to the folder where the cores are checked-out into
+(a) In order to reduce synthesis times and keep the system more modular, this project synthesizes each core
+separately, then connects the resulting netlists together, at the top level, using a WISHBONE compliant
+bus. To do this, the top level treats each core as a black box during synthesis. This requires an empty,
+interface only version of each core’s top-level design ﬁle. The blackBoxes folder contains an interface
+version of the UART, OR1200, and debug cores.
+(b) Adding other peripherals to the SoC requires creating an interface version of that peripheral’s top level ﬁle
+and then adding it to the blackBoxes folder. To do this, remove all logic from the peripheral’s top-level
+HDL ﬁle, keeping only the input/output description.
+6. make all - synthesizes, translates, maps, places and routes, then generates a bitstream for the SoC
+(a) make help - provides more information about other make targets
+7. Problems
+(a) Missing Verilog ﬁles due to core designer adding or removing ﬁles from the design
+(b) Change in Xilinx command line tools accepted switches
+3 Programming the FPGA
+Make sure that the FPGA is conﬁgured to load conﬁguration data from JTA

@@ -1,0 +1,37 @@
+unused space
+M / OP OPERAND/
+(MODULUS) WORD ADDRESS
+8
+(M1)
+2048 bits
+M
+2048 bits
+OP3
+2048 bits
+OP2
+2048 bits
+OP1
+2048 bits
+OP0
+2048 bits
+mod_sim_exp_core 
+memory mapping
+(32-bit word adressing)
+rw_address
+000h
+040h
+080h
+0C0h
+100h
+140h
+address structure:
+bit:  8   -> '1': modulus
+                  '0': operands
+bits: 7-6 -> operand select in case of bit 8 = '0'
+                    modulus select in case of bit 8 = '1'
+bits: 5-0 -> modulus addr / operand addr resp.
+Note: modulus M1 is optional, and only available when C_MEM_STYLE = 
+generic or asym
+01234567
+1FFh
+180h

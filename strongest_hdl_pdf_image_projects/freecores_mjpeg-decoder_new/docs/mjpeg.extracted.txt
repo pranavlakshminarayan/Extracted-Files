@@ -1,0 +1,56 @@
+Development and Implementation of an MotionJPEG Capable JPEG
+Decoder in Hardware
+The JPEG standard ( ISO/ IEC 10918-1 ITU-T Recommendation T.81 ) deﬁnes compression
+techniques for image data. As a consequence, it allows to store and transfer image data
+with considerably reduced demand for storage space and bandwidth. From the four
+processes provided in the JPEG standard, only one, the baseline process is widely used.
+In this thesis a hardware based system to decode JPEG baseline compressed image data
+is presented. The different stages of the decoding process are implemented in a pipe-
+lined design described in VHDL. Running on a Virtex-II Pro FPGA at 100 MHz operation
+frequency , the performance and accuracy of the hardware decoder is comparable to a
+software decoding system running on a 1500 MHz commodity PC. The pipelined struc-
+ture allows for the processing of multiple image blocks simultanously . Thus, the decoder
+is especially suited to decode MotionJPEG movies. Functionality of the system is demon-
+strated with a hardware MotionJPEG video player application.
+Entwicklung und Realisierung eines MotionJPEG fähigen JPEG Dekoders in
+Hardware
+Der JPEG Standard (ISO/IEC 10918-1 ITU-T Recommendation T.81) deﬁniert V erfahren zur
+Kompression von Bilddaten. Der JPEG Algorithmus ermöglicht es folglich, Bilddaten
+mit deutlich reduziertem Anspruch an Speicherplatz und Bandbreite zu archvieren und
+zu übertragen. Der Standard stellt vier verschiedene Prozesse zur Komprimierung von
+Bilddaten zur V erfügung, von denen sich allerdings nur einer, der baseline process, in der
+Praxis durchgesetzt hat.
+Im Rahmen dieser Diplomarbeit wurde ein hardware-basiertes System zur Dekodierung
+von mit dem JPEG baseline process komprimierten Bilddaten entwickelt. Dabei wurde
+der mehrstuﬁge Prozess der Dekodierung in einem gepipelineten Design realisiert. Auf
+einem mit 100 MHz getakteten Virtex-II Pro FPGA wurden damit vergleichbare Ergeb-
+nisse erzielt wie mit einem Softwaredekoder, welcher auf einem mit 1500 MHz getak-
+teten Standardprozessor ausgeführt wurde. Das Design der Pipeline ist speziell dafür
+ausgelegt, mehrere Bildblöcke gleichzeitig zu bearbeiten. Damit ist der Dekoder bestens
+zum Dekodieren von MotionJPEG Filmen geeignet. Die Funktionstüchtigkeit des System
+wurde mit einer hardware-basierten MotionJPEG Video Player Applikation unter Beweis
+gestellt.
+1
+
+Contents
+1 JPEG Compression Overview 5
+1.1 JFIF - Structure of the Header . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+1.2 RGB2YCbCr . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+1.3 Sampling . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+1.4 Discrete Cosine Transformation ( DCT) . . . . . . . . . . . . . . . . . . . . . 14
+1.5 Quantization . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+1.6 Zigzag-Mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+1.7 Entropy Encoding . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+2 Basic Approach 23
+2.1 Objectives . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+2.2 Basic System Layout . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+2.3 MyIPIF . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+2.4 Pipelining . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+3 Implementation of the JPEG Decoder 29
+3.1 JPEG Top Entity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+3.2 Input Buffer and Header Readout . . . . . . . . . . . . . . . . . . . . . . . . 29
+3.3 Entropy Decoding . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+3.3.1 Data Input . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+3.3.2 Huffman Decoding . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+3.3.3 Variable Length Decoding and Run Length Decoding . . . . . . . . 35
+3.4 Dequantize . .

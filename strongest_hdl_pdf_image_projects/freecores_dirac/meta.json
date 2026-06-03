@@ -1,0 +1,29 @@
+{
+  "project_id": "freecores_dirac",
+  "name": "dirac",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/dirac",
+  "extraction_date": "2026-06-02T16:52:38",
+  "license": "NOASSERTION",
+  "has_readme": true,
+  "readme_excerpt": "README for the Dirac video codec hardware implementation\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nby Thomas Davies and Peter Bleackley, BBC R&D (dirac@rd.bbc.co.uk)\n\n\n1. Executive Summary\n~~~~~~~~~~~~~~~~~~~~\n\nDirac is an open source video codec. It uses a traditional hybrid video codec\narchitecture, but with the wavelet transform instead of the usual block\ntransforms.  Motion compensation uses overlapped blocks to reduce block\nartefacts that would upset the transform coding stage.\n\nDirac can code just about any size of video, from streaming up to HD and\nbeyond, although certain presets are defined for different applications and\nstandards.  These cover the parameters that need to be set for the encoder to\nwork, such as block sizes and temporal prediction structures, which must\notherwise be set by hand.\n\nDirac is intended to develop into real coding and decoding software and hardware, capable of plugging \ninto video processing applications and media players that need compression. It is intended to develop \ninto a simple set of reliable but effective coding tools that work over a wide variety of content and \nformats, using well-understood compression techniques, in a clear and accessible software or hardware \nstructure. It is not intended as a demonstration or reference coder.\n\nThis release of the hardware implementation comprises VHDL modules for a prototype arithmetic coder \nand decoder. These implement a fixed probability model.\n\n\n2. Documentation\n~~~~~~~~~~~~~~~~\n\n",
+  "stats": {
+    "verilog_files": 0,
+    "vhdl_files": 23,
+    "other_hdl_files": 0,
+    "pdf_files": 2,
+    "markdown_files": 0,
+    "text_files": 0,
+    "image_files": 4,
+    "total_bytes": 22191300,
+    "languages_seen": [
+      "VHDL"
+    ]
+  },
+  "quality_tier": "A",
+  "quality_reason": "README + (PDF or images) + 3+ HDL files",
+  "references": [
+    "http://dirac.sourceforge.net/",
+    "http://www.bbc.co.uk/rd/pubs/whp"
+  ]
+}

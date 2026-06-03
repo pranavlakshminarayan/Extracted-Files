@@ -1,0 +1,125 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+LQ057Q3DC02 
+Color TFT LCD Module 
+(Model Number: LQ057Q3DC02) 
+ 
+Specifications 
+ 
+ 
+Spec No.: LCY-99073B 
+Dated: May 31. 2002 
+ 
+ 
+ 
+ 
+ 
+NOTICE 
+ 
+This publication is the proprietary of SHARP and is copyrighted, with all rights reserved.  Under the 
+copyright laws, no part of this publication may be reproduced or transmitted in any form or by any 
+means, electronic or mechanical for any purpose, in whole or in part, without the express written 
+permission of SHARP .  Express written permission is also required before any use of this publication 
+may be made by a third party. 
+ 
+The application circuit examples in this publication are provided to explain the representative 
+applications of SHARP's devices and are not intended to guarantee any circuit design or permit any 
+industrial property right or other rights to be executed.  SHARP takes no responsibility for any 
+problems related to any industrial property right or a third party resulting from the use of SHARP's 
+devices, except for those resulting directly from device manufacturing processes. 
+ 
+In the absence of confirmation by device specification sheets, SHARP takes no responsibility for any 
+defects that occur in equipment using any of SHARP's devices, shown in catalogs, data books, etc. 
+Contact SHARP in order to obtain the latest device specification sheets before using any SHARP's 
+device. 
+ 
+SHARP reserves the right to make changes in the specifications, characteristics, data, materials, 
+structures and other contents described herein at any time without notice in order to improve design or 
+reliability. Contact SHARP in order to obtain the latest specification sheets before using any SHARP's 
+device. Manufacturing locations are also subject to change without notice. 
+ 
+Observe the following points when using any device in this publication. SHARP takes no responsibility 
+for damage caused by improper use of the devices. 
+ 
+The devices in this publication are designed for use in general electronic equipment designs, such as: 
+・Automotive auxiliary information display           
+・Automotive audio visual equipment 
+ 
+The appropriate design measures should be taken to ensure reliability and safety when SHARP's 
+devices are used for equipment such as: 
+・Transportation control and safety equipment(i.e., aircraft, trains, automobiles, etc.) 
+・Traffic signals      ・Gas leakage sensor breakers     
+・Alarm equipment      ・Various safety devices etc. 
+ 
+SHARP's devices shall not be used for equipment that requires extremely high level of reliability, such 
+as: 
+・Military and space applications     ・Nuclear power control equipment     
+・Medical equipment for life support 
+ 
+Contact a SHARP representative, in advance, when intending to use SHARP's devices for any "specific" 
+applications other than those recommended by SHARP . 
+ 
+Contact and consult with a SHARP representative if there are any questions about the contents of this 
+publication. 
+ 
+ 
+ 
+ 
+
+ 
+ 
+RECORDS OF REVISION 
+    ＭＯＤＥＬ Ｎｏ：ＬＱ０５７Ｑ３ＤＣ０２ 
+  ＳＰＥＣ Ｎｏ ：ＬＣＹ－９９０７３ 
+ NO. PAGE SUMMARY NOTE 
+1999. 5.26 ＬＣＹ－９９０７３ -                - 1 st Issue 
+1999. 8.30  ＬＣＹ－９９０７３A 17 Outline dimensions Changed 
+2000. 4.18 ＬＣＹ－９９０７３B 13 11-1 :   
+   M2.6 Tapping screw  
+   → M3 Tapping screw  
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+
+ＬＣＹ－９９０７３B－1     
+  
+These specification sheets are the proprietary product of SHARP CORPORATION ("SHARP) and include 
+materials protected under copyright of SHARP. Do not reproduce or cause any third party to reproduce them 
+in any form or by any means, electronic or mechanical, for any purpose in whole or in part, without the 
+express written permission of SHARP. 
+ 
+The device listed in these specification sheets was designed and manufactured for use in general electronic 
+equipment. 
+ 
+    In case of using the device for applications such as control and safety 

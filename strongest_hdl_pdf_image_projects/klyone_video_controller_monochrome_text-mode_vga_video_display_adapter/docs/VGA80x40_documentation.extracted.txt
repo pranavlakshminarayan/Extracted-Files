@@ -1,0 +1,88 @@
+Interface VGA80x40 
+Summary 
+This VHDL macro is a simple monochrome text-mode VGA Video Display Adapter (also referred to as video 
+card). This kind of IP core, apart from to let you put text to the screen in your Pico/MicroBlaze SoC designs, 
+may be useful to debug internals of another circuit.  
+VHDL Macro  
+component vga80x40 
+    port ( 
+      reset    : in  std_logic; 
+      clk25MHz : in  std_logic; 
+      R        : out std_logic; 
+      G        : out std_logic; 
+      B        : out std_logic; 
+      TEXT_A   : out std_logic_vector(11 downto 0); 
+      TEXT_D   : in  std_logic_vector(07 downto 0); 
+      FONT_A   : out std_logic_vector(11 downto 0); 
+      FONT_D   : in  std_logic_vector(07 downto 0); 
+      hsync    : out std_logic; 
+      vsync    : out std_logic; 
+      ocrx     : in  std_logic_vector(07 downto 0); 
+      ocry     : in  std_logic_vector(07 downto 0); 
+      octl     : in  std_logic_vector(07 downto 0) 
+      );    
+  end component; 
+This VHDL macro is a Text Mode Monochrome Video Display Adapter intended to be used as a PicoBlaze (or other 
+CPU) peripheral. It's not much better than the original IBM MDA card appeared in 1981 ;-)  
+ resolution of 80x40 characters, dot resolution is 640x480 pixels at 60Hz so the core needs a clock signal of 
+25MHz. I prefer 80x40 instead the classical 80x25, in my opinion, the latter is an annoyance.  
+ monochrome, it hasn't "attribute" memory to store the colour of each character. The unique output color is 
+selectable among 8 different colours  
+ 8-bit ASCII codes (iso-latin-0 or other that you prefer)  
+ the video text buffer is an external memory of 80×40 = 3200 bytes. The character at (column, row) = (0, 0) is at 
+the RAM address 0, the character at (79, 39) is at 3199.  
+ the ROM that store fixed-width bitmap font is also external, the bitmap can be changed modifying the COE 
+file. The COE file provided is iso-8859-15 (also called iso-latin-0), is very similar to the iso-8859-1 but with the 
+Euro (€) symbol added.  
+ hardware cursor, with two different shapes; with enable/disable control.  
+ simple IO interface. Three registers 
+ CRX. Position (column) for HW cursor  
+ CRY. Position (row) for HW cursor  
+ CTL. Control register for de/activate the HW cursor, change its shape, de/activate VGA signal, output 
+colour, etc.  
+ uses 100 slices in a Xilinx Spartan-3.  
+ the design is vendor-agnostic. You can use it in Xilinx/PicoBlaze, Altera/NIOSII or other non-programmable 
+hardware.  
+ 
+xc3s400-4ft256 utilization 
+Element Used 
+Slices 100 
+Flip-Flops 76 
+LUTs 190 
+Bonded IOBs 67 
+Global CLKs 2 
+Max Freq. 141.965MHz 
+Página 1 de 4Interface VGA80x40 - HKLAB.NET
+06/02/2008http://hklab.net/wiki/Interface_VGA80x40
+Ports And Usage  
+The macro has the following ports:  
+Interface with a VGA monitor  
+The electrical interface between FPGA and the VGA monitor es very simple, only 3 resistors of 270Ω are needed. 
+The following figure is extracted from S3-Board manual from Xilinx (S3-Board is the development FPGA board that I 
+use)  
+Monocrome Video Display Adapter 
+ Console Font 8x12 iso-8859-15
+Port DIR Type Description 
+reset Input signal Asynchronous reset 
+clk25MHz Input signal Clock signal. 25MHz is the pixel clock for the resolution used 
+R Output signal Red color component 
+G Output signal Gr een color component 
+B Output signal Blue color component 
+hsync Output signal Horizontal sync signal for the VGA monitor 
+vsync Output signal Vertical sy nc signal for the VGA monitor 
+TEXT_A Output 12-bit 
+bus Address bus for RAM Video Text Buffer 
+TEXT_D Input 08-bit 
+bus Data incoming from RAM Video Text Buffer 
+FONT_A Output 12-bit 
+bus Address bus for ROM font buffer 
+FONT_D Input 08-bit 
+bus Data incoming from ROM font buffer 
+CRX Input 08-bit 
+bus X (column) position of HW cursor. 
+CRY Input 08-bit 
+bus Y (row) position of HW cursor. 
+CTL Input 08-bit 
+bus 
+Control of the peripheral. Bit 7 (MSB) is VGA enable signal. Bit 6 is HW 
+cursor enable bit. Bit 5 is Bl

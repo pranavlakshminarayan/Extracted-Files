@@ -1,0 +1,144 @@
+
+FEATURES 
+Implements UDP, IPv4, ARP protocols 
+Zero latency between UDP and MAC layer 
+ (combinatorial transfer during user data phase) 
+ See simulation diagram below 
+Allows full control of UDP src & dst ports on TX. 
+Provides access to UDP src & dst ports on RX (user filtering) 
+Couples directly to Xilinx Tri-Mode eth Mac via AXI interface 
+Separate building blocks to create custom stacks 
+Easy to tap into the IP layer directly 
+Supports TX and RX with IP layer broadcast address 
+Separate clock domains for tx & rx paths 
+Choice of smaller single slot ARP or multislot up to 255 slots 
+Tested for 1Gbit Ethernet, but applicable to 100M and 10M 
+SIMULATION DIAGRAM SHOWING ZERO LATENCY ON RECEIVE 
+
+LIMITATIONS 
+Does not handle segmentation and reassembly 
+ Assumes packets offerred for transmission will fit in a single 
+ethernet frame 
+ Discards packets received if they require reassembly 
+OVERALL BLOCK DIAGRAM 
+UDP_Complete_nomac 
+UDP TX bus 
+UDP RX bus 
+IP RX bus 
+Clocks, 
+controls 
+& reset 
+MAC TX bus 
+MAC RX bus 
+Our IP & 
+MAC 
+addr 
+Arp & IP 
+pkt count 
+Generics (see block level descriptions) 
+    CLOCK_FREQ 
+    ARP_TIMEOUT 
+    ARP_MAX_PKT_TMO 
+    MAX_ARP_ENTRIES 
+STRUCTURAL DECOMPOSITION 
+UDP TX bus 
+UDP RX bus 
+IP RX bus 
+Clocks, controls 
+& reset 
+Our IP & 
+MAC addr 
+Arp & IP 
+pkt count 
+MAC TX bus 
+MAC RX bus 
+UDP_Complete_nomac 
+UDP_TX 
+UDP_RX 
+IP_Complete_nomac 
+Tx_arbitrator 
+arp 
+IPV4_TX 
+IPV4_RX 
+IPv4 
+req 
+rsp 
+rx 
+tx 
+ARP BLOCK OPTIONS 
+ARP can be instantiated in one of the following options: 
+ arp – simple 1-slot ARP layer with timeout 
+ arpv2 – multislot ARP layer with timeout 
+These can be selected in the IP_Complete_nomac.vhd file by 
+commenting out the appropriate line – 
+-- for arp_layer : arp use entity work.arp; -- single slot arbitrator 
+ for arp_layer : arp use entity work.arpv2; -- multislot arbitrator 
+  
+ 
+ARP V2 BLOCK 
+REQ 
+RSP 
+control 
+IP RX bus 
+Arp & IP 
+pkt count 
+TX 
+RX 
+arpv2 
+req sync 
+store 
+arp_TX 
+arp_RX 
+clear 
+lookup 
+write 
+sync 
+RX clock domain 
+TX clock domain 
+Legend: 
+INTERFACE 
+entity UDP_Complete_nomac is 
+    Port ( 
+ -- UDP TX signals 
+ udp_tx_start  : in std_logic;  -- indicates req to tx UDP 
+ udp_txi   : in udp_tx_type;  -- UDP tx cxns 
+ udp_tx_result : out std_logic_vector (1 downto 0); -- tx status (changes during tx) 
+ udp_tx_data_out_ready: out std_logic; -- indicates udp_tx is ready to take data 
+ -- UDP RX signals 
+ udp_rx_start  : out std_logic;  -- indicates receipt of udp header 
+ udp_rxo   : out udp_rx_type; 
+ -- IP RX signals 
+ ip_rx_hdr   : out ipv4_rx_header_type;   
+ -- system signals 
+ rx_clk   : in  STD_LOGIC; 
+ tx_clk   : in  STD_LOGIC; 
+ reset    : in  STD_LOGIC; 
+ our_ip_address  : in STD_LOGIC_VECTOR (31 downto 0); 
+ our_mac_address : in std_logic_vector (47 downto 0); 
+ control     : in upd_control_type; 
+ -- status signals 
+ arp_pkt_count : out STD_LOGIC_VECTOR(7 downto 0);  -- count of arp pkts received 
+ ip_pkt_count  : out STD_LOGIC_VECTOR(7 downto 0);  -- number of IP pkts received for us 
+ -- MAC Transmitter 
+ mac_tx_tdata   : out  std_logic_vector(7 downto 0); -- data byte to tx 
+ mac_tx_tvalid  : out  std_logic;   -- tdata is valid 
+ mac_tx_tready  : in std_logic;   -- mac is ready to accept data 
+ mac_tx_tfirst  : out  std_logic;   -- indicates firstbyte of frame 
+ mac_tx_tlast   : out  std_logic;   -- indicates last byte of frame 
+ -- MAC Receiver 
+ mac_rx_tdata   : in std_logic_vector(7 downto 0); -- data byte received 
+ mac_rx_tvalid  : in std_logic;   -- indicates tdata is valid 
+ mac_rx_tready  : out  std_logic;  -- tells mac that we are ready to take data 
+ mac_rx_tlast   : in std_logic  -- indicates last byte of the trame 
+ ); 
+end UDP_Complete_nomac; 
+ 
+THE AXI INTERFACE 
+This implementation makes extensive use of the AXI interface (axi.vhd): 
+ 
+package axi is 
+ 
+    type axi_in_type is record 
+ data_in       : STD_LOGIC_VECTOR (7 downto 0); 
+ data_in_valid : STD_LOGIC;  -- indicates data_in valid on clock 
+ data_in_last  : STD_L

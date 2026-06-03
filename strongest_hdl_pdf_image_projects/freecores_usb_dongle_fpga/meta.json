@@ -1,0 +1,26 @@
+{
+  "project_id": "freecores_usb_dongle_fpga",
+  "name": "usb_dongle_fpga",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/usb_dongle_fpga",
+  "extraction_date": "2026-06-02T16:55:46",
+  "license": null,
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 0,
+    "vhdl_files": 13,
+    "other_hdl_files": 0,
+    "pdf_files": 4,
+    "markdown_files": 0,
+    "text_files": 4,
+    "image_files": 1,
+    "total_bytes": 7573726,
+    "languages_seen": [
+      "VHDL"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": []
+}

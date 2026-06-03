@@ -1,0 +1,26 @@
+{
+  "project_id": "freecores_trigonometric_functions_in_double_fpu",
+  "name": "trigonometric_functions_in_double_fpu",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/trigonometric_functions_in_double_fpu",
+  "extraction_date": "2026-06-02T16:55:38",
+  "license": null,
+  "has_readme": true,
+  "readme_excerpt": "Verilog:\n\tConsits of all the verilog source files.\n\nTestbench:\n\tConsits of testbench for different test vectors, also consits of makefile to run in vcs and \n\tquesta simulator.\n\nDocumentation:\n\tConsits of documentation of core, description of different registers, architecture, etc...\n\nsimulation:\n\tConsits of simulation screenshots and VCD file, and screenshots of simulation results.",
+  "stats": {
+    "verilog_files": 9,
+    "vhdl_files": 0,
+    "other_hdl_files": 0,
+    "pdf_files": 1,
+    "markdown_files": 0,
+    "text_files": 1,
+    "image_files": 2,
+    "total_bytes": 1060992,
+    "languages_seen": [
+      "Verilog"
+    ]
+  },
+  "quality_tier": "A",
+  "quality_reason": "README + (PDF or images) + 3+ HDL files",
+  "references": []
+}

@@ -1,0 +1,30 @@
+SOCGEN LIB: cde_sram
+Table of Contents
+• SOCGEN LIB:cde_sram  
+• Description  
+• Parameters  
+• Interface  
+• Theory of Operation  
+• Source Code   
+Description
+Cde_sram is a generic model for a synchronous ram with seperate read and write ports
+Parameters
+Name default Description
+ADDR 10 Address bus width
+WIDTH 8 Data bus width
+WORDS 1024 Number of words of memory
+WRITETHRU 0 During read/write to the same address, 0 reads old data, 1 reads new
+DEFAULT {WIDTH{1'b1}} Read Data value when not reading
+INIT_FILE "NONE" Filename for initialization data
+Interface 
+NAME Type
+clk input clock input
+cs input chip select active high
+waddr[] input write address bus
+raddr[] input read address bus
+wr input write enable
+rd input read enable
+wdata[] input write data bus
+rdata[] output read data bus
+Theory of Operation
+This module contains a generic synchronous ram that will be replaced if the design target requires it

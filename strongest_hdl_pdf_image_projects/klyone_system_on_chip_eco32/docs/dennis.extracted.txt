@@ -1,0 +1,67 @@
+Porting the Unix v7 kernel to the RISC
+Processor Eco32
+Author: Dennis Kuhn in WS 2002/03
+17th February 2003
+Abstract
+This document is a diploma work which describes the important parts of port-
+ing the Unix v7 kernel to the Eco32 RISC processor. The rst steps therefore are
+to introduce the two different processor architectures and describe the ansifca-
+tion of the code . Short notice is given to some device drivers and the magic of
+process switching is disclosed, followed by an abstract section about the new
+memory management.
+Foreword
+First of all, I would like to thank all the people whose participation helped
+towards this work. Special thanks goes primarily to Prof. Dr.-Ing. Hellwig
+Geisse, who gave me his full assistance throughout. From the very beginning,
+he lent an open ear to my unusual thoughts, helping me to organise them.
+Dr. Geisse spent a lot of time in rapidly developing the necessary simulator,
+compiler, assembler and linker. Furthermore he extracted the original sources
+and constructed a le-system on his virtual disk. I also wish to thank all my
+friends who continued visiting me when I didn't call them. A very big thanks
+to Mr. John Lions for his great book. Last but not least a great thank to my
+mother, Gordon Kr ¨uger and mostly to Jacqueline Parnow, whose involvement
+led to this document becoming readable.
+2
+Contents
+1 Introduction : 6
+1.1 How to read this document . . . . . . . . . . . . . . . . . . . . . 8
+1.2 The development environment . . . . . . . . . . . . . . . . . . . 9
+1.3 Steps of porting . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2 The Hardware 10
+2.1 PDP-11 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+2.1.1 Virtual memory mapping . . . . . . . . . . . . . . . . . . 12
+2.1.2 Exceptions . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+2.1.3 Priorities and the processor status word . . . . . . . . . . 13
+2.2 Eco 32 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+2.2.1 Virtual addressing hardware : TLB . . . . . . . . . . . . . 15
+2.2.2 Virtual addresses . . . . . . . . . . . . . . . . . . . . . . . 16
+2.2.3 Address spaces . . . . . . . . . . . . . . . . . . . . . . . . 17
+2.2.4 User / kernel mode . . . . . . . . . . . . . . . . . . . . . . 18
+2.2.5 Exceptions . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+2.2.6 Priorities and the processor status word . . . . . . . . . . 20
+2.3 Common and differences . . . . . . . . . . . . . . . . . . . . . . . 21
+3 Ansication 22
+3.1 Function argument declarations . . . . . . . . . . . . . . . . . . . 23
+3.2 Function declarations . . . . . . . . . . . . . . . . . . . . . . . . . 25
+3.3 Complete ansication process . . . . . . . . . . . . . . . . . . . . 27
+4 System calls 28
+4.1 System calls argument passing . . . . . . . . . . . . . . . . . . . 29
+4.2 The SYSCALL.S implementation . . . . . . . . . . . . . . . . . . . 30
+5 Device drivers 31
+6 Process switching 32
+6.1 Process representation . . . . . . . . . . . . . . . . . . . . . . . . 33
+6.2 Process switcher SWTCH . . . . . . . . . . . . . . . . . . . . . . . 34
+6.3 SAVE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+6.4 RESUME . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+3
+7 New memory management 36
+7.1 The original memory management . . . . . . . . . . . . . . . . . 37
+7.2 The concept : pseudo Two-levels page-tables . . . . . . . . . . 38
+7.2.1 General assumption and concept . . . . . . . . . . . . . . 38
+7.2.2 The specialised concept . . . . . . . . . . . . . . . . . . . 39
+7.2.3 The big Example . . . . . . . . . . . . . . . . . . . . . . . 41
+7.3 New Memory-management interface . . . . . . . . . . . . . . . . 43
+7.3.1 All functions in short . . . . . . . . . . . . . . . . . . . . . 44
+7.3.2 MALLOC . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+7.3.3 MFREE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+7.3.4 MAVAIL . . . . . . . . . . . . . . . . . . . .

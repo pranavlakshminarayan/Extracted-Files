@@ -1,0 +1,191 @@
+1
+1
+2
+2
+3
+3
+4
+4
+5
+5
+6
+6
+D D
+C C
+B B
+A A
+Copyright 2010, Avnet, Inc.  All Rights Reserved.
+This material may not be reproduced, distributed, republished, displayed, posted, transmitted or copied in any form or by any means without the prior 
+written permission of Avnet, Inc.  AVNET and the AV logo are registered trademarks of Avnet, Inc.  All trademarks and trade names are the properties of 
+their respective owners and Avnet, Inc. disclaims any proprietary interest or right in trademarks, service marks and trade names other than its own.  
+Avnet is not responsible for typographical or other errors or omissions or for direct, indirect, incidental or consequential damages related to this material or 
+resulting from its use.  Avnet makes no warranty or representation respecting this material, which is provided on an "AS IS" basis. AVNET HEREBY 
+DISCLAIMS ALL WARRANTIES OR LIABILITY OF ANY KIND WITH RESPECT THERETO, INCLUDING, WITHOUT LIMITATION, REPRESENTATIONS 
+REGARDING ACCURACY AND COMPLETENESS, ALL IMPLIED WARRANTIES AND CONDITIONS OF MERCHANTABILITY, SUITABILITY OR 
+FITNESS FOR A PARTICULAR PURPOSE, TITLE AND/OR NON-INFRINGEMENT.  This material is not designed, intended or authorized for use in 
+medical, life support, life sustaining or nuclear applications or applications in which the failure of the product could result in personal injury, death or property 
+damage.  Any party using or selling products for use in any such applications do so at their sole risk and agree that Avnet is not liable, in whole or in part, 
+for any claim or damage arising from such use, and agree to fully indemnify, defend and hold harmless Avnet from and against any and all claims, 
+damages, loss, cost, expense or liability arising out of or in connection with the use or performance of products in such applications.
+Function
+www.em.avnet.com/s6microboard
+1Lead Sheet
+6
+4
+9
+Sheet Number
+5
+3
+Avnet Design Services
+8
+10
+Spartan-6 LX9 MicroBoard
+2
+7
+Block Diagram
+Architecture
+FPGA Bank 0
+FPGA Bank 1
+FPGA Bank 2
+FPGA Bank 3
+Power / USB JTAG
+LPDDR Memory
+Avnet Engineering Services
+Title:
+Sheet 1 - Lead Sheet
+Size: Rev:
+B B
+Document Number:
+Date: Sheet of
+S6-LX9-SCH-B
+7/26/2011 1 10
+7/26/2011
+4:21:16 PM
+Spartan-6 LX9 MicroBoard Rev B
+FPGA 10/100 Ethernet PHY
+X's are a "No ERC" directive to the Design Rule Checker to ignore rule violations.
+Modified Rev A Boards are Functionally Equivalent to Rev B Boards.
+1
+1
+2
+2
+3
+3
+4
+4
+5
+5
+6
+6
+D D
+C C
+B B
+A A
+Avnet Engineering Services
+Title:
+Sheet 2 - Block Diagram
+Size: Rev:
+B
+Document Number:
+Date: Sheet of
+7/26/2011 2 10
+S6-LX9-SCH-B
+ B
+X's are a "No ERC" directive to the Design Rule Checker to ignore rule violations.
+1
+1
+2
+2
+3
+3
+4
+4
+5
+5
+6
+6
+D D
+C C
+B B
+A A
+Avnet Engineering Services
+Title:
+Sheet 3 - Architecture
+Size: Rev:
+C
+Document Number:
+Date: Sheet of
+7/26/2011 3 10
+MTG1
+MOUNTING HOLE 125mil
+MTG2
+MOUNTING HOLE 125mil
+MTG3
+MOUNTING HOLE 125mil
+CLOCK_Y3
+U_04 - FPGA Bank 0
+04 - FPGA Bank 0.SchDoc
+FPGA_ETH_TX_D3
+FPGA_ETH_TX_D2
+FPGA_ETH_TX_D1
+FPGA_ETH_TX_D0
+FPGA_ETH_TX_EN
+FPGA_ETH_MDIO
+FPGA_ETH_MDC
+FPGA_ETH_COL
+FPGA_ETH_CRS
+FPGA_ETH_RX_ER
+FPGA_ETH_RX_DV
+FPGA_ETH_RX_D3
+FPGA_ETH_RX_D2
+FPGA_ETH_RX_D1
+FPGA_ETH_RX_D0
+FPGA_ETH_RESET#
+FPGA_ETH_RX_CLK
+FPGA_ETH_TX_CLK
+CLOCK_Y2
+U_05 - FPGA Bank 1
+05 - FPGA Bank 1.SchDoc
+FPGA_ETH_RX_CLK
+FPGA_ETH_TX_D3
+FPGA_ETH_TX_D2
+FPGA_ETH_TX_D1
+FPGA_ETH_TX_D0
+FPGA_ETH_RESET#
+FPGA_ETH_MDC
+FPGA_ETH_MDIO
+FPGA_ETH_RX_D0
+FPGA_ETH_RX_D1
+FPGA_ETH_RX_D2
+FPGA_ETH_RX_D3
+FPGA_ETH_RX_ER
+FPGA_ETH_RX_DV
+FPGA_ETH_TX_CLK
+FPGA_ETH_TX_EN
+FPGA_ETH_COL
+FPGA_ETH_CRS
+U_10 - FPGA 10_100 Ethernet PHY
+10 - FPGA 10_100 Ethernet PHY.SchDoc
+FPGA_LPDDR_DATA
+FPGA_LPDDR_ADDRESS
+FPGA_LPDDR_CONTROL
+U_09 - LPDDR Memory
+09 - LPDDR Memory.SchDoc
+CLOCK_Y2
+CLOCK_Y3
+FPGA_CCLK
+FPGA_D0_DIN_MISO_MISO1
+FPGA_SPI_CS#
+FPGA_MOSI_MISO0
+U_06 - FPGA Bank 2
+06 - FPGA Bank 2.SchDoc
+FPGA_LPDDR_DATA
+FPGA_LPDDR_ADDRESS
+FPGA_LPDDR_CONTROL
+U_07 - FPGA Bank 3
+07 - FPGA Bank 3.SchDoc
+FPGA_CCLK
+FPGA_D0_DIN_MISO_MISO1
+FPGA_SPI_CS#
+FPGA_MOSI_MISO0
+U_08

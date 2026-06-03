@@ -1,0 +1,21 @@
+Bill of Materials Serial Adapter 
+Source Data From: serial-con.PrjPCB 
+Project: serial-con.PrjPCB 
+1.65 Euro 
+Variant: None 1.03 $
+Creation Date: 14.07.2008 16:01:02 
+Print Date: 14.07.2008 16:02:56 
+Footprint Value LibRef Designator Description Quantity Manufacturer Part Number Distributor Distributor Numbe r Packaging unit lead time RoHS Price Currency In CHF CHF for Qty 
+0603 470nF Cap C1, C2, C3, C4, C5 Capacitor 5 PHYCOMP 2238 786 19758 Farnell 3188 851 10 yes 0.17 CHF 0. 17 0.85 
+M22-2040205 M22-2040205 M22-2040205 JP1 1 HARWIN M22-2040205 Farnell 672 208 1 yes 1.2 CHF 1.2 1.20 
+0402 4.7K Res2 R1 Resistor 1 PHYCOMP 232270674702 Farnell 9239 316 50 yes 0.12 CHF 0.12 0.12 
+SO-G16 MAX3232CSE MAX3232CSE U1 3.0V TO 5.5V, Low-Power, up to 1Mbps, 
+True RS-232 Transceiver Using Four 0.1µF 
+External Capacitor 
+1 Maxim MAX 3232 CSE Distrelec 648 973 1 yes 7.75 CHF 7.75 7. 75 
+DSUB9RA/F DB9F DB9/F X1 1 MULTICOMP 5504F1-09S-01-03-F1 Farnell 1084 710 10 yes 1. 55 CHF 1.55 1.55 
+Total Number of parts 9 Total in CHF 11.47 
+Approved Notes  
+Exchange 
+rate to CHF 
+Page 1 of 1 

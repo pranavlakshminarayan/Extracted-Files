@@ -1,0 +1,71 @@
+ 
+IEEE 1149.1 Test 
+Access Port
+ 
+Author: Igor Mohor
+IgorM@opencores.org
+Revised: Nathan Yawn
+nathan.yawn@opencores.org
+Rev. 2.1
+February 21, 2008
+Open Cores IEEE 1149.1 Test Access Port 6/14/2009
+Copyright (C) 2001 - 2009 OPENCORES.ORG and Authors.
+This document is free; you can redistribute it and/or modify it under the terms of the GNU General  
+Public License as published by the Free Software Foundation; either version 2 of the License, or (at your  
+option) any later version.
+This document is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;  
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR  
+PURPOSE. See the GNU General Public License for more details.
+http://www.opencores.org/ Rev 2.1 Page 2 of 18
+Open Cores IEEE 1149.1 Test Access Port 6/14/2009
+Revision History
+Rev. Date Author Description
+0.1 02/02/01 Igor Mohor First Draft
+0.2 05/04/01 IM Trace port added
+0.3 16/04/01 IM WP and BP number changed, trace modified
+0.4 01/05/01 IM Title changed, DEBUG instruction added, scan 
+chains changed, IO ports changed 
+0.5 05/05/01 IM TSEL and QSEL register changed
+0.6 06/05/01 IM Ports connected to the OpenRISC changed
+0.7 14/05/01 IM MODER register changed, trace scan chain 
+changed; SSEL register added
+0.8 18/05/01 IM RESET bit and signal added; STALLR changed to 
+RISCOP
+0.9 23/05/01 IM RISC changed to OpenRISC; WISHBONE 
+interface added, SPR and memory access added
+0.10 01/06/01 IM Meaning of Instruction status and Load/store 
+status changed in all registers; more details added 
+to Appendix A 
+0.11 10/09/01 IM Register and OpenRISC scan chain operation 
+changed
+1.0 19/09/01 IM Some registers deleted
+1.1 15/10/01 IM WISHBONE interface added; RISC Stall signal is 
+set by breakpoint and reset by writing 0 to 
+RISCOP register
+1.2 03/12/01 IM Chain length changed so additional CRC checking 
+can be performed  
+1.3 21/01/02 Jeanne 
+Wiegelmann
+Document revised.  
+1.4 07/05/02 IM Register MONCNTL added. 
+1.5 10/10/02 IM WISHBONE Scan Chain changed to show state of 
+the access. 
+1.6 06/11/02 IM TRST_PAD_I changed from active low signal to 
+active low signal.
+1.7 23/09/03 Simon Srot Mutliple CPU support added, WB 16-bit and 8-bit 
+access possible through WBCNTL register use.
+2.0 30/01/04 IM JTAG and debug interface split into two different 
+cores (and documents). 
+2.1 05/16/09 Nathan Yawn Document revised for Adv. Debug I/F.
+http://www.opencores.org/ Rev 2.1 Page 3 of 18
+Open Cores IEEE 1149.1 Test Access Port 6/14/2009
+Contents
+ INTRODUCTION...............................................................................................................................6
+ IO PORTS............................................................................................................................................7
+2.1 JTAG PORTS .................................................................................................................................................................7
+2.2 DEBUG PORTS..................................................................................................................................................................7
+ REGISTERS........................................................................................................................................ 9
+3.1 REGISTERS LIST............................................................................................................................................................... 9
+3.2 IR (INSTRUCTION REGISTER)........................................................................................................................................... 10
+3.3 IDCODE REGISTER.......................................................................................................................................................10
+3.4 BYPASS REGISTER.........................................................................................................................................

@@ -1,0 +1,128 @@
+n September, I introduced the
+topic of the GNU debugger,
+gdb.
+1 I discussed how its
+remote debugging feature
+could be used to debug code
+running in an embedded sys-
+tem connected to a PC by a serial
+cable, network connection, or some
+other means. While commercial prod-
+ucts with this capability are also avail-
+able, in my opinion the freely available
+gdb is the preferred solution because
+it provides portable, sophisticated
+debugging over a broad range of
+embedded systems, including devices
+with communications interfaces or
+resource constraints too restrictive for
+general commercial support.
+I also mentioned in that article
+that, to make remote debugging possi-
+ble, gdb requires the services of a
+debugging stub—a small library of
+code in the debugging target that
+manages registers and memory,
+responds to breakpoints, and reports
+application status to gdb via the com-
+munications link. That article con-
+tained excerpts from a debugging stub
+for the Hitachi SH-2 microcontroller,
+but I didn’t actually put enough of the
+pieces together to show how a com-
+plete debugging stub would work.
+I’ll fix that this month by present-
+ing in detail the GDB Remote Serial
+Protocol—gdb’s standard remote
+communications protocol. Once you
+are comfortable with how your proces-
+sor handles breakpoint and other
+108 NOVEMBER 1999  Embedded Systems Programming
+BILL GATLIFF
+feature
+Embedding
+with GNU: the
+gdb Remote
+Serial Protocol
+In this installment of a series on GNU-based embedded development, the
+author wraps up his discussion of using the GNU debugger, gdb, to debug
+embedded applications remotely.I
+Embedded Systems Programming NOVEMBER 1999   109
+exceptions, then knowledge of a few
+basic Remote Serial Protocol messages
+is all you need to get your embedded
+system talking to gdb.
+The protocol defined
+The GDB Remote Serial Protocol
+(RSP) is a simple, ASCII message-
+based protocol suitable for use on ser-
+ial lines, local area networks, or just
+about any other communications
+medium that can support at least half-
+duplex data exchange.
+RSP packets begin with a dollar
+sign (
+$), followed by one or more
+ASCII bytes that make up the message
+being sent, and end with a pound sign
+(
+#) and two ASCII hex characters rep-
+resenting the message’s checksum.
+For example, the following is a com-
+plete RSP packet:
+$m4015bc,2#5a
+The receiver of the packet
+responds immediately with either a “+”
+or a “-” to indicate that the message
+was received either intact or in error,
+respectively.
+A typical transaction involves gdb
+issuing a command to a debugging tar-
+get, which then responds with data, a
+simple acknowledgement, or a target-
+specific error code. If the latter is
+returned, gdb will report the code to
+the user and halt whatever activity is
+currently in progress.
+The 
+console outputmessage,
+which debugging targets use to print
+text on the gdb console, is the lone
+exception to the typical command-
+response sequence. Except when
+another command is already in
+progress, this message can be sent
+from the debugging stub to gdb at any
+time.
+The following paragraphs describe
+the RSP’s essential commands. For the
+purposes of this tutorial, I have divid-
+ed the messages into three categories:
+register- and memory-related com-
+mands, program control commands,
+and other commands.
+Register- and memory-
+related commands
+Here are the commands to read from
+and write to registers.
+Read registers (“g”)
+Example: $g#67
+The debugger will issue this com-
+mand whenever it needs to know
+everything about the debugging tar-
+get’s current register state. An exam-
+ple target response would be: 
++ $123456789abcdef0...#xx
+(Register 0 is 0x12345678, register 1 is
+0x9abcdef0, and so on.)
+The response is an ordered stream
+of bytes representing register data
+ordered per the definition in the tar-
+get’s macro file, gdb/config/<arch>/
+tm-<arch>.h (for example, gdb/con-
+fig/sh/tm-sh.h for the Hitachi SH).
+Write registers (“G”)
+Example: 
+$G123456789abcdef0...#xx
+(Set register 0 to 0x12345678, register
+1 

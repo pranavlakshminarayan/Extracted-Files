@@ -1,0 +1,69 @@
+Diplomarbeit
+Entwicklung eines konﬁgurierbaren
+Vektorprozessors
+Harald Manske
+Fachhochschule Augsburg
+19. Dezember 2007
+Erstellungserkl¨arung
+Hiermit erkl ¨are ich, dass die Arbeit selbst ¨andig verfasst, noch nicht an-
+derweitig f¨ur Pr¨ufungszwecke vorgelegt, keine anderen als die angegebenen
+Quellen oder Hilfsmittel benutzt sowie w ¨ortliche und sinngem¨aße Zitate als
+solche gekennzeichnet wurden.
+Abstract
+When it comes to personal computers, processors with SIMD-extensions are
+already widely spread. With their help it is possible to considerably increase
+the performance of processing multimedia-based data compared to common,
+scalar-only architectures. With a processor like that, one single command
+can be applied to multiple operands, located in vector-registers. A vector-
+register contains several independent data words.
+Since demand for increased performance is rising rapidly even in embed-
+ded systems, vector-processors or processors with vector-extensions become
+useful that ﬁeld, too. This diploma thesis describes the development of a
+vector-processor as a conﬁgurable soft-core which can be integrated ﬂexibly
+(e.g. in FPGAs) in embedded applications.
+Written in VHDL, the processor is based on a simple accumulator-architecture,
+working together with a vector-unit. The instruction coding is designed to
+allow specifying a scalar and a vector command within a single 32-bit-
+instruction-word. Both commands will be executed either simultaneously
+or in cooperation of the two units.
+To allow the processor to be tailored for the needs of diﬀerent applications,
+the amount of datawords within one vector-register as well as the amount
+of vector-registers are conﬁgurable. The access to the memory, shared by
+the two units, is handled by a memory interface which is controlled and
+addressed by the scalar-unit.
+Besides the processor itself, an assembler as well as a simple on-chip debug-
+ging system is implemented.
+As ﬁnal step, the performance of the processor is evaluated and compared
+to CPUs of typical personal computers and a Motorola 68000.
+Kurzfassung
+In Heim-PCs sind Prozessoren mit Vektorerweiterungen bereits weit verbrei-
+tet. Mit ihrer Hilfe k ¨onnen Berechnungen wie die Aufbereitung von mul-
+timedialen Daten im Vergleich zu herk ¨ommlichen, skalaren Architekturen
+wesentlich beschleunigt werden. Ein einzelner Befehl kann in einem solchen
+Prozessor auf mehrere Operanden wirken, die sich in mehrere Wortl ¨angen
+umfassenden Vektorregistern beﬁnden.
+Da auch in eingebetteten Systemen nach und nach mehr Rechenleistung
+gefordert wird, liegt es nahe, Vektorprozessoren oder Prozessoren mit Vek-
+torerweiterungen auch in diesem Umfeld zu verwenden. Diese Diplomarbeit
+behandelt die Entwicklung eines solchen Prozessors, der sich als konﬁgurier-
+barer Soft-Core ﬂexibel (z. B. in FPGAs) einsetzen l ¨asst und sich damit zur
+Anwendung in eingebetteten Systemen eignet.
+Der als VHDL-Modell entwickelte Prozessor besteht aus einer einfachen,
+skalaren Akkumulator-Architektur, welche mit einer Vektoreinheit zusam-
+menarbeitet. Die Befehlskodierung ist so gew¨ahlt, dass ein 32-Bit-Befehl aus
+je einer Komponente f ¨ur die Skalar- und f ¨ur die Vektoreinheit besteht. Die-
+se beiden Teilbefehle werden vom Prozessor entweder gleichzeitig oder in
+Kooperation der zwei Einheiten bearbeitet.
+Um den Prozessor auf die Bed ¨urfnisse der Anwendung anpassen zu k¨onnen,
+kann die Anzahl an 32-Bit-W ¨ortern pro Vektorregister sowie die Anzahl an
+Vektorregistern konﬁguriert werden. Der Zugriﬀ auf den gemeinsamen Spei-
+cher geschieht¨uber eine Speicherschnittstelle und wird¨uber die Skalareinheit
+adressiert und gesteuert.
+Neben dem Prozessor selbst werden auch ein Assembler sowie ein einfacher
+Debugger entwickelt.
+Die anschließende Leistungsbewertung des in Betrieb genommenen Prozes-
+sors vergleicht dessen Performanz mit aktuellen Desktop-Prozessoren und
+einem Motorola 68000.
+Inhaltsverzeichnis
+1 Einleitung 1
+1.1 ¨Uberblick . . . . . . . . . . . . . . . . . . . . . . 

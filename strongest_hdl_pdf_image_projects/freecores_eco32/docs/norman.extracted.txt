@@ -1,0 +1,73 @@
+Portierung von Unix Version 7-Kommandos
+auf den RISC-Prozessor ECO32
+Norman Ulbrich
+1. April 2004
+Inhaltsverzeichnis
+1 Einf ¨uhrung 4
+1.1 Aufbau dieses Berichtes . . . . . . . . . . . . . . . . . . . . . . 5
+2 Probleme der Portierung 6
+3 Der ECO32-Prozessor 7
+3.1 Architektur . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+3.2 Befehlssatz . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+3.3 Der ECO32-Simulator . . . . . . . . . . . . . . . . . . . . . . 8
+4 UNIX V ersion 7 9
+5 Der PDP-11-Simulator 10
+6 Die vorhandenen Programme 12
+6.1 Nicht portierte Programme . . . . . . . . . . . . . . . . . . . . 13
+7 Unterschiede zwischen Kernighan & Ritchie-C und ANSI-C 15
+7.1 Nachteile von K & R-C . . . . . . . . . . . . . . . . . . . . . . 15
+7.2 ANSI-C . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+7.2.1 Funktionsdeklarationen . . . . . . . . . . . . . . . . . . 17
+7.2.2 Typmodiﬁzierer . . . . . . . . . . . . . . . . . . . . . . 17
+7.2.3 Neue Typen . . . . . . . . . . . . . . . . . . . . . . . . 18
+7.2.4 Di- und Trigraphen . . . . . . . . . . . . . . . . . . . . 18
+7.2.5 Der Verkettungsoperator ## . . . . . . . . . . . . . . . 19
+7.3 Weitere Unterschiede . . . . . . . . . . . . . . . . . . . . . . . 19
+7.4 Eigenheiten von C . . . . . . . . . . . . . . . . . . . . . . . . 21
+8 Der Portierungsvorgang 23
+8.1 ansi f von Dennis Kuhn . . . . . . . . . . . . . . . . . . . . . 23
+8.1.1 Ansiﬁzierung der Funktionsk ¨opfe . . . . . . . . . . . . 23
+8.1.2 Erstellen einer Header-Datei . . . . . . . . . . . . . . . 24
+2
+8.2 Einf ¨ugen von #include-Anweisungen . . . . . . . . . . . . . . 24
+8.2.1 Finden der ben ¨otigten Header der Standardbibliothek . 25
+8.2.2 Mehrfachdeﬁnitionen . . . . . . . . . . . . . . . . . . . 25
+8.3 Verzeichnisstruktur . . . . . . . . . . . . . . . . . . . . . . . . 26
+8.4 Die Aufrufe der Ansiﬁzierungsprogramme im Detail . . . . . . 27
+8.4.1 mkrightops . . . . . . . . . . . . . . . . . . . . . . . . 28
+8.4.2 ansify.sh und ansi f.sh . . . . . . . . . . . . . . . . 29
+8.4.3 mklongmod . . . . . . . . . . . . . . . . . . . . . . . . . 30
+8.4.4 all.sh . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+8.4.5 mkmainint.sh . . . . . . . . . . . . . . . . . . . . . . . 32
+8.4.6 mkmiss.sh . . . . . . . . . . . . . . . . . . . . . . . . . 32
+8.4.7 mksheader.sh . . . . . . . . . . . . . . . . . . . . . . . 33
+8.4.8 mkcheader.sh . . . . . . . . . . . . . . . . . . . . . . . 34
+8.4.9 ins inc.sh . . . . . . . . . . . . . . . . . . . . . . . . 34
+8.4.10 struct.h-Dateien . . . . . . . . . . . . . . . . . . . . 34
+8.4.11 findsrcs.sh und compile.sh . . . . . . . . . . . . . . 35
+8.5 Handarbeit – Ansiﬁzierung durch Compilermeldungen . . . . . 35
+8.6 sh – Die Bourneshell . . . . . . . . . . . . . . . . . . . . . . . 36
+8.6.1 Signalbehandlung . . . . . . . . . . . . . . . . . . . . . 38
+8.6.2 Umgebungsvariablen . . . . . . . . . . . . . . . . . . . 38
+8.6.3 Wildcardexpansion . . . . . . . . . . . . . . . . . . . . 40
+8.6.4 Weitere Programmierschwierigkeiten der sh . . . . . . 40
+9 Erg ¨anzung der Bibliotheken 42
+10 Vergleich der alten und neuen Programme 43
+11 Testen der portierten Programme 46
+11.1 Automatisches Testen . . . . . . . . . . . . . . . . . . . . . . . 48
+12 ToDo – was bisher nicht erledigt wurde 57
+3
+Kapitel 1
+Einf¨uhrung
+Diese Arbeit ist Teil eines gr ¨oßeren Projektes, dessen Ziel es ist, einen virtu-
+ellen RISC-Prozessor unter dem Betriebssystem UNIX laufen zu lassen.
+Die Wahl ﬁel aus verschiedenen Gr ¨unden auf UNIX in der Version 7:
+• Die Quelltexte von UNIX bis Version 7 sind mittlerweile von Caldera
+ver¨oﬀentlicht und d ¨urfen frei verwendet, kopiert und ge ¨andert werden.
+• UNIX ist ein stabiles und eﬃzientes System, das in vielen Bereichen
+Anwendung ﬁndet. 1
+• Der UNIX-Kern ist relativ klein; somit war seine Portierung halbwegs
+¨uberschaubar.
+• UNIX besitzt Multitasking-, Multiprocessing- und Multiuser-Funktio-
+nalit¨at.
+• Die Betriebssystemarchitektur ist so entworfen, daß die mitge

@@ -1,0 +1,33 @@
+Modular Simultaneous Exponentiation IP core
+Operand RAM
+Op0 / g0
+Op1 / g1
+Op2 / g01
+Op3 / a
+m
+Exponent FIFO
+Control Register
+Multiplier
+Control Unit
+32-bit bus interface
+din
+dout
+addr
+load
+xy
+m
+a
+load_a
+addr
+IRQ
+done
+start
+Load_x
+n
+n
+n
+mod_sim_exp_core
+bus interface
+~
+~
+~

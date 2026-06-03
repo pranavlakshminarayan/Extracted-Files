@@ -1,0 +1,131 @@
+  
+SGMII Core 
+SGMII  
+This document describes interfaces and design of SGMII Core 
+11/10/2012  
+  
+SGMII/1000-BaseX  www.fpga-ipcores.com 
+1 
+ 
+1. OVERVIEW 
+This core implements Physical Coding Sublayer of 1000BaseX transmission (IEEE 802.3 Clause36 
+and 37). This core can also be used for SGMII interface as this interface leverages 1000BaseX PCS. 
+The differences between the 2 protocols are Link-timer and the control information exchanged during 
+Auto-negotiation process. 
+Modes of operation:  
+- 1000BaseX mode. This is the default mode of the core. In this mode, local capability register 
+needs be set so that the core can advertise the capability of local link.  
+- Mac-SGMII mode: in this mode, the core works in SGMII mode at MAC side. The core only 
+transmits acknowledgement bit during negotiation process, the other bits are set to “0” as 
+specified by Cisco. The operating speed/duplex is set by:  
+o Received partner speed/duplex (default) 
+o Or Bit 6,13, and 8 in control register. To force the core into this speed, Use_Local bit 
+in Mode register must be set. 
+- Phy-SGMII mode: in this mode, the core works in SGMII mode at Phy-Side. That means the 
+core would actively advertise control information which can be set by external ports 
+(i_PhyDuplex, i2_PhySpeed, i_PhyLink) or via Local Capability registers. The actual 
+operating speed and duplex are controlled by the external ports or Control Registers.  
+  
+SGMII/1000-BaseX  www.fpga-ipcores.com 
+2 
+ 
+2. INTERFACE 
+Tranceiver Interface   
+ input i_SerRx, 
+ output o_SerTx, 
+ input i_CalClk, 
+ input i_RefClk125M, 
+ input i_ARstHardware_L, 
+ This interface requires 125MHz reference clock 
+and 50MHz Calibration Clock to feed to 
+Transceiver.  
+o_SerTx and i_SerRx are Transmit and Receive 
+line of the transceiver.  
+i_ArstHardware_L is to be connected to 
+hardware reset line. 
+Local BUS interface 
+Wishbonebus, single transaction mode (non-
+pipeline slave) 
+  
+ input i_Cyc, 
+ input i_Stb, 
+ input i_WEn, 
+ input [31:00]  i32_WrData, 
+ input [07:00] iv_Addr, 
+ output [31:00] o32_RdData, 
+ output o_Ack, 
+ This wishbone interface is to configures registers 
+such as mode, link-timer or speed …  
+ input i_Mdc, 
+ inout io_Mdio, 
+ Mdio clause 22 interface, not supported yet 
+Link Status   
+  
+ output o_Linkup, 
+ output o_ANDone,  
+ output [1:0] o2_SGMIISpeed, 
+ output o_SGMIIDuplex, 
+ 
+ Link-up is asserted after the synchronization is 
+acquired.  
+AN_Done is asserted after auto-negotiation 
+process is done.  
+SGMIISpeed encodes speed of SGMII mode:  
+10b: 1000Mbps 
+01b: 100Mbps 
+00b: 10Mbps (not supported) 
+SGMIIDuplex, this core only support full duplex 
+mode.  
+SGMII Phy-Side Signals  Phy-Side SGMII advertised information 
+ input  i_PhyLink, 
+ input i_PhyDuplex, 
+ input  [1:0] i2_PhySpeed,  
+  
+ PhyLink bit is tied to Bit.15 of Advertised 
+Configurations to indicate copper-link is up or 
+down. PhyDuplex and PhySpeed are tied to bit 
+12,11:10 of advertised 16-bit information 
+GMII Interface   
+ input [07:00] i8_TxD, 
+ input i_TxEN, 
+ input i_TxER, 
+ output [07:00] o8_RxD, 
+ output o_RxDV, 
+ output o_RxER, 
+ output o_GMIIClk, 
+ output o_MIIClk, 
+ output o_Col, 
+ output o_Crs 
+ Standard GMII interface 
+GMIIClk output 125MHz clock output by the 
+tranceiver.  
+MIIClk output 25MHz clock used in 100Mbps 
+mode.  
+ 
+ 
+  
+SGMII/1000-BaseX  www.fpga-ipcores.com 
+3 
+ 
+2.1. REGISTERS 
+The registers in the cores are accessed through 32-bit bus. Therefore registers are mapped into 
+Double-word address although each register is only 16-bit. The 16 most significant bits are always 
+zeros.  
+Bit Name Offset Default Description 
+ Control 
+Register 
+0x00   
+5:0 Reserved R/W 5’b0 Not used 
+6 MSB Speed 
+Selection 
+R/W 0 From Table 22-7 (IEEE 802.3-2008-Section2) 
+ 
+This bit is used only inSGMII mode. The speed of SGMII 
+mode can be configured to use these 2 bits or use link 
+partner advertised speed and duplex. 
+7 Collision 
+Test 
+R/W 1’b0 Not support 
+8 Duplex 
+Mode 
+R/W  Only full duplex mode is supported

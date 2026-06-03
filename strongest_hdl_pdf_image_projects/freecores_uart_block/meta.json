@@ -1,0 +1,26 @@
+{
+  "project_id": "freecores_uart_block",
+  "name": "uart_block",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/uart_block",
+  "extraction_date": "2026-06-02T16:55:41",
+  "license": null,
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 0,
+    "vhdl_files": 18,
+    "other_hdl_files": 0,
+    "pdf_files": 3,
+    "markdown_files": 0,
+    "text_files": 62,
+    "image_files": 51,
+    "total_bytes": 16969559,
+    "languages_seen": [
+      "VHDL"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": []
+}

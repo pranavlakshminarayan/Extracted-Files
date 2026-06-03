@@ -1,0 +1,39 @@
+Copyright © 2014 Goran Devic  A-Z80 
+www.baltazarstudios.com Page 1 
+ 
+A-Z80 Quick Start  
+Download Quartus II Web Edition: https://www.altera.com/download 
+Depending on your Altera FPGA device, select a version: For a DE1 board, the latest free version that supported 
+Cyclone II was Quartus 13.0 SP1. 
+Download ModelSim from the same Altera site. 
+You don’t need to have an FPGA device to play with this design – ModelSim could do just fine to test and run 
+various simulations! 
+Xilinx devices should work by linking with Verilog/SystemVerilog files, but I did not try it. 
+Install Python 2.x: http://www.activestate.com/activepython 
+ 
+ 
+How do I setup my Altera DE1 board to run Sinclair ZX Spectrum? 
+ 
+Flash the ZX Spectrum combined ROM package (“host\zxspectrum\rom\combined.rom”) into the flash 
+memory at the address 0. Use the program “DE1_ControlPanel.exe” off your DE1 CD disk (you can also 
+download it from the terasic.com site). 
+ 
+In Quartus: open, compile and flash project “host/zxspectrum/zxspectrum_board.qpf”. 
+Connect VGA, PS/2 keyboard and line-in to load Spectrum programs. You can also connect Line-out to hear the 
+sounds (plugging in a set of earphones would also do).  
+ 
+How do I add A-Z80 sources into my Z80-based project? 
+ 
+Look up a list of files that were added to one of the sample designs: 
+1. “host\basic\host_de1.qsf” 
+2. “host\zxspectrum\zxspectrum_board.qsf” 
+Use every file from the “cpu” directories listed. 
+ 
+Still stuck? 
+ 
+Well, read the full User’s Guide. 
+Visit www.baltazarstudios.com, post a question and/or send me an email. 
+ 
+Goran Devic 
+gdevic@yahoo.com 
+ 

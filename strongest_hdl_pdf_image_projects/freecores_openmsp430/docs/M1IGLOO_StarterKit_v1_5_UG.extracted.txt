@@ -1,0 +1,145 @@
+Cortex-M1 Enabled IGLOO 
+Development Kit User’s Guide 
+Version 1.5 
+ 
+Cortex-M1 Enabled IGLOO Development Kit User’s Guide 1  
+Introduction 
+Thank you for purchasing the Actel Cortex-M1 Enabled IGLOOTM Development Kit.  
+ 
+Key Features 
+• Ultra-low power in Flash*Freeze mode  
+• Low power active capability  
+• Small footprint packages  
+• Reprogrammable flash technology  
+• 1.2 V or 1.5 V operation  
+• High capacity, advanced I/O  
+• Clock conditioning circuit (CCC) and PLL  
+• Embedded SRAM and nonvolatile memory 
+(NVM)  
+• In-system programming (ISP) and security  
+• Cortex-M1 processor 
+ 
+  
+The Cortex-M1 Enabled IGLOO TM Development Kit is an advanced microprocessor based FPGA development 
+and evaluation kit.  The purpose of the kit is to help the user become familiar with the IGLOO FPGA features 
+by providing a useful Sample Design, with a “How To” tutorial for implementing the FPGA hardware design 
+using Libero Project Manager and CoreConsole. The tutorial also shows how to implement Cortex-M1 
+embedded software using SoftConsole.   
+ 
+ 
+ 
+ 1Mbyte 
+SRAM 
+16Mbyte 
+Flash 
+M1AGL with 
+Cortex-M1 processor 
+M1AGL Development Board 
+USB / Serial 
+Connector 
+USB Connector 
+(FlashPro3 Programmer) 
+LEDs 
+Switches 
+LVDS 
+Connector 
+Flash*Freeze 
+Button 
+2  Cortex-M1 Enabled IGLOO Development Kit User’s Guide 
+ 
+ 
+   
+Table of Contents 
+1 Contents and System Requirements 6 
+Cortex-M1 Enabled IGLOO Development Kit Contents 6 
+System Requirements 6 
+Additional Information 6 
+2 Hardware Components 7 
+Ideal Uses for the development kit 7 
+Applications 7 
+M1AGL Development Board 7 
+Detailed Board Description and Usage 8 
+Block Diagram 8 
+Power 8 
+Accessory Card Power Supply Connections 9 
+Cortex-M1 Support 9 
+USB Serial Interface 9 
+Measuring Current 10 
+Other Features 10 
+Programming or Re-Programming the Sample Design 10 
+M1AGL Development Board Jumper Descriptions 11 
+3 Installation and Setup 13 
+Installing Libero IDE v8.x 13 
+Installing Cortex-M1 Enabled Development Kit using the “Install CD”. 13 
+Initial M1AGL Development Board configuration 13 
+Powering up the M1AGL Development Board 14 
+Factory Configuration 15 
+4 Sample Design Tutorial 16 
+Sample System Hardware Overview 17 
+Libero Project 17 
+Top Level Design 18 
+Additional Source Files 19 
+Constraints Files 19 
+Device Options 19 
+CoreConsole Design 20 
+Sample Design Hardware Overview 21 
+SmartGen Components 22 
+Functional Description 22 
+Memory Map 23 
+Programming the FPGA on the M1AGL Development Board 24 
+SoftConsole Designs 25 
+Importing and compiling the SoftConsole designs 25 
+Debugging the Traffic Light design example 29 
+Using the Memory Loader Utility 36 
+Rebooting the board to run the Traffic Light software from Flash 38 
+Restoring factory default settings 38 
+A FG484 Package for the M1AGL FPGAs 39 
+B Board Schematics 47 
+C M1AGL Development Board User Tests 48 
+Introduction 48 
+Board Configuration 48 
+Load the “User Tests” design 48 
+Procedure for running “User Tests” 48 
+“User Tests” Design 50 
+Cortex-M1 Enabled IGLOO Development Kit User’s Guide 3  
+  
+D Product Support 51 
+Email 51 
+Phone 51 
+4  Cortex-M1 Enabled IGLOO Development Kit User’s Guide 
+ 
+ 
+   
+ 
+Document Assumptions 
+This user’s guide assumes the following: 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+You intend to use Actel Libero® Integrated Design Environment (IDE) software. 
+You intend to use Actel CoreConsole® and SoftConsole® software. 
+You are familiar with: 
+Actel Libero IDE v8.1 or later software. 
+Actel CoreConsole® v1.4 or later software. 
+Actel SoftConsole® v2.0 or later software. 
+You are familiar with PCs and the Windows® operating system. 
+Cortex-M1 Enabled IGLOO Development Kit User’s Guide 5  
+1 
+Contents and System Requirements 
+This chapter details the contents of the Cortex-M1 Enabled IGLOO Development Kit and lists the system requirements. 
+Cortex-M1 Enabled IGLOO Development Kit Contents 
+The Cortex-M1 Enabled IGLOO Development Kit includes the following: 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+M1AGL Development B

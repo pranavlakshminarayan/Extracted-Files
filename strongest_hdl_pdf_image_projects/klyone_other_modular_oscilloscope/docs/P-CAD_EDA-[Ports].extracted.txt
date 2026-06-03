@@ -1,0 +1,55 @@
+To \ from FPGA 
+JTAG Port
+These signals 
+go directly 
+to FPGA I/Os
+"On" - PP Confg. Enable
+"Off"- PP Confg. Disable
+To \ from FPGA 
+PP Port
+GPINs are 
+internally 
+pulled up
+p.5
+U11, U21, U22 - 74LCX240MTC
+PP Configuration
+PP Comunication
+RS-232 Serial Port
+Comunication Ports
+RVI Prototype Board
+Parallel Port
+LED
+Bias &
+Clock
+Normal MII Interface
+Mode
+Media
+Interface
+Power
+One bypass capacitor for
+each DVDD and AVDD pin
+p.43 of Spec
+Host USB
+Port
+Peripheral USB
+Port
+Green
+Yellow
+NC
+RX-
+TX+
+NC
+NC
+8
+2
+3
+4
+5 NC
+TX-
+RX+
+6
+7
+1
+Comunic/Config
+Pushbutton
+Ethernet 10/100 Port

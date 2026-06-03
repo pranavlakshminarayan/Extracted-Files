@@ -1,0 +1,31 @@
+{
+  "project_id": "freecores_sd_card_controller",
+  "name": "sd_card_controller",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/sd_card_controller",
+  "extraction_date": "2026-06-02T16:55:10",
+  "license": null,
+  "has_readme": true,
+  "readme_excerpt": "\nWishbone SD Card Controller IP Core\n===================================\n\nThe Wishbone SD Card Controller IP Core is MMC/SD communication controller designed to be\nused in a System-on-Chip. IP core provides simple interface for any CPU with Wishbone\nbus. The communication between the MMC/SD card controller and MMC/SD card is performed\naccording to the MMC/SD protocol.\n\nIntroduction\n------------\nThis core is based on the \"sd card controller\" project from \nhttp://opencores.org/project,sdcard_mass_storage_controller \nbut has been largely rewritten. A lot of effort has been made \nto make the core more generic and easily usable \nwith OSs like Linux. \n- data transfer commands are not fixed \n- data transfer block size is configurable \n- multiple block transfer support \n- R2 responses (136 bit) support\n\nFeatures\n--------\n\nThe MMC/SD card controller provides following features:\n\n- 1- or 4-bit MMC/SD mode (does not support SPI mode),\n- 32-bit Wishbone interface,\n- DMA engine for data transfers,\n- Interrupt generation on completion of data and command transactions,\n- Configurable data transfer block size,\n- Support for any command code (including multiple data block tranfser),\n- Support for R1, R1b, R2(136-bit), R3, R6 and R7 responses.\n\nDocumentation\n-------------\n\nThe documentation is located in the doc/ directory.\n\nExamples\n--------\n\nA sample ORPSoC project that make use of this core is located at:\n\nhttps://github.com/mczerski/orpsoc-de0_nano\n\nThe project is based on de0_nano board w",
+  "stats": {
+    "verilog_files": 33,
+    "vhdl_files": 0,
+    "other_hdl_files": 0,
+    "pdf_files": 2,
+    "markdown_files": 0,
+    "text_files": 7,
+    "image_files": 3,
+    "total_bytes": 3789241,
+    "languages_seen": [
+      "Verilog"
+    ]
+  },
+  "quality_tier": "A",
+  "quality_reason": "README + (PDF or images) + 3+ HDL files",
+  "references": [
+    "http://opencores.org/project,sdcard_mass_storage_controller",
+    "https://github.com/mczerski/linux",
+    "https://github.com/mczerski/orpsoc-de0_nano",
+    "https://github.com/mczerski/u-boot"
+  ]
+}

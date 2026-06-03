@@ -1,0 +1,47 @@
+ATLAS 2k Processor                                                   www.opencores.org/project,atlas_core
+by Stephan Nolting                                                                                              stnolting@gmail.com
+Atlas 2k Processor
+by Stephan Nolting
+This project is published under the GNU General Public License (GPL)
+1    11th of December 2014
+
+ATLAS 2k Processor                                                   www.opencores.org/project,atlas_core
+by Stephan Nolting                                                                                              stnolting@gmail.com
+Proprietary Notice
+“ARM” is a trademark of Advanced RISC Machines Ltd.
+“MIPS” is a trademark of MIPS Technologies Inc.
+“A VR” is a trademark of Atmel Corporation.
+“Xilinx ISE”, “Spartan” and “Xilinx ISIM” are trademarks of Xilinx, Inc.
+“Quartus II” and “Cyclone” are trademarks of Altera Corporation.
+“ModelSim” is a trademark of Mentor Graphics, Inc.
+“Windows” is a trademark of Microsoft Corporation.
+License
+This project is published under the GNU General Public License (GPL).
+Disclaimer
+This project comes with no warranties at all. The reader assumes responsibility for the use of any kind of
+information from this documentary or the Atlas 2k Processor project, respectively.
+This document was created using OpenOffice.
+The ATLAS Project / ATLAS 2k Processor
+© 2014 by Stephan Nolting, Hanover, Germany
+For any kind of feedback, feel free to contact me: stnolting@gmail.com
+The most recent version of the ATLAS project and it's documentary can be found at 
+http://www.opencores.org/project,atlas_core
+This project is published under the GNU General Public License (GPL)
+2    11th of December 2014
+ATLAS 2k Processor                                                   www.opencores.org/project,atlas_core
+by Stephan Nolting                                                                                              stnolting@gmail.com
+Table of Content
+1. Introduction................................................................................................................................................ 6
+1.1. Processor Features................................................................................................................................ 7
+1.2. Project Folder Structure........................................................................................................................ 8
+1.3. VHDL File Hierarchy........................................................................................................................... 8
+2. Top Entity Signal Description.................................................................................................................... 9
+2.1. Atlas 2k Basic Setup Top Entity............................................................................................................ 9
+2.2. Atlas 2k Processor Top Entity............................................................................................................. 10
+3. Programmer's Model................................................................................................................................ 12
+3.1. Operating Modes................................................................................................................................ 12
+3.2. Exceptions and Interrupts................................................................................................................... 13
+3.3. Data Registers..................................................................................................................................... 13
+3.4. Coprocessors....................................................................................................................................... 14
+3.5. Machine Status Register..................................................................................................................... 14
+3.6. Memory Model....................................

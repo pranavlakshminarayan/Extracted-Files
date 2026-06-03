@@ -1,0 +1,100 @@
+TL/C/8652
+PC16550D Universal Asynchronous Receiver/Transmitter with FIFOs
+June 1995
+PC16550D Universal Asynchronous
+Receiver/Transmitter with FIFOs ²
+General Description
+The PC16550D is an improved version of the original 16450
+Universal Asynchronous Receiver/Transmitter (UART).
+Functionally identical to the 16450 on powerup (CHARAC-
+TER mode) * the PC16550D can be put into an alternate
+mode (FIFO mode) to relieve the CPU of excessive software
+overhead.
+In this mode internal FIFOs are activated allowing 16 bytes
+(plus 3 bits of error data per byte in the RCVR FIFO) to be
+stored in both receive and transmit modes. All the logic is on
+chip to minimize system overhead and maximize system ef-
+ficiency. Two pin functions have been changed to allow sig-
+nalling of DMA transfers.
+The UART performs serial-to-parallel conversion on data
+characters received from a peripheral device or a MODEM,
+and parallel-to-serial conversion on data characters re-
+ceived from the CPU. The CPU can read the complete
+status of the UART at any time during the functional opera-
+tion. Status information reported includes the type and con-
+dition of the transfer operations being performed by the
+UART, as well as any error conditions (parity, overrun, fram-
+ing, or break interrupt).
+The UART includes a programmable baud rate generator
+that is capable of dividing the timing reference clock input
+by divisors of 1 to (2
+16b1), and producing a 16 c clock for
+driving the internal transmitter logic. Provisions are also in-
+cluded to use this 16
+c clock to drive the receiver logic. The
+UART has complete MODEM-control capability, and a proc-
+essor-interrupt system. Interrupts can be programmed to
+the user’s requirements, minimizing the computing required
+to handle the communications link.
+The UART is fabricated using National Semiconductor’s ad-
+vanced M
+2CMOS process.
+*Can also be reset to 16450 Mode under software control.
+²Note: This part is patented.
+Features
+Y Capable of running all existing 16450 software.
+Y Pin for pin compatible with the existing 16450 except
+for CSOUT (24) and NC (29). The former CSOUT and
+NC pins are TXRDY
+and RXRDY , respectively.
+Y After reset, all registers are identical to the 16450 reg-
+ister set.
+Y In the FIFO mode transmitter and receiver are each
+buffered with 16 byte FIFO’s to reduce the number of
+interrrupts presented to the CPU.
+Y Adds or deletes standard asynchronous communication
+bits (start, stop, and parity) to or from the serial data.
+Y Holding and shift registers in the 16450 Mode eliminate
+the need for precise synchronization between the CPU
+and serial data.
+Y Independently controlled transmit, receive, line status,
+and data set interrupts.
+Y Programmable baud generator divides any input clock
+b y1t o( 2
+16 b 1) and generates the 16 c clock.
+Y Independent receiver clock input.
+Y MODEM control functions (CTS, RTS, DSR, DTR, RI,
+and DCD).
+Y Fully programmable serial-interface characteristics:
+Ð 5-, 6-, 7-, or 8-bit characters
+Ð Even, odd, or no-parity bit generation and detection
+Ð 1-, 1 (/2-, or 2-stop bit generation
+Ð Baud generation (DC to 1.5M baud).
+Y False start bit detection.
+Y Complete status reporting capabilities.
+Y TRI-STATEÉ TTL drive for the data and control buses.
+Y Line break generation and detection.
+Y Internal diagnostic capabilities:
+Ð Loopback controls for communications link fault
+isolation
+Ð Break, parity, overrun, framing error simulation.
+Y Full prioritized interrupt system controls.
+Basic Configuration
+TL/C/8652 – 1
+TRI-STATEÉ is a registered trademark of National Semiconductor Corp.
+C1995 National Semiconductor Corporation RRD-B30M75/Printed in U. S. A.
+Table of Contents
+1.0 ABSOLUTE MAXIMUM RATINGS
+2.0 DC ELECTRICAL CHARACTERISTICS
+3.0 AC ELECTRICAL CHARACTERISTICS
+4.0 TIMING WAVEFORMS
+5.0 BLOCK DIAGRAM
+6.0 PIN DESCRIPTIONS
+7.0 CONNECTION DIAGRAMS
+8.0 REGISTERS
+8.1 Line Control Register
+8.2 Typical Clock Circuits
+8.0 REGISTERS (Continued)
+8.3 Programmable Baud Generator
+8.4 Line Status Register
+8.5 

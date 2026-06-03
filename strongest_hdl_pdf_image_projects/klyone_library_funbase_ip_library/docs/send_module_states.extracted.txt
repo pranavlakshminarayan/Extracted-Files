@@ -1,0 +1,18 @@
+  
+wait_tx
+write_trgt_MAC
+write_own_MAC
+write_frame_type
+count_data
+write_conf
+read_reply
+wait_busy
+get_MAC
+conf_tx_reg
+conf_len_lo
+conf_len_hi
+Done
+= conf_state
+= init_state
+= tx_state
+send_cmd

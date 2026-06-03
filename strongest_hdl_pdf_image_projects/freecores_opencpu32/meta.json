@@ -1,0 +1,34 @@
+{
+  "project_id": "freecores_opencpu32",
+  "name": "opencpu32",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/opencpu32",
+  "extraction_date": "2026-06-02T16:54:23",
+  "license": null,
+  "has_readme": true,
+  "readme_excerpt": "OpenCPU32 Project\n\nDirectory structure\ndocs/gen: \tDoxygen generated documentation\nhdl:\t\tLocation of ISE project (VHDL)\nsimulator:\tCPU Simulator source code\ntools\t\tSome tools used on the project\n\nBibliography:\nhttp://vhdlguru.blogspot.com.br/\nhttp://opensource.zylin.com/zpu.htm\nhttp://www.amazon.com/Digital-Logic-Microprocessor-Design-VHDL/dp/0534465935/ref=sr_1_4?ie=UTF8&qid=1333221524&sr=8-4\nhttp://en.wikipedia.org/wiki/CPU_design\nhttp://en.wikipedia.org/wiki/Computer_architecture\n",
+  "stats": {
+    "verilog_files": 0,
+    "vhdl_files": 16,
+    "other_hdl_files": 0,
+    "pdf_files": 4,
+    "markdown_files": 0,
+    "text_files": 0,
+    "image_files": 6,
+    "total_bytes": 4479896,
+    "languages_seen": [
+      "VHDL"
+    ]
+  },
+  "quality_tier": "A",
+  "quality_reason": "README + (PDF or images) + 3+ HDL files",
+  "references": [
+    "http://en.wikipedia.org/wiki/CPU_design",
+    "http://en.wikipedia.org/wiki/Computer_architecture",
+    "http://opensource.zylin.com/zpu.htm",
+    "http://vhdlguru.blogspot.com.br/",
+    "http://www.SynthWorks.com",
+    "http://www.amazon.com/Digital-Logic-Microprocessor-Design-VHDL/dp/0534465935/ref=sr_1_4?ie=UTF8&qid=1333221524&sr=8-4",
+    "http://www.ecs.umass.edu/ece/koren/arith/simulator"
+  ]
+}

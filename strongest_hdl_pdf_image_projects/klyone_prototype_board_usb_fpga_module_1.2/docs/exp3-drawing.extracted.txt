@@ -1,0 +1,13 @@
+ZTEX Extension Board for Experimental Board 1.1
+2.541 23 24 46
+1 23 24 46
+5.08 5.08
+5.08
+129.54
+139.7
+3.3
+2.54
+5.08
+83.82
+73.66
+http://www.ztex.de

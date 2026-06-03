@@ -1,0 +1,95 @@
+IP Core
+Specification
+Author: Stephen Hawes
+[Email Address]
+Rev. [0.1]
+May 9, 2015
+ OpenCores Specifications Template 5/9/2015
+This page has been intentionally left blank.
+www.opencores.org Rev 0.8 Preliminary ii
+Revision History
+Rev. Date Author Description 
+0.1 02/05/15 Stephen 
+Hawes
+First Draft 
+Include skeleton specification doc into source 
+control
+Contents
+INTRODUCTION............................................................................................................. 1
+ARCHITECTURE.............................................................................................................2
+OPERATION..................................................................................................................... 3
+REGISTERS.......................................................................................................................4
+LIST OF REGISTERS........................................................................................................................................ 4
+REGISTER 1 – DESCRIPTION............................................................................................................................4
+CLOCKS.............................................................................................................................5
+IO PORTS...........................................................................................................................6
+1.
+Introduction
+[This section contains the introduction to the core, describing its use and features.]
+2.
+Architecture
+[This section describes the architecture of the block. A block diagram should be included  
+describing the top level of the design.]
+
+3.
+Operation
+[This section describes the operation of the core. Specific sequences, such as startup  
+sequences, as well as the modes and states of the block should be described.]
+4.
+Registers
+[This section specifies all internal registers. It should completely cover the interface  
+between the core and the host as seen from the software view.]
+List of Registers
+Name Address Width Access Description
+Table 1: List of registers
+Register 1 – Description
+[You shall choose the style of register you prefer. Do not use both options in one and the  
+same document.]
+Bit # Access Description
+Reset Value:
+Reg_Name: 0000h
+31 30 29 28 ... 8 7 6 5 4 3 2 1 0
+Table 2: Description of registers
+Reset Value:
+Reg_Name: 0000h
+5.
+Clocks
+[This section specifies all the clocks. All clocks, clock domain passes and the clock  
+relations should be described.]
+Name Source Rates (MHz) Remarks Description
+Max Min Resolution
+clk_pad_i Input 
+Pad
+10 4 0.1 Duty cycle 70/30. For external 
+interface.
+wb_clk_I PLL 200 - - Must be 
+synchronized to 
+sm_clk_i
+System clock.
+sm_clk_i Input 
+port
+55 40 1 There are multi-
+clocks paths.
+Clock 55MHz 
+for State 
+machine.
+Table 3: List of clocks
+6.
+IO Ports
+[This section specifies the core IO ports.]
+Port Width Direction Description
+wb_clk_i 1 Input Block’s WISHBONE Clock Input
+wb_rst_i 1 Input Block’s WISHBONE Reset Input
+wb_sel_i 4 Input Block’s WISHBONE Select Inputs
+foo_pad_o 1 Output Block’s foo output to output pad
+…
+Table 4: List of IO ports
+1.
+Name
+[This section may be added to outline different specifications.]
+1.
+Name
+[This section may be added to outline different specifications.]
+Index
+[This  section  contains  an  alphabetical  list  of  helpful  document  entries  with  their  
+corresponding page numbers.]

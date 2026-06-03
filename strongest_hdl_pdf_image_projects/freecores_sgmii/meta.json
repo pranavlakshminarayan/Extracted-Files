@@ -1,0 +1,26 @@
+{
+  "project_id": "freecores_sgmii",
+  "name": "sgmii",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/sgmii",
+  "extraction_date": "2026-06-02T16:55:12",
+  "license": null,
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 281,
+    "vhdl_files": 0,
+    "other_hdl_files": 0,
+    "pdf_files": 1,
+    "markdown_files": 0,
+    "text_files": 1,
+    "image_files": 3,
+    "total_bytes": 23321169,
+    "languages_seen": [
+      "Verilog"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": []
+}

@@ -1,0 +1,26 @@
+{
+  "project_id": "freecores_mips_16",
+  "name": "mips_16",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/mips_16",
+  "extraction_date": "2026-06-02T16:53:46",
+  "license": null,
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 22,
+    "vhdl_files": 0,
+    "other_hdl_files": 0,
+    "pdf_files": 3,
+    "markdown_files": 0,
+    "text_files": 5,
+    "image_files": 1,
+    "total_bytes": 1993870,
+    "languages_seen": [
+      "Verilog"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": []
+}

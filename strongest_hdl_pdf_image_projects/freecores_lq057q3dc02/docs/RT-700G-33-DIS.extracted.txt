@@ -1,0 +1,29 @@
+REV DATE APPROVED
+--------
+-------- 8/15/2006 GLR
+RT-700G-33-DIS  
+CABLE KIT
+Tel:  732-792-1234 
+Fax:  732-792-8305
+REVISION HISTORY
+INITIAL RELEASE
+REDRAWN; NO REV TO DWG NUMBER
+APPR:      GLR
+DATE: 6/27/06
+DATE:6/27/06
+DWG BY: GLR
+CHK BY:   GLR DATE: 6/27/06
+DRAWINGS ARE NOT TO SCALE.  ALL DIMENSIONS 
+ARE IN INCHES UNLESS OTHERWISE SPECIFIED.  
+ALL TOLERANCES ARE +/- 0.50" UNLESS 
+OTHERWISE SPECIFIED
+Quadrangle Products Inc.       
+28 Harrison Ave Suite 241 
+Englishtown, NJ 07726
+© Copyright 2006 Quadrangle Products Inc.               
+This document is confidential and proprietary to Quadrangle 
+Products Inc. and shall not be reproduced, copied, used, or 
+issued as the basis of manufacture or sale of equipment, 
+material, or any other item.  Quadrangle Products Inc. has 
+the sole and exclusive ownership rights to this document 
+and information contained herein.

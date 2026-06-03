@@ -1,0 +1,112 @@
+LPC Dongle v5 AD67441103 DATA SHEET (Document V1.09 / Mar. 10, 2008)
+Artec Group OÜ, Türi 10c Tallinn, 
+11313 Estonia European Union 
+Tel: (+372) 6718 550 
+Fax: (+372) 6718 555 
+www.artecgroup.com
+info@artecgroup.com
+Programmable LPC 
+Dongle 
+DATA SHEET
+FPGA based hardware 
+debugger platform
+Ver. 5
+Dongle version 5 Features:
+• Supports LPC memory read (can be disabled),LPC Firmware Hub memory read 
+and IO write for POST Code capture
+• Postcode only mode (LPC reads from dongle are disabled )
+• Postcode logger (sends all postcodes to USB serial port as hexadecimal bytes in ASCII)
+• 4 segment LED display for debug purposes
+• 10 bit GPIO header for debug purposes
+• Selectable voltage source either USB or LPC bus
+• 4 jumper selectable boot images for LPC
+• Third party free USB drivers for
+• Windows (98,2000,ME,XP)
+• Linux 2.4 and greater
+Included:
+• LPC Dongle
+• Python based software with source (Linux and Windows supported)
+• USB cable
+• LPC cable
+Index
+Dongle version 5 Features:...................................................................................................................1
+Dongle version.................................................................................................................................2
+LPC dongle interfaces......................................................................................................................2
+LPC.................................................................................................................................................. 3
+Mode Select..................................................................................................................................... 3
+Jumper settings on GPIO header..................................................................................................... 3
+VCC source select ...........................................................................................................................3
+USB..................................................................................................................................................4
+FAQ................................................................................................................................................. 5
+Source code......................................................................................................................................5
+1
+
+LPC Dongle v5 AD67441103 DATA SHEET (Document V1.09 / Mar. 10, 2008)
+Dongle version
+Dongle version number can be seen on the postcode byte if reset button is held down while 
+USB cable is connected or dongle is connected to a host system by LPC bus. This document deals 
+with dongle version 5. 
+Additions from version 3 to 4 were: 
+– LPC Firmware Hub read capability and disable jumper to disable the new mode.
+– Post code peek mode (post code IO writes are shown but read requests are ignored)
+Additions from version 4 to 5 are: 
+– Changed concurrent access controller to flash to stop LPC cycles interrupting flash 
+programming
+– Post code logger mode and jumper to enable the new mode (the jumper at the same time 
+disables USB programming interface)
+– Added fast block read hardware (block size is 64K bytes) and improved write hardware 
+implementation to speed-up write process with following approximate results: 
+(Gentoo Linux 4096K write time 59s includes erase time 27s, read time 10s)
+(Debian Linux 4096K write time 59s includes erase time 27s, read time 34s)
+(Windows XP 4096K write time 2m37s includes erase time 27s, read time 7s)
+LPC dongle interfaces
+2
+Drawing 1: Board top layout
+86 00
+J5
+J1
+JMP4
+USB mini B
+JMP Disable
+LPC Firmw are 
+Hub memory 
+read
+(pins 1-2)
+BYTE 
+BLASTER II
+M0
+M1
+Mode select
+(flash 
+region) Post code 
+byte
+VCC source
+select
++5VCC
+GND and 
+5 VCC
+Pow er 
+LED
+4MB mode 
+LED
+Reset button
+JMP Enable
+Post code only
+mode
+(pins 5-6)
+LPC header 
+pin 1
+GND
+GND
+LAD3
+LAD1
+RESETX
+LPC header 
+VCC3
+CLK
+LFRAME
+LAD2
+LAD0
+JMP Enable
+Post logger
+(pins 7-8

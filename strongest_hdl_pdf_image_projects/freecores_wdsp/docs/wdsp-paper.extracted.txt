@@ -1,0 +1,58 @@
+1 
+ 
+OPEN CORES FOR DIGITAL SIGNAL PROCESSING 
+NÚCLEOS LIBRES PARA PROCESAMIENTO DIGITAL DE SEÑALES 
+OPEN CORES FOR DSP 
+Juan Camilo Valderrama -Cuervo: Ingeniero Electrónico de la Universidad del Quindío.  
+Profesional a Cargo  del Funcionamiento y Programación del Sistema Semafórico  del 
+Municipio de Envigado 
+Alexander López-Parrado1: Ingeniero Electrónico de la Universidad del Quindío, Magíster 
+en Ingeniería Electrónica de la Universidad del Valle, Candidato a Doctor en Ingeniería 
+Eléctrica y Electrónica de la Universidad del Valle. Profesor Asistente del Programa de 
+Ingeniería Electró nica e Investigador del Grupo de Investigación GDSPROC de la  
+Universidad del Quindío. 
+ABSTRACT 
+This paper presents the design and implementation of three Sys tem-on-Chip (SoC) cores, 
+which implement the Digital Signal Processing (DSP) functions: Finite Impu lse Response 
+(FIR) filter, Infinite Impulse Response (IIR) filter and Fast Fourier Transform (FFT). The 
+FIR-filter core is based on the symmetrical realization form, the IIR-filter core is based on 
+the Second Order Sections (SOS) architecture and the FFT core is based on the Radix 2 2 
+Single Delay Feedback (R2 2SDF) architecture. The three cores are compatible with the 
+Wishbone SoC bus, and they were described using generic and structural VHDL. In-system 
+hardware verification was performed by using an OpenRisc -based SoC sy nthesized on an 
+Altera FPGA . Tests showed that the designed DSP cores are suitable for building SoC 
+based on the OpenRisc processor and the Wishbone bus. 
+Keywords: Digital signal processing, d igital filters, finite impulse response filters, infinite 
+                                                           
+1 Autor de correspondencia: Carrera 15 Calle 12 Norte , Universidad del Quindío , Código 
+Postal 630004,  Bloque de Ingeniería, Tercer Piso, CEIFI,  Armenia, Colombia.  Tel: 
+3108282506, correo electrónico: parrado@uniquindio.edu.co, 
+alexander.lopez.parrado@correunivalle.edu.co. 
+2 
+ 
+impulse response filters, fast Fourier transforms, system -on-chip, open source hardware, 
+open RISC processor, Wishbone bus.  
+RESUMEN 
+Este artículo presenta el diseño e implementación de tres núcleos para sistemas en un solo 
+chip (SoC) que implementan las funciones de procesamiento digital de señales (DSP): filtro 
+de respuesta finita al impulso (FIR), filtro de respuesta infinita al impulso (IIR) y 
+transformada rápida de Fourier (FFT). El núcleo de filtro FIR está basado en la estructura 
+simétrica, el núcleo de filtro IIR está basado en la arquitectura de secciones de segundo 
+orden (SOS) y el núcleo de la FFT está basado en la arquitectura base 2 2 Single Delay 
+Feedback (R22SDF). Los tres núcleos son compatibles con el bus para SoC Wishbone y 
+fueron descritos usando VHDL estructural y genérico. Se realizó una verificación en 
+hardware usando un SoC basado en el procesador OpenRISC y sintetizado en un FPGA de 
+Altera, las prueb as mostraron que los núcleos DSP son apropiados para construir un SoC 
+basado en el procesador OpenRISC y el bus Wishbone. 
+Palabras clave : Procesamiento digital de señales, f iltros digitales , filtros de respuesta al 
+impulso finita, filtros de respuesta al i mpulso infinita,  transformada rápida de Fourier, 
+sistemas en un solo chip, hardware de código abierto, procesador OpenRISC, bus 
+Wishbone.  
+INTRODUCTION 
+Today’s technology uses heavily Digital Signal Processing (DSP) on  its applications, and 
+since the past 20 years [1] these applications have been growing up because the performed 
+improvements to digital integrated circuits in speed, integration capabilities  and power 
+consumption. The increased speed of inte grated circuits allows real time processing of 
+signals with higher bandwidths such as the ones used in communication systems [1].   
+Nowadays there a re Digital Signal Processors (DSP s) devices specifically designed for 
+DSP that perform real time filtering, Fourier transforms, Wavelet transforms , or encodin

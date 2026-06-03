@@ -1,0 +1,28 @@
+{
+  "project_id": "freecores_leros",
+  "name": "leros",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/leros",
+  "extraction_date": "2026-06-02T16:53:23",
+  "license": null,
+  "has_readme": true,
+  "readme_excerpt": "An FPGA optimized tiny processor core for utility functions\n(e.g., SW UART). The challenge is to get the resources below\n500 LC and use just 2 RAM blocks. The processor is named after\nthe Greek island Leros where the architecture was designed.\n",
+  "stats": {
+    "verilog_files": 0,
+    "vhdl_files": 16,
+    "other_hdl_files": 0,
+    "pdf_files": 2,
+    "markdown_files": 0,
+    "text_files": 3,
+    "image_files": 6,
+    "total_bytes": 6227959,
+    "languages_seen": [
+      "VHDL"
+    ]
+  },
+  "quality_tier": "A",
+  "quality_reason": "README + (PDF or images) + 3+ HDL files",
+  "references": [
+    "http://www.leros.gr/"
+  ]
+}

@@ -1,0 +1,63 @@
+TAMPERE UNIVERSITY OF TECHNOLOGY
+FACULTY OF COMPUTING AND ELECTRICAL ENGINEERING
+DEPARTMENT OF COMPUTER SYSTEMS
+HIBI_PE_DMA
+SW Reference Manual
+Author:
+Lasse Lehtonen
+Updated:
+March 2, 2012
+Department of Computer Systems
+Faculty of Computing and Electrical Engineering
+HIBI_PE_DMA
+SW Reference Manual
+Contents
+1 Modules 1
+2 Data Structures 1
+3 File List 1
+4 General Functions 2
+4.1 Function Documentation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+4.1.1 hpd_initialize . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+5 TX Functions 2
+5.1 Function Documentation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+5.1.1 hpd_tx_base_conf . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+5.1.2 hpd_tx_base_conf_gen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+5.1.3 hpd_tx_send . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+5.1.4 hpd_tx_send_copy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+5.1.5 hpd_tx_send_copy_gen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+5.1.6 hpd_tx_send_gen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+6 RX Packet Functions 4
+6.1 Function Documentation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+6.1.1 hpd_rx_packet_get_conf . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+6.1.2 hpd_rx_packet_get_conf_gen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+6.1.3 hpd_rx_packet_init . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+6.1.4 hpd_rx_packet_init_gen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+6.1.5 hpd_rx_packet_poll . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+6.1.6 hpd_rx_packet_poll_gen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+6.1.7 hpd_rx_packet_read . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+6.1.8 hpd_rx_packet_read_gen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+6.1.9 hpd_rx_packet_reinit . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+6.1.10 hpd_rx_packet_reinit_gen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+7 RX Stream Functions 7
+7.1 Function Documentation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+7.1.1 hpd_rx_stream_ack . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+7.1.2 hpd_rx_stream_ack_gen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+7.1.3 hpd_rx_stream_get_conf . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+i
+
+Department of Computer Systems
+Faculty of Computing and Electrical Engineering
+HIBI_PE_DMA
+SW Reference Manual
+7.1.4 hpd_rx_stream_get_conf_gen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+7.1.5 hpd_rx_stream_init . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+7.1.6 hpd_rx_stream_init_gen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+7.1.7 hpd_rx_stream_poll . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+7.1.8 hpd_rx_stream_poll_gen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+7.1.9 hpd_rx_stream_read . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+7.1.10 hpd_rx_stream_read_gen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+7.1.11 hpd_rx_stream_reinit . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+7.1.12 hpd_rx_stream_reinit_gen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+8 IRQ Functions 11
+8.1 Function Documentation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+8.1.1 hpd_irq_clear_vector . . . . . . . . . . . . . . . . . . . . . . . . 

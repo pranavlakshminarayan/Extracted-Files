@@ -1,0 +1,58 @@
+PP PPPP PP
+Ethernet MII
+8-segment LEDs
+to Extension Connector B to Extension Connector A
+to SDRAM Module
+to SDRAM Module to Extension Connector Bto Extension Connector A
+Manual CLK
+General CLK
+USB A
+USB B
+32 GPIOs
+----------------
+11 diff pairs
+5 ord. pairs
+11  Globals
+to Extension Connector A
+to SDRAM Module
+to Extension 
+Connector B
+to SDRAM Module
+28 GPIOs
+----------------
+13 diff pairs
+1 ord. pairs
+3  Globals
+40 GPIOs
+----------------
+20 diff pairs
+6  Globals
+40 GPIOs
+----------------
+18 diff pairs
+2  ord. pairs
+3 Globals
+32 GPIOs
+----------------
+16 diff pairs
+6  Globals
+RVI Prototype Board
+32 GPIOs
+--------------
+14 diff pairs
+2  ord. pairs
+7 Globals
+34 GPIOs
+--------------
+14 diff pairs
+3  ord. pairs
+11 Globals
+Temperature
+Sensors
+A3PE-FBG484
+32 GPIOs
+----------------
+13 diff pairs
+3 ord. pairs
+7  Globals
+Actel ProASIC3E FPGA

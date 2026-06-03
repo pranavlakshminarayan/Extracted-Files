@@ -1,0 +1,27 @@
+{
+  "project_id": "freecores_zpu",
+  "name": "zpu",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/zpu",
+  "extraction_date": "2026-06-02T16:57:23",
+  "license": null,
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 5,
+    "vhdl_files": 61,
+    "other_hdl_files": 0,
+    "pdf_files": 2,
+    "markdown_files": 0,
+    "text_files": 9,
+    "image_files": 23,
+    "total_bytes": 206922410,
+    "languages_seen": [
+      "VHDL",
+      "Verilog"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": []
+}

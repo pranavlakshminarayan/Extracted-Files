@@ -1,0 +1,73 @@
+XAPP462 (v1.1) January 5, 2006 www.xilinx.com 1
+© 2003, 2006 Xilinx, Inc. All rights reserved. XILINX, the Xilinx logo, and other designated brands included herein are tradema rks of Xilinx, Inc. 
+All other trademarks are the property of their respective owners.
+Summary Digital Clock Managers (DCMs) provide advanced clocking capabilities to Spartan™-3 FPGA 
+applications. DCMs optionally multiply or divide the incoming clock frequency to synthesize a 
+new clock frequency. DCMs also eliminate clock skew, thereby improving system performance. 
+Similarly, a DCM optionally phase shifts the clock output to delay the incoming clock by a 
+fraction of the clock period. The DCMs integrate directly with the FPGA’s global low-skew clock 
+distribution network.
+This application note applies to the Spartan-3 and Spartan-3L families. For information specific 
+to the Spartan-3E family, see DS312
+, Spartan-3E FPGA Family: Complete Data Sheet.
+Introduction DCMs integrate advanced clocking capabilities into the Spartan-3 global clock distribution 
+network. Consequently, Spartan-3 DCMs solve a variety of common clocking issues, especially 
+in high-performance, high frequency applications:
+• Multiply or Divide an Incoming Clock Frequency or synthesize a completely new 
+frequency by a mixture of clock multiplication and division. 
+• Condition a Clock, ensuring a clean output clock with a 50% duty cycle.
+• Phase Shift a clock signal, either by a fixed fraction of a clock period or by precise 
+increments.
+• Eliminate Clock Skew, either within the device or to external components, to improve 
+overall system performance and to eliminate clock distribution delays.
+• Mirror, Forward, or Rebuffer a Clock Signal, often to deskew and convert the incoming 
+clock signal to a different I/O standard—for example, forwarding and converting an 
+incoming LVTTL clock to LVDS.
+• Any or all the above functions, simultaneously.
+Application Note: Spartan-3 and Spartan-3L FPGA Families
+XAPP462 (v1.1) January 5, 2006
+Using Digital Clock Managers (DCMs) in 
+Spartan-3 FPGAs
+R
+Table  1:  Digital Clock Manager Features and Capabilities
+Feature Description DCM Signals
+Digital Clock Managers (DCMs) per device • 4, except in XC3S50
+• 2 in XC3S50
+All
+Digital Frequency Synthesizer (DFS) Input Frequency 
+Range*
+1 MHz to 280 MHz CLKIN
+Delay-Locked Loop (DLL) Input Frequency Range* 18 MHz to 280 MHz** CLKIN
+Clock Input Sources • Global buffer input pad
+• Global buffer output
+• General-purpose I/O (no deskew)
+• Internal logic (no deskew)
+CLKIN
+Frequency Synthesizer Output Multiply CLKIN by the fraction (M/D) 
+where M={2..32}, D={1..32}
+• CLKFX
+• CLKFX180
+2 www.xilinx.com XAPP462 (v1.1) January 5, 2006
+Document Overview
+R
+Document 
+Overview
+This application note covers an assortment of topics related to Digital Clock Managers, not all 
+of which are relevant to every specific FPGA application.
+The “DCM Functional Overview” section provides a brief introduction to the DCM and its 
+functions. Similarly the “DCM Primitive” section describes all the connection ports and 
+attributes or constraints associated with a DCM. Likewise the “DCM Wizard” and the “VHDL 
+and Verilog Instantiation” sections demonstrate the various methods to specify a DCM design.
+The “DCM Clock Requirements” and the “Input and Output Clock Frequency Restrictions” 
+sections explain the frequency requirements on the DCM clock input and the various DCM 
+clock outputs. Similarly, the “Clock Jitter or Phase Noise” section highlights the effect jitter has 
+on output clock quality.
+Finally, the “Eliminating Clock Skew”, “Clock Conditioning”, “Phase Shifting – Delaying the 
+Clock by a Fraction of a Period”, “Clock Multiplication, Clock Division, and Frequency 
+Synthesis”, and “Clock Forwarding, Mirroring, Rebuffering” sections illustrate various 
+applications using the DCM block.
+Clock Divider Output Divide CLKIN by 1.5, 2, 2.5, 3, 3.5, 4, 
+4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 9, 10, 11, 
+12, 13, 14, 15, or 16
+CLKDV
+Clock Doubler Out

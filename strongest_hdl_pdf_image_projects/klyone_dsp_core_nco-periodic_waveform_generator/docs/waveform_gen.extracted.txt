@@ -1,0 +1,97 @@
+WAVEFORM_GEN
+NCO / Periodic waveform generator
+Rev. 1.1
+Key Design Features
+● 12-bit signed output data samples
+● 32-bit phase accumulator (tuning word)
+● Phase resolution of 2π/212
+● Frequency resolution of Fs/232 (Fs = sample frequency)
+● ≈ 70 dB Signal-to-Noise Ratio (SNR)
+● ≈ 70 dB Spurious Free Dynamic Range (SFDR)
+● Simultaneous SIN, COS, Square and Sawtooth output
+waveforms
+● 2 clock-cycle latency
+● Sample rates of 500 MHz+1
+Applications
+● Digital oscillators
+● Digital modulation
+● Digital up/down conversion
+● Generation of Quadrature (Complex) signals
+● Versatile waveform generation
+Pin-out Description
+Pin name I/O Description Active state
+clk in Sample clock rising edge
+reset in Asynchronous reset low
+en in Clock-enable high
+phase_inc [31:0] in Phase increment  as an 
+unsigned  32-bit number 
+(controls frequency of 
+output waveform)
+data
+sin_out [11:0] out Sine wave output
+(16-bit signed number)
+data
+cos_out [11:0] out Cosine wave output
+(16-bit signed number)
+data
+squ_out [11:0] out Square wave output
+(16-bit signed number)
+data
+saw_out [11:0] out Sawtooth wave output
+(16-bit signed number)
+data
+1 Xilinx Virtex 5 FPGA used as a benchmark
+Block Diagram
+General Description
+WAVEFORM_GEN  is  a  12-bit  Numerically  Controlled  Oscillator  with  
+simultaneous SIN, COS, SQUARE and SAWTOOTH output waveforms.
+On each rising-edge of the sample clock (when en is high), the phase in  
+the  phase  accumulator  is  incremented  by  the  value  phase_inc.   This  
+phase is quantized to 12-bits and passed as an address to a look-up table 
+which converts the phase into a waveform.
+The look-up table is implemented as an array of 4096 x 12-bit samples  
+over the range 0 to 2Pi.  All output values are 12-bit signed numbers.
+Phase increment
+The  frequency  of  the  output  waveforms  are  controlled  by  the  phase  
+increment on a clock-by-clock basis.  A change in the phase increment  
+during  normal  circuit  operation  will  affect  a  change  in  the  output  
+waveforms  2  sample  clocks  later.   The  phase  increment  may  be  
+calculated using the formula:
+inc =  Fout⋅232/ F s  0.5
+Where  Fout is  the  desired  waveform  output  frequency   and  F s is  the  
+sampling frequency.  Note that the integer value of the phase increment  
+must be used.   As an example, consider a 100 MHz sample clock with a  
+desired output frequency of 6.197 MHz.  The phase increment would be  
+calculated as (6.197 * 232)/100 + 0.5 = 266159123.
+The minimum and maximum frequencies the NCO can generate are given 
+by the following formulas:
+F min = F s / 232    ,    F max = F s / 2
+As an example, a 100 MHz sample clock would allow a minimum NCO  
+frequency  of  0.0233  Hz.   This  is  sometimes  called  the  frequency  
+resolution.  Conversely, the maximum frequency the NCO can generate is 
+given by the Nyquist/Shannon sampling theorem (Fs/2).
+Simon Doherty – Senior Design Consultant –   www.zipcores.com Page 1 of 3
+Figure 1: NCO Architecture
+WAVEFORM_GEN
+NCO / Periodic waveform generator
+Rev. 1.1
+Source File Description
+All source files are provided as text files coded in VHDL.  The following  
+table gives a brief description of each file.
+Source file Description
+sincos_lut.vhd SIN/COS look-up table
+waveform_gen.vhd Top-level block
+waveform_gen_bench.vhd Top-level test bench
+Functional Testing
+An  example  VHDL  testbench  is  provided  for use  in  a  suitable  VHDL 
+simulator.  The compilation order of the source code is as follows:
+1. sincos_lut.vhd
+2. waveform_gen.vhd
+3. wvaeform_gen_bench.vhd
+The VHDL testbench instantiates the WAVEORM_GEN component and  
+the  user   may  modify  the  phase  increment  in  order  to  generate  the  
+desired output waveform.  The example provided generates a 1.7 MHz  
+waveform with a 100 MHz sample clock.
+The simulation must be run for at least 30 us during which time the NCO  
+will output the SIN, COS, SQUARE and SAWTOOTH waveforms.  Output  
+samples are captured in the text file  waveform_out.txt.  Figures 2

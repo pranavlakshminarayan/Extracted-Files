@@ -1,0 +1,27 @@
+x shift register
+load_x
+xy
+m
+carry
+‘1’
+‘0’
+Systolic pipeline
+‘0’
+0
+1
+n
+n
+n+1
+n+1
+n n+1
+n r
+xi
+y
+m
+my
+a
+next_x
++
+start
+ready start
+ready+

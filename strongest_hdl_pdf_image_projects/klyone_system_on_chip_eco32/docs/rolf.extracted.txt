@@ -1,0 +1,59 @@
+Implementing the 32-bit MIPS-like RISC
+processor ECO32 in an FPGA
+Rolf H. Viehmann
+2006-07-30
+Abstract
+This diploma thesis deals with the implementation of the 32-bit RISC processor ECO32
+(“educational computer with 32 bits”) in an FPGA, using V erilog as the hardware de-
+scription language.
+The processor has been designed by Prof. Dr. Hellwig Geisse f or research and
+teaching purposes, and has been available only as a simulato r in the past, running
+the already ported software. One important part of my work wa s to ﬁnd out if the
+design choices made were really well suited for a hardware im plementation. Indeed,
+some design details were changed in the course of this work.
+I will describe the architecture of the ECO32 system, the tools used, the implemen-
+tation work done by me, as well as some possible future direct ions for the project.
+Because it isn’t always easy to see if the implementation wor ks as expected, I spent
+quite some time testing the code created, so I will describe h ow that was done, too.
+1
+Contents
+1 Introduction 5
+2 T ools 6
+2.1 sim . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.2 asld . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.3 decrypt . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+2.4 Unix tools . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+2.5 bc . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+2.6 V erilog 2001 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+2.7 Icarus V erilog . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+2.8 GTKWave . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+2.9 Xilinx-Tools . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+2.10 Xess-Tools . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2.11 XSA-3S1000 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2.12 LATEX . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2.13 OpenOfﬁce.org Draw . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+3 ECO32 architecture 10
+3.1 Overall architecture . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+3.2 Registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+3.3 Instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+3.4 Memory . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+3.5 Peripherals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+3.6 Modes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+3.7 Supported software . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 3
+3.8 Privileged instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+3.9 Interrupts/Exceptions . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+2
+3.10 Integer arithmetics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+3.11 Floating point arithmetics . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+4 Implementation work I’ve done 15
+4.1 General structure of the CPU . . . . . . . . . . . . . . . . . . . . . . . . 15
+4.2 Multiplication/Division . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+4.2.1 Multiplication . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+4.2.2 Division . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+4.3 Shift operators . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2 3
+4.4 Signed branches . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+4.5 mvts/mvfs instructions . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+4.6 jalr instruction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+5 The role of speed 26
+6 Semiautomated testing 28
+6.1 Arithmetic and logic operators . . . . . . . . 

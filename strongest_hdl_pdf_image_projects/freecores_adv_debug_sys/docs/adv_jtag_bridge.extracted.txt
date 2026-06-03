@@ -1,0 +1,45 @@
+The Advanced JTAG Bridge
+Nathan Yawn
+nyawn@opencores.org
+December 29, 2011
+Copyright (C) 2008-2011 Nathan Yawn
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free 
+Documentation License, Version 1.2 or any later version published by the Free Software Foundation; 
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license 
+should be included with this document.  If not, the license may be obtained from www.gnu.org, or by 
+writing to the Free Software Foundation.
+This document is distributed in the hope that it will be useful, but WITHOUT ANY 
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS 
+FOR A PARTICULAR PURPOSE.
+History
+Rev Date Author Comments
+1.0 28/7/2008 Nathan Yawn Initial version
+1.1 14/6/2009 NY Legacy dbg unit support, improved BSDL section, Apx. B
+1.2 14/7/2009 NY Support for FT2232 cables documented
+1.3 17/1/2010 NY Added comment on alternate USB-Blaster driver
+1.4 29/3/2010 NY Added info on JTAG serial port server
+1.5 31/7/2010 NY Added info on hardware watchpoint server
+1.6 02/11/10 NY Added info on reworked ft245 driver
+1.7 07/11/10 NY Added info on GDB and hardware watchpoints
+1.8 02/09/11 NY Added VID/PID command line parameters
+1.9 06/11/11 NY Added info on Altera ByteBlaster II driver
+1.1 29/12/11 NY Added options for non-priviledged parallel port support
+Contents
+1.Function.................................................................................................................................................. 5
+1.1.Overview......................................................................................................................................... 5
+1.2.TAP Drivers.....................................................................................................................................6
+1.2.1.Standalone JTAG TAP.............................................................................................................6
+1.2.2.Altera Virtual JTAG.................................................................................................................6
+1.2.3.Xilinx internal BSCAN........................................................................................................... 7
+1.2.4.Actel UJTAG........................................................................................................................... 7
+1.3.Cable Drivers...................................................................................................................................8
+1.3.1.XPC3....................................................................................................................................... 8
+1.3.2.XESS....................................................................................................................................... 8
+1.3.3.ByteBlaster II...........................................................................................................................8
+1.3.4.USB-Blaster.............................................................................................................................8
+1.3.5.FT245.......................................................................................................................................9
+1.3.6.Xilinx Platform Cable USB (DLC9)....................................................................................... 9
+1.3.7.FT2232.....................................................................................................................................9
+1.3.8.VPI Simulation........................................................................................................................ 9
+1.3.9.RTL Simulation........................................................................................................................9
+1.4.BSDL Parsing........................................................................................................

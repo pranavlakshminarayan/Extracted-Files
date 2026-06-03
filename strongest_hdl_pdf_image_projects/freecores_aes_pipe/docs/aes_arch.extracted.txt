@@ -1,0 +1,66 @@
+Fully Pipelined AES Core
+Subhasis Das
+Basic Architecture
+This core meets the NIST FIPS-197 speciﬁcations. The basic block diagram is given in Figure 1.
+Addkey Addkey AddkeySbox
+Shiftrow
+Mixcol Sbox
+Shiftrow
+{
+8 times
+Input Output
+Figure 1: Basic Architecture
+I have generated each of the roundkeys in two steps. Let us call
+RotWord( Sbox(C3) ) xor RCon = f(C3)
+Then, we can see that
+C ′
+0 = f(C3) xor C0
+C ′
+1 = f(C3) xor C0 xor C1
+C ′
+2 = f(C3) xor C0 xor C1 xor C2
+C ′
+3 = f(C3) xor C0 xor C1 xor C2 xor C3
+where Ci is the column i of the current roundkey and C ′
+i is the column i of the next roundkey. This ﬁrst
+step of generating f(C3) is done alongwith the addkey step of the previous cycle and the second step is done
+in the combined S-Box and ShiftRows step.
+The inputs to the overall processor are as follows:
+• clk i: System Clock, Data I/O at rising edge
+• rst i: Asynchronous Reset, active high, initializes all inputs to all stages and the ﬁnal output to zero.
+• plaintext i: 16 ×8 bits plaintext input
+• keyblock i: 16 ×8 bits keyblock input
+The output is
+• ciphertext o: 16 ×8 bits ciphertext output
+The timing diagram is shown in Figure 2.
+1
+D0 D1 D2
+K0 K1 K2
+C0 C1
+t = 0 T 2T 3T 31T 32T
+clk i
+rst i
+plaintext i
+keyblock i
+ciphertext o
+Figure 2: Timing Diagram
+The trunk/rtl/vhdl directory contains the whole source code.
+The sample testbench is in trunk/bench/vhdl.
+For compiling and running the testbench, the script sim isim.sh in trunk/sim/rtl sim/run directory
+can be used for Xilinx ISim simulator and sim ghdl.sh for GHDL. The testbench takes in plaintext and
+key data from vectors.dat in trunk/sim/rtl sim/src directory. The expected ciphertext data should
+be present in cipher.dat in trunk/sim/rtl sim/src directory. The results are written to output.log in
+trunk/sim/rtl sim/log directory. The ﬁnal line is ’OK’ if all tests pass, else it is ’FAIL’. This can be used
+to automate checkings over large test datasets.
+The trunk/syn/Xilinx/run directory contains the synth.sh shell script, which will synthesize the design
+when run using Xilinx ISE WebPack tools.
+The speed optimized synthesis results with timing driven map on a Xilinx 5VLX50T device is shown in
+Table 1.
+fmax ≈ 330 MHz
+Max throughput ≈ 42 Gbps
+Slice Registers’s 7873 (27%)
+Slice LUT’s 14724 (51%)
+Bonded IOB’s 386 (80%)
+Table 1: Design Statistics
+All the synthesis, map and place and route logs are available in trunk/syn/Xilinx/log directory.
+2

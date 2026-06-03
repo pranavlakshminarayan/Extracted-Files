@@ -1,0 +1,11 @@
+Circuit diagram of ZTEX USB-FPGA-Module 1.2
+Contents:
+Sheet 1 FX2 I/O, XC3S left side, memory
+Sheet 2 FX2 GPIF, XC3S bottom side
+Sheet 3 XC3S top and right side
+Sheet 4 Power interfaces
+http://www.ztex.de
+Sheet 1 of 4
+Sheet 2 of 4
+Sheet 3 of 4
+Sheet 4 of 4

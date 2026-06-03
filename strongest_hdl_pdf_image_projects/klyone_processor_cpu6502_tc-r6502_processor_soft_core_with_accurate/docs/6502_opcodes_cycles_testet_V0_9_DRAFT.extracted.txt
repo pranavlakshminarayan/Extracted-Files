@@ -1,0 +1,73 @@
+R6502_TC: Timing in cycles for all Op Codes (GREEN = 100% tested, BLUE = assumed)  - Nov. 18th 2007 Jens.Gutschmidt V0.9 BETA 
+ 
+Accumulator 
+Immediate 
+Zero Page 
+Zero Page, X 
+Zero Page, Y 
+Absolute 
+Absolute, X 
+Absolute, Y 
+Implied 
+Relative 
+(Indirect, X) 
+(Indirect), Y 
+Absolute 
+Indirect 
+ADC  2 3 4  4 4/p5 4/p5   6 5/p6  
+AND  2 3 4  4 4/p5 4/p5   6 5/p6  
+ASL 2  5 6  6 7       
+BCC          2/j3/jp4    
+BCS          2/j3/jp4    
+BEQ          2/j3/jp4    
+BIT   3   4        
+BMI          2/j3/jp4    
+BNE          2/j3/jp4    
+BPL          2/j3/jp4    
+BRK         7     
+BVC          2/j3/jp4    
+BVS          2/j3/jp4    
+CLC         2     
+CLD         2     
+CLI         2     
+CLV         2     
+CMP  2 3 4  4 4/p5 4/p5   6 5/p6  
+CPX  2 3   4        
+CPY  2 3   4        
+DEC   5 6  6 7       
+DEX         2     
+DEY         2     
+EOR  2 3 4  4 4/p5 4/p5   6 5/p6  
+INC   5 6  6 7       
+INX         2     
+INY         2     
+JMP      3       5 
+JSR      6        
+LDA  2 3 4  4 4/p5 4/p5   6 5/p6  
+LDX  2 3  4 4  4/p5      
+LDY  2 3 4  4 4/p5       
+LSR 2  5 6  6 7       
+NOP         2     
+ORA  2 3 4  4 4/p5 4/p5   6 5/p6  
+PHA         3     
+PHP         3     
+PLA         4     
+PLP         4     
+ROL 2  5 6  6 7       
+ROR 2  5 6  6 7       
+RTI         6     
+RTS         6     
+SBC  2 3 4  4 4/p5 4/p5   6 5/p6  
+SEC         2     
+SED         2     
+SEI         2     
+STA   3 4  4 5 5   6 6  
+STX   3  4 4        
+STY   3 4  4        
+TAX         2     
+TAY         2     
+TSX         2     
+TXA         2     
+TXS         2     
+TYA         2     
+ 

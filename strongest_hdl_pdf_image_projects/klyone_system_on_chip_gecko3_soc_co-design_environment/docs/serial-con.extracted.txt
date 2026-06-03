@@ -1,0 +1,260 @@
+1
+1
+2
+2
+3
+3
+4
+4
+D D
+C C
+B B
+A A
+19
+Berne University of Applied Science
+School of Engineering and
+Information Technology
+Quellgasse 21CH-2501 Biel19
+Serial Adapter
+zac1 1.0
+23.07.2008 14:06:36
+serial-con.SchDoc
+Title:
+Size: Author:
+Date:
+File:
+Sheet ofTime:
+A4_L
+ Revision:
+13
+10
+11
+8
+12
+9
+14
+7
+C1+1
+C2+4
+GND15
+C1-3 VCC 16
+C2-5
+V- 6
+V+ 2
+U1_sercon
+MAX3232CSE
+1 2
+3 4 JP1_sercon
+GND
+3.3V
+4.7K
+R1_sercon
+470nF
+C1_sercon
+GND
+GND
+Serial out
+Serial in
+3.3V
+470nF
+C2_sercon
+470nF
+C5_sercon
+GND
+470nF
+C3_sercon
+3.3V
+470nF
+C4_sercon
+1
+6
+2
+7
+3
+8
+4
+9
+5
+X1_sercon
+DB9/F
+P0C10sercon01 P0C10sercon02 
+P0C20sercon01 P0C20sercon02 
+P0C30sercon01 P0C30sercon02 
+P0C40sercon01 P0C40sercon02 
+P0C50sercon01 P0C50sercon02 
+P0JP10sercon01 P0JP10sercon02 
+P0JP10sercon03 P0JP10sercon04 
+P0R10sercon01 P0R10sercon02 
+P0U10sercon01 
+P0U10sercon02 P0U10sercon03 
+P0U10sercon04 
+P0U10sercon05 
+P0U10sercon06 
+P0U10sercon07 
+P0U10sercon08 P0U10sercon09 
+P0U10sercon010 
+P0U10sercon011 
+P0U10sercon012 P0U10sercon013 
+P0U10sercon014 
+P0U10sercon015 
+P0U10sercon016 
+P0X10sercon01 
+P0X10sercon02 
+P0X10sercon03 
+P0X10sercon04 
+P0X10sercon05 
+P0X10sercon06 
+P0X10sercon07 
+P0X10sercon08 
+P0X10sercon09 
+P0C40sercon02 
+P0JP10sercon04 
+P0R10sercon02 
+P0U10sercon016 
+P0C30sercon01 
+P0C40sercon01 
+P0C50sercon01 
+P0JP10sercon01 
+P0U10sercon011 
+P0U10sercon013 
+P0U10sercon015 P0X10sercon05 
+P0X10sercon09 
+P0C10sercon01 
+P0U10sercon03 
+P0C10sercon02 
+P0U10sercon01 
+P0C20sercon01 
+P0U10sercon05 
+P0C20sercon02 
+P0U10sercon04 
+P0C30sercon02 
+P0U10sercon02 
+P0C50sercon02 
+P0U10sercon06 
+P0U10sercon07 P0X10sercon02 
+P0U10sercon08 
+P0X10sercon03 P0U10sercon012 
+P0U10sercon014 P0X10sercon01 
+P0X10sercon04 
+P0X10sercon06 
+P0X10sercon07 
+P0X10sercon08 
+P0JP10sercon03 
+P0U10sercon09 
+N0SERIAL IN 
+P0JP10sercon02 
+P0R10sercon01 P0U10sercon010 
+N0SERIAL OUT 
+P0C40sercon02 
+P0JP10sercon04 
+P0R10sercon02 
+P0U10sercon016 
+P0C30sercon01 
+P0C40sercon01 
+P0C50sercon01 
+P0JP10sercon01 
+P0U10sercon011 
+P0U10sercon013 
+P0U10sercon015 P0X10sercon05 
+P0X10sercon09 
+P0C10sercon01 
+P0U10sercon03 
+P0C10sercon02 
+P0U10sercon01 
+P0C20sercon01 
+P0U10sercon05 
+P0C20sercon02 
+P0U10sercon04 
+P0C30sercon02 
+P0U10sercon02 
+P0C50sercon02 
+P0U10sercon06 
+P0U10sercon07 P0X10sercon02 
+P0U10sercon08 
+P0X10sercon03 P0U10sercon012 
+P0U10sercon014 P0X10sercon01 
+P0X10sercon04 
+P0X10sercon06 
+P0X10sercon07 
+P0X10sercon08 
+N0SERIAL IN 
+P0JP10sercon03 
+P0U10sercon09 
+N0SERIAL OUT 
+P0JP10sercon02 
+P0R10sercon01 P0U10sercon010 
+1 
+C1 
+P0C101 P0C102 
+C2 P0C201 P0C202 
+C3 
+P0C301 P0C302 
+C4 
+P0C401 P0C402 
+C5 P0C501 P0C502 
+JP1 
+P0JP101 P0JP102 
+P0JP103 P0JP104 
+R1 
+P0R101 P0R102 
+U1 
+P0U101 
+P0U102 
+P0U103 
+P0U104 
+P0U105 
+P0U106 
+P0U107 
+P0U108 P0U109 
+P0U1010 
+P0U1011 
+P0U1012 
+P0U1013 
+P0U1014 
+P0U1015 
+P0U1016 
+X1 
+P0X10 
+P0X101 
+P0X102 P0X103 
+P0X104 
+P0X105 
+P0X106 
+P0X107 
+P0X108 
+P0X109 
+P0C402 
+P0JP104 
+P0R102 
+P0U1016 
+P0C301 
+P0C401 
+P0C501 
+P0JP101 
+P0U1011 
+P0U1013 
+P0U1015 
+P0X105 
+P0X109 
+P0C101 P0U103 
+P0C102 P0U101 
+P0C201 
+P0U105 
+P0C202 
+P0U104 
+P0C302 
+P0U102 
+P0C502 
+P0U106 
+P0U107 
+P0X102 
+P0U108 
+P0X103 
+P0X101 
+P0X104 
+P0X106 
+P0X107 
+P0X108 
+P0JP103 
+P0U109 P0JP102 P0R101 
+P0U1010 

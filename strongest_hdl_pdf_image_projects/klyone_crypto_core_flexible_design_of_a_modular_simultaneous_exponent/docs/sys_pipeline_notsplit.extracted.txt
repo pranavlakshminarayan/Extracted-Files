@@ -1,0 +1,86 @@
+r
+y m
+qin
+a_0
+xin
+cin
+start
+red_cin
+my_cin
+qout
+a_msb
+xout
+cout
+done
+red_cout
+my_cout
++
+Cells
+result reduction
+width width+1
+width
+r_sel
+r
+y m
+qin
+a_0
+xin
+cin
+start
+red_cin
+my_cin
+qout
+a_msb
+xout
+cout
+done
+red_cout
+my_cout
++
+Cells
+result reduction
+width width+1
+width
+r_sel
+r
+y m
+qin
+a_0
+xin
+cin
+start
+red_cin
+my_cin
+qout
+a_msb
+xout
+cout
+done
+red_cout
+my_cout
++
+Cells
+result reduction
+width width+1
+width
+r_sel
+y0 m0
+qout
+a_msb
+xout
+cout
+red_cout
+my_cout  +
+First cell
+a_0
+cin
+done
+red_cin
+Last cell
+r_sel
+start
+xin xi
+y m
+r
+n
+n n

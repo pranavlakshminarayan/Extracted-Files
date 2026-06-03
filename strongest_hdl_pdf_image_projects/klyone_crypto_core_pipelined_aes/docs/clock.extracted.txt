@@ -1,0 +1,9 @@
+D0 D1 D2
+K0 K1 K2
+C0 C1
+t = 0 T 2T 3T 31T 32T
+clk i
+rst i
+plaintext i
+keyblock i
+ciphertext o

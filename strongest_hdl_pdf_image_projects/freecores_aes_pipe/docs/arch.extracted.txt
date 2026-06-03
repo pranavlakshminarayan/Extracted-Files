@@ -1,0 +1,7 @@
+Addkey Addkey AddkeySbox
+Shiftrow
+Mixcol Sbox
+Shiftrow
+{
+8 times
+Input Output

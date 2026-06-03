@@ -1,0 +1,26 @@
+{
+  "project_id": "freecores_simple_fm_receiver",
+  "name": "simple_fm_receiver",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/simple_fm_receiver",
+  "extraction_date": "2026-06-02T16:55:14",
+  "license": null,
+  "has_readme": true,
+  "readme_excerpt": "$Id: README,v 1.2 2005-03-04 08:03:10 arif_endro Exp $\n\nDo not edit files in directory `export' directly but change the HDL\nsource in `source' directory then use ALLIANCE tools to analyze, export\nand sintesis them.\n\nThere are more than one test bench, the first (e.g modelsim-bench) is\nfor quick test e.g just hit `run -all' then this will test in one loop,\nother can be used for modifying clock signal or applying reset signal to\nfm so custom input response can be analyze.\n\ndirectory layout:\n\t\n\tsource => contain source code development (primary source)\n\texport => contain VHDL and VERILOG exportable code that can\n\t\t  be synthesized on many synthesizer tools.\n\tdocs   => contains documentation on FM Receiver\n\tbench  => the test bench clock and reset can be modified\n\nNOTES: \n\nThe documentation is better displayed on postscript format than in pdf\nformat this may be because the dvipdf driver not produces good pdf file.\nif you have ghostview or any postscript viewer see the postscript file\nto get the best view.\n\n\nArif E. Nugroho\narif_endro@yahoo.com\n\n",
+  "stats": {
+    "verilog_files": 0,
+    "vhdl_files": 28,
+    "other_hdl_files": 0,
+    "pdf_files": 1,
+    "markdown_files": 0,
+    "text_files": 4,
+    "image_files": 1,
+    "total_bytes": 3406806,
+    "languages_seen": [
+      "VHDL"
+    ]
+  },
+  "quality_tier": "A",
+  "quality_reason": "README + (PDF or images) + 3+ HDL files",
+  "references": []
+}

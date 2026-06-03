@@ -1,0 +1,47 @@
+Preliminary Information
+101 Innovation Drive
+San Jose, CA 95134
+(408) 544-7000
+http://www.altera.com
+Document Version 1.0.0
+Document Date October 2006
+Cyclone II FPGA Starter Development Kit
+P25-36048-00
+User Guide
+Copyright © 2006 Altera Corporation. All righ ts reserved. Altera, The Programmable Solu tions Company, the stylized Altera logo,  specific device
+designations, and all other words and logos that are identified as trademarks and/or service marks are, unless noted otherwise,  the trademarks and
+service marks of Altera Corporation in the U.S. and other countries. All other product or service names are the property of the ir respective holders.
+Altera products are protected under numerous U.S. and foreign patents and pending applications, maskwork rights, and copyrights. Altera warrants
+performance of its semiconductor products to current specifications  in accordance with Altera's standard warranty, but reserves  the right to make
+changes to any products and services at any time without notice. Altera assumes no responsibility or liability arising out of t he
+application or use of any informat ion, product, or service described herein except  as expressly ag reed to in writing by Altera
+Corporation. Altera customers are advised to obtain the latest version of device specifications before relying on any published
+information and before placing orders for products or services.
+Printed on recycled paper
+ii  Altera Corporation
+ 
+UG-CDK01012-10
+Altera Corporation  iii
+ 
+Contents
+About This User Guide ............................................................................. v
+Chapter 1. Getting Started
+Introduction ............................................................................................................................................ 1–1
+Before You Begin ............................................................................................................... .................... 1–1
+Further Information ............................................................................................................ .................. 1–2
+Hardware Installation ........................................................................................................................... 1–3
+Software Installation ......................................... .................................................................................... 1–3
+Installing the Cyclone II FPGA Starter Development Kit CD-ROM ......................................... 1–4
+Installing the Quartus II Software .................................................................................................. 1–5
+Chapter 2. Development Board Setup
+Development Board Overview ............................................................................................................ 2–1
+Requirements ................................................................................................................... ...................... 2–1
+Powering Up the Development Board .............................................................................................. . 2–2
+Confirming Board Operation ............................................................................................................... 2–2
+Chapter 3. Control Panel Setup
+Requirements ................................................................................................................... ...................... 3–1
+Hardware Setup ..................................................................................................................................... 3–1
+FPGA Configuration ............................................................................................................. ................ 3–1
+Control Panel Start ...................... .......................................................................................................... 3–2
+Chapter 4. Using the Control Panel
+Control Panel Overview ................... ...................

@@ -1,0 +1,32 @@
+{
+  "project_id": "klyone_prototype_board_usb_fpga_module_1.11",
+  "name": "prototype_board_usb_fpga_module_1.11",
+  "source": "klyone",
+  "source_url": "https://github.com/klyone/opencores-ip/tree/prototype_board_usb_fpga_module_1.11",
+  "extraction_date": "2026-06-02T16:19:25",
+  "license": "GPL-3.0",
+  "has_readme": true,
+  "readme_excerpt": "ZTEX EZ-USB SDK\n---------------\n\nThis package is especially developed for the ZTEX Modules with EZ-USB\nMicrocontrollers but also works with other EZ-USB based hardware.\n\nFor documentation and more information please visit\n\nhttp://wiki.ztex.de\n\nand\n\nhttp://www.ztex.de .\n\n",
+  "stats": {
+    "verilog_files": 6,
+    "vhdl_files": 48,
+    "other_hdl_files": 0,
+    "pdf_files": 6,
+    "markdown_files": 2,
+    "text_files": 4,
+    "image_files": 1,
+    "total_bytes": 12382723,
+    "languages_seen": [
+      "VHDL",
+      "Verilog"
+    ]
+  },
+  "quality_tier": "A",
+  "quality_reason": "README + (PDF or images) + 3+ HDL files",
+  "references": [
+    "http://wiki.ztex.de",
+    "http://www.gnu.org/licenses/gpl.html",
+    "http://www.ztex.de",
+    "https://github.com/fabriziotappero/ip-cores.git"
+  ]
+}

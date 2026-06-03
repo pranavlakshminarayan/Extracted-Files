@@ -1,0 +1,26 @@
+{
+  "project_id": "freecores_dds_synthesizer",
+  "name": "dds_synthesizer",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/dds_synthesizer",
+  "extraction_date": "2026-06-02T16:52:35",
+  "license": "GPL-3.0",
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 0,
+    "vhdl_files": 27,
+    "other_hdl_files": 0,
+    "pdf_files": 2,
+    "markdown_files": 0,
+    "text_files": 1,
+    "image_files": 1,
+    "total_bytes": 7018761,
+    "languages_seen": [
+      "VHDL"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": []
+}

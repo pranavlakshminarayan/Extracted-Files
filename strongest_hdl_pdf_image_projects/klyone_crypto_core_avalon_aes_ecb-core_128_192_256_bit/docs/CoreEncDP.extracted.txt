@@ -1,0 +1,52 @@
+keyexpansionV2
+keyword
+keywordaddr
+w_ena_keyword
+key_stable
+AES_FSM_ENCRYPTkey_ready
+roundkey_idx
+ena_encrypt
+finished
+sbox(0)
+(Highword)
+sbox(0)
+(LowWord)
+sbox(3)
+(Highword)
+sbox(3)
+(LowWord)
+[31:24]
+[23:16]
+[15:8]
+[7:0]
+...
+[31:24]
+[23:16]
+[15:8]
+[7:0]
+[31:24]
+[23:16]
+[15:8]
+[7:0]
+[31:24]
+[23:16]
+[15:8]
+[7:0]
+AddKey
+STATE(ROUND) STATE(ROUND-1)
+COL(0)
+COL(3)
+ShiftRow
+mixcol(0)
+mixcol(3)
+...
+COL(0)
+COL(3)
+data_in
+AddKeyMux
+result
+registered component
+combinatorial component
+signal
+32-Bit column
+128-Bit AES 'state'

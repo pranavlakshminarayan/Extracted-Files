@@ -1,0 +1,30 @@
+{
+  "project_id": "freecores_wb_builder",
+  "name": "wb_builder",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/wb_builder",
+  "extraction_date": "2026-06-02T16:57:14",
+  "license": null,
+  "has_readme": true,
+  "readme_excerpt": "## Wishbone Bus Builder\n\nThis is a clone of opencores wb_builder.\n \nFrom: http://opencores.org/project,wb_builder\n\n### Known errors\n\n- when data bus size is 8 bits the script generates wishbone sel signals which are of no use\n\n### Features\n\n![screenshot](/readme/wb_builder.png?raw=true \"Main Menu\")\n\n- TK GUI for easy startup\n- supports both shared bus and csorrbarswitch topology\n\n### Status\n\n- design tested in HDL simulator and in FPGA (ALTERA C12)\n- current design only support VHDL output\n\n### Description\n\nThe intention is to provide an easy way to create and change a system based on the WISHBONE bus. The user shall be able to try different configurations to achieve an area/performance optimized design.\n\nWISHBONE builder is a script which generates a wishbone interconnect matrix in HDL. The user defines the functionallity of the wishbone bus in a text file or via a GUI. The tools then generates the HDL implementation.\n\nThe core supports both shared bus and crossbar switch implementations.\n\nTo run the WISHBONE builder you must have installed PERL. A windows executable can be found at http://www.activestate.com/. In Linux PERL is usually installed with the system. The GUI uses a PERL module called Tk. Tk can be found at CPAN, http://www.cpan.org/. \n",
+  "stats": {
+    "verilog_files": 0,
+    "vhdl_files": 1,
+    "other_hdl_files": 0,
+    "pdf_files": 1,
+    "markdown_files": 0,
+    "text_files": 1,
+    "image_files": 1,
+    "total_bytes": 552640,
+    "languages_seen": [
+      "VHDL"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": [
+    "http://opencores.org/project,wb_builder",
+    "http://www.activestate.com/.",
+    "http://www.cpan.org/."
+  ]
+}

@@ -1,0 +1,7 @@
+Circuit diagram of ZTEX Power Supply Module 1.0
+Contents:
+Sheet 1 Voltage regulators
+Sheet 2 JTAG and power interface
+http://www.ztex.de
+Sheet 1 of 2
+Sheet 2 of 2

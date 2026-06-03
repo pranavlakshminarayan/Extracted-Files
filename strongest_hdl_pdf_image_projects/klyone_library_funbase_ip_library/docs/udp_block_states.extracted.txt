@@ -1,0 +1,30 @@
+rx_idle
+read_IP_
+headers
+read_UDP_
+headers
+relay_rx_
+data
+rx_error
+rx_arp
+rx_discard
+tx_idle
+write_IP_
+headers
+relay_tx_
+data
+tx_arp
+Rx state
+Tx state
+write_UDP_
+headers
+State rx_error is 
+entered when there is 
+something seriously 
+wrong with the headers, 
+and it's propably not 
+going to get any better.
+State rx_discard is entered in case of an invalid 
+transmission (e.g. not supported protocol), but it's also used 
+when the UDP packet is smaller than min. ethernet packet 
+length and there are extra fillings to be removed.

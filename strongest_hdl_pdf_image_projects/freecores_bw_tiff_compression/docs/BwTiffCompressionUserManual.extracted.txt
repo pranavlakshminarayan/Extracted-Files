@@ -1,0 +1,90 @@
+Hardware implementation of
+the tiﬀ algorithm
+User manual
+Date: January 7, 2014
+By:
+Aart Mulder
+Abstract
+This document considers the hardware implementation of the b/w tiﬀ compression
+algorithm(CCITT-G4). Firstly it explains how to setup the project, run the testbench
+and build the implementation. Secondly it explains elements that the design exists of
+and usage of the client application. The advantage of this design is a very low bandwith
+and low energy consumption in situations where a remote camera is needed that
+possibly runs on a battery.
+Hardware implementation of the tiﬀ algorithm
+Contents
+Table of Contents 1
+1 Introduction 2
+2 Project setup 3
+2.1 Simulation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.2 Synthesis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+3 Implementation 6
+3.1 CCITT . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+3.2 Byte segmentation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+3.3 Transmission memory . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+3.4 Capture manager . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+3.5 Serial communication . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+4 Client application 12
+Appendix 14
+A Huﬀman tables 15
+B Detailed transmission memory block diagram 17
+Bibliography 17
+January 7, 2014 1 Aart Mulder
+Hardware implementation of the tiﬀ algorithm
+Chapter 1
+Introduction
+This document explains the functionality of the CCITT-G4 hardware implementation. This
+vhdl design works in combination with a client application running on a PC that handles and
+displays tiﬀ images received over RS232 from an FPGA.
+Future extensions:
+Region of interest coding.
+Change coding of region of interest.
+January 7, 2014 2 Aart Mulder
+Hardware implementation of the tiﬀ algorithm
+Chapter 2
+Project setup
+The complete project directory that can be downloaded or checked out using svn contains a
+sub-directory called prj that contains the Xilinx ISE project ﬁle bw tiﬀ compression.xise.
+Figure 2.1: Xilinx ISE project explorer in simulation mode.
+January 7, 2014 3 Aart Mulder
+Hardware implementation of the tiﬀ algorithm
+Figure 2.2: Xilinx ISE project explorer in implementation mode.
+2.1 Simulation
+The ﬁle wcfg/TB capture manager.wcfg can be used in ISim to clarify the waveform by select-
+ing simulation mode(see ﬁgure 2.1), opening process properties and then setting the Custom
+Waveform Conﬁguration File.
+2.2 Synthesis Result
+Table 2.1 shows the device utilization of the design on a Spartan-3E 1200 fpga. The BRAM
+utilization of 9 includes a 4000 locations transmission memory in order to let the design work
+properly. Without this memory the BRAM utilization is 5.
+Spartan-3E 1200
+On chip Used Used(%)
+Number of slices 8672 1526 17
+Number of slice Flip Flops 17344 716 4
+Number of 4 input LUTs 17344 2922 16
+Number used as logic 2912
+Number used as Shift registers 10
+Number of IOs 35
+Number of bonded IOBs 250 24 9
+Number of BRAMs 28 9(5) 32(18)
+Number GCLKs 24 1 4
+Table 2.1: Device utilization.
+January 7, 2014 4 Aart Mulder
+Hardware implementation of the tiﬀ algorithm
+Spartan-3E 1200
+Maximum frequency 38.697MHz
+Minimum input arrival time before clock 8.055ns
+Maximum output required time after clock 7.155ns
+Maximum combinatorial path delay 6.429ns
+Table 2.2: Timing results.
+January 7, 2014 5 Aart Mulder
+Hardware implementation of the tiﬀ algorithm
+Chapter 3
+Implementation
+Figure 3.1 shows the block diagram of the complete system with the camera, fpga and PC. The
+single modules are explained in the sections that follow.
+Figure 3.1: Dataﬂow through the system
+3.1 CCITT
+The pixels entering the system from the camera are ﬁrst processed by the Tiﬀ-run detector that
+does change coding based on the current and previous line. The output of the Tiﬀ-run detector
+is fed into the Huﬀman encoder which applies huﬀman enc

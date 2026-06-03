@@ -1,0 +1,78 @@
+PRESENT CIPHER (32 BIT INPUT )
+documentation
+Krzysztof Gajewski
+and opencores.org
+www.opencores.org gajos@opencores.org
+Present cipher (32 bit input) (v. 0.2) - 2014/09/17
+PRESENT CIPHER (32 BIT INPUT ) 2/ 11PRESENT CIPHER (32 BIT INPUT ) 2/ 11PRESENT CIPHER (32 BIT INPUT ) 2/ 11
+Change History
+Rev. Chapter Date Description Reviewer
+0.1 all 2014/09/05 First draft K. Gajewski
+0.2 all 2014/09/16 Some small corrections with the
+text, typos, etc.
+K. Gajewski
+Present cipher (32 bit input) (v. 0.2) - 2014/09/17 All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+PRESENT CIPHER (32 BIT INPUT ) 3/ 11PRESENT CIPHER (32 BIT INPUT ) 3/ 11PRESENT CIPHER (32 BIT INPUT ) 3/ 11
+Contents
+1 Introduction 4
+2 Interface 5
+3 State machine workﬂow 6
+4 FPGA implementations 7
+5 Simulation 8
+6 Troubleshooting 9
+7 License and Liability 10
+All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+Present cipher (32 bit input) (v. 0.2) - 2014/09/17
+PRESENT CIPHER (32 BIT INPUT ) 4/ 11PRESENT CIPHER (32 BIT INPUT ) 4/ 11PRESENT CIPHER (32 BIT INPUT ) 4/ 11
+1 Introduction
+Present is ``ultra-lightweight´´ block cipher developed by A. Bogdanov et al. and proposed in
+2007 [1]. It uses 64 bit data block and 80 bit or 128 bit key. This cipher consists of 32 rounds,
+during which:
+• round key is added to plaintext
+• plaintext goes through sBoxes (substitution boxes)
+• plaintext after sBoxes goes through pLayer (permutation layer)
+• round key is updated
+After that, ciphertext feeds out the output. Brieﬂy algorithm was shown in Fig. 1. In this project
+Figure 1: Brieﬂy block scheme of the PRESENT block cipher
+Present block cipher works with 80 bit key. Target was Xilinx ® Spartan 3E XC3S500E [2] on
+Spartan 3E Starter Board [3] made by Digilent ®. In comparison with "plain" Present cipher
+project, this core was modiﬁed to take 32 bit word at input (plus control word). Output is also 32
+bit.
+NOTE:
+This is rather "historical" project and is not recommended for future use.
+Present cipher (32 bit input) (v. 0.2) - 2014/09/17 All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+PRESENT CIPHER (32 BIT INPUT ) 5/ 11PRESENT CIPHER (32 BIT INPUT ) 5/ 11PRESENT CIPHER (32 BIT INPUT ) 5/ 11
+2 Interface
+Top level component of the Present component with 32 bit input was shown in Fig. 2. All inputs
+and outputs are synchronous except reset signal and sampled at rising edge of the clock. Type
+for all signals is STD_LOGIC or STD_LOGIC_VECTOR .
+Figure 2: Top level of the Present component with 32 bit input
+Signal name Width In/Out Description
+input 32 in input data - both key and plaintext.
+ctrl 4 in control bus for sending commands to the core.
+clk 1 in clock signal for the component
+reset 1 in asynchronous reset signal.
+output 32 out output data - ciphertext.
+ready 1 out signal informing about end of encoding process.
+"0" - wait until end of data encoding.
+"1" - end of the encoding process, output data avail-
+able.
+Table 1: Input/Output signals of the Present component with 32 bit input
+All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+Present cipher (32 bit input) (v. 0.2) - 2014/09/17
+PRESENT CIPHER (32 BIT INPUT ) 6/ 11PRESENT CIPHER (32 BIT INPUT ) 6/ 11PRESENT CIPHER (32 BIT INPUT ) 6/ 11
+3 State machine workﬂow
+Overall internal structure of the Present component with 32 bit input is similar to the structure
+shown in [1]. To conform 64 bit plaintext, 80 bit key and 32 bit output data, multiplexer-like blocks
+was added to ﬁt data. Additionally, control logic was added in the state machine. It was shown
+in Fig. 3.
+Figure 3: State machine of the Present component
+State machine consist of nine states NOP , RDK1 , RDK2 , RDK3 , RDT1 , RDT2 , COD , CTO1 , CTO2 . NOP is
+the default state after resetting the core. This state is active as long as control bus ( ctrl ) don’t
+have crdk1 command at the input.
+RDKx states are responsible for reading the key from the input. They are changing when suitable
+command appears at the ctrl input (3). Wh

@@ -1,0 +1,86 @@
+Altera Corporation  4–1
+May 2006
+4. SOPC Builder Components
+Introduction This chapter describes in detail what an SOPC Builder component is. 
+SOPC Builder components are individual design blocks that SOPC 
+Builder uses to integrate a larger system module. Each component 
+consists of a structured set of files within a directory.
+The files in a component directory serve the following purposes:
+■ Defines the hardware interface to the component, such as the names 
+and types of I/O signals.
+■ Declares any parameters that specify the structure of the component 
+logic and the component interface.
+■ Describes a configuration wizard GUI for configuring the 
+component in SOPC Builder.
+■ Provides scripts and other information SOPC Builder needs to 
+generate the component HDL and integrate the component into the 
+system module.
+■ Contains component-related information, such as software drivers, 
+necessary for development steps downstream from SOPC Builder. 
+f For details on creating custom components, see the Developing SOPC 
+Builder Components chapter in Volume 4 of the Quartus II Handbook. For 
+details on the SOPC Builder component editor, see the Component Editor 
+chapter in Volume 4 of the Quartus II Handbook.
+Sources of 
+Components 
+There are several sources for components, including the following:
+■ The Quartus® II software, which includes SOPC Builder, installs a 
+number of components. 
+■ Altera® development kits, such as the Nios® II Development Kit, 
+provide SOPC Builder components as features. 
+■ Third-party developers provide SOPC Builder Ready components, 
+including component directories and documentation on how to use 
+the component. 
+■ You can package your own HDL files into a new, custom component, 
+using the SOPC Builder component editor. 
+1 While it is possible to write component files manually, 
+Altera strongly recommends you use the SOPC Builder 
+component editor to create custom components, for reasons 
+of consistency and forward compatibility. 
+QII54004-6.0.0
+SRAM Controller for
+Altera DE2/DE1 Boards
+Version 1.0
+1 Core Overview
+The SRAM Controller communicates with the 256K × 16 asynchronous CMOS static RAM (SRAM)
+chip on Altera’ s DE2/DE1 Boards. It provides a convenient byte-addressable interface for using the
+SRAM chip on the DE2/DE1 boards.
+2 Functional Description
+By mapping Avalon® Switch Fabric signals to the SRAM chip, the SRAM Controller enables users
+to read or write the SRAM from a master device (such as the Nios ® II processor) as a normal mem-
+ory operation. The Avalon Switch Fabric handles addressing automatically and 8, 16 and 32-bit
+read/write transfers are supported.
+Because the data inside the SRAM Controller are registered, for 8-bit or 16-bit data, there will be
+two clock cycles of latency for a read operation and one clock cycle of latency for a write operation.
+For 32-bit data, the Avalon Switch Fabric automatically breaks the data into two 16-bit words and
+transfers them one by one. As a result, there will be a delay of ﬁve clock cycles for reading 32-bit
+data and a delay of two clock cycles for writing 32-bit data to the SRAM.
+Below shows two example timing diagrams for reading and writing 32-bit data. Figure 1 shows writ-
+ing 0xAAAABBBB and 0xCCCCDDDD to SRAM address0x00000000 and 0x00000004 , and Figure2
+shows how 0xAAAABBBB is read from the SRAM.
+Address
+WriteData31 0–
+Acknowledge
+Clock
+AAAABBBB
+SRAM_DQ AAAA BBBB CCCC DDDD
+CCCCDDDD
+00000000 00000004
+Figure 1. Timing diagram of writing 32-bit data to the SRAM
+The SRAM Controller supports a clock frequency of 50 MHz, which is readily available on the
+DE2/DE1 Boards.
+Altera Corporation - University Program
+May 2007
+1
+SRAM C ONTROLLER FOR ALTERA ’S DE2/DE1 B OARDS Version 1.0
+Address
+Acknowledge
+Clock
+BBBBBBBB
+SRAM_DQ BBBB AAAA
+AAAABBBB
+00000000
+ReadData AAAAXXXX
+Figure 2. Timing diagram of reading 32-bit data from the SRAM
+For a detailed description of the SRAM chip on the DE2/DE1 Boards see the SRAM Datasheet.
+3 Instantiating the Core in SOPC 

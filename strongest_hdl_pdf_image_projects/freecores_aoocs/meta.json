@@ -1,0 +1,26 @@
+{
+  "project_id": "freecores_aoocs",
+  "name": "aoocs",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/aoocs",
+  "extraction_date": "2026-06-02T16:52:13",
+  "license": null,
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 39,
+    "vhdl_files": 0,
+    "other_hdl_files": 0,
+    "pdf_files": 1,
+    "markdown_files": 0,
+    "text_files": 4,
+    "image_files": 75,
+    "total_bytes": 11933047,
+    "languages_seen": [
+      "Verilog"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": []
+}

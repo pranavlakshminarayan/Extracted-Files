@@ -1,0 +1,21 @@
+Version_
+IHL_DS
+IP_length
+ID
+flags_offset
+TTL_
+protocol
+header_
+checksum
+source_
+addr1
+source_
+addr2
+dest_addr1
+dest_addr2
+discard
+source_port dest_port
+UDP_lengthUDP_
+checksum
+IP header states
+UDP header states

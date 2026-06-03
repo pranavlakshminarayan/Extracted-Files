@@ -1,0 +1,86 @@
+marca - McAdam’s RISC Computer Architecture
+Instruction Set Architecture
+Kenan Bilic, Roland Kammerer, Wolfgang Puﬃtsch
+February 2, 2007
+1 General
+• 16 16-bit registers, r0 . . . r15
+• any register as return address
+• ﬂags: Z, C, V, N
+– Z: all bits of the last result are zero
+– C: “17 th bit” of the last result
+– N: 16 th bit of the last result
+– V: overﬂow, after sub/cmp it is r1:15⊕ r2:15⊕ N ⊕ C, the latter two
+according to the result, other operations accordingly
+– I: allow interrupts
+– P: parity of the last result
+Flags are written where meaningful: P and Z are computed whenever a
+register is written, arithmetic operations may change C, N and V, inter-
+rupts clear I upon entry.
+• ﬂags are stored and restored upon interrupt entry and exit to/from “shﬂags”
+(shadow ﬂags)
+• separate registers for interrupt vectors - read and written through “ldvec”
+/ “stvec”
+• Some parts come from the Alpha architecture. The handling of branches
+is inspired by the Intel x86.
+• External hardware modules shall be mapped to the highest memory loca-
+tions.
+The processor uses a Harvard architecture; although it has not prevailed in
+mainstream-architectures, it is still used in embedded processors such as the
+Atmel A VR. The separation of code- and data-memory is not ﬂexible enough
+for mainstream systems, but with small embedded processors the program code
+tends to be ﬁxed anyway. A Harvard architecture enables the processor to make
+use of more memory (which is an issue when the address space is limited to 64k),
+and the program code can be read from a ROM directly. A transient failure
+thus cannot destroy the program by overwriting its code section.
+1
+2 Instruction Set
+Instruction Opcode Semantics
+add r1, r2, r3 0000 r1 + r2 → r3
+sub r1, r2, r3 0001 r1 − r2 → r3
+addc r1, r2, r3 0010 r1 + r2 + C → r3
+subc r1, r2, r3 0011 r1 − r2 − C → r3
+and r1, r2, r3 0100 r1 ∧ r2 → r3
+or r1, r2, r3 0101 r1 ∨ r2 → r3
+xor r1, r2, r3 0110 r1 ⊕ r2 → r3
+mul r1, r2, r3 0111 r1 ∗r2 → r3
+div r1, r2, r3 1000 r1 ÷ r2 → r3
+udiv r1, r2, r3 1001 r1 ÷ r2 → r3,unsigned
+ldil r1, n8 1010 (r1 ∧ 0xff00) ∨ n8 → r1,−128 ≤ n8 ≤ 255
+ldih r1, n8 1011 (r1 ∧ 0x00ff) ∨ (n8 < <8) → r1,−128 ≤ n8 ≤ 255
+ldib r1, n8 1100 n8 → r1,−128 ≤ n8 ≤ 127
+mov r1, r2 11010000 r2 → r1
+mod r1, r2 11010001 r1 mod r2 → r1
+umod r1, r2 11010010 r1 mod r2 → r1,unsigned
+not r1, r2 11010011 ¬r2 → r1
+neg r1, r2 11010100 −r1 → r2
+cmp r1, r2 11010101 r1 − r2,sets ﬂags
+addi r1, n4 11010110 r1 + n4 → r1,−8 ≤ n4 ≤ 7
+cmpi r1, n4 11010111 r1 − n4,sets ﬂags ,−8 ≤ n4 ≤ 7
+shl r1, r2 11011000 r1 < < r2 → r1
+shr r1, r2 11011001 r1 > > > r2 → r1
+sar r1, r2 11011010 r1 > > r2 → r1
+rolc r1, r2 11011011 (r1 < < r2) ∨ (C < <(r2 − 1)) ∨ (r1 > > >(16 − r2 − 1))
+rorc r1, r2 11011100 (r1 > > > r2) ∨(C < <(16 − r2)) ∨(r1 < <(16 − r2 − 1))
+bset r1, n4 11011101 r1 ∨ (1 < < n4) → r1,0 ≤ n4 ≤ 15
+bclr r1, n4 11011110 r1 ∧ ¬(1 < < n4) → r1,0 ≤ n4 ≤ 15
+btest r1, n4 11011111 (r1 > > > n4) ∧ 1 → Z,0 ≤ n4 ≤ 15
+load r1, r2 11100000 [r2]:[r2 + 1] → r1
+store r1, r2 11100001 r1 → [r2]:[r2 + 1]
+loadl r1, r2 11100010 (r1 ∧ 0xff00) ∨ [r2] → r1
+loadh r1, r2 11100011 (r1 ∧ 0x00ff) ∨ ([r2] < <8) → r1
+loadb r1, r2 11100100 [r2] → r1,signed
+storel r1, r2 11100101 (r1 ∧ 0x00ff) → [r2]
+storeh r1, r2 11100110 (r1 > > >8) → [r2]
+call r1, r2 11101000 r1 → pc, pc→ r2
+br n8 11110000 pc + n8 → pc,−128 ≤ n8 ≤ 127
+brz n8 11110001 Z = 1 ⇒ pc + n8 → pc,−128 ≤ n8 ≤ 127
+brnz n8 11110010 Z = 0 ⇒ pc + n8 → pc,−128 ≤ n8 ≤ 127
+brle n8 11110011 (Z = 1) ∨(N ̸= V ) ⇒ pc + n8 → pc,−128 ≤ n8 ≤ 127
+brlt n8 11110100 (Z = 0) ∧(N ̸= V ) ⇒ pc + n8 → pc,−128 ≤ n8 ≤ 127
+brge n8 11110101 (Z = 1) ∨(N = V ) ⇒ pc + n8 → pc,−128 ≤ n8 ≤ 127
+brgt n8 11110110 (Z = 0) ∧(N = V ) ⇒ pc + n8 → pc,−128 ≤ n8 ≤ 127
+brule n8 11110111 (Z = 1) ∨ (C = 1) ⇒ pc + n8 → pc,−128 ≤ n8 ≤ 127
+brult n8 11111000 (Z = 0) ∧ (C = 1) ⇒ pc + n8 → pc,−128 ≤ n8 ≤ 127
+bruge n8 11111001 (Z = 1) ∨ (C = 0) ⇒ pc + n8 → pc,−128 ≤ n8 ≤ 127
+brugt n8 11111010 (Z = 0) ∧ (C = 0) ⇒ pc + n8 → pc,−128 ≤ n8 ≤ 127
+sext r1, r2 11111011 (r1 < <8

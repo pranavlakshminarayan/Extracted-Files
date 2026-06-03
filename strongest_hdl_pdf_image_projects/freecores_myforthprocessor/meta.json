@@ -1,0 +1,27 @@
+{
+  "project_id": "freecores_myforthprocessor",
+  "name": "myforthprocessor",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/myforthprocessor",
+  "extraction_date": "2026-06-02T16:54:17",
+  "license": null,
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 15,
+    "vhdl_files": 289,
+    "other_hdl_files": 0,
+    "pdf_files": 2,
+    "markdown_files": 0,
+    "text_files": 108,
+    "image_files": 713,
+    "total_bytes": 501023036,
+    "languages_seen": [
+      "VHDL",
+      "Verilog"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": []
+}

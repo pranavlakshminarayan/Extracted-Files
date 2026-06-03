@@ -1,0 +1,328 @@
+1
+1
+2
+2
+3
+3
+4
+4
+D D
+C C
+B B
+A A
+1
+Berne University of Applied Science
+School of Engineering and
+Information Technology
+Quellgasse 21CH-2501 Biel6
+GECKO3main Productiontester
+zac1 1
+23.07.2008 13:34:54
+gecko3main-tester.SchDoc
+Title:
+Size: Author:
+Date:
+File:
+Sheet ofTime:
+A4_L
+ Revision:
+U_ethernet-connector
+ethernet-connector.SchDoc
+U_serial-con
+serial-con.SchDoc
+Vbus
+PWM[0..7]
+Encoder[0..7]
+Power Good
+Low Battery
+SDA_ext
+Reset
+SCL_ext
+EXTCLK0
+EXTCLK1
+GPIO1_[0..51]
+LineSensorIn1
+LineSensorIn2
+LineSensorOut1
+LineSensorOut2
+LineSensorClk
+U_io-bus
+io-bus.SchDoc
+GPIO2_[0..115]
+U_io-bus2
+io-bus2.SchDoc
+GPIO2_[0..115]
+Vbus
+PWM[0..7]
+Encoder[0..7]
+Power Good
+Low Battery
+SDA_ext
+Reset
+SCL_ext
+EXTCLK0
+EXTCLK1
+GPIO1_[0..51]
+LineSensorIn1
+LineSensorIn2
+LineSensorOut1
+LineSensorOut2
+LineSensorClk
+tester
+tester.SchDoc
+Device under Test
+
+1
+1
+2
+2
+3
+3
+4
+4
+5
+5
+6
+6
+7
+7
+8
+8
+D D
+C C
+B B
+A A
+2
+Berne University of Applied Science
+School of Engineering and
+Information Technology
+Quellgasse 21CH-2501 Biel6
+Tester I/O Loops, Power supply
+zac1 1
+23.07.2008 13:34:54
+tester.SchDoc
+Title:
+Size: Author:
+Date:
+File:
+Sheet ofTime:
+A3_L
+ Revision:
+GPIO2_[0..115]
+Vbus
+PWM[0..7] Encoder[0..7]
+Power Good Low Battery
+SDA_ext
+Reset
+SCL_ext
+EXTCLK0
+EXTCLK1
+GPIO1_[0..51]
+LineSensorIn1
+LineSensorIn2
+LineSensorOut1
+LineSensorOut2
+LineSensorClk
+3.3V
+Ubatt
+3
+2
+1J1_tester
+Mini Power Jack
+D1_tester
+Diode SB340
+D2_tester
+Green
+D3_tester
+Green
+D4_tester
+Green
+M1_tester
+Meter
+M2_tester
+Meter
+M3_tester
+Meter
+GND
+220
+R1_tester
+220
+R3_tester
+220
+R2_tester
+GND
+GND
+GND
+GND
+GND
+GND
+Vbus
+Ubatt
+-Vin2
++Vin22 +Vout 14
+TEN5-0510
++Vin23
+-Vin3
+-Vout16
+U1_tester
+GND
+470uF
+C1_tester
+GND
+VCC14
+NC1
+OUT 8
+GND 7
+IQXO-350
+S1_tester
+VCC14
+NC1
+OUT 8
+GND 7
+IQXO-350
+S2_tester
+3.3V
+GND
+D5_tester
+Red
+220
+R4_tester
+3.3V
+GPIO2_0 GPIO2_1
+GPIO2_2 GPIO2_3
+GPIO2_4 GPIO2_5
+GPIO2_6 GPIO2_7
+GPIO2_8 GPIO2_9
+GPIO2_10 GPIO2_11
+GPIO2_12 GPIO2_13
+GPIO2_14 GPIO2_15
+GPIO2_16 GPIO2_17
+GPIO2_18 GPIO2_19
+GPIO2_20 GPIO2_21
+GPIO2_22 GPIO2_23
+GPIO2_24 GPIO2_25
+GPIO2_26 GPIO2_27
+GPIO2_28 GPIO2_29
+GPIO2_30 GPIO2_31
+GPIO2_32 GPIO2_33
+GPIO2_34 GPIO2_35
+GPIO2_36 GPIO2_37
+GPIO2_38 GPIO2_39
+GPIO2_40 GPIO2_41
+GPIO2_42 GPIO2_43
+GPIO2_44 GPIO2_45
+GPIO2_46 GPIO2_47
+GPIO2_48 GPIO2_49
+GPIO2_50 GPIO2_51
+GPIO2_52 GPIO2_53
+GPIO2_54 GPIO2_55
+GPIO2_56 GPIO2_57
+GPIO2_58 GPIO2_59
+GPIO2_60 GPIO2_61
+GPIO2_62 GPIO2_63
+GPIO2_64 GPIO2_65
+GPIO2_66 GPIO2_67
+GPIO2_68 GPIO2_69
+GPIO2_70 GPIO2_71
+GPIO2_72 GPIO2_73
+GPIO2_74 GPIO2_75
+GPIO2_76 GPIO2_77
+GPIO2_78 GPIO2_79
+GPIO2_80 GPIO2_81
+GPIO2_82 GPIO2_83
+GPIO2_84 GPIO2_85
+GPIO2_86 GPIO2_87
+GPIO2_88 GPIO2_89
+GPIO2_90 GPIO2_91
+GPIO2_92 GPIO2_93
+GPIO2_94 GPIO2_95
+GPIO2_96 GPIO2_97
+GPIO2_98 GPIO2_99
+GPIO2_100 GPIO2_101
+GPIO2_102 GPIO2_103
+GPIO2_104 GPIO2_105
+GPIO2_106 GPIO2_107
+GPIO2_108 GPIO2_109
+GPIO2_110 GPIO2_111
+GPIO2_112 GPIO2_113
+GPIO2_114 GPIO2_115
+GPIO1_0 GPIO1_1
+GPIO1_2 GPIO1_3 GPIO1_4
+GPIO1_5 GPIO1_6
+GPIO1_7 GPIO1_8
+GPIO1_9 GPIO1_10
+GPIO1_11 GPIO1_12
+GPIO1_13 GPIO1_14
+GPIO1_15 GPIO1_16
+GPIO1_17 GPIO1_18
+PWM0
+PWM1
+PWM2
+PWM3
+PWM4
+PWM5
+PWM6
+PWM7
+Encoder0
+Encoder1
+Encoder2
+Encoder3
+Encoder4
+Encoder5
+Encoder6
+Encoder7
+GPIO1_19
+GPIO1_20 GPIO1_21
+GPIO1_22 GPIO1_23
+GPIO1_24 GPIO1_25
+GPIO1_26 GPIO1_27
+GPIO1_28 GPIO1_29
+GPIO1_30 GPIO1_31
+GPIO1_32 GPIO1_33
+GPIO1_34 GPIO1_35
+GPIO1_36 GPIO1_37
+GPIO1_38 GPIO1_39
+GPIO1_40 GPIO1_41
+GPIO1_42 GPIO1_43
+GPIO1_44 GPIO1_45
+GPIO1_46 GPIO1_47
+GPIO1_48 GPIO1_49
+GPIO1_50 GPIO1_51
+GPIO 0, Channel 1 GPIO 0, Channel 2
+0 0
+3131
+GPIO 1, Channel 1
+0
+GPIO 1, Channel 2
+0
+2525
+GPIO 2, Channel 1
+0
+9
+8
+0
+9
+8
+GPIO 2, Channel 2
+24 24
+31
+26
+31
+26
+GPIO 2, Channel 1 GPIO 2, Channel 2
+26 26
+GPIO 1, Channel 1 GPIO 1, Channel 2
+28
+29
+30
+31
+GPIO 3
+0
+All text in this color/style belongs to the I/O pins used 
+by the GECKO3tester software.
+This information is needed to repair shortings/crossings 
+on GECKO3main modules.
+P0C10tester01 P0C10tester02 
+P0D10tester01 P0D10tester02 
+P0D20tester01 P0D20tester02 P0D30tester01 P0D30tester02 P0D40tester01 P0D40tester02 P0D50tester01 P0D50tester02 
+P0J10te

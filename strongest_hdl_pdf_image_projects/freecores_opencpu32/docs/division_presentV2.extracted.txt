@@ -1,0 +1,131 @@
+Division Algorithms and hardware Implementations 1
+Division Algorithms and Hardware
+Implementations
+Sherif Galal
+Dung Pham
+EE 213A: Advanced DSP Circuit Design
+Division Algorithms and hardware Implementations Slide 2 of 17
+Motivation
+• Implementation of LPC speech coder
+• Division operation required in Levinson-Durbin algorithm
+E(0)=R(0)
+for 1 ≤ i ≤p
+αi
+(i)=ki
+for 1 ≤ j ≤i-1
+αj
+(i)=αj
+(i-1)-kiαi-j
+(i-1)
+E(i)=(1-ki
+2)E(i-1)
+αj=αj
+(p)
+ki Ri() α j
+i 1–() Ri j –()
+j 1=
+i 1–
+∑– E i 1–()⁄=
+Speech
+Samples
+p Filter Coefﬁcients
+Gain (G)
+voiced/unvoiced
+Pitch
+Division Operation
+Division Algorithms and hardware Implementations Slide 3 of 17
+Basic Division Algorithms
+• Digit Recurrence Algorithm
+• Restoring Division
+• Non-Restoring Division
+• SRT Division (Sweeney, Robertson, and Tocher)
+• Multiplicative Algorithm
+• Approximation Algorithms
+• CORDIC Algorithm
+• Continued Product Algorithm
+Useful site
+http://www.ecs.umass.edu/ece/koren/arith/simulator
+Division Algorithms and hardware Implementations Slide 4 of 17
+Deﬁnitions and Notations
+• Two types of division operations
+• Integer division: with integer operands and result
+• Fractional division: operands and results are fractions
+• Any division algorithm can be carried out independent of
+• Position of the decimal point
+• sign of operands
+x qd rem+=
+Dividend
+Quotient Divisor
+Remainder
+rem d ulp<
+unit in the last position
+ulp=1 for integer quotient
+ulp=r-n for radix-r representation
+with n-digit quotient
+Division Algorithms and hardware Implementations Slide 5 of 17
+Restoring Division Algorithm
+• Put x in register A, d in register B, 0 in register P, and
+perform n divide steps (n is the quotient wordlength)
+• Each step consists of
+• (i) Shift the register pair (P,A) one bit left
+• (ii) Subtract the contents of B from P, put the result back in P
+• (iii) If the result is -ve, set the low-order bit of A to 0 otherwise to 0
+• (iv) If the result is -ve, restore the old value of P by adding the
+contents of B back in P
+B
+P A
+shift
+After n cycles, A will contain the
+quotient, P will contain the remainder
+Division Algorithms and hardware Implementations Slide 6 of 17
+Restoring Division Example
+P A Operation
+ 00000 1110 Divide 14 = 1110 by 3 = 11. B register always contains 0011
+ 00001 110 step 1(i): shift
+-00011 step 1(ii): subtract
+----------
+-00010 110 0 step 1(iii): quotient is -ve, set quotient bit to 0
+ 00001 110 0 step 1(iv): restore
+ 00011 10 0 step 2(i): shift
+-00011 step 2(ii): subtract
+----------
+ 00000 10 01 step 2(iii): quotient is +ve, set quotient bit to 1
+ 00001 0 01 step 3(i): shift
+-00011 step 3(ii): subtract
+----------
+-00010 0
+010 step 3(iii): quotient is -ve, set quotient bit to 0
+ 00001 0 010 step 3(iv): restore
+ 00010 010 step 4(i): shift
+-00011 step 4(ii): subtract
+----------
+-00001 0100 step 4(iii): quotient is -ve, set quotient bit to 0
+ 00010 0100 step 4(iv): restore
+• The quotient is 0100 and the remainder is 00010
+• The name restoring because if subtraction by b yields a negative
+result, the P register is restored by adding b back
+Division Algorithms and hardware Implementations Slide 7 of 17
+Non-Restoring Division Algorithm
+• A variant that skips the restoring step and instead works
+with negative residuals
+• If P is negative
+• (i-a) Shift the register pair (P,A) one bit left
+• (ii-a) Add the contents of register B to P
+• If P is positive
+• (i-b) Shift the register pair (P,A) one bit left
+• (ii-b) Subtract the contents of register B from P
+• (iii) If P is negative, set the low-order bit of A to 0,
+otherwise set it to 1
+• After n cycles
+• The quotient is in A
+• If P is positive, it is the remainder, otherwise it has to be restored
+(add B to it) to get the remainder
+Division Algorithms and hardware Implementations Slide 8 of 17
+Non-Restoring Division Example
+P A Operation
+  00000 1110 Divide 14 = 1110 by 3 = 11. B register always contains 0011
+  00001 110 step 1(i-b): shift
++00011 step 1(ii-b): subtract b (add two’s complement)
+----------
+  11110 110
+0 step 1(iii): P is neg

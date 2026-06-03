@@ -1,0 +1,29 @@
+{
+  "project_id": "freecores_g729a_codec",
+  "name": "g729a_codec",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/g729a_codec",
+  "extraction_date": "2026-06-02T16:53:01",
+  "license": null,
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 0,
+    "vhdl_files": 45,
+    "other_hdl_files": 0,
+    "pdf_files": 1,
+    "markdown_files": 0,
+    "text_files": 5,
+    "image_files": 1,
+    "total_bytes": 2319642,
+    "languages_seen": [
+      "VHDL"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": [
+    "http://opencores.org/project,g729a_codec.",
+    "http://www.gnu.org/licenses/lgpl.html"
+  ]
+}

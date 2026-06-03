@@ -1,0 +1,143 @@
+Integrated Silicon Solution, Inc. — www.issi.com — 1-800-379-4774 1
+Rev. F
+03/27/08
+IS61NLP25636A/IS61NVP25636A
+IS61NLP51218A/IS61NVP51218A
+Copyright © 2006 Integrated Silicon Solution, Inc.  All rights reserved.  ISSI reserves the right to make changes to this specification and its products at any time without notice.   ISSI assumes no liability
+arising out of the application or use of any information, products or services described herein. Customers are advised to obtain the latest version of this device specification before relying on any
+published information and before placing orders for products.
+FEATURES
+• 100 percent bus utilization
+ No wait cycles between Read and Write
+ Internal self-timed write cycle
+ Individual Byte Write Control
+ Single R/W (Read/Write) control pin
+ Clock controlled, registered address,
+data and control
+ Interleaved or linear burst sequence control using
+MODE input
+ Three chip enables for simple depth expansion
+and address pipelining
+ Power Down mode
+ Common data inputs and data outputs
+ CKE pin to enable clock and suspend operation
+ JEDEC 100-pin TQFP, 165-ball PBGA and 119-
+ball PBGA packages
+ Power supply:
+NVP: V
+DD 2.5V (± 5%), VDDQ 2.5V (± 5%)
+NLP: VDD 3.3V (± 5%), VDDQ 3.3V/2.5V (± 5%)
+ JTAG Boundary Scan for PBGA packages
+ Industrial temperature available
+ Lead-free available
+DESCRIPTION
+The 9 Meg 'NLP/NVP' product family feature high-speed,
+low-power synchronous static RAMs designed to provide
+a burstable, high-performance, 'no wait' state, device for
+networking and communications applications. They are
+organized as 256K words by 36 bits and 512K  words by 18
+bits, fabricated with 
+ISSI's advanced CMOS technology.
+Incorporating a 'no wait' state feature, wait cycles are
+eliminated when the bus switches from read to write, or
+write to read. This device integrates a 2-bit burst counter,
+high-speed SRAM core, and high-drive capability outputs
+into a single monolithic circuit.
+All synchronous inputs pass through registers are controlled
+by a positive-edge-triggered single clock input. Operations
+may be suspended and all synchronous inputs ignored
+when Clock Enable, CKE is HIGH. In this state the internal
+device will hold their previous values.
+All Read, Write and Deselect cycles are initiated by the
+ADV input. When the ADV is HIGH the internal burst
+counter is incremented. New external addresses can be
+loaded when ADV is LOW.
+Write cycles are internally self-timed and are initiated by
+the rising edge of the clock inputs and when WE is LOW.
+Separate byte enables allow individual bytes to be written.
+ A burst mode pin (MODE) defines the order of the burst
+sequence. When tied HIGH, the interleaved burst sequence
+is selected. When tied LOW, the linear burst sequence is
+selected.
+256K x 36 and 512K x 18
+9Mb, PIPELINE 'NO WAIT' STATE BUS
+SRAM
+MARCH 2008
+FAST ACCESS TIME
+Symbol P arameter -250 -200 Units
+tKQ Clock Access Time 2.6 3.1 ns
+tKC Cycle Time 4 5 ns
+Frequency 250 200 MHz
+2 Integrated Silicon Solution, Inc. — www.issi.com — 1-800-379-4774
+Rev. F
+03/27/08
+IS61NLP25636A/IS61NVP25636A
+IS61NLP51218A/IS61NVP51218A
+BLOCK DIAGRAM
+ADV
+WE 
+}BWŸX
+(X=a,b,c,d or a,b)
+CE
+CE2
+CE2
+CONTROL
+LOGIC
+256Kx36;
+512Kx18
+MEMORY ARRAY
+WRITE
+ADDRESS
+REGISTER
+WRITE
+ADDRESS
+REGISTER
+CONTROL
+LOGIC
+OUTPUT
+REGISTER
+BUFFER
+ADDRESS
+REGISTER
+x 36: A [0:17] or
+x 18: A [0:18]
+CLK
+CKE
+ A2-A17 or A2-A18
+A0-A1 A'0-A'1
+BURST
+ADDRESS
+COUNTER
+MODE
+DATA-IN
+REGISTER
+DATA-IN
+REGISTER
+CONTROL
+REGISTER
+OE
+ZZ
+36 or 18
+K
+K
+DQx/DQPx
+K
+K
+Integrated Silicon Solution, Inc. — www.issi.com — 1-800-379-4774 3
+Rev. F
+03/27/08
+IS61NLP25636A/IS61NVP25636A
+IS61NLP51218A/IS61NVP51218A
+Bottom View
+165-Ball, 13 mm x 15mm BGA
+1 mm Ball Pitch, 11 x 15 Ball Array
+Bottom View
+119-Ball, 14 mm x 22 mm BGA
+1 mm Ball Pitch, 7 x 17 Ball Array
+4 Integrated Silicon Solution, Inc. — www.issi.com — 1-800-379-4774
+Rev. F
+03/27/08
+IS61NLP25636A/IS61NVP25636A
+IS61NLP51218A/IS61NVP51218A
+PIN CONFIGURATION — 256K X 36, 165-Ball PBGA (TOP VIEW)
+123456789 1 0 

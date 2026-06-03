@@ -1,0 +1,13 @@
+1,00
+10,00
+100,00
+1.000,00
+1 10 100 1000
+multiplication execution time @ fmax [µs] 
+stage width [in bits] 
+Virtex 6: xc6vlx240t-1ff1156 
+512 bit
+1024 bit
+1536 bit
+1536 bit split
+2048 bit

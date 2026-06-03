@@ -1,0 +1,6 @@
+[
+  "http://opencores.org/project,sdcard_mass_storage_controller",
+  "https://github.com/mczerski/linux",
+  "https://github.com/mczerski/orpsoc-de0_nano",
+  "https://github.com/mczerski/u-boot"
+]

@@ -1,0 +1,53 @@
+ORSoC Graphics accelerator Speciﬁcation
+Per Lenander, Anton Fosselius
+June 5, 2012
+1
+Revision history
+Rev. Date Author Description
+1.0 23/3/2012 Per Lenander Initial draft and basic functionality
+2.0 4/6/2012 Per Lenander Advanced functionality (vector, 3D etc)
+2
+Contents
+1 Introduction 6
+1.1 Features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+1.2 IP Core directory structure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2 Architecture 6
+2.1 Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.2 Concepts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+2.3 Coordinate precision . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+2.4 Instruction FIFO . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2.5 Pipeline . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2.6 Description of core modules . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.6.1 Wishbone slave . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.6.2 Transformation processor . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.6.3 Rasterizer . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.6.4 Clipper . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.6.5 Fragment processor . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.6.6 Blender . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.6.7 Wishbone arbiter . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.6.8 Wishbone master read . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.6.9 Renderer . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.6.10 Wishbone master write . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+3 IO Ports 11
+4 Registers 12
+4.1 Control Register (CONTROL) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+4.2 Status Register (STATUS) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+4.3 Alpha (ALPHA) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+4.4 Colorkey register (COLORKEY) . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+4.5 Target base address Register (TARGET BASE) . . . . . . . . . . . . . . . . . . . . 14
+4.6 Target size width Register (TARGET SIZE X) . . . . . . . . . . . . . . . . . . . . 14
+4.7 Target size y Register (TARGET SIZE Y) . . . . . . . . . . . . . . . . . . . . . . . 14
+4.8 Texture 0 Base Register (TEX0 BASE) . . . . . . . . . . . . . . . . . . . . . . . . 14
+4.9 Texture 0 size x Register (TEX0 SIZE X) . . . . . . . . . . . . . . . . . . . . . . . 14
+4.10 Texture 0 size y Register (TEX0 SIZE Y) . . . . . . . . . . . . . . . . . . . . . . . 14
+4.11 Source Pixel position 0 x Register (SRC P0 X) . . . . . . . . . . . . . . . . . . . . 15
+4.12 Source Pixel position 0 y Register (SRC P0 Y) . . . . . . . . . . . . . . . . . . . . 15
+4.13 Source Pixel position 1 Register (SRC P1 X) . . . . . . . . . . . . . . . . . . . . . 15
+4.14 Source Pixel position 1 Register (SRC P1 Y) . . . . . . . . . . . . . . . . . . . . . 15
+4.15 Destination Pixel position Register (DEST X) . . . . . . . . . . . . . . . . . . . . . 15
+4.16 Destination Pixel position Register (DEST Y) . . . . . . . . . . . . . . . . . . . . . 15
+4.17 Destination Pixel position Register (DEST Z) . . . . . . . . . . . . . . . . . . . . . 15
+4.18 Matrix coeﬃcient registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+4.19 Clip Pixel position 0 x Register (CLIP P0 X) . . . . . . . . . . . . . . . . . . . . . 16
+4.20 Clip Pixel position 0 y Register (CLIP P0 Y) . . . . . . . . . . . . . . . . . . . . . 16
+4.21 Clip Pixel position 1 x Register (CLIP P1 X) . . . . . . . . . . . . . . . . . . . . . 

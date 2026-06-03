@@ -1,0 +1,91 @@
+ 
+MDCT IP Core 
+Specification 
+ 
+ 
+ 
+Author: Michal Krepa 
+ 
+ 
+ 
+ 
+Rev. 1.1 
+April 26, 2006 
+
+ OpenCores Specifications Template 4/26/2006 
+ 
+ 
+www.opencores.org Rev 1.3 Preliminary ii 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+This page has been intentionally left blank. 
+ OpenCores Specifications Template 4/26/2006 
+ 
+ 
+www.opencores.org Rev 1.3 Preliminary iii  
+Revision History 
+Rev. Date Author Description 
+1.0 15/04/2006 Michal Krepa Initial Draft 
+1.1 17/04/2006 Michal Krepa Updated all sections 
+1.2 17/04/2006 Michal Krepa Updated Testbench section 
+1.3 21/04/2006 Michal Krepa Added memory information 
+1.4 25/04/2006 Michal Krepa Updated as per code redesign 
+ 
+ OpenCores Specifications Template 4/26/2006 
+ 
+ 
+www.opencores.org Rev 1.3 Preliminary iv  
+Contents 
+INTRODUCTION............................................................................................................. 1 
+ARCHITECTURE............................................................................................................ 2 
+OPERATION .................................................................................................................... 4 
+REGISTERS...................................................................................................................... 6 
+LIST OF REGISTERS........................................................................ BŁĄD! NIE ZDEFINIOWANO ZAKŁADKI. 
+REGISTER 1 – DESCRIPTION........................................................... BŁĄD! NIE ZDEFINIOWANO ZAKŁADKI. 
+CLOCKS............................................................................................................................ 7 
+IO PORTS.......................................................................................................................... 8 
+APPENDIX A.................................................................................................................... 9 
+APPENDIX B .................................................................................................................... 9 
+INDEX.............................................................................................................................. 13 
+ 
+ OpenCores Specifications Template 4/26/2006 
+ 
+ 
+www.opencores.org
+ Rev 1.3 Preliminary 1 of 13 
+1  
+Introduction 
+The MDCT core is two dimensional discrete cosine transform implementation 
+designed for use in compression systems like JPEG. Architecture is based on parallel 
+distributed arithmetic with butterfly computation. Done as row/column decomposition 
+where two 1D DCT units are connected through transposition matrix memory. Core has 
+simple input interface. Design is synchronous, with single positive clock edge and no 
+internal tri-state buffers. Latency between first latched input data and first DCT 
+transformed output is 85 clock cycles. Design is internally pipelined, when the pipeline is 
+full 64 point input data is transformed in 64 clock cycles to 2D DCT values. Core uses 
+double buffered (ping-pong scheme) RAM for storing intermediate product results after 
+first DCT stage for maximized performance. This way both 1D DCT units can work in 
+parallel effectively creating dual stage global pipeline. MDCT core takes 8 bit input data 
+and produces 12 bit output using 12 bit DCT matrix coefficients. This may be enhanced 
+to be configurable in the future. 
+ Self checking testbench is included for testing operation of the MDCT core. 
+Testbench takes matlab-converted bitmap image, MDCT core DCT-transforms it and 
+testbench compares input image to reconstructed one by performing behavioral IDCT. 
+Peak signal to noise ratio is computed to see how big error is introduced by fixed point 
+arithmetic used in core. Testbench can also perform quantization of DCT output, but 
+when this option is enabled DCT core operation is not verified. Testbench created DCT 
+images (reconstructed image and error image) can be converted to JPEG format by 
+matlab scripts (included). 
+ Core was not yet t

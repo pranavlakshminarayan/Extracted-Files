@@ -1,0 +1,38 @@
+mod_sim_exp_core
+Operand RAM
+Exponent FIFO
+Pipelined 
+Montgommery 
+Multiplier
+Control Unit
+ready
+rw_address 9
+data_in 32
+data_out 32
+write_enable
+collision
+fifo_din 32
+fifo_push
+fifo_full
+fifo_nopush
+start
+exp_m
+x_sel_single
+y_sel_single
+dest_op_single
+p_sel
+calc_time
+Op0 / g0
+Op1 / g1
+Op2 / g01
+Op3 / a
+m
+~
+~
+~
+modulus_sel
+2
+2
+2
+2
+2

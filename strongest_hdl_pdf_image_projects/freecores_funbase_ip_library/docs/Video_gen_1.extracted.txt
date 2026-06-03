@@ -1,0 +1,66 @@
+Video_gen_1 Video_gen_1 
+Generates continous image Generates continous image 
+pattern data feed to HIBI pattern data feed to HIBI --bus bus 
+USED IN FUNBASE FIRST USED IN FUNBASE FIRST 
+APPLICATION APPLICATION 
+General Info General Info 
+/square6/square6640 x 480 size, 8bit wide gray image 640 x 480 size, 8bit wide gray image 
+/square6/square63 different test pattern images 3 different test pattern images 
+/square6/square6After reset, one image is been After reset, one image is been 
+generated and written through HIBI generated and written through HIBI --
+bus to DDR2 block bus to DDR2 block 
+/square6/square6After that waiting for permission to After that waiting for permission to 
+start over and producing the next start over and producing the next 
+image frame image frame 
+Generics Generics 
+/square6/square6image_data_width image_data_width :                  Bits, tells how wide is the image data. :                  Bits, tells how wide is the image data. 
+/square6/square6image_fps image_fps :                            Not implemented.. For the future :                            Not implemented.. For the future ……
+Desired frame Desired frame s per  second s per  second ……
+/square6/square6image_pattern_id image_pattern_id :                  Which kind of image pattern is been produced; :                  Which kind of image pattern is been produced; 
+1 = Constant Squares,  2 = T 1 = Constant Squares,  2 = T --letter, 3 = Moving T letter, 3 = Moving T --letter letter 
+(Default is 1 (Default is 1 .) .) 
+/square6/square6H_pixels_across H_pixels_across :                    Image size in Horizontal direction  (Defaul :                    Image size in Horizontal direction  (Defaul t 640) t 640) 
+/square6/square6V_pixels_down V_pixels_down : : Image size in Vertical direction      (Defa Image size in Vertical direction      (Defa ult 480) ult 480) 
+/square6/square6video_gen_1_addr_g:                                         Own video_gen_1_addr_g:                                         Own HIBI address:  x"00000010" HIBI address:  x"00000010" 
+/square6/square6ddr2_controller_addr_g:         DDR2 controller IP block HIBI ad ddr2_controller_addr_g:         DDR2 controller IP block HIBI ad dress: x"00000011" dress: x"00000011" 
+/square6/square6Picture_manipulator_addr_g Picture_manipulator_addr_g :        Picture Manipulator  HIBI address:  x"00000012" :        Picture Manipulator  HIBI address:  x"00000012" 
+HIBI HIBI --BUS; BUS; 
+/square6/square6data_width_g data_width_g : integer := 32;    : integer := 32;    
+/square6/square6comm_width_g comm_width_g : integer := 3;    : integer := 3;    
+State Diagram State Diagram 
+
+Image patterns Image patterns 
+By changing the generic; 
+Image pattern type, 
+Several test pattern images 
+can be produced. 
+New ones can be easily 
+made, if needed. 
+Process frame Process frame 
+---------------------------------------------------------------- 
+-- PROCESS FOR CALCULATING THE PICTURE SIZE 
+---------------------------------------------------------------- 
+frame : process(rst_n, pix_clk)
+begin 
+if rst_n = '0' then        
+counting_picture <= '0';                                
+h_count <= 0;   
+v_count <= 0; 
+elsif (pix_clk'EVENT and pix_clk = '1')then  
+if (hibi_full = '0') then       
+if (start_counting_picture = '1' or counting_picture = '1') then                                                    
+if (h_count = H_pixels_across) then                               
+h_count <= 0;                                                
+else                                                      
+h_count <= h_count + 1;                                           
+counting_picture <= '1';     
+end if; 
+if (v_count >= V_pixels_down) and (h_count >= H_pixels_across) then   
+v_count <= 0; 
+elsif (h_count = H_pixels_across) then   
+v_count <= v_count + 1; 
+end if;  
+end if;    -- if hibi_full = '1', we will stop the counters. 
+end if; 
+end process frame; 
+----------------------------------------------------------------

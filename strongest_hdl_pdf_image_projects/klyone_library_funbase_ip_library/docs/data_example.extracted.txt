@@ -1,0 +1,25 @@
+Length
+(11 bits)
+Dest. Address
+(32 bits)
+Source port
+(16 bits)
+Ethernet
+header IP header UDP header 0x01  0x23  0x45  0x67  0x89  0xAB
+Dest. Port
+(16 bits)
+0x23 0x01
+0x67 0x45
+0xAB 0x89
+ XX*  0xEF
+0xEF
+TX data bus
+Ethernet frame
+* The transfer 
+in this example 
+has odd length, 
+so the last byte 
+is ”don't care”.
+TX information, used to create the headers.
+15........8 | 7........0
+0..........7 | 8.......15 | 16...............

@@ -1,0 +1,27 @@
+{
+  "project_id": "freecores_ion",
+  "name": "ion",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/ion",
+  "extraction_date": "2026-06-02T16:53:18",
+  "license": null,
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 1,
+    "vhdl_files": 23,
+    "other_hdl_files": 0,
+    "pdf_files": 1,
+    "markdown_files": 0,
+    "text_files": 18,
+    "image_files": 3,
+    "total_bytes": 1920078,
+    "languages_seen": [
+      "VHDL",
+      "Verilog"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": []
+}

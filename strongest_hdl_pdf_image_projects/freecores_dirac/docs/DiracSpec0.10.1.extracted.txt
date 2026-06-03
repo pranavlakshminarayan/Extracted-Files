@@ -1,0 +1,54 @@
+Dirac Speciﬁcation
+Version 0.10.1
+Abstract
+This document is the speciﬁcation of the Dirac video decoder and stream syntax.
+Dirac is a video compression system utilising wavelet transforms and motion compensation.
+It is designed to be simple, ﬂexible, yet highly eﬀective. It can operate across a wide range
+of resolutions and application domains, including: internet and mobile streaming, delivery of
+standard-deﬁnition and high-deﬁnition television, digital television and cinema production and
+distribution, and low-power devices and embedded applications.
+The system oﬀers several key features:
+• lossy and lossless coding using a common tool set
+• both intra-frame and motion-prediction coding
+• gradual quality loss with increasing compression
+CONTENTS 1
+Contents
+1 Introduction 6
+1.1 Purpose . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+1.2 Scope . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+1.3 Status . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+1.4 Document structure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2 The conventions used in the speciﬁcation 8
+2.1 State machine decoder representation . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+2.2 Numbers and arithmetic operations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+2.2.1 Numbers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+2.2.2 Arithmetic operations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+2.3 Pseudocode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.3.1 Processes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.3.2 Variables and data types . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+2.3.3 Control ﬂow . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+2.3.4 Logical (boolean) operations . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+I Stream access 15
+3 Data encodings 15
+3.1 Bit-packing and data input . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+3.2 Fixed-length code formats . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+3.2.1 Bool . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+3.2.2 n-byte unsigned integer literal . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+3.3 Variable-length code formats . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+3.3.1 Unsigned interleaved exp-Golomb . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+3.3.2 Signed interleaved exp-Golomb . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+4 Arithmetic decoding 18
+4.1 State and contexts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+4.1.1 Rescaling contexts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+4.2 Initialisation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+4.3 Data input . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+4.4 Decoder functions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+4.4.1 Shifting bits in . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+4.4.2 Decoding boolean values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+4.4.3 Arithmetic decoding of integer values . . . . . . . . . . . . . . . . . . . . . . . 20
+CONTENTS 2
+4.5 Context indices . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+II Stream parsing 24
+5 Dirac stream speciﬁcation 24
+5.1 Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+5.2 Stream . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 

@@ -1,0 +1,237 @@
+The circuit in this Design Idea 
+realizes a simple, low-cost lock-
+in amplifier employing an Analog De-
+vices (www.analog.com) AD630 bal -
+anced modulator-demodulator IC 
+(Reference 1). The device uses laser-
+trimmed thin-film resistors, yielding 
+accuracy and stability and, thus, a flex-
+ible commutation architecture. It finds 
+use in sophisticated signal-processing 
+applications, including synchronous 
+detection. The amplifier can detect a 
+weak ac signal even in the presence of 
+noise sources of much greater ampli -
+tude when you know the signal’s fre-
+quency and phase.
+As an analog multiplier, the AD630 
+reveals the component of the input- voltage signal in a narrow band around 
+the frequency of the reference signal. 
+The lowpass filter at the AD630’s out-
+put allows you to gain information on 
+the weak signal amplitude, which the 
+uncorrelated noise originally masked. 
+When the input voltage and the refer-
+ence voltage are in phase, the lowpass 
+filter’s output, VOUT, assumes the max-
+imum amplitude. Conversely, if the 
+input voltage and the reference volt -
+age are in quadrature, the output volt-
+age would ideally be 0V . In this way, if 
+both in-phase and quadrature reference 
+signals are available, two balanced de-
+modulators reveal the in-phase output 
+voltage to be 08 and the in-quadrature 
+output voltage to be 908. You can cal-
+culate the module and phase shift as 
+follows:
+The two AD630s have a gain of 62 
+and receive the amplified signal, V IN, 
+through two identical amplifiers, A 1 
+and A2. At Pin 7 of IC1, a bipolar 65V 
+squared signal appears in phase with 
+December 15, 2009  |  EDN  45
+readerS SOLV e de SIGN P rOBL eMS
+EditE d By Martin r owE  
+and Fran Granvill E
+designideas
+Compact, four-quadrant  
+lock-in amplifier generates  
+two analog outputs
+Figure 1 OA1 integrates the bipolar VA signal and creates a triangular wave. 
+VR1 and VR2 obtain a 908-shifted reference voltage with respect to VA.
+edn091022di45531   DIANE
+(PLACED IN THE 10-22 FOLDER)
+�
+�
+�
+�
+IC1
+AD630
+A
+B
+20
+15
+16
+1
+17
+14
+10
+9
+19
+13
+2.5k
+2.5k
+10k
+10k5k
+�
+�
+OA2
+�
+�
+A1
+VOUT 0�
+VIN
+VA
+VR2
+VR1
+�
+�
+5V
+7
+8 �5V
+VA
+REF
+0� REFEREN CE
+�
+�
+�
+�
+IC2
+AD630
+A
+B
+20
+16
+1
+17
+14
+10
+9
+19
+15
+13
+2.5k
+2.5k
+10k
+10k5k
+�
+�
+OA3
+�
+�
+A2
+VOUT 90�
+�
+�
+5V
+7
+8 �5V
+VMON
+�
+�
+OA1
+90� REFERENCE
+
+DIs Inside
+47 Eight-function remote uses  
+one button, no microcode
+48 Doorbell transformer acts as 
+simple water-leak detector
+49 Inverted regulator increases 
+choice and reduces complexity
+50 Debug a microcontroller-to-FPGA  
+interface from the FPGA side
+ETo see all of EDN’s Design Ideas, 
+visit www.edn.com/designideas.
+Stefano Salvatori and Marco Girolami,  
+Universitã d egli Studi r oma t re, r ome, italy
+Equations f or DI Placed in the f older
+Equation
+VOUT
+0922 4553 10 22
+1
+−
+= OOUT OUT
+OUT
+OUT
+OUT
+V V
+Equation
+V V
+V
+0
+2
+90
+2
+1 90
+0
+2
+8 8
+8
+8
++
+∠ = 
+
+
+
+;
+tan .
+Equations f or DI Placed in the f older
+Equation
+VOUT
+0922 4553 10 22
+1
+−
+= OOUT OUT
+OUT
+OUT
+OUT
+V V
+Equation
+V V
+V
+0
+2
+90
+2
+1 90
+0
+2
+8 8
+8
+8
++
+∠ = 
+
+
+
+;
+tan .
+46  EDN  |  December 15, 2009
+designideas
+the reference signal. OA 1 integrates 
+the amplifier voltage, which generates 
+a triangular wave that IC 2’s compara-
+tor compares with the VR2 voltage. You 
+must regulate VR1 and VR2 to obtain a 
+perfect 908-shifted command for IC 2. 
+You can monitor the voltage at IC 2’s 
+Pin 7. Measurement accuracy and re -
+peatability depend strongly on the RC 
+time constant of the integrator and the 
+values of VR1 and VR2.
+You can use a different approach 
+to generate in-phase and in-quadra -
+ture reference signals. Figure 2 shows 
+an all-digital circuit, which you can 
+implement in a small CPLD (com -
+plex programmable-logic device) to 
+generate the 0 and 90 8 reference sig -
+nals in Figure 1. Counter 1 measures 
+the reference-signal time in terms of 
+the N number of digital clock pulses, 
+where the reference time can be dif -
+ferent from 50%. It receives a preset 
+command at the N 151 value at each 
+positive front edge of the 

@@ -1,0 +1,28 @@
+{
+  "project_id": "freecores_lq057q3dc02",
+  "name": "lq057q3dc02",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/lq057q3dc02",
+  "extraction_date": "2026-06-02T16:53:27",
+  "license": "GPL-2.0",
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 0,
+    "vhdl_files": 13,
+    "other_hdl_files": 0,
+    "pdf_files": 4,
+    "markdown_files": 0,
+    "text_files": 1,
+    "image_files": 9,
+    "total_bytes": 9249213,
+    "languages_seen": [
+      "VHDL"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": [
+    "http://www.ergpower.com"
+  ]
+}

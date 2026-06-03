@@ -1,0 +1,160 @@
+Xilinx
+PCIe
+Core
+PCIe
+Gen3 x8
+PCIe DMA Core
+FIFO
+FIFO
+Read fifo
+Write fifo
+Add
+Read/Write 
+header
+Strip 
+header
+axis_rq
+axis_rc
+Read/Write
+descriptors
+IO / 
+external 
+registers
+axis_cc
+axis_cq
+Interrupt 
+controller
+Read/Write
+status
+DMA_read_write
+DMA_control
+Synch
+stage
+40 MHz Clock region
+Write 
+Cache
+Enable
+Legend:
+Main data path
+Slow control and monitor
+IDLE
+Tvalid? req_type
+READ_REGISTER
+Tdata <= register(address)
+WRITE_REGISTER
+register(address) <= Tdata
+SEND_UNKNOWN_REQ
+completion_status <= “001”
+Seen tlast?
+Or
+timeout
+Wait for tlast
+Yes
+No
+Read
+IO/MEM
+Write 
+IO/MEM
+others
+No
+Yes
+Register / Descriptor read / write
+Tready?
+Tready?
+Tready?
+SEND_COMP_ABORT
+completion_status <= “100” Seen tlast?
+No
+No
+No
+Yes
+Yes
+Yes
+Yes
+Yes
+No
+IDLE Descr enable? Descr Read 
+(not write)?
+START_READ
+Send Read
+request header
+START_WRITE
+Send Write
+request 
+Header + data
+CONT_WRITE
+Data
+dword_count
+> 4?
+Yes
+Disable descriptor
+Or
+Start at start_addr 
+if wrap around
+Yes
+No
+Yes
+No
+No
+DMA Write (FPGA write, PC read)
+word_count 
+Reached?
+yes
+no
+Store TAG for DMA 
+Read  Process
+(array of 32 tags)
+Wrap around?PC & DMA in
+Same cycle?
+curr_addr
+<
+end_addr
+curr_addr
+<
+pc_pointer
+yes
+no
+yes
+no
+yes
+no
+yes
+no
+IDLE
+Tvalid and 
+Contains
+data?a
+PUSH_DATA
+Push data
+into FIFO
+YesNo
+DMA Read (FPGA read, PC write)
+Tlast or
+word_count 
+Reached?
+No
+YesTag matches
+Request?
+No
+Yes
+TRANSFER:
+  axis_rq <= axis_rq
+  backup(i) <= axis_rq 
+  I++
+Tready = 1?
+Yes
+No
+DMA Cache
+No
+START_RESTORE:
+  axis_rq <= axis_rq
+  backup(i) <= axis_rq 
+  I++
+Tlast = 1?
+Yes RESTORE:
+  axis_rq <= backup(i)
+  i++
+Restore
+ complete?
+Yes
+No

@@ -1,0 +1,89 @@
+Berner Fachhochschule
+Technik und Informatik
+GECKO3power
+Postproduction Test und Inbetriebname
+Anschlüsse und Messpunkte:
+Kurzschluss Test
+Labornetzteil mit Dcin verbinden. Spannung auf 5 V einstellen, Strombegrenzung auf 1 A. 
+Schalter auf GECKO3power auf Position „off“.
+Netzteil einschalten. 
+● Strombegrenzung darf nicht ansprechen. 
+● LED's dürfen nicht leuchten.
+Schalter Test
+Aufbau aus Kurzschluss Test beibehalten.
+Schalter auf Position „Motor off“ stellen. 
+● Ohne angeschlossene Batterie müssen alle drei LED's leuchten. LED Farben kontrollieren: 
+Power LED grün, Charging LED rot, Low Batt LED gelb.
+● Spannung Vcc3V3 kontrollieren, muss 3.3 V +/-5% betragen.
+● Spannung Vcc (3.3Vmot) muss 0V sein. 
+● Spannung 5 V kontrollieren, muss 5 V +/-5% betragen.
+postproduction-test-and-measuring.odt / Christoph Zimmermann / 24. Juli 2008 1
+
+Schalter auf Position „On“ stellen.
+● Ohne angeschlossene Batterie müssen alle drei LED's leuchten. LED Farben 
+kontrollieren: Power LED grün, Charging LED rot, Low Batt LED gelb.
+● Spannung Vcc3V3 kontrollieren, muss 3.3 V +/-5% betragen.
+● Spannung Vcc (3.3Vmot) muss muss 3.3 V +/-5% betragen.
+● Spannung 5 V kontrollieren, muss 5 V +/-5% betragen.
+Schalter auf „Off“
+● Keine LED darf leuchten
+● Spannung Vcc3V3 kontrollieren, muss 0 V betragen.
+● Spannung Vcc (3.3Vmot) muss muss 0 V betragen.
+● Spannung 5 V kontrollieren, muss 0 V betragen.
+DC/DC Wandler Test
+Strombegrenzung bei Labornetzteil auf 5A erhöhen.
+Last an Vcc3V3 anschliessen (Strom sollte bis 3 A getestet werden, Last also etwa 1.4 bis 
+1.1 Ohm).
+Last an Vcc  (3.3Vmot)  anschliessen (Strom sollte bis 3 A getestet werden, Last also etwa 
+1.4 bis 1.1 Ohm).
+Last an 5V anschliessen. (Strom sollte bis 350 mA gestestet werden. Last also z.b. 15 Ohm)
+Schalter auf Position „On“ stellen
+● Spannung Vcc3V3 kontrolieren, muss 3.3V +/-5% betragen.
+● Spannung Vcc (3.3Vmot) muss muss 3.3V +/-5% betragen.
+● Spannung 5 V kontrollieren, muss 5 V +/-5% betragen.
+Lasten vom System trennen.
+Batterietest
+Schalter auf „Off“. 
+Labor Netzteil von Dcin trennen.
+Teilentladene Testbatterie anschliessen.
+Schalter auf Position „On“ stellen
+● Power LED muss leuchten. 
+● Die anderen LED's dürfen nicht Leuchten (ev. Testbatterie nachladen bis Low-Batt 
+LED erlischt)
+Schalter auf „Off“
+postproduction-test-and-measuring.odt / Christoph Zimmermann / 3. November 2008 2
+● Keine LED darf leuchten
+Batterie laden
+Labornetzteil Anschliessen. Strombegrenzung bei Labornetzteil auf 1 A einstellen.
+● Auch in Schalter Position „Off“ muss die Charging LED leuchten.
+● Die anderen LED's dürfen nicht Leuchten (ev. Testbatterie nachladen bis Low-Batt 
+LED erlischt)
+Labornetzteil entfernen.
+USB Buchse mit PC USB Port oder Labornetzteil (Spannung 5 V, Strombegrenzung 500 mA) 
+verbinden.
+● Auch in Schalter Position „Off“ muss die Charging LED leuchten.
+● Die anderen LED's dürfen nicht Leuchten (ev. Testbatterie nachladen bis Low-Batt 
+LED erlischt)
+Labornetzteil an Dcin anschliessen während USB Buchse mit PC/Labornetzteil verbunden 
+ist.
+● Batterie muss weiterhin geladen werden (Charging LED leuchtet)
+● Stromverbrauch beim Labornetzteil sollte im Bereich 100 bis 800 mA liegen.
+USB Kabel entfernen. 
+Labornetzteil entfernen.
+Batterie, Netzteil Umschaltung
+Schalter auf Position „On“ stellen.
+● Power LED muss leuchten. 
+Labornetzteil anschliessen.
+● Power LED muss immer noch leuchten. Es darf kein Unterbruch zu sehen sein.
+Schalter auf Position „Off“ stellen.
+● Ausser Charging LED darf keine LED leuchten.
+Schalter auf Position „On“ stellen.
+Batterie entfernen.
+● Power LED muss immer noch leuchten. Es darf kein Unterbruch zu sehen sein beim 
+Entfernen der Batterie.
+Abschluss
+Alle angeschlossenen Geräte entfernen. Schalter auf Position „Off“.
+Produktkleber mit Serienummer auf Print kleben. 
+postproduction-test-and-measuring.odt / Christoph Zimmermann / 3. November 2008 3
+Mit Bleistift Testdatum auf Produktkleber schreiben.
+postproduction-test-and-measuring.odt / Christoph Zimmermann / 3. Novembe

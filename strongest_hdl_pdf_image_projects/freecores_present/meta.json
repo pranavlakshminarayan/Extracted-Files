@@ -1,0 +1,26 @@
+{
+  "project_id": "freecores_present",
+  "name": "present",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/present",
+  "extraction_date": "2026-06-02T16:54:56",
+  "license": null,
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 0,
+    "vhdl_files": 97,
+    "other_hdl_files": 0,
+    "pdf_files": 4,
+    "markdown_files": 0,
+    "text_files": 15,
+    "image_files": 32,
+    "total_bytes": 4888748,
+    "languages_seen": [
+      "VHDL"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": []
+}

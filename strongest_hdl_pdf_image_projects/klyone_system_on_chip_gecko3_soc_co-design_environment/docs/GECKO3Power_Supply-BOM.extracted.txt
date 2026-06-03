@@ -1,0 +1,39 @@
+Bill of Materials Power Supply Board/ Robot Chassis 
+Source Data From: Project Power_Supply.PRJPCB 
+Project: Project Power_Supply.PRJPCB 
+1.65 Euro 
+Variant: None 1.05 $
+Creation Date: 06.06.2008 10:31:04 
+Print Date: 09.07.2008 17:16:34 
+Footprint Value LibRef Designator Description Quantity Manufacturer Part Number Distributor Distributor Numbe r Packaging unit lead time RoHS Price Currency In CHF CHF for Qty 
+Battery_new PA-LP987 BATTERY_NEW B1 1 Contrel PA-LP987 Contrel PA-LP987 1 5 Weeks yes CHF 
+1608[0603] 10nF 0603 CAP C1, C2, C3, C4, C5, C6, C9, C 20, C29 Capacitor 9 AVX 06035C103KAT2A Farnell 1327 675 10 yes 0.07 CHF 0.07 0. 63 
+C1206 10uF Cap Semi C7, C8 Capacitor (Semiconductor SIM Model) 2 Murata GRM31CR70 J106KA01L Farnell 9527 729 1 yes 0.25 CHF 0.25 0.50 
+1608[0603] 22pF 0603 CAP C10, C19 Capacitor 2 Epcos B37930K5220J60 Farnell 9753 486 10 yes 0.083 CHF 0.0 83 0.17 
+C1210 100uF ceramic Cap Semi C11, C17, C21, C27 Capacit or (Semiconductor SIM Model) 4 Kemet C1210C107M9PAC780 0 Farnell 1108 328 1 yes 4.13 CHF 4.13 16.52 
+C0805 22uF 0805 CAP C12, C15, C22, C25 Capacitor 4 Kemet C0805C226M9PAC7800 Farnell 1108 326 1 yes 1.8 CHF 1. 8 7.20 
+1608[0603] 47pF 0603 CAP C13, C23 Capacitor 2 Murata GRM1885C1H470JA01D Farnell 8819 840 10 yes 0.071 C HF 0.071 0.14 
+1608[0603] 820pF 0603 CAP C14, C24 Capacitor 2 PHYCOMP 2238 861 15821 Farnell 718 555 10 yes 0.115 CHF 0. 115 0.23 
+1608[0603] 1nF 0603 CAP C16, C28, C30, C31 Capacitor 4 Murata GRM188R71H102KA01D Farnell 8819 955 10 yes 0.071 C HF 0.071 0.28 
+B 100uF T492B C18, C26 Solid Tantalum Chip Capacitor, T492 Series - CWR11 Style Per Mil-PRF-55365/8 2 AVX TCJB107M004R0070 Farnell 1135 228 1 yes 0.98 CHF 0.98 1 .96 
+C0805 4.7uF Cap C32, C33 Capacitor 2 Kemet C0805C475K4PAC Farnell 9227 849 10 yes 0.508 CHF 0.5 08 1.02 
+C0805 4.7pF 0603 Cap C34 Capacitor 1 AVX 06032U4R7CAT2A Farnell 7568 258 5 yes 0.45 CHF 0.45 0.4 5 
+sod-123 MBR0520 SCHOTTKY_MBR05* D1 1 ON Semi MBR0520LT1G Farnell 9556 915 1 yes 0.561 CHF 0.561 0.56 
+HSMC-C110 side led red LED-HSM*-C110 D2 LED 1 Avago HSMC-C110 Farnell 8554 498 5 yes 0.288 CHF 0.288 0.29
+HSMC-C110 side led yellow LED-HSM*-C110 D3 LED 1 Avago HSMA-C110 Farnell 8554 455 5 yes 0.577 CHF 0.577 0.58
+MBRS340 MBRS340TR shottky-mbrs340tr D4 1 Vishay MBRS340TRPBF Farnell 1463 234 1 yes 0.617 CHF 0.617 0.62 
+HSMC-C110 side led green LED-HSM*-C110 D5 LED 1 Avago HSMQ-C110 Farnell 8554 692 5 yes 1.8 CHF 1.8 1.80 
+BAT54C BAT54C BAT54C D6 1 ST BAT54CFILM Farnell 1261 334 1 2 Weeks yes 0.13 CHF 0.13 0 .13 
+MBRS1100T3-D 10BQ030 D Schottky D7 Schottky Diode 1 Vishay 10BQ030PBF Farnell 9100 687 1 yes 0.42 CHF 0.42 0.42
+Roue ROUE J1 1 0.000 0.00 
+New connector Header 2x3,smt NEW CONNECTOR Jp1, Jp2 2 AMP 1241050-3 Farnell 9689 567 1 yes 1.5 CHF 1.5 3.00 
+Mini power Jack DC8 MINI POWER JACK JP3 Mini Power Jack 1 CLIFF ELECTRONIC DC8 Farnell 224 947 10 yes 1.855 CHF 1.855 1.86 
+USB_MINI_B_SMD miniUSB-smt USB-MINIB-SMT JP4 1 Lumberg 2486 01 Farnell 1243 250 1 yes 2.55 CHF 2.55 2.55 
+amp_FH_.8mm_60pin_r_H9_H13 fh-60r-13mm AMP-FH-60-RECEPTABLE-H9-H13 JP5 AMP Free Height System, 0.8mm, 60 Pin, 9 or 13mm Height, Receptable 1 AMP 5-5179010-2 Farnell 1098 357 1 yes 3.85 CHF 3.85 3.85 
+M20-7890546 M20-7890546 M20-7890546 JP6 1 HARWIN M20-7890546 Farnell 7992 076 10 yes 1.45 CHF 1.45 1. 45 
+B82472G4222M 2.2uH DR73 COIL-DR-SERIE L1, L2 DR Series Coils from Coiltronics 2 Cooper Bussmann DR73-2R2 Farnell 1463 507 1 yes 2 CHF 2 4.00 
+CAPC1210L 2.2uH 1210 COIL-LQH L3 Inductance 1 Murata LQH32CN2R2M33L Farnell 9522 182 5 yes 0.357 CHF 0.3 57 0.36 
+1608[0603] 10k 0603 RES R1, R2, R3, R4 Resistance 4 Multicomp MC 0.063W 0603 1% 10K Farnell 9330 399 50 X-y es 0.062 CHF 0.062 0.25 
+1608[0603] 150R 0603 RES R5, R13, R24, R31, R35 Resista nce 5 Multicomp MC 0.063W 0603 1% 150R Farnell 9330 593 50 X-yes 0.062 CHF 0.062 0.31 
+1608[0603] 100k 0603 RES R6, R10, R14, R18 Resistance 4 Multicomp MC 0.063W 0603 1% 100K Farnell 9330 402 50 X-yes 0.062 CHF 0.062 0.25 
+1608[0603] 2k 0603 RES

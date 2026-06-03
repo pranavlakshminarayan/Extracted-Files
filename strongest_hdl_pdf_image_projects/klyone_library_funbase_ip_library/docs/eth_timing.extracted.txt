@@ -1,0 +1,23 @@
+clock
+new_tx/rx
+tx/rx_length
+tx/rx_frame_type
+target_MAC_addr
+(in tx only)
+tx/rx_data
+tx/rx_data_valid
+tx/rx_read_enable
+XXX
+XXX
+XXX
+XXX
+XXX
+XXX
+XXX
+Valid length
+Valid frame type
+Valid target address
+Data bytes 1 & 2 Data bytes 3 & 4 etc...
+rx_erroneous
+(in rx only)
+XXX  = not valid, don't care

@@ -1,0 +1,19 @@
+  
+UDP/IP Application
+new_tx
+destination_address (32 bits)
+destination_port (16 bits)
+source_port (16 bits)
+tx_data (16 bits)
+tx_data_valid
+tx_read_enable
+new_rx
+rx_length (11 bits; length in bytes)
+source_address (32 bits)
+source_port (16 bits)
+destination_port (16 bits)
+rx_data (16 bits)
+rx_data_valid
+rx_erroneous
+rx_read_enable
+tx_length (11 bits; length in bytes)

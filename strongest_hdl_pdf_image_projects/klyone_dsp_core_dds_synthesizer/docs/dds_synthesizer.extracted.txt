@@ -1,0 +1,43 @@
+Direct Digital Synthesizer IP Core
+Martin Kumm
+December 22, 2008
+The DDS IP core ( dds_synthesizer) is a implementation of a direct digital fre-
+quency synthesizer (DDS) (also called number controlled oscillator, NCO) which pro-
+duces a sinewave at the output with a speciﬁed frequency and phase (adjustable
+at runtime). The resolution of the frequency tuning word (FTW), the phase and
+the amplitude are deﬁned seperately. While the FTW resolution can be set by
+the generic ftw_width, phase and amplitude resolution are deﬁned as constants
+phase_width and ampl_width in the seperate package sine_lut_pkg. This is gen-
+erated by a matlab script ( matlab/sine_lut_gen.m), the m-ﬁles are described in
+their headers. The most relevant LUTs (in the range 8...16Bit) have been generated
+and are located in the “ VHDL/sine_lut” folder. The nomenclature of the ﬁles is
+sine_<phase_width>_x_<amplitude_width>_pkg.vhd. By adding one of these ﬁles
+to the project, the resolution of phase and amplitude is automatically deﬁned.
+Figure 1 shows a block diagram of the implemented DDS synthesizer. The signals
+clk and reset are not shown here. The resolution parameters have been renamed
+(ftw_width=N, phase_width=M and amplitude_width=P). Only the ﬁrst period
+of the sinewave is stored in the LUT, the two most signiﬁcant bits of the phase word
+are used either to shift the input value or to invert the output amplitude, depending
+on the quadrant of the sinewave. The LUT is clocked, so the total delay from input
+to output is 3 clock cycles.
+Figure 1: Block diagram of the DDS implementation
+The output frequency will be determined by the FTW ( ftw_i)
+fDDS = FTW
+2M fs . (1)
+The initial phase (when using more than one synthesizer) can be set by setting the
+PTW (phase_i) to
+ϕDDS = PTW
+2N 2π . (2)
+1
+A Testbench is realized in dds_synthesizer_tb.vhd, the corresponding Modelsim
+project can be found in the /sim folder. The ports of the entity are described in
+Table 1.
+Name Direction Wordsize Description
+clk_i in 1 clock
+rst_i in 1 reset
+ftw_i in ftw_width Frequency Tuning Word, see Formula (1)
+phase_i in phase_width Phase Tuning Word, see Formula (2)
+phase_o out phase_width Instantaneous Phase Output
+ampl_o out ampl_width Amplitude Output
+Table 1: Entity port description
+2

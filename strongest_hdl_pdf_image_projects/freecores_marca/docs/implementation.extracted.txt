@@ -1,0 +1,79 @@
+marca - McAdam’s RISC Computer Architecture
+Implementation Details
+Wolfgang Puﬃtsch
+February 2, 2007
+1 General
+• 16 16-bit registers
+• 16KB instruction ROM (8192 instructions)
+• 8KB data RAM
+• 256 byte data ROM
+• 75 instructions
+• 16 interrupt vectors
+2 Internals
+The processor features a 4-stage pipeline:
+• instruction fetch
+• instruction decode
+• execution/memory access
+• write back
+This scheme is similar to the one used in the MIPS architecture, only execution
+and write back stage are drawn together. For our architecture does not support
+indexed addressing, it does not need the ALU’s result and can work in parallel,
+having the advantage of reducing the possible hazards.
+Figure 1 shows a rough scheme of the internals of the processor.
+2.1 Branches
+Branches are not predicted and if executed they stall the the pipeline, leading
+to a total execution time of 4 cycles. The fetch stage is not stalled, the decode
+stage however is stalled for two cycles to compensate that.
+1
+Figure 1: Internal scheme
+2.2 Instruction fetch
+This stage is not spectacular: it simply reads an instruction from the instruction
+ROM, and extracts the bits for the source and destination registers.
+2.3 Instruction decode
+This stage translates the bit-patterns of the opcodes to the signals used inter-
+nally for the operations. It also holds the register ﬁle and handles access to it.
+Immediate values are also constructed here.
+2.4 Execution / Memory access
+The execution stage is the heart and soul of the processor: it holds the ALU,
+the memory/IO unit and a unit for interrupt handling.
+2.4.1 ALU
+The ALU does all arithmetic and logic computations as well as taking care of
+the processors ﬂags (which are organized as seen in table 1).
+Bit 15 Bit 0
+P I N V C Z
+Table 1: The ﬂag register
+Operations which need more than one cycle to execute (multiplication, di-
+vision and modulo) block the rest of the processor until they are ﬁnished.
+2.4.2 Memory/IO unit
+The memory/IO unit takes care of the ordinary data memory, the data ROM
+(which is mapped to the addresses right above the RAM) and the communication
+2
+to peripheral modules. Peripheral modules are located within the memory/IO
+unit and mapped to the highest addresses.
+The memories (the instruction ROM too) are Altera speciﬁc; we decided
+not to use generic memories, because Quartus can update the contents of its
+proprietary ROMs without synthesizing the whole design. Because all memories
+are single-ported (and thus fairly simple) it should be easy to replace them with
+memories speciﬁc to other vendors.
+We also decided against the use of external memories; larger FPGAs can
+accommodate all addressable memory on-chip, so the implementation overhead
+would not have paid oﬀ.
+Accesses which take more than one cycle (stores to peripheral modules and
+all load operations) block the rest of the processor until they are ﬁnished.
+Peripheral modules The peripheral modules use a slightly modiﬁed version
+of the SimpCon interface. The SimpCon speciﬁc signals are pulled together to
+records, and the words which can be read/written are limited to 16 bits. For
+accessing such a module, one may only use load and store instructions which
+point to aligned addresses.
+UAR T The built-in UART is derived from the sc uart from Martin Sch¨ oberl.
+Apart from adapting the SimpCon interface, an interrupt line and two bits for
+enabling/masking receive (bit 3 in the status register) and transmit (bit 2) in-
+terrupts. In the current version address 0xFFF8 (-8) correspond to the UART’s
+status register and address 0xFFF A (-6) to the wr data/rd data register.
+2.4.3 Interrupt unit
+The interrupt unit takes care of the interrupt vectors and, of course, the trig-
+gering of interrupts. Interrupts are executed only if the global interrupt ﬂag is
+set, none of the other units is busy and the instruction in the execution stage is
+valid (it takes 3 cycles after jumps, branches etc. until a new valid instruction
+is in that stage).
+Instructions which cannot be decoded as

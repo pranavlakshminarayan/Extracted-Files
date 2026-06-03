@@ -1,0 +1,74 @@
+IP Core Specification
+Universal Pipeline Stage
+Author: Gerhard Hoffmann
+OpenCores@hoffmann-hochfrequenz.de
+Rev. [0.1]
+January 18, 2011
+ OpenCores Specifications Template 1/18/2011
+This page has been intentionally left blank.
+www.opencores.org Rev 0.1 Preliminary ii
+Revision History
+Rev. Date Author Description 
+0.1 2010/dec/10 Gerhard 
+Hoffmann
+Initial version
+Contents
+INTRODUCTION............................................................................................................. 1
+ARCHITECTURE.............................................................................................................2
+OPERATION..................................................................................................................... 3
+REGISTERS.......................................................................................................................4
+LIST OF REGISTERS...........................................................................................................................................4
+REGISTER 1 – DESCRIPTION...............................................................................................................................4
+CLOCKS.............................................................................................................................5
+IO PORTS.......................................................................................................................... 6
+1.
+Introduction
+This block is a pipeline register with adjustable depth and width. There are flavors for  
+the following types:
+For std_logic_vector, signed and unsigned, the width is taken from the buses that are  
+connected during instantiation. Input and output width must be the same.
+real
+integer
+boolean
+std_logic
+std_logic_vector
+signed
+unsigned
+
+2.
+Registers
+3.
+IO Ports And Generics
+Port Width Directio
+n
+Description
+clk 1 Input clock input that controls all activities.
+Rising edge is active.
+ce 1 Input Must be high to qualify a clock edge as active.
+rst 4 Input Synchronous reset. Defaults to '0'. Overrides CE.
+Forces the internal memories to a known state. 
+This state is:
+0.0      for float
+0         for integer
+false    for boolean
+'0'        for std_logic / vectors, signed or unsigned
+If you want this to synthesize to Xilinx SRL16 
+shift registers, rst cannot be used. In most cases 
+this is not much of a loss because after a few 
+clocks, the output reflects the input history only.
+i variable Input Signal to be delayed. 
+If this is a vector, the length is taken from the 
+connected signal.
+o variable Output Delayed version of the signal.
+If this is a vector, the length is taken from the 
+connected signal and its size must be the same as 
+that of the input.
+n_stages 0...2G generic Amount of delay in clock cycles
+For 0 clocks delay, the pipeline stage is 
+transparent. Clk, ce and rst are don't cares in this 
+case.
+Table 1: List of IO ports
+1.
+Name
+[This section may be added to outline different specifications.]
+Index

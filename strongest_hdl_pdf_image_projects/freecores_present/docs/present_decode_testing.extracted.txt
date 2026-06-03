@@ -1,0 +1,66 @@
+PRESENT DECODER ("D ECODE TESTING ") -
+WITH COMMUNICATION CHANNEL WITH PC
+documentation
+Krzysztof Gajewski
+and opencores.org
+www.opencores.org gajos@opencores.org
+Present Decoder ("Decode Testing") - with communication channel with PC (v. 0.1) - 2014/05/25
+PRESENT DECODER ("D ECODE TESTING ")... 2/ 13PRESENT DECODER ("D ECODE TESTING ")... 2/ 13PRESENT DECODER ("D ECODE TESTING ")... 2/ 13
+Change History
+Rev. Chapter Date Description Reviewer
+0.1 all 2014/05/25 First draft K. Gajewski
+Present Decoder ("Decode Testing") - with communication channel with PC (v. 0.1) - 2014/05/25 All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+PRESENT DECODER ("D ECODE TESTING ")... 3/ 13PRESENT DECODER ("D ECODE TESTING ")... 3/ 13PRESENT DECODER ("D ECODE TESTING ")... 3/ 13
+Contents
+1 Introduction 4
+2 Interface 5
+3 Internal structure and state machine workﬂow 6
+4 FPGA implementations 9
+5 Simulation and software 10
+5.1 Simulation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+5.2 Software . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+6 Troubleshooting 11
+7 License and Liability 12
+All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+Present Decoder ("Decode Testing") - with communication channel with PC (v. 0.1) - 2014/05/25
+PRESENT DECODER ("D ECODE TESTING ")... 4/ 13PRESENT DECODER ("D ECODE TESTING ")... 4/ 13PRESENT DECODER ("D ECODE TESTING ")... 4/ 13
+1 Introduction
+Present is "ultra-lightweight" block cipher developed by A. Bogdanov et al. and proposed in 2007
+[1]. It uses 64 bit data block and 80 bit or 128 bit key. This cipher consists of 32 rounds, during
+which:
+• round key is added to plaintext
+• plaintext goes through sBoxes (substitution boxes)
+• plaintext after sBoxes goes through pLayer (permutation layer)
+• round key is updated
+After that, ciphertext feeds out the output. Brieﬂy algorithm was shown in Fig. 1
+Figure 1: Brieﬂy block scheme of the PRESENT block cipher
+In subprojects Pure and PureTesting Present coder components was presented. In this project
+Present decoder was presented. It was attached by shifting registers to RS-232 core developed
+by Digilent® to enable communication with PC. Decoding key is ﬁrstly generated, basing on the
+key used for data coding. Next, input data are decoded (taking into account "inverse" direction
+to the presented in Fig. 1), and at last feeds the output. This core works with 80 bit key. Target
+was Xilinx® Spartan 3E XC3S500E [2] on Spartan 3E Starter Board [3] made by Digilent®.
+Present Decoder ("Decode Testing") - with communication channel with PC (v. 0.1) - 2014/05/25 All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+PRESENT DECODER ("D ECODE TESTING ")... 5/ 13PRESENT DECODER ("D ECODE TESTING ")... 5/ 13PRESENT DECODER ("D ECODE TESTING ")... 5/ 13
+2 Interface
+Top level component of Present Decode Testing was shown in Fig. 2. The number of inputs
+and outputs was limited due to RS-232 component in communication interface. All inputs and
+outputs are synchronous except reset signal in state machines and sampled at rising edge of
+clock. All signals are STD_LOGIC .
+Figure 2: Top level component of Present Decode Testing
+Signal name Width In/Out Description
+clk 1 in Clock signal for the component.
+DATA_RXD 1 in Input data signal.
+reset 1 in Asynchronous / Synchronous reset signal.
+DATA_TXD 1 out Output data signal.
+Table 1: Input/Output signals of Present Decode Testing component
+All rights reserved - ©2014 Krzysztof Gajewski
+and opencores.org
+Present Decoder ("Decode Testing") - with communication channel with PC (v. 0.1) - 2014/05/25
+PRESENT DECODER ("D ECODE TESTING ")... 6/ 13PRESENT DECODER ("D ECODE TESTING ")... 6/ 13PRESENT DECODER ("D ECODE TESTING ")... 6/ 13
+3 Internal structure and state machine workﬂow
+Internal datapath between components was shown in ﬁg. 3. All control signals, clk and reset
+was omitted for clearance. In these schamatic keyReg , textReg and

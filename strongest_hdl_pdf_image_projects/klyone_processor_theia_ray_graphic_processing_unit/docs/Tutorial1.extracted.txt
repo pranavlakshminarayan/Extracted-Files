@@ -1,0 +1,89 @@
+THEIA Simple Shader Simulation Tutorial
+Thank you very much for your interest in the project!
+In this tutorial, you will set up THEIA to simulate a simple 3D scene consisting of 2 texturized
+triangles. You will write a series of simple pixel shaders to get familiar with the shanding 
+system.
+First a little bit of background
+THEIA's pixels shaders are written using the THEIA programming language. This is an 
+assembly programming language consisting of a series of instructions that operate on a series 
+of registers. There is no stack.
+The following diagram illustrates THEIA's programming model.
+Registers: THEAI has 4 types of registers.
+• Internal Registers: 
+Accessibility: Read-Only. 
+Scope: The values of these registers can change from one pixel iteration to the 
+next.
+Purpose: They are special registers used by the internal GPU routines. Sometimes 
+you may want to read from these registers. Examples: CREG_CAMERA_POSITION, 
+CREG_RESOLUTION, CREG_PIXEL_2D_POSITION, etc.
+• General purpose Registers:  
+Accessibility: Read-Write. 
+General 
+Purpose
+ Registers
+(12 x 3)
+R1...R12
+User Code
+Output Registers
+(7 x 1)
+OREG*
+Insternal 
+Registers
+(N x 3)
+CREG*
+Constant 
+Registers
+(8 x 3)
+C1..C7
+Scope: The values of these registers can change from one pixel iteration to the 
+next. This means that even though you can write any value you want, you are not 
+guaranteed that this value will be persistent from one pixel iteration to the next.
+Purpose: You can basically store whatever you want in these registers, but again, 
+the values are only kept for the duration of your shader.
+• Constant Registers:
+Accessibility: Read-Write. 
+Scope: The values of these registers are kept for the entire duration of the GPU 
+execution. This means that if you store a value, this value is kept until you replace 
+it with a different value or reset the GPU.
+Purpose: Although you can use these registers as you like, the idea is to store 
+constants during a special execution stage, so that you can reuse these values for 
+each pixel iteration.
+• Output Registers:
+Accessibility: Write-Only. 
+Scope:  The values of these registers can change from one pixel iteration to the 
+next.
+Purpose: These are special registers that indicate an output from a particular stage 
+of THEIA's execution. Examples: OREG_PIXEL_COLOR, OREG_TEX_COORD1, 
+OREG_TEXWEIGHT1, etc.
+Instructions:
+THEIA has arithmetic, logic and flow control instructions. There are two flavors of 
+instructions:
+Type 1: OPERATION DESTINATION SOURCE_REGISTER1  SOURCE_REGISTER2
+Type 2: OPERATION DESTINATION IMMEDIATE_VALUE
+There is a full list of the instructions in the Documentation section. But for now, let's just see 
+some simple shaders to get a taste of how this works.
+Step 1 – Download and the Simulation environment
+1.1 Download the 'theia_gpu_latest.tar.gz' file from Download section of the project
+web page.
+1.2  Extract the tarball.
+1.3 Please refer to the 'readme.txt' document under the 'test_bench' folder for
+instructions on how to setup the XILINX ISE project.
+1.4 Use the following paths:
+SIM_DIR: project directory created by ISE Project Navigator, this is where all the
+Verilog files are located.
+SRC_DIR: folder that gets created after you unzip 'theia_gpu_latest.tar.gz'. Contains a copy of 
+the sources, doc,examples, etc.
+Step 2 – Copy the input files
+2.1 Copy the input files (*.mem) from the SRC_DIR/examples/shaders/example1 to
+SIM_DIR/
+Creg.mem: has control register options (more on this in the documentation).
+Params.mem: Scene configuration such as camera origen, light, Axis Aligned
+Bounding Box position, etc. (more on this in the documentation).
+Textures.mem: binary representation of the texture memory (more on this in the
+documentation).
+Vertex.mem: Binary representation of the triangle primitives (more on this in the
+documentation).
+Example 1: Default Shader
+Our first example will render 2 texturized triangles. It will use the same shader as the default 
+one in ROM. Let's see how it looks:
+ENTRYPOINT_ADRR

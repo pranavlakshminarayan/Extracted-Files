@@ -1,0 +1,53 @@
+ APPLICATION NOTE 
+REU05B0134-0100  Rev.1.21  Page 1 of 12 
+Jul 14, 2010  
+RX610 Group 
+How to Setup and Run Dhrystone on a MCU 
+Abstract  
+This document discusses how to setup the Dhrystone benchmark for your MCU and toolchain.  The RX610 was the 
+MCU chosen for the examples throughout this document including a complete description of the measurements and 
+results.  The benefits and shortcomings of the Dhrystone benchmark are also briefly discussed. 
+Introduction  
+The Dhrystone benchmark is probably the most well known benchmark in the MCU industry.  While there are newer 
+benchmark suites that seem to offer performance numbers for every imaginable MCU task, many companies continue to 
+use Dhrystone.  One of the main reasons for this is that Dhrystone is so easy to use.  You add a couple of files to your 
+project, configure it to run on your system, and you are good to go.  Even better, after it runs you get one number for the 
+result.  You don’t have to dig through pages of output, you just take that number and now you know that everyone with 
+a number less that that is inferior to you.  But is this true?  Not exactly.  Dhrystone was originally designed to give users 
+a point of reference for performance on ‘typical’ applications.  Since comparing MIPS performance on a RISC to a 
+CISC is hard to do, the one number result of Dhrystone was very convenient.  What Dhrystone does not do is give you a 
+definite answer on which MCU will be the best performer for you. 
+At the time, Dhrystone was put together to be a ‘typical’ application by studying real programs.  While this is good for 
+an overview of a MCU, it is not at all an exhaustive test.  And the designers of Dhrystone knew this; throughout the 
+‘documentation’ that comes packaged with Dhrystone (by documentation I am referring to the text files that are 
+included in the Dhrystone archive) the authors talk about the extent of Dhrystone’s usefulness.  In particular, some 
+things that are not measured include: 
+• I/O 
+• OS Performance 
+• Floating Point 
+ 
+While your application might not use an RTOS or FPU, it’s highly unlikely it doesn’t use some form of I/O.  So what 
+do you do in this case?  You can read the hardware manual on the product or run your own benchmarks.  The point is 
+that Dhrystone is just one of the things you should look at when comparing performance across MCUs.  Much more 
+expansive and descriptive analysis of Dhrystone is available on the internet if you want more information. 
+Target Device  
+The RX610 is used as an example in this document but the same methods can be used to properly configure Dhrystone 
+on any MCU. 
+Contents 
+1. Obtaining Dhrystone.......................................................................................................................... 2 
+2. Creating a Dhrystone HEW Project................................................................................................... 2 
+3. Modifying Dhrystone Files for Your MCU..........................................................................................3  
+4. Running Dhrystone and Calculating DMIPS ..................................................................................... 7 
+5. Optimizing Dhrystone........................................................................................................................ 8 
+6. Results of RX Dhrystone Benchmark..............................................................................................11 
+7. Summary ......................................................................................................................................... 11 
+ 
+REU05B0134-0121
+Rev.1.21
+Jul 14, 2010
+RX610 Group How to Setup and Run Dhrystone on a MCU 
+REU05B0134-0100  Rev.1.21  Page 2 of 12 
+Jul 14, 2010  
+1. Obtaining Dhrystone 
+There is no official Dhrystone site where the source code can be found.  Instead if you search on the internet you will 
+find many sites hosting source code, precompiled binaries, results, a

@@ -1,0 +1,150 @@
+ 
+ 
+ 
+Trigonometric functions 
+(degrees) in double FPU 
+ 
+ 
+ 
+ 
+Author: [M.ADITYA] 
+[muni_aditya@yahoo.com] 
+ 
+ 
+ 
+ 
+Rev. [0.1] 
+July 18, 2013 
+  
+
+ OpenCores  7/18/2013 
+ 
+ 
+www.opencores.org muni_aditya@yahoo.com ii  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+This page has been intentionally left blank. 
+ OpenCores  7/18/2013 
+ 
+ 
+www.opencores.org muni_aditya@yahoo.com iii  
+Revision History 
+Rev
+. 
+Date Author Description  
+0.1 04/06/13 M.ADITYA It takes unsigned bit as input and gives out the 
+degree value in IEEE-754(double) format 
+i.e double precision floating point format. 
+ 
+ OpenCores  7/18/2013 
+ 
+ 
+www.opencores.org muni_aditya@yahoo.com iv  
+Contents 
+INTRODUCTION............................................................................................................. 1 
+ARCHITECTURE ............................................................................................................ 3 
+OPERATION….. .............................................................................................................. 5 
+REGISTERS ...................................................................................................................... 8 
+LIST OF REGISTERS ..................................................................................................................................... 8 
+REGISTER 1 – DESCRIPTION ........................................................................................................................ 8 
+IO PORTS.......................................................................................................................... 9 
+FUTURE SCOPE……………………………………………………..………………...10 
+ 
+ OpenCores  7/18/2013 
+ 
+ 
+www.opencores.org muni_aditya@yahoo.com 1 of 10 
+1  
+Introduction 
+In computing, floating point describes a method of representing an approximation 
+to real numbers in a way that can suppor t a wide range of values. The numbers 
+are, in general, represented approximately to a fixed number of  significant 
+digits (the mantissa) and scaled using an  exponent. The base for the scaling is 
+normally 2, 10 or 16. The typical number that can be represented exactly is of the 
+form: 
+Significant digits × base exponent 
+The term  floating point  refers to the fact that their  radix point  (decimal 
+point, or, more commonly in computers, binary point) can "float"; that is, it can be 
+placed anywhere relative to the significant digits o f the number. This position is 
+indicated as the exponent component in the internal representation, and floating -
+point can thus be thought of as a computer realization of  scientific notation. Over 
+the years, a variety of floating -point representations have been used in computers. 
+However, since the 1990s, the most commonly encountered representation is that 
+defined by the IEEE 754 Standard. 
+ 
+ 
+
+ OpenCores  7/18/2013 
+ 
+ 
+www.opencores.org muni_aditya@yahoo.com 2 of 10 
+Ranges of floating point units: 
+ 
+ 
+ 
+Double Precision Floating Point Numbers 
+ 
+The IEEE 754 standard defines how double precision floating point 
+number are represented. 64 bits are used to represent a double precision floating 
+point number. 
+ 
+The sign bit occupies bit 63. ‘1’ signifies a negative number, and ‘0’ is a 
+positive number. The exponent field is 11 bits long, occupying bits 62 -52. The 
+value in this 11-bit field is offset by 1023, so the actual exponent used to calculate 
+the value of the number is 2^(e -1023). The mantissa is 52 bits long and occupies 
+bits 51-0. There is a leading ‘1’ that is not included in the mantissa, but it is part 
+of the value of the number for all double precision floating point numbers wi th a 
+value in the exponent field greater than 0. 
+Value = -1^(sign bit) * 2^(exponent – 1023) * 1.(mantissa) 
+ 
+
+ OpenCores  7/18/2013 
+ 
+ 
+www.opencores.org muni_aditya@yahoo.com 3 of 10 
+2  
+Architecture 
+BLOCK DIAGRAM HIERARCHY)  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DIVIDOR 
+SIN_LUT 
+COS_LUT 
+TAN_LUT 
+CSC_LUT 
+SEC_LUT 
+COT_LUT 
+N-BIT 
+INPUT 

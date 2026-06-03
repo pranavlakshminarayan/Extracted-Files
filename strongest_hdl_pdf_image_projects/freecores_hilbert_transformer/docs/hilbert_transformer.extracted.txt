@@ -1,0 +1,106 @@
+Hilbert Transformator IP Cores
+Martin Kumm
+December 27, 2008
+1 Introduction
+The Hilbert Transform is an important component in communication systems, e.g.
+for single sideband modulation/demodulation, amplitude and phase detection, etc. It
+can be formulated as ﬁltering operation which makes it possible to approximate the
+Hilbert Transform with a digital ﬁlter. Due to the non-causal and inﬁnite impulse
+response of that ﬁlter, it is not that easy to get a good approximation with low
+hardware resource usage. Therefore, diﬀerent ﬁlters with diﬀerent complexities have
+been implemented. The detailed discussion can be found in [KS08].
+2 Mathematical Background
+The Hilbert Transform can be deﬁned as ﬁlter in the discrete frequency domain as
+HH(ejΩ) =
+
+
+
+−j for 0 < Ω<π
+j for−π <Ω< 0
+0 for Ω = 0 ,
+(1)
+with Ω = 2πf/fs , fs is the sampling frequency in Hz and j =√−1. The magnitude
+is unity for all frequencies not equal to zero and the phase is−90◦ for all positive, and
++90◦ for all negative frequencies. The inverse Fourier transform leads to the impulse
+response
+hH(n) = 1− cos(πn)
+πn =
+{ 2/(πn) for odd n
+0 for even n. (2)
+A so-called analytic signal can be generated from a real valued signal by extending
+the signal with its own Hilbert transform as the imaginary part:
+x(n) =x(n) +jH{x(n)} (3)
+This signal has the property that no spectral components exist for the lower half
+of the z-plane (−π < Ω < 0). The operation in (3) can be formulated as a ﬁlter
+operation with
+H A(ejΩ) = 1 +jHH(ejΩ) . (4)
+The realizations are ﬁlters that generates an analytic signal from a real valued signal,
+therefore these ﬁlters are called analytic ﬁlter (H Ax). The implementations described
+in the next section realize analythic ﬁlters.
+1
+3 Implementation
+The ﬁrst analytic ﬁlter is implemented as FIR ﬁlter
+˜HH1(z) =z−N/2
+N/2∑
+k=−N/2
+bkz−k (5)
+Matlab ( firls()) was used to calculate the impulse response for an Hilbert ﬁlter
+with an order of N = 10 to be b1 =163/256, b3 =54/256, b5 =32/256 and zero for all
+even coeﬃcients. An additional delay is needed to form the analytic ﬁlter
+H A1(z) =z−5 +j˜HH1(z) . (6)
+Due to the zero coeﬃcients and the asymmetric impulse response, only three real
+multipliers are needed. The structure of the implementation is shown in Figure 1.
+Two pipeline registers are implemented after the multiplication and the addition in
+the last stage. Therefore, the delay of the real part must be set to z−7. Detailed plots
+of the ﬁlter are shown in Figure 4.
+Figure 1: Structure of ˜HH1(z)
+The following analytic ﬁlters are based on frequency sampling ﬁlters (see [KS08]
+for further details), so only the transfer functions are given here:
+H A2(z) =Fz4(z)C+90(z) (7)
+with
+Fz4(z) = 1−z−4 (8)
+2
+and
+C+90(z) = z−1
+1−jz −1 . (9)
+Detailed plots of the ﬁlter are shown in Figure 5.
+The third one is deﬁned as
+H A3(z) =
+(
+H A2(z)C0/180(z)C −1
+−30/−150(z)
+)2
+(10)
+with
+C0/180(z) = z−2
+1−z−2 (11)
+and
+C −1
+−30/−150(z) = (1 +jz −1−z−2) . (12)
+Detailed plots of the ﬁlter are shown in Figure 6. A block diagram of the implemen-
+tation is shown in Figure 2.
+Figure 2: Block diagram of H A3(z)
+The last ﬁlter is an extension ofH A3(z) with an IIR component, so the total impulse
+response becomes IIR ( H A1−A3(z) have a ﬁnite impulste response even though IIR
+components are included). The transfer function is
+H A4(z) =H A3(z)C2
+P (z) (13)
+with
+CP (z) = z−2
+1− 1
+2z−2 . (14)
+Detailed plots of the ﬁlter are shown in Figure 7. A block diagram of the imple-
+mentation is shown in Figure 3.
+3
+Figure 3: Block diagram of H A4(z)
+4 Comparison of the Filters
+The resource usage of the ﬁlters is shown in Table 1. All ﬁlters have been compiled
+for an Altera Cyclone I FPGA (EP1C6Q240C8).
+Filter NA NR NLE fmax [MHz]
+H A1(z) 10 6 337 266
+H A2(z) 3 4 110 275
+H A3(z) 16 18 562 191
+H A4(z) 18 38 679 193
+Table 1: Ressource usage of the implemented ﬁlters. Symbols: NA, NR and NLE:
+required number of adders/subtracters (incl. output register), registers (incl.
+pipeline registers) and logic elements on 

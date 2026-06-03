@@ -1,0 +1,29 @@
+{
+  "project_id": "freecores_gecko3",
+  "name": "gecko3",
+  "source": "freecores",
+  "source_url": "https://github.com/freecores/gecko3",
+  "extraction_date": "2026-06-02T16:53:06",
+  "license": null,
+  "has_readme": false,
+  "readme_excerpt": "",
+  "stats": {
+    "verilog_files": 3,
+    "vhdl_files": 23,
+    "other_hdl_files": 0,
+    "pdf_files": 21,
+    "markdown_files": 0,
+    "text_files": 14,
+    "image_files": 30,
+    "total_bytes": 63795430,
+    "languages_seen": [
+      "VHDL",
+      "Verilog"
+    ]
+  },
+  "quality_tier": "C",
+  "quality_reason": "Minimal but valid (HDL present)",
+  "references": [
+    "http://labs.ti.bfh.ch/gecko/wiki/gecko/license"
+  ]
+}

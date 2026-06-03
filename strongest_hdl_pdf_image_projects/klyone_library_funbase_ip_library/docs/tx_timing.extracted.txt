@@ -1,0 +1,27 @@
+  
+clock
+new_tx/rx
+tx/rx_length
+dest./source_address
+destination_port
+source_port
+tx/rx_data
+tx/rx_data_valid
+tx/rx_read_enable
+XXX
+XXX
+XXX
+XXX
+XXX
+XXX
+XXX
+XXX
+XXX
+Valid length
+Valid address
+Valid port
+Valid port
+Data bytes 1 & 2 Data bytes 3 & 4 etc...
+rx_erroneous
+(in rx only)
+XXX  = not valid, don't care

@@ -1,0 +1,66 @@
+Design and Implementation of a C Standard
+Library as Foundation for Porting System
+Software
+Felix Gr¨ utzmacher
+October 23, 2003
+Abstract
+This diploma work deals with the design and implementation of an ANSI C
+library. The target architecture for this implementation is ECO32, a 32-bit risc
+processor invented by Prof. Dr. Hellwig Geisse.
+This document describes the design and implementation of the library, doc-
+umenting the behavior and describing the implementation of library functions,
+especially where either the implementation is interesting in itself or where it
+deviates from the C standard. The ﬁnal chapters brieﬂy describe the design of
+a shell I implemented in the process of testing the library.
+Contents
+1 Introduction 4
+2 The Transition Between C Dialects 5
+2.1 Function prototypes . . . . . . . . . . . . . . . . . . . . . . . . . 5
+2.1.1 The motivation for change . . . . . . . . . . . . . . . . . . 5
+2.1.2 ANSI C prototypes . . . . . . . . . . . . . . . . . . . . . . 7
+2.2 More diﬀerences . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+2.2.1 The signed qualiﬁer . . . . . . . . . . . . . . . . . . . . . 7
+2.2.2 const . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+2.2.3 Initialization of automatic arrays . . . . . . . . . . . . . . 8
+2.2.4 enum . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+3 Error handling 9
+3.1 Detecting errors . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+3.2 Retrieving more information about an error . . . . . . . . . . . . 9
+3.3 Implementation . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+3.4 Deviations from ANSI C . . . . . . . . . . . . . . . . . . . . . . . 10
+4 Standard Input/Output 11
+4.1 Usage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+4.1.1 Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+4.1.2 Streams . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+4.1.3 Character-level I/O . . . . . . . . . . . . . . . . . . . . . 12
+4.1.4 String-level I/O . . . . . . . . . . . . . . . . . . . . . . . . 13
+4.1.5 Formatted I/O . . . . . . . . . . . . . . . . . . . . . . . . 14
+4.1.6 File Handling . . . . . . . . . . . . . . . . . . . . . . . . . 16
+4.2 Implementation . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+4.2.1 Buﬀering basics . . . . . . . . . . . . . . . . . . . . . . . . 18
+4.2.2 The FILE structure . . . . . . . . . . . . . . . . . . . . . 18
+4.2.3 getc, putc, ungetc . . . . . . . . . . . . . . . . . . . . . . 20
+4.2.4 High level I/O . . . . . . . . . . . . . . . . . . . . . . . . 20
+4.2.5 Temporary ﬁles . . . . . . . . . . . . . . . . . . . . . . . . 21
+4.2.6 Conclusion . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+4.3 Deviations from the ANSI C standard . . . . . . . . . . . . . . . 21
+5 String and memory functions 22
+5.1 String functions . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+5.2 Memory functions . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+1
+6 Sorting an array 25
+6.1 Motivation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+6.2 The algorithm . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+6.3 Implementation . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+6.3.1 The ﬁrst attempt . . . . . . . . . . . . . . . . . . . . . . . 27
+6.3.2 Eliminating recursive calls . . . . . . . . . . . . . . . . . . 27
+6.4 Usage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+6.5 Searching an array . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+7 The random number generator 30
+7.1 Usage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+7.2 Implementation . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+7.2.1 Linear congruential generator . . . . . . . . . . . . . . . . 30
+7.2.2 Parameters . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+8 setjmp.h, non-local jumps 32
+8.1 Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+8.2 Us

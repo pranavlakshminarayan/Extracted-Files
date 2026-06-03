@@ -1,0 +1,70 @@
+Versatile counter
+A reconfigurable binary, gray or LFSR counter
+Brought to You By ORSoC / OpenCores
+
+Versatile counter
+Legal Notices and Disclaimers
+Copyright Notice
+This ebook is Copyright © 2009 ORSoC
+General Disclaimer
+The Publisher has strived to be as accurate and complete as possible in the creation of this 
+ebook, notwithstanding the fact that he does not warrant or represent at any time that the 
+contents within are accurate due to the rapidly changing nature of information.
+The Publisher will not be responsible for any losses or damages of any kind incurred by the 
+reader whether directly or indirectly arising from the use of the information found in this 
+ebook.
+This ebook is not intended for use as a source of legal, business, accounting, financial, or 
+medical advice. All readers are advised to seek services of competent professionals in the 
+legal, business, accounting, finance, and medical fields. 
+No guarantees of any kind are made. Reader assumes responsibility for use of the 
+information contained herein. The Publisher reserves the right to make changes without 
+notice. The Publisher assumes no responsibility or liability whatsoever on the behalf of the 
+reader of this report.
+Distribution Rights
+The Publisher grants you the following rights for re-distribution of this ebook.
+[YES] Can be given away.
+[YES] Can be packaged.
+[YES] Can be offered as a bonus.
+[NO]  Can be edited completely and your name put on it.
+[YES] Can be used as web content.
+[NO]  Can be broken down into smaller articles.
+[NO]  Can be added to an e-course or auto-responder as content.
+[NO]  Can be submitted to article directories (even YOURS) IF at least half is rewritten!
+[NO]  Can be added to paid membership sites.
+[NO]  Can be added to an ebook/PDF as content.
+[NO]  Can be offered through auction sites.
+[NO]  Can sell Resale Rights.
+[NO]  Can sell Master Resale Rights.
+[NO]  Can sell Private Label Rights.
+Back toTOC Copyright © 2009 ORSoC Page 2 / 10
+
+Versatile counter
+Table of Contents
+Chapter 1 Linear Feedback Shift Registers                                 _______________  4  
+Chapter 2 Implementation                                                          ___________________________  5  
+Usage notes                                                                                               ___________________________________________________  7  
+Appendix A:
+excel2csv                                                                                      ________________________________________  8  
+Appendix B
+Versatile LFSR counter PHP scripts                                             ____________________  9  
+Recommended Resources                                                          ___________________________  10  
+Back to TOC Copyright © 2009 ORSoC Page 3 / 10
+
+Versatile counter
+Chapter 1 Linear Feedback Shift Registers
+A linear feedback shift register (LFSR) is a shift register whose input bit is a linear 
+function of its previous state.
+The only linear functions of single bits are xor and inverse-xor; thus it is a shift register 
+whose input bit is driven by the exclusive-or (xor) of some bits of the overall shift register 
+value.
+The initial value of the LFSR is called the seed, and because the operation of the register is 
+deterministic, the stream of values produced by the register is completely determined by 
+its current (or previous) state. Likewise, because the register has a finite number of 
+possible states, it must eventually enter a repeating cycle. However, an LFSR with a well-
+chosen feedback function can produce a sequence of bits which appears random and which 
+has a very long cycle.
+Linear Feedback Shift Registers sequence through (2n - 1) states, where n is the number of 
+registers in the LFSR. At each clock edge, the contents of the registers are shifted right by 
+one position. There is feedback from predefined registers or taps to the left most register 
+through an exclusive-NOR (XNOR).
+Back to TOC Copyrig

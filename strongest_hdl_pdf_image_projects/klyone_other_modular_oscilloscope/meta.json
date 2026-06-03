@@ -1,0 +1,30 @@
+{
+  "project_id": "klyone_other_modular_oscilloscope",
+  "name": "other_modular_oscilloscope",
+  "source": "klyone",
+  "source_url": "https://github.com/klyone/opencores-ip/tree/other_modular_oscilloscope",
+  "extraction_date": "2026-06-02T16:05:32",
+  "license": null,
+  "has_readme": true,
+  "readme_excerpt": "****************************************************************************************************\n* IMPORTANT                                                                                        *\n****************************************************************************************************\nThis core is in Planning Development status and is not functional for now...\n\n\n****************************************************************************************************\n* DESCRIPTION                                                                                      *\n****************************************************************************************************\nThe beginig of this project is part of a universitary work in National University of San Luis, \nArgentina. For now it is only a unipersonal project, but in some months it will have more \nmaintainers.\n\nThe aim of the project is to implement oscilloscope functions (conversion control, trigger, FFT, \n...) in several cores and implement a usefull oscilloscope in a development board. The results are \nshown in a PC with a simple program.\n\nThe program will be developed using GPL tools (Qt library) and distributed under such license, like \nthe cores. \n\n\n\n\n\n",
+  "stats": {
+    "verilog_files": 15,
+    "vhdl_files": 43,
+    "other_hdl_files": 0,
+    "pdf_files": 7,
+    "markdown_files": 0,
+    "text_files": 1,
+    "image_files": 10,
+    "total_bytes": 2003872,
+    "languages_seen": [
+      "Verilog",
+      "VHDL"
+    ]
+  },
+  "quality_tier": "A",
+  "quality_reason": "README + (PDF or images) + 3+ HDL files",
+  "references": [
+    "http://www.gnu.org/licenses/gpl.html",
+    "https://github.com/fabriziotappero/ip-cores.git"
+  ]
+}

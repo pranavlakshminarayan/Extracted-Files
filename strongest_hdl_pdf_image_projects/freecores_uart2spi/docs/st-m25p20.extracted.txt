@@ -1,0 +1,141 @@
+1/33
+PRELIMINARY DATA
+January 2002
+This is preliminary information on a new product now in development or undergoing evaluation. Details are subject to change wit hout notice. 
+M25P20
+2 Mbit, Low Voltage, Serial Flash Memory
+With 25 MHz SPI Bus Interface
+FEATURES SUMMARY
+■2 Mbit of Flash Memory
+■Page Program (up to 256 Bytes) in 2 ms 
+(typical)
+■Sector Erase (512 Kbit) in 2 s (typical)
+■Bulk Erase (2 Mbit) in 3 s (typical)
+■2.7 V to 3.6 V Single Supply Voltage
+■SPI Bus Compatible Serial Interface
+■25 MHz Clock Rate (maximum)
+■Deep Power-down Mode 1 µA (typical)
+■Electronic Signature (11h)
+■More than 100,000 Erase/Program Cycles per 
+Sector
+■More than 20 Year Data Retention
+Figure 1. Packages
+SO8 (MN)
+150 mil width
+8
+1
+M25P20
+2/33
+SUMMARY DESCRIPTION
+The M25P20 is a 2 Mbit (256K x 8) Serial Flash
+Memory, with advanced write protection mecha-
+nisms, accessed by a high speed SPI-compatible
+bus.
+The memory can be programmed 1 to 256 bytes at
+a time, using the Page Program instruction.
+The memory is organized as 4 sectors, each con-
+taining 256 pages. Each page is 256 bytes wide.
+Thus, the whole memory can be viewed as con-
+sisting of 1024 pages, or 262,144 bytes.
+The whole memory can be erased using the Bulk
+Erase instruction, or a sector at a time, using the
+Sector Erase instruction.
+Figure 2. Logic Diagram
+Figure 3. SO Connections
+Table 1. Signal Names
+AI04080
+S
+VCC
+M25P20
+HOLD
+VSS
+W
+Q
+C
+D
+1
+AI04081
+2
+3
+4
+8
+7
+6
+5
+DVSS
+C
+HOLDQ
+SV CC
+W
+M25P20
+C Serial Clock
+D Serial Data Input
+Q Serial Data Output
+S Chip Select
+W Write Protect
+HOLD Hold
+VCC Supply Voltage
+VSS Ground
+3/33
+M25P20
+SIGNAL DESCRIPTION
+Serial Data Output (Q). This output signal is
+used to transfer data serially out of the device.
+Data is shifted out on the falling edge of Serial
+Clock (C). 
+Serial Data Input (D). This input signal is used to
+transfer data serially into the device. It receives in-
+structions, addresses, and the data to be pro-
+grammed. Values are latched on the rising edge of
+Serial Clock (C).
+Serial Clock (C). This input signal provides the
+timing of the serial interface. Instructions, address-
+es, or data present at Serial Data Input (D) are
+latched on the rising edge of Serial Clock (C). Data
+on Serial Data Output (Q) changes after the falling
+edge of Serial Clock (C). 
+Chip Select (S
+). When this input signal is High,
+the device is deselected and Serial Data Output
+(Q) is at high impedance. Unless an internal Pro-
+gram, Erase or Write Status Register cycle is in
+progress, the device will be in the Standby mode
+(this is not the Deep Power-down mode). Driving
+Chip Select (S
+) Low enables the device, placing it
+in the active power mode.
+After Power-up, a falling edge on Chip Select (S )
+is required prior to the start of any instruction. 
+Hold (HOLD). The Hold (HOLD) signal is used to
+pause any serial communications with the device
+without deselecting the device.
+During the Hold condition, the Serial Data Output
+(Q) is high impedance, and Serial Data Input (D)
+and Serial Clock (C) are Don’t Care.
+To start the Hold condition, the device must be se-
+lected, with Chip Select (S
+) driven Low.
+Write Protect (W). The main purpose of this in-
+put signal is to freeze the size of the area of mem-
+ory that is protected against program or erase
+instructions (as specified by the values in the BP1
+and BP0 bits of the Status Register).
+M25P20
+4/33
+SPI MODES
+These devices can be driven by a microcontroller
+with its SPI peripheral running in either of the two
+following modes:
+– CPOL=0, CPHA=0
+– CPOL=1, CPHA=1
+For these two modes, input data is latched in on
+the rising edge of Serial Clock (C), and output data
+is available from the falling edge of Serial Clock
+(C).
+The difference between the two modes, as shown
+in Figure 5, is the clock polarity when the bus mas-
+ter is in Stand-by mode and not transferring data:
+– C remains at 0 for (CPOL=0, CPHA=0)
+– C remains at 1 for (CPOL=1, CPHA=1)
+Figure 4. Bus Master and Memory Devices on the SPI Bus
+Note: 1. The Write Protect (W

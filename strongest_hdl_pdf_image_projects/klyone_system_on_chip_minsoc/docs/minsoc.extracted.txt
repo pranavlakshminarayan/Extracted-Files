@@ -1,0 +1,52 @@
+ 
+Minimal OpenRISC 
+System on Chip
+Author: Raul Fajardo
+rfajardo@gmail.com
+Rev. 1.1
+September 23, 2010
+Open Cores Minimal OpenRISC System on Chip 9/23/2010
+Copyright (C)  2010  Raul Fajardo
+Permission is granted to copy, distribute and/or modify this document under the terms of  
+the GNU Free Documentation License, Version 1.2 or any later version published by the  
+Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no  
+Back-Cover Texts.  A copy of the license should be included with this document.  If not,  
+the license may be obtained from  www.gnu.org, or by writing to the Free Software  
+Foundation.
+This document is distributed in the hope that it will be useful, but  
+WITHOUT  ANY  WARRANTY;  without  even  the  implied  warranty  of  
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+http://www.opencores.org/ Rev 1.1 Page 2 of 22
+Open Cores Minimal OpenRISC System on Chip 9/23/2010
+History
+Rev. Date Author Description
+1.0 02/01/10 Raul Fajardo First Draft
+1.1 09/23/10 Raul Fajardo First Revision
+http://www.opencores.org/ Rev 1.1 Page 3 of 22
+Open Cores Minimal OpenRISC System on Chip 9/23/2010
+Table of Contents
+INTRODUCTION..............................................................................................................5
+ 1.1 SYSTEM OVERVIEW.................................................................................................................................. 5
+ 1.2 SYSTEM FEATURES................................................................................................................................... 6
+MINSOC ARCHITECTURE........................................................................................... 8
+ 2.1 OR1200 OPENRISC IMPLEMENTATION................................................................................................... 9
+ 2.2 WISHBONE INTERCONNECT......................................................................................................................10
+ 2.2.1 Configuring the Interconnect......................................................................................................... 10
+ 2.2.2 Attaching Modules to the System.................................................................................................. 12
+ 2.3 START-UP MODULES..............................................................................................................................12
+FIRMWARE.................................................................................................................... 14
+ 3.1 BOOTSTRAPPING: A TINY BOOTLOADER..................................................................................................... 14
+ 3.2 COMMUNICATION TO SOC MODULES.......................................................................................................15
+ 3.3 INTERRUPT PROCESSING..........................................................................................................................16
+ 3.3.1 Interrupt Processing on MinSoC....................................................................................................17
+SIMULATION................................................................................................................. 18
+ 4.1 INITIALIZING MEMORY........................................................................................................................... 19
+ 4.2 BUS FUNCTIONAL MODELS......................................................................................................................19
+CONCLUSION & FUTURE STEPS............................................................................. 21
+http://www.opencores.org/ Rev 1.1 Page 4 of 22
+Open Cores Minimal OpenRISC System on Chip 9/23/2010
+ 1 
+Introduction
+MinSoC consists only of the minimal requirements for an implementation using  
+the OpenRISC processor. This documentation aims to support its use and applicability as  
+a base for custom projects. As an open source project,

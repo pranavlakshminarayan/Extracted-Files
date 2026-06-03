@@ -1,0 +1,79 @@
+ 
+ 
+ 
+ 
+ 
+R&D White Paper 
+WHP 112 
+May 2005 
+Hardware for arithmetic coding  
+P.J. Bleackley 
+Research & Development 
+ BRITISH BROADCASTING CORPORATION 
+
+
+BBC Research & Development
+White Paper WHP 112
+Hardware for Arithmetic Coding
+Peter J. Bleackley
+Abstract
+This white paper describes a ﬁxed probability prototype of a VHDL implementation of an arithme-
+tic coder for Dirac video coding. The technical background of arithmetic coding is also described.
+Additional key words: video coding, Dirac, arithmetic coding, hardware
+c⃝BBC 2005. All rights reserved.
+White Papers are distributed freely on request.
+Authorisation of the Chief Scientist is required for
+publication.
+c⃝BBC 2005. Except as provided below, no part of this document may be reproduced in any
+material form (including photocoping or storing it in any medium by electronic means) without
+the prior written permission of BBC Research & Development except in accordance with the
+provisions of the (UK) Copyright, Designs and Patents Act 1998.
+The BBC grants permission to individuals and organisations to make copies of the entire
+document (including this copyright notice) for their own internal use. No copies of this document
+may be published, distributed or made available to third parties whether by paper, electronic or
+other means without the BBC’s prior written permission. Where necessary, third parties should
+be directed to the relevant page on BBC’s website at http://www.bbc.co.uk/rd/pubs/whp for a
+copy of this document.
+BBC Research & Development
+White Paper WHP 112
+Hardware for Arithmetic Coding
+Peter J. Bleackley
+1 Introduction
+Dirac is a general purpose video codec developed by BBC Research and Development, and released
+as open source so as to enable it to be used and modiﬁed freely by any interested parties. It uses
+motion compensation, wavelet coding, and arithmetic coding to obtain compression and image
+quality comparable with the best video codecs currently available.
+Dirac has so far been implemented as software, written in C++. However, for many video
+applications it is desirable for a hardware implementation to be available. As a ﬁrst stage to
+developing such hardware, an implementation of the arithmetic coding stage in VHDL is being
+developed. This white paper describes a ﬁxed-precision prototype of this arithmetic coder.
+Section 2 of this document describes the principles of arithmetic coding. Sections 3 and 4
+describe the architecture of a ﬁxed precision encoder and decoder respectively. Section 5 discusses
+the results of synthesizing this coder.
+2 Arithmetic coding background
+2.1 Theory
+Consider a message consisting of a string of symbols. For a symbol sk which occurs at a given
+position in the message with a probability pk, then the information content of the symbol is
+− log2(pk). This is the minimum number of bits needed to encode the symbol. In general it will
+not be an integer.
+Compression schemes such as Huﬀman coding, which encode each symbol with an integer
+number of bits, will in general only be optimal when pk = 2 −q, where q is an integer, for all
+symbols. Otherwise there will be an overhead of typically 1 /2 bit/symbol in encoding the message,
+as the number of bits in the encoded symbol will be rounded up to the nearest greater integer.
+To improve on this, it is necessary to encode the message in such a way that a given bit in the
+encoded stream may represent data from more than one symbol.
+Consider the open interval [0 , 1). For an alphabet of symbols sk, where 0 ≤ k < n , which occur
+with probabilities pk
+n−1∑
+k=0
+pk = 1
+The interval may therefore be subdivided in proportion to the probabilities of the various
+symbols. Each symbol may therefore be represented by the interval [ ck−1, ck), where
+ck =
+k∑
+i=0
+pk
+1
+is the cumulative probability of all symbols up to and including sk, and we deﬁne c−1 = 0. To
+represent a second symbol sl, the interval may be further subdivided into the intervals [ ck−1 +
+pkcl−1, ck−1 + pkcl). The length of this inter

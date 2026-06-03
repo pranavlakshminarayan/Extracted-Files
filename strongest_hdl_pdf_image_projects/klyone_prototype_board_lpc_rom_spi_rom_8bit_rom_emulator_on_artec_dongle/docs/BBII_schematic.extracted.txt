@@ -1,0 +1,36 @@
+TRI
+TRI
+TRI
+TRI
+TRI
+Vcc
+LPT port
+2-D0
+14-AUTO FEED
+3-D1
+4-D2
+5-D3
+8-D6
+6-D4
+10-ACK
+11-BUSY
+13-SLCT
+GND
+18-25
+Vcc
+GND
+ByteBlaster II 
+pins
+* Series resistors typically 100 Ω
+Target device (EPCS1) pins are 3.3V tolerant
+VCC = 3.3 V
+4
+1
+5
+8
+6
+9
+3
+7
+2, 10
+15-ERROR

@@ -1,0 +1,161 @@
+DATASHEET
+SERIALLY PROGRAMMABLE CLOCK SOURCE ICS307-01/-02
+IDT™ / ICS™ SERIALLY PROGRAMMABLE CLOCK SOURCE 1 ICS307-01/-02 REV G 031606
+Description
+The ICS307-01 and ICS307-02 are versatile serially 
+programmable clock sources which take up very little 
+board space. They can generate any frequency from 6 
+to 200 MHz and have a second configurable output. 
+The outputs can be reprogrammed on the fly and will 
+lock to a new frequency in 10 ms or less. Smooth 
+transitions (in which the clock duty cycle remains near 
+50%) are guaranteed if the output divider is not 
+changed.
+The devices includes a PDTS
+ pin which tri-states the 
+output clocks and powers down the entire chip.
+The ICS307-02 features a default clock output at 
+start-up and is recommended for all new designs.
+This product is intended for clock generation. It has low 
+output jitter (variation in the output period), but input to 
+output skew and jitter are not defined nor guaranteed. 
+For applications which require defined input to output 
+skew, use the ICS527-01.
+Features
+• Packaged in 16-pin (150 mil wide) SOIC
+• ICS307M-02 and -02I available in Pb (lead) free 
+package
+• Highly accurate frequency generation
+• Serially programmable: user determines the output 
+frequency via a 3 wire interface
+• Eliminates need for custom quartz
+• Input crystal frequency of 5 - 27 MHz
+• Output clock frequencies up to 200 MHz
+• Power down tri-state mode
+• Very low jitter
+• Operating voltage of 3.3 V or 5 V
+• 25 mA drive capability at TTL levels
+• Industrial temperature version available
+Block Diagram
+VDD
+GND
+Reference
+Divider
+Phase Comparator,
+Charge Pump, and
+Loop Filter
+VCO
+VCO
+Divider
+Output
+Divider
+3
+S2:S0
+X1/ICLK
+X2
+Crystal or
+clock input
+Optional crystal capacitors
+Crystal
+Oscillator
+Shift
+Register
+2
+3
+2
+Function
+Select
+STROBE
+DATA
+SCLK
+3
+F1:F0
+7
+R6:R7
+F1:F0
+S2:S0
+C1:C0
+TTL
+9 V8:V0
+CLK1
+CLK2
+PDTS
+ICS307-01/-02
+SERIALLY PROGRAMMABLE CLOCK SOURCE SER PROG CL OCK SYNTHESIZER
+IDT™ / ICS™ SERIALLY PROGRAMMABLE CLOCK SOURCE 2 ICS307-01/-02 REV G 031606
+Pin Assignment
+Pin Descriptions
+12
+1
+11
+2
+10
+3
+9
+X1/ICLK
+4
+NC
+5
+VDD
+6
+NC
+7
+NC
+8
+GND
+NC
+PDTS
+DATA
+CLK2 CLK1
+STROBE
+NC NC
+16
+15
+14
+13
+SCLK
+X2
+16 pin (150 mil) SOIC
+Pin
+Number
+Pin
+Name
+Pin 
+Type
+Pin Description
+1 X1/ICLK XI
+Crystal connection (REF frequency). Connect to a parallel resonant crystal or an 
+input clock.
+2 NC - No connect. Do not connect anything to this pin.
+3 VDD Power Connect to 3.3 V or 5 V.
+4 NC - No connect. Do not connect anything to this pin.
+5 GND Power Connect to ground.
+6 CLK2 Output Output clock 2, determined by F0 - F1. Can be reference, REF/2, CLK1/2 , or off.
+7 NC - No connect. Do not connect anything to this pin.
+8 SCLK Input Serial clock. See timing diagram.
+9 STROBE Input Strobe to load data. See timing diagram.
+10 NC - No connect. Do not connect anything to this pin.
+11 CLK1 Output Output clock 1, determined by R0 - R6, V0 - V8, S0 - S2, and input frequency.
+12 DATA Input Data input. Serial input for three words which set the output clock(s).
+13 PDTS
+Input
+Powers down entire chip, tri states CLK1 and CLK2 outputs when low. Internal 
+pull-up.
+14 NC - No connect. Do not connect anything to this pin.
+15 NC - No connect. Do not connect anything to this pin.
+16 X2 XO
+Input crystal connection. Connect to a crystal or leave unconnected for clock 
+input.
+ICS307-01/-02
+SERIALLY PROGRAMMABLE CLOCK SOURCE SER PROG CL OCK SYNTHESIZER
+IDT™ / ICS™ SERIALLY PROGRAMMABLE CLOCK SOURCE 3 ICS307-01/-02 REV G 031606
+Determining the Output Frequency
+On power-up, the ICS307-01 on-chip registers can have 
+random values so almost any frequency may be output 
+from the part. CLK1 will always have some clock signal 
+present, but CLK2 could possibly be OFF (low).
+The ICS307-02 on-chip registers are initially configured 
+to provide a x1 output clock on both the CLK1 and CLK2 
+outputs. The output frequency will be the same as the 
+input clock or crystal. This is useful if the ICS307 will 
+provide the initial system clock at power-up. Since th

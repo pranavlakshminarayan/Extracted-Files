@@ -1,0 +1,5 @@
+a) All pixels in the rectangle 
+have to be traversed.
+b) Using the speed up 
+technique, many pixels can be 
+skipped (ﬁlled).
